@@ -14,7 +14,7 @@ Computing data
 The reference sea-ice evolution was computed with the model SAMSIM, which can be downloaded on github
 `here <https://github.com/pgriewank/SAMSIM>`_. The version used for the analysis was downloaded on March 10th, 2017.
 
-The forcing data for SAMSIM was downloaded from the ERA-Interim dataset, with the script: :file:`data/download_ERA_forcing_data.py`.#
+The forcing data for SAMSIM was downloaded from the ERA-Interim dataset, with the script: `download_ERA_forcing_data.py </data/download_ERA_forcing_data.py>`_.
 
 For the analysis of the simplification of temperature and salinity (Section 4), the following were used:
     * `run_simplifications.py </data/run_simplifications.py>`_ (different options can be given in the file), using functions from `simplification_functions.py </data/simplification_functions.py>`_: produces dat-files as input for MEMLS for each timestep
