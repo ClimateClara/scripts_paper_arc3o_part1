@@ -33,8 +33,8 @@ Producing figures
 -----------------
 
 The final processing and visualization was done using the following scripts:
-    * Figure 2: ``Figure2.ipynb </figures/Figure2.ipynb>`_
-    * Figure 3, 5, 6: ``Figure3_5_6.py </figures/Figure3_5_6.py.ipynb>`_
-    * Figure 4: ``Figure4.py </figures/Figure4.py>`_ 
+    * Figure 2: `Figure2.ipynb </figures/Figure2.ipynb>`_
+    * Figure 3, 5, 6: `Figure3_5_6.py </figures/Figure3_5_6.py.ipynb>`_
+    * Figure 4: `Figure4.py </figures/Figure4.py>`_
 
 Signed: Clara Burgard, 14.08.2020
