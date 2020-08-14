@@ -14,8 +14,8 @@ import numpy as np
 import pandas as pd
 import glob
 import xarray as xr
-import clalib.simplification_functions as sf
-import clalib.memls_functions as memls
+import simplification_functions as sf
+import memls_functions as memls
 
 ##########################################################################
 

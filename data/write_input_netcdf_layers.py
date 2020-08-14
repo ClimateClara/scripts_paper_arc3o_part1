@@ -18,7 +18,7 @@ import xarray as xr
 import os
 import datetime
 import glob
-import clalib.memls_functions as memls
+import memls_functions as memls
 
 ##########################################################################
 

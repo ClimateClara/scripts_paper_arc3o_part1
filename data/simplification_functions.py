@@ -9,11 +9,30 @@ Functions used in run_simplifications
 """
 
 import numpy as np
-import clalib.memls_functions as memls
+import memls_functions as memls
 from scipy import stats
-import clalib.profile_functions as pf
-import clalib.simplification_functions as sf
+import simplification_functions as sf
 
+
+def compute_ice_snow_int_temp(sit, snd, tsi):
+	"""
+    This function computes the temperature at the snow-ice interface
+    inspired from Semtner, 1976
+
+    INPUT
+    sit : sea-ice thickness in m
+    snd : snow thickness in m
+    tsi : sea-ice (or snow) surface temperature in K
+
+    OUTPUT
+    T_i : temperature at snow-ice interface in K
+    """
+
+	k_s = 0.31  # thermal conductivity of snow in W/K/m #from MPIOM paper
+	k_i = 2.17  # thermal conductivity of ice in W/K/m #from MPIOM paper
+	bottom_temp = tsi * 0 + 273.15 - 1.8
+	T_i = ((tsi * (k_s / snd)) + (bottom_temp * (k_i / sit))) / ((k_s / snd) + (k_i / sit))
+	return T_i
 
 def icerho2(T,S,lwf): 
 	"""
@@ -53,7 +72,7 @@ def icerho(T,S): #von Dirk
 	OUTPUT
 	rho_tot: sea-ice density in kg/m**3
 	"""
-  	if np.any(T>100.):
+	if np.any(T>100.):
 		T = T-273.15
 	#density of pure ice
 	rho_0 = 916.18 - 0.1403*T
@@ -198,18 +217,14 @@ def find_tmelttfreeze(icetypes,kdays,kmonths,timeseries_depth):
 			#print d_trend[i]
 
 	for i,ts in enumerate(range(ttrans-kk,ttrans+kk/2+1)):
-		#print d_trend[i]
-	 	#print ts
-	 	#if the trend is negative in the beginning, it could be that the melting season
-		#starts even earlier
-	 	if d_trend[i]<0 and ts==ttrans-kk :
+		# print d_trend[i]
+		# print ts
+		if d_trend[i]<0 and ts==ttrans-kk : #if the trend is negative in the beginning, it could be that the melting season startes even earlier
 			print('melt season starts before')
-		#if the trend is positive in the end, it could be that the freezing season
-	 	#starts even later
-		elif d_trend[i]<0 and ts==ttrans+kk/2+1 :
+		elif d_trend[i]<0 and ts==ttrans+kk/2+1 : # if the trend is positive in the end, it could be that the freezing season starts even later
 			print('melt season ends after')
-		elif ts<(ttrans+kk/2):
-			#print 'yep'
+		#elif ts<(ttrans+kk/2):
+			# print 'yep'
 		if d_trend[i]>0 and d_trend[i+1]<=0:
 			print('Begin of melt season')
 			tmelt.append(ts)
@@ -395,7 +410,7 @@ def samelayers(T,d,W,pc,sal,saltype,rho,s,icetype,sitype,thick_sn,thick_ice,Ttop
 	 	#di2 = np.linspace(d[0],np.sum(d[:-1]),layers+5)
 		di2 = np.linspace(d[0],np.sum(d),layers+5)
 		if double_linear=='yes' and thick_sn > 0:
-			new_Ttopice = pf.compute_ice_snow_int_temp(thick_ice,thick_sn,Ttop)
+			new_Ttopice = compute_ice_snow_int_temp(thick_ice,thick_sn,Ttop)
 			Ti2 = np.linspace(273.15-1.8,new_Ttopice,layers+5)
 		else:
 			Ti2 = np.linspace(273.15-1.8,T[-1],layers+5)
@@ -418,8 +433,7 @@ def samelayers(T,d,W,pc,sal,saltype,rho,s,icetype,sitype,thick_sn,thick_ice,Ttop
 				#sal_new[:]=5.  #commented for exp023
 				sal_new[:]=1.
 
-		######Density only from T and S
- 		rho_new = sf.icerho(T_new,sal_new)
+		rho_new = sf.icerho(T_new,sal_new) ######Density only from T and S
 
 	else:
 		nn = np.array([1])
@@ -517,22 +531,20 @@ def difflayers(layers,T,d,W,pc,sal,saltype,rho,s,icetype,sitype,thick_sn,thick_i
 		icetype_new = icetype
 		sitype_new = np.interp(d_0,np.cumsum(d),sitype)
 
-		#####Linear temperature profile
-    	if double_linear=='yes' and thick_sn > 0:
-			new_Ttopice = pf.compute_ice_snow_int_temp(thick_ice,thick_sn,Ttop)
+		if double_linear=='yes' and thick_sn > 0: #####Linear temperature profile
+			new_Ttopice = compute_ice_snow_int_temp(thick_ice,thick_sn,Ttop)
 			T_new = np.linspace(273.15-1.8,new_Ttopice,layers)
 		else:
 			T_new = np.linspace(273.15-1.8,T[-1],layers)
 
-		#####Salinity profiles after functions or constant
-    	if saltype == 'func':
+		if saltype == 'func': #####Salinity profiles after functions or constant
 			norm_z = 1-np.cumsum(d_new/sum(d_new))
 			if icetype == 'FYI':
 				sal_new=sal_approx_fy(norm_z)
 			elif icetype == 'MYI':
 				sal_new=sal_approx_my(norm_z)
-				#sal_new=flipud(sal_new)
-    	elif saltype == 'const':
+				# sal_new=np.flipud(sal_new)
+		elif saltype == 'const':
 			sal_new = np.zeros(nn)
 			if icetype == 'FYI':
 				sal_new[:]=10.
@@ -573,17 +585,17 @@ def difflayers_fytomy(layers,d,sal,t):
 	"""
 
 	nn = layers
-    if len(d) > 1:    
-            d_0 = np.linspace(d[0],np.sum(d),layers)
-            d_new = np.zeros(nn)
-            for n in range(nn):
-                if n==0:
-                    d_new[n] = d_0[0]
-                else:  
-                    d_new[n] = d_0[n] - d_0[n-1] 
-            norm_z = 1-np.cumsum(d_new/sum(d_new))
-            sal_new = sal_approx_fytomy(norm_z,t)   
-    else:
-        nn = np.array([1])
-        sal_new = sal
-    return [nn, sal_new]
+	if len(d) > 1:
+		d_0 = np.linspace(d[0],np.sum(d),layers)
+		d_new = np.zeros(nn)
+		for n in range(nn):
+			if n==0:
+				d_new[n] = d_0[0]
+			else:
+				d_new[n] = d_0[n] - d_0[n-1]
+			norm_z = 1-np.cumsum(d_new/sum(d_new))
+			sal_new = sal_approx_fytomy(norm_z,t)
+	else:
+		nn = np.array([1])
+		sal_new = sal
+	return [nn, sal_new]

@@ -7,23 +7,27 @@ Created on Wed Nov 06 15:27 2019
 
 final figures paper 1 before submitting
 
-@author: m300411
+@author: Clara Burgard
 """
 
 import numpy as np
-import clalib.memls_functions as memls
-import clalib.simplification_functions as sf
-import clalib.satsim_analysis_functions as ana
 import xarray as xr
 import glob
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 import matplotlib.cm as cm
 from scipy.stats import kde
-import clalib.memls_functions_2D as mf2
-import clalib.profile_functions as pf
 import seaborn as sns
 import pandas as pd
+
+import sys
+# insert at 1, 0 is the script path (or '' in REPL)
+sys.path.append('./data/')
+
+import memls_functions as memls
+import simplification_functions as sf
+import analysis_functions as ana
+
 
 
 sns.set_context('paper')
@@ -33,7 +37,7 @@ sns.set_context('paper')
 ####################################################
 
 
-exp_nb='049'
+exp_nb='049' # this was the number in my experiments, you can change it if needed
 
 #went once through all experiments
 ee='75N00W-p4'

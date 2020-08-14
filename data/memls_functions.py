@@ -13,415 +13,415 @@ import pandas as pd
 import xarray as xr
 
 def epsice(Ti,freq):
-	"""
-	calculates the dielectric permittivity of ice
-	After Hufford, Mitzima and Matzler
-	
-	eice = epsice(Ti,freq)
-	eice:  dielectric permittivity of ice
-	Ti:    temperature in K 
-	freq:  frequency in GHz
-	
-	Version history:
-	   1.0    wi 15.7.95
-	
-	Uses:
-	
-	
-	
-	Copyright (c) 1997 by the Institute of Applied Physics,
-	University of Bern, Switzerland
-	"""
-	pp = (300/Ti)-1;
-	B1 = 0.0207
-	b = 335.25
-	B2 = 1.16e-11
-	db = np.exp(-10.02+0.0364*(Ti-273.15)) #replaced 273 by 273.15 by Clara
-	beta = ((B1*np.exp(b/Ti))/(Ti*(np.exp(b/Ti)-1)**2))+B2*freq**2+db
-	alpha = ((0.00504 + 0.0062*pp)* np.exp(-22.1*pp))
-	eice = (alpha/freq) + (beta*freq)
-	return eice
+    """
+    calculates the dielectric permittivity of ice
+    After Hufford, Mitzima and Matzler
+
+    eice = epsice(Ti,freq)
+    eice:  dielectric permittivity of ice
+    Ti:    temperature in K
+    freq:  frequency in GHz
+
+    Version history:
+       1.0    wi 15.7.95
+
+    Uses:
+
+
+
+    Copyright (c) 1997 by the Institute of Applied Physics,
+    University of Bern, Switzerland
+    """
+    pp = (300/Ti)-1;
+    B1 = 0.0207
+    b = 335.25
+    B2 = 1.16e-11
+    db = np.exp(-10.02+0.0364*(Ti-273.15)) #replaced 273 by 273.15 by Clara
+    beta = ((B1*np.exp(b/Ti))/(Ti*(np.exp(b/Ti)-1)**2))+B2*freq**2+db
+    alpha = ((0.00504 + 0.0062*pp)* np.exp(-22.1*pp))
+    eice = (alpha/freq) + (beta*freq)
+    return eice
   
 def epsr(roi):
-	"""
-	calculates the dielectric permittivity for dry snow from 
-	density .
-	
-	epsi = epsr(roi)
-	epsi:  real part of dielectric permittivity
-	roi:   density g/cm^3
-	
-	Version history:
-	1.0    wi 15.7.95
-	1.1    wi 23.9.97 added Looyenga for snow denser than 0.4 g/cm^3
-	
-	Uses:
-	epsice
-	
-	
-	
-	Copyright (c) 1997 by the Institute of Applied Physics,
-	University of Bern, Switzerland
-	"""
+    """
+    calculates the dielectric permittivity for dry snow from
+    density .
 
-	epsi = np.zeros(len(roi))
-	#  ilist = np.where(roi<=0.4)
-	#  jlist = np.where(roi>0.4)
-	vfi = roi/0.917
-	ehb = 0.99913
-	esb = 1.4759
-  
-	#  for i in  ilist:
-	#    epsi[i] = 1 + 1.5995 * roi[i] + 1.861 * roi[i]**3
-	#  for j in jlist:
-	#    epsi[j] = ((1 - vfi[j]) * ehb + vfi[j] * esb)**3
+    epsi = epsr(roi)
+    epsi:  real part of dielectric permittivity
+    roi:   density g/cm^3
 
-	epsi[roi<=0.4] = 1 + 1.5995 * roi[roi<=0.4] + 1.861 * roi[roi<=0.4]**3
-	epsi[roi>0.4] = ((1 - vfi[roi>0.4]) * ehb + vfi[roi>0.4] * esb)**3
+    Version history:
+    1.0    wi 15.7.95
+    1.1    wi 23.9.97 added Looyenga for snow denser than 0.4 g/cm^3
+
+    Uses:
+    epsice
+
+
+
+    Copyright (c) 1997 by the Institute of Applied Physics,
+    University of Bern, Switzerland
+    """
+
+    epsi = np.zeros(len(roi))
+    #  ilist = np.where(roi<=0.4)
+    #  jlist = np.where(roi>0.4)
+    vfi = roi/0.917
+    ehb = 0.99913
+    esb = 1.4759
   
-	return epsi
+    #  for i in  ilist:
+    #    epsi[i] = 1 + 1.5995 * roi[i] + 1.861 * roi[i]**3
+    #  for j in jlist:
+    #    epsi[j] = ((1 - vfi[j]) * ehb + vfi[j] * esb)**3
+
+    epsi[roi<=0.4] = 1 + 1.5995 * roi[roi<=0.4] + 1.861 * roi[roi<=0.4]**3
+    epsi[roi>0.4] = ((1 - vfi[roi>0.4]) * ehb + vfi[roi>0.4] * esb)**3
+  
+    return epsi
   
 def ro2epsd(roi,Ti,freq):
-	"""
-	calculates the dielectric permittivity from 
-	density for dry snow.
-	
-	[epsi,epsii] = ro2epsd(roi,Ti,freq)
-	epsi:  real part of dielectric permittivity
-	epsii: imaginary part of dielectric permittivity
-	roi:   density
-	Ti:    snow temperature in Kelvin
-	freq:  frequency
-	
-	Version history:
-	1.0    wi 15.7.95
-	2.0    wi 12.11.97  enhanced with Polder and van Santen Equations (see Polder.m)
-	
-	Uses:
-	epsice, epsr, polder
-	
-	Copyright (c) 1997 by the Institute of Applied Physics, 
-	University of Bern, Switzerland
-	"""
+    """
+    calculates the dielectric permittivity from
+    density for dry snow.
 
-	eice = epsice(Ti,freq)
-  
-	epsi = epsr(roi)
-  
-	#imaginary part after Tiuri 84
-	#epsii = eice.*(0.52.*roi + 0.62.*(roi.^2));
-  
-	#imaginary part after Polder and van Santen 1946 (Effective-Medium Approx)
-	f = roi/0.917
-	ei = 3.185
-	N = len(roi)
-	A = np.zeros((N))
-	epsp = np.zeros((N))
-	A = A + 0.3
-  
-	A[f<0.55] = 0.476 - 0.64 * f[f<0.55]
-	A[f<=0.333] = 0.1 + 0.5 * f[f<=0.333]
-  
-	#  for i in range(N):
-	#     if f[i] < 0.55:
-	#        A[i] = 0.476 - 0.64 * f[i]
-	#     if f[i] <= 0.333:
-	#        A[i] = 0.1 + 0.5 * f[i]
+    [epsi,epsii] = ro2epsd(roi,Ti,freq)
+    epsi:  real part of dielectric permittivity
+    epsii: imaginary part of dielectric permittivity
+    roi:   density
+    Ti:    snow temperature in Kelvin
+    freq:  frequency
 
-	#epsp(i) = polder(A(i),ei,f(i));
+    Version history:
+    1.0    wi 15.7.95
+    2.0    wi 12.11.97  enhanced with Polder and van Santen Equations (see Polder.m)
 
-	epsp = epsi
-	A3 = 1-2*A
-	ea = (epsp*(1-A))+A;
-	ea3 = epsp*(1-A3)+A3;
-	K1 = (ea/(ea+A*(ei-1)))**2
-	K3 = (ea3/(ea3+A3*(ei-1)))**2
-	Ksq = (2*K1+K3)/3
-	epsii = np.sqrt(epsi)*eice*Ksq*f 
-	
-	return epsi, epsii
+    Uses:
+    epsice, epsr, polder
+
+    Copyright (c) 1997 by the Institute of Applied Physics,
+    University of Bern, Switzerland
+    """
+
+    eice = epsice(Ti,freq)
+  
+    epsi = epsr(roi)
+  
+    #imaginary part after Tiuri 84
+    #epsii = eice.*(0.52.*roi + 0.62.*(roi.^2));
+  
+    #imaginary part after Polder and van Santen 1946 (Effective-Medium Approx)
+    f = roi/0.917
+    ei = 3.185
+    N = len(roi)
+    A = np.zeros((N))
+    epsp = np.zeros((N))
+    A = A + 0.3
+  
+    A[f<0.55] = 0.476 - 0.64 * f[f<0.55]
+    A[f<=0.333] = 0.1 + 0.5 * f[f<=0.333]
+  
+    #  for i in range(N):
+    #     if f[i] < 0.55:
+    #        A[i] = 0.476 - 0.64 * f[i]
+    #     if f[i] <= 0.333:
+    #        A[i] = 0.1 + 0.5 * f[i]
+
+    #epsp(i) = polder(A(i),ei,f(i));
+
+    epsp = epsi
+    A3 = 1-2*A
+    ea = (epsp*(1-A))+A;
+    ea3 = epsp*(1-A3)+A3;
+    K1 = (ea/(ea+A*(ei-1)))**2
+    K3 = (ea3/(ea3+A3*(ei-1)))**2
+    Ksq = (2*K1+K3)/3
+    epsii = np.sqrt(epsi)*eice*Ksq*f
+
+    return epsi, epsii
 
 def mixmod(f,Ti,Wi,epsi,epsii):  
-	"""
-	calculates the permittivity for Wetness > 0
-	Physical Mixing Model Weise 97 after Matzler 1987 (corrected)
-	water temperature is assumed constant at 273.15 K
-	
-	[epsi,epsii] = mixmod(f,Ti,Wi,epsi,epsii)
-	epsi:  real part of the permittivity
-	epsii: imaginary part of the permittivity
-	f:     frequency [GHz]
-	Ti:    physical snow temperature
-	Wi:    wetness [%], no! in vol. frac. 0-1. according to mail 06/01/05 Mätzler -rtt
-	epsi:  real part of dry snow perm.
-	epsii: imaginary part of dry snow perm.
-	
-	Version history:
-	1.0    wi 15.7.95
-	 
-	Uses: -
+    """
+    calculates the permittivity for Wetness > 0
+    Physical Mixing Model Weise 97 after Matzler 1987 (corrected)
+    water temperature is assumed constant at 273.15 K
 
-	Copyright (c) 1997 by the Institute of Applied Physics,
-	University of Bern, Switzerland
-	"""
+    [epsi,epsii] = mixmod(f,Ti,Wi,epsi,epsii)
+    epsi:  real part of the permittivity
+    epsii: imaginary part of the permittivity
+    f:     frequency [GHz]
+    Ti:    physical snow temperature
+    Wi:    wetness [%], no! in vol. frac. 0-1. according to mail 06/01/05 Mätzler -rtt
+    epsi:  real part of dry snow perm.
+    epsii: imaginary part of dry snow perm.
 
-	Aa = 0.005
-	Ab = 0.4975
-	Ac = 0.4975
-	euw = 4.9
-	esw = 88.045 
-	frw = 0.11109 # inverse relaxation frequency of water
+    Version history:
+    1.0    wi 15.7.95
+
+    Uses: -
+
+    Copyright (c) 1997 by the Institute of Applied Physics,
+    University of Bern, Switzerland
+    """
+
+    Aa = 0.005
+    Ab = 0.4975
+    Ac = 0.4975
+    euw = 4.9
+    esw = 88.045
+    frw = 0.11109 # inverse relaxation frequency of water
   
-	esa = (esw - epsi)/(3*(1+Aa*(esw/epsi-1)))
-	esb = (esw - epsi)/(3*(1+Ab*(esw/epsi-1)))
-	esc = (esw - epsi)/(3*(1+Ac*(esw/epsi-1)))
-	eua = (euw - epsi)/(3*(1+Aa*(euw/epsi-1)))
-	eub = (euw - epsi)/(3*(1+Ab*(euw/epsi-1)))
-	euc = (euw - epsi)/(3*(1+Ac*(euw/epsi-1)))
+    esa = (esw - epsi)/(3*(1+Aa*(esw/epsi-1)))
+    esb = (esw - epsi)/(3*(1+Ab*(esw/epsi-1)))
+    esc = (esw - epsi)/(3*(1+Ac*(esw/epsi-1)))
+    eua = (euw - epsi)/(3*(1+Aa*(euw/epsi-1)))
+    eub = (euw - epsi)/(3*(1+Ab*(euw/epsi-1)))
+    euc = (euw - epsi)/(3*(1+Ac*(euw/epsi-1)))
   
-	fa = 1 + Aa * (esw-euw)/(epsi+Aa*(euw-epsi))
-	fb = 1 + Ab * (esw-euw)/(epsi+Ab*(euw-epsi))
-	fc = 1 + Ac * (esw-euw)/(epsi+Ac*(euw-epsi))
+    fa = 1 + Aa * (esw-euw)/(epsi+Aa*(euw-epsi))
+    fb = 1 + Ab * (esw-euw)/(epsi+Ab*(euw-epsi))
+    fc = 1 + Ac * (esw-euw)/(epsi+Ac*(euw-epsi))
   
-	eea = esa - eua
-	eeb = esb - eub
-	eec = esc - euc
+    eea = esa - eua
+    eeb = esb - eub
+    eec = esc - euc
   
-	fwa = frw/fa
-	fwb = frw/fb
-	fwc = frw/fc
+    fwa = frw/fa
+    fwb = frw/fb
+    fwc = frw/fc
   
-	depsia = eua + eea / (1+(fwa*f)**2)
-	depsib = eub + eeb / (1+(fwb*f)**2)
-	depsic = euc + eec / (1+(fwc*f)**2)
-	depsi = Wi * (depsia+depsib+depsic)
+    depsia = eua + eea / (1+(fwa*f)**2)
+    depsib = eub + eeb / (1+(fwb*f)**2)
+    depsic = euc + eec / (1+(fwc*f)**2)
+    depsi = Wi * (depsia+depsib+depsic)
   
-	depsiia = fwa*f*eea / (1+(fwa*f)**2);
-	depsiib = fwb*f*eeb / (1+(fwb*f)**2);
-	depsiic = fwc*f*eec / (1+(fwc*f)**2);
-	depsii = Wi * (depsiia + depsiib + depsiic);
+    depsiia = fwa*f*eea / (1+(fwa*f)**2);
+    depsiib = fwb*f*eeb / (1+(fwb*f)**2);
+    depsiic = fwc*f*eec / (1+(fwc*f)**2);
+    depsii = Wi * (depsiia + depsiib + depsiic);
   
-	epsi = epsi + depsi
-	epsii = epsii + depsii
-	
-	return epsi, epsii
+    epsi = epsi + depsi
+    epsii = epsii + depsii
+
+    return epsi, epsii
 
 def epice(T,freq):
-	"""
-	Dielectric constant of pure ice: Mätzler, 1998, Microwave properties of ice and snow, in:
-	B. Smitht et al. (eds.) solar system ices, 241-257, Kluwer.
-	
-	T: thermometric temperature in K
-	freq: Frequency in GHz
-	"""
-	
-	if np.any(T < 100):
-		T = T+273.15
-	epi=3.1884+9.1e-4*(T-273.15) #modified from 273 to 273.15 
+    """
+    Dielectric constant of pure ice: Mätzler, 1998, Microwave properties of ice and snow, in:
+    B. Smitht et al. (eds.) solar system ices, 241-257, Kluwer.
+
+    T: thermometric temperature in K
+    freq: Frequency in GHz
+    """
+
+    if np.any(T < 100):
+        T = T+273.15
+    epi=3.1884+9.1e-4*(T-273.15) #modified from 273 to 273.15
   
-	#The Hufford model for the imagenary part.
+    #The Hufford model for the imagenary part.
   
-	theta=300/T-1 #corrected by Clara 09.05.2018
-	alpha=(0.00504+0.0062*theta)*np.exp(-22.1*theta)
-	beta=(0.502-0.131*theta/(1+theta))*1e-4 +(0.542e-6*((1+theta)/(theta+0.0073))**2)
-	epii=(alpha/freq) + (beta*freq)
-	epui=epi+epii*1j
-	
-	return epui
+    theta=300/T-1 #corrected by Clara 09.05.2018
+    alpha=(0.00504+0.0062*theta)*np.exp(-22.1*theta)
+    beta=(0.502-0.131*theta/(1+theta))*1e-4 +(0.542e-6*((1+theta)/(theta+0.0073))**2)
+    epii=(alpha/freq) + (beta*freq)
+    epui=epi+epii*1j
+
+    return epui
 
 def Sb(T):
-	"""
-	computes the brine salinity based on equations given in Notz (2005)
-	
-	T: temperature in °C or K
-	
-	added by C. Burgard
-	"""
-	
-	if np.any(T>100.):
-		T = T-273.15
-	Sb = np.ones(len(T))*np.nan  
-	for n,Ti in enumerate(T):
-		if Ti >= -43.2 and Ti <= -36.8:
-			Sb[n]=508.18 + 14.535*Ti + 0.2018*Ti**2
-		elif Ti>=-36.8 and Ti<=-22.9:
-			Sb[n]= 242.94 + 1.5299*Ti + 0.0429*Ti**2
-		elif Ti>-22.9 and Ti<-8:
-			Sb[n] = -1.20 - 21.8*Ti - 0.919*Ti**2 - 0.0178*Ti**3
-		elif Ti>=-8 and Ti<0.:
-			Sb[n] = 1./(0.001-(0.05411/Ti)) 
-		elif Ti>=0:
-			Sb[n] = 0.
-	return Sb
+    """
+    computes the brine salinity based on equations given in Notz (2005)
+
+    T: temperature in °C or K
+
+    added by C. Burgard
+    """
+
+    if np.any(T>100.):
+        T = T-273.15
+    Sb = np.ones(len(T))*np.nan
+    for n,Ti in enumerate(T):
+        if Ti >= -43.2 and Ti <= -36.8:
+            Sb[n]=508.18 + 14.535*Ti + 0.2018*Ti**2
+        elif Ti>=-36.8 and Ti<=-22.9:
+            Sb[n]= 242.94 + 1.5299*Ti + 0.0429*Ti**2
+        elif Ti>-22.9 and Ti<-8:
+            Sb[n] = -1.20 - 21.8*Ti - 0.919*Ti**2 - 0.0178*Ti**3
+        elif Ti>=-8 and Ti<0.:
+            Sb[n] = 1./(0.001-(0.05411/Ti))
+        elif Ti>=0:
+            Sb[n] = 0.
+    return Sb
 
   
 def Vb(T,S):
-	"""
-	computes the brine volume fraction based on equations given in Notz (2005)
-	
-	T: temperature in °C or K
-	S: salinity in g/kg
-	
-	added by C. Burgard
-	"""
-	
-	#liquid water fraction or volume brine fraction
-	#if everything is nan
+    """
+    computes the brine volume fraction based on equations given in Notz (2005)
+
+    T: temperature in °C or K
+    S: salinity in g/kg
+
+    added by C. Burgard
+    """
+
+    # liquid water fraction or volume brine fraction
+    # if everything is nan
     if np.any(T[~np.isnan(T)])==False:
-      lwf = T
+        lwf = T
     else:
-      if np.any(T>100.):
-        T = T-273.15
-#      print 'calculating Sb'
-      Sbr = Sb(T)
-#      print 'calculating lwf'
-      lwf=np.ones(len(S))*np.nan
-      lwf[Sbr>0] = S[Sbr>0]/Sbr[Sbr>0]
-      lwf[Sbr<=0] = 1.
-      lwf[lwf>1.] = 1
-	return lwf
+        if np.any(T>100.):
+            T = T-273.15
+    # print 'calculating Sb'
+    Sbr = Sb(T)
+    # print 'calculating lwf'
+    lwf=np.ones(len(S))*np.nan
+    lwf[Sbr>0] = S[Sbr>0]/Sbr[Sbr>0]
+    lwf[Sbr<=0] = 1.
+    lwf[lwf>1.] = 1
+    return lwf
 
 
 def Nsw(Ssw):
-	"""
-	normality of sea water or brine Ulaby et al. 1986, E20
-	Ssw: salinity of brine or sea water
-	"""
-	
-	N = 0.9141*Ssw*(1.707e-2 +1.205e-5*Ssw+4.058e-9*(Ssw**2))
-	return N
+    """
+    normality of sea water or brine Ulaby et al. 1986, E20
+    Ssw: salinity of brine or sea water
+    """
+
+    N = 0.9141*Ssw*(1.707e-2 +1.205e-5*Ssw+4.058e-9*(Ssw**2))
+    return N
 
 def condbrine(T):
-	"""
-	conductivity of brine  
-	from Stogryn and Desargant, 1985, Eq.7
-	
-	T: temperature in °C or K
-	"""
-	if any(T>100):
-		T=T-273.15
-	condbrine=np.zeros(len(T))          
-	condbrine[T >= -22.9] = -T[T >= -22.9]*np.exp(0.5193 + 0.8755*0.1*T[T >= -22.9])
-	condbrine[T < -22.9] = -T[T < -22.9]*np.exp(1.0334 + 0.1100*T[T < -22.9])
-	return condbrine        
+    """
+    conductivity of brine
+    from Stogryn and Desargant, 1985, Eq.7
+
+    T: temperature in °C or K
+    """
+    if any(T>100):
+        T=T-273.15
+    condbrine=np.zeros(len(T))
+    condbrine[T >= -22.9] = -T[T >= -22.9]*np.exp(0.5193 + 0.8755*0.1*T[T >= -22.9])
+    condbrine[T < -22.9] = -T[T < -22.9]*np.exp(1.0334 + 0.1100*T[T < -22.9])
+    return condbrine
           
 def relaxt(T):
-	"""
-	relaxation time  
-	from Stogryn and Desargant, 1985, Eq.12
-	fit up to -25°C
-	in nanoseconds  
-	
-	T: temperature in °C or K
-	
-	changed by C. Burgard, as this equation is more recent
-	"""
-	if any(T>100):
-		T=T-273.15
-	relax = (1./(2*np.pi))*(0.10990 + 0.13603*0.01*T + 0.20894*0.001*T**2 + 0.28167*0.00001*T**3)
-	relax[T==0] = (1./(2*np.pi))*0.1121
-	relax = relax/1e9
-	return relax
+    """
+    relaxation time
+    from Stogryn and Desargant, 1985, Eq.12
+    fit up to -25°C
+    in nanoseconds
+
+    T: temperature in °C or K
+
+    changed by C. Burgard, as this equation is more recent
+    """
+    if any(T>100):
+        T=T-273.15
+    relax = (1./(2*np.pi))*(0.10990 + 0.13603*0.01*T + 0.20894*0.001*T**2 + 0.28167*0.00001*T**3)
+    relax[T==0] = (1./(2*np.pi))*0.1121
+    relax = relax/1e9
+    return relax
 
 def epsib0(T):
-	"""
-	static dielectric const. of brin
-	from Stogryn and Desargant, 1985, Eq.10
-	fit up to -25°C
-	
-	T: temperature in °C or K
-	"""
-  	
-	if any(T>100):
-		T=T-273.15    
-	epsib0 = (939.66 - 19.068*T)/(10.737 - T)
-	epsib0[T==0] = 87.92
-	return epsib0
+    """
+    static dielectric const. of brin
+    from Stogryn and Desargant, 1985, Eq.10
+    fit up to -25°C
+
+    T: temperature in °C or K
+    """
+
+    if any(T>100):
+        T=T-273.15
+    epsib0 = (939.66 - 19.068*T)/(10.737 - T)
+    epsib0[T==0] = 87.92
+    return epsib0
 
 def ebrine(T,freq):
-	"""
-	brine permittivity
-	from Stogryn and Desargant, 1985, Eq.1
-	fit up to -25°C
-	
-	T: temperature in °C or K
-	freq: frequency of interest in GHz
+    """
+    brine permittivity
+    from Stogryn and Desargant, 1985, Eq.1
+    fit up to -25°C
+
+    T: temperature in °C or K
+    freq: frequency of interest in GHz
 
     """
     if any(T>100):
-      T=T-273.15   
-      
+        T=T-273.15
+
     f = freq*1e9
     e0 = 8.85419*1e-12
-    
+
     epsiwoo = (82.79 + 8.19*T**2)/(15.68 + T**2)
     epsiwoo[T==0] = 5.28
-    
+
     epsis = epsib0(T)
     tau = relaxt(T)
     sig = condbrine(T)
-    
+
     ebr = epsiwoo + (epsis - epsiwoo)/(1.-2*np.pi*f*tau*1j) + (1j*sig)/(2*np.pi*e0*f)
-    
+
     return ebr.real, ebr.imag
 
 
 def eice_s2p(e1,e2,v):
-	"""
-	improved born approximation by C. Mätzler (1998). J. Appl. Phys. 83(11),6111-7
-	Polder/VanSanten mixing formulae for spheical inclusions
-	effective dielectric constant of medium consisting of e1 and e2
-	e1: dielectric constant of background
-	e2: dielectric constant of sherical inclusion
-	v: fraction of inclusions
-	"""
+    """
+    improved born approximation by C. Mätzler (1998). J. Appl. Phys. 83(11),6111-7
+    Polder/VanSanten mixing formulae for spheical inclusions
+    effective dielectric constant of medium consisting of e1 and e2
+    e1: dielectric constant of background
+    e2: dielectric constant of sherical inclusion
+    v: fraction of inclusions
+    """
 
-	eeff=0.25*(2.*e1-e2+3.*v*(e2-e1)+np.sqrt((2.*e1-e2+3.*v*(e2-e1))**2 +8.*e1*e2))
-	return eeff
+    eeff=0.25*(2.*e1-e2+3.*v*(e2-e1)+np.sqrt((2.*e1-e2+3.*v*(e2-e1))**2 +8.*e1*e2))
+    return eeff
   
   
 def sie(si,sal,Ti,freq,epsi,epsii):  
-	"""
-	computes the dielectric constant of ice if it is an ice layer
-	Background information: Ulaby et al. 1986 vol. III.
-	i.e. if si == 1
-	si: sea ice/snow [1/0]
-	sal: salinity [ppt/psu]
-	Ti: Thermometric temperature of layer [K]
-	freq: Frequency in GHz
-	epsi: initial permittivity (of snow)
-	epsii: initial loss (of snow)
-	"""
+    """
+    computes the dielectric constant of ice if it is an ice layer
+    Background information: Ulaby et al. 1986 vol. III.
+    i.e. if si == 1
+    si: sea ice/snow [1/0]
+    sal: salinity [ppt/psu]
+    Ti: Thermometric temperature of layer [K]
+    freq: Frequency in GHz
+    epsi: initial permittivity (of snow)
+    epsii: initial loss (of snow)
+    """
   
-	T=Ti-273.15                          #get therm. temp. in C
-	eice=epice(Ti,freq)                  #fresh ice dielectric const
-	volb=Vb(T,sal)                       #volume of brine                                             
-	[eb,ebi]=ebrine(T,freq)             #dielectric constant of brine
-	#emis=eice_rn2p(eice,eb+ebi*i,volb)  #dielectric constant of sea ice (random needles)
-	emis=eice_s2p(eice,eb+ebi*1j,volb)    #dielectric constant of sea ice (spherical inclusions)
+    T=Ti-273.15                          #get therm. temp. in C
+    eice=epice(Ti,freq)                  #fresh ice dielectric const
+    volb=Vb(T,sal)                       #volume of brine
+    [eb,ebi]=ebrine(T,freq)             #dielectric constant of brine
+    #emis=eice_rn2p(eice,eb+ebi*i,volb)  #dielectric constant of sea ice (random needles)
+    emis=eice_s2p(eice,eb+ebi*1j,volb)    #dielectric constant of sea ice (spherical inclusions)
   
-	aepsi=emis.real
-	aepsii=emis.imag
-	###added by C. Burgard, does not make a big difference
-	#aepsii[aepsii>1.] = 1.
-	###
+    aepsi=emis.real
+    aepsii=emis.imag
+    ###added by C. Burgard, does not make a big difference
+    #aepsii[aepsii>1.] = 1.
+    ###
   
-	epsi=epsi-epsi*si+aepsi*si
-	epsii=epsii-epsii*si+aepsii*si
-	return epsi, epsii
+    epsi=epsi-epsi*si+aepsi*si
+    epsii=epsii-epsii*si+aepsii*si
+    return epsi, epsii
 
 def mysie(si,rho,Ti,sal,freq,epsi,epsii):
-	"""
-	computes the dielectric constant of ice if it is an ice layer
-	Background information: Ulaby et al. 1986 vol. III.
-	i.e. if si == 1
-	si: sea ice/snow [1/0]
-	rho: density of icelayer [kg/m3]
-	Ti: Thermometric temperature of layer [K]
-	sal: salinity of ice [psu]
-	freq: Frequency in GHz
-	epsi: initial permittivity (of snow)
-	epsii: initial loss (of snow)
+    """
+    computes the dielectric constant of ice if it is an ice layer
+    Background information: Ulaby et al. 1986 vol. III.
+    i.e. if si == 1
+    si: sea ice/snow [1/0]
+    rho: density of icelayer [kg/m3]
+    Ti: Thermometric temperature of layer [K]
+    sal: salinity of ice [psu]
+    freq: Frequency in GHz
+    epsi: initial permittivity (of snow)
+    epsii: initial loss (of snow)
     """
 
     #permittivity of saline ice
@@ -430,7 +430,7 @@ def mysie(si,rho,Ti,sal,freq,epsi,epsii):
     eice=epice(Ti,freq)                            #fresh ice dielectric const
     vola=(0.926 - rho)/0.926                      #volume of air
     ###modified by Clara
-    vola[vola<0]=0.   
+    vola[vola<0]=0.
     ###
     emis=eice_s2p(sepsi + 1j*sepsii,1.0 + 0.0j,vola)   #dielectric constant of sea ice (spherical inclusions)
 
@@ -439,263 +439,262 @@ def mysie(si,rho,Ti,sal,freq,epsi,epsii):
 
     epsi=epsi-epsi*si+aepsi*si
     epsii=epsii-epsii*si+aepsii*si
-    
+
     ##added by C. Burgard, does not make a big difference
     #epsii[epsii>1] = 1.
     ###
-    
+
     return epsi, epsii
   
 def abscoeff(epsi,epsii,Ti,freq,Wi):
-	"""
-	computes the absorption coefficient from the dielectric properties
-	
-	[gai] = abscoeff(epsi,epsii,Ti,freq,Wi)
-	gai:   absorption coefficient [m^-1]
-	epsi:  real part diel
-	epsii: imaginary part diel
-	Ti:    physical temperature
-	freq:  frequency [GHz]
-	Wi:    volumetric liquid water content
+    """
+    computes the absorption coefficient from the dielectric properties
 
-	Version history:
-	1.0    wi 15.7.95
-	1.1    wi 12.11.97 more precise formula for gai used
-	
-	Copyright (c) 1997 by the Institute of Applied Physics, 
-	University of Bern, Switzerland
-	"""
+    [gai] = abscoeff(epsi,epsii,Ti,freq,Wi)
+    gai:   absorption coefficient [m^-1]
+    epsi:  real part diel
+    epsii: imaginary part diel
+    Ti:    physical temperature
+    freq:  frequency [GHz]
+    Wi:    volumetric liquid water content
 
-	# constants
-	c = 2.99793
+    Version history:
+    1.0    wi 15.7.95
+    1.1    wi 12.11.97 more precise formula for gai used
 
-	lamd=c/(10*freq)
-	gai=(4.0*np.pi/lamd)*(np.sqrt(epsi+epsii*1j)).imag
-	# Absorption coefficient, suitable for snow but not saline ice > about 10psu
-	#gai = ((2*pi*10*freq).*epsii)./(c.*sqrt(epsi - (epsii.^2./4.*epsi)));
-	return gai
+    Copyright (c) 1997 by the Institute of Applied Physics,
+    University of Bern, Switzerland
+    """
+
+    # constants
+    c = 2.99793
+
+    lamd=c/(10*freq)
+    gai=(4.0*np.pi/lamd)*(np.sqrt(epsi+epsii*1j)).imag
+    # Absorption coefficient, suitable for snow but not saline ice > about 10psu
+    #gai = ((2*pi*10*freq).*epsii)./(c.*sqrt(epsi - (epsii.^2./4.*epsi)));
+    return gai
   
 def pfadi(tei,di):
-	"""
-	calculates the effective path length in a layer
-	
-	dei = pfadi(tei,di)
-	dei:  effective path length [m]
-	tei:  local incidence angle
-	di:   thickness [m]
+    """
+    calculates the effective path length in a layer
 
-	Version history:
-	1.0    wi 15.7.95
+    dei = pfadi(tei,di)
+    dei:  effective path length [m]
+    tei:  local incidence angle
+    di:   thickness [m]
+
+    Version history:
+    1.0    wi 15.7.95
  
-	Copyright (c) 1997 by the Institute of Applied Physics,
-	University of Bern, Switzerland
-	"""
-	
-	N = len(di)
-	dei = di/np.cos(tei[0:N])
-	return dei
+    Copyright (c) 1997 by the Institute of Applied Physics,
+    University of Bern, Switzerland
+    """
+
+    N = len(di)
+    dei = di/np.cos(tei[0:N])
+    return dei
   
 def fresnelc0(tei,epsi):
-	"""
-	fresnel reflection coefficients (assuming eps'' = 0)
-	(layer n+1 is the air above the snowpack)
-	
-	[sih,siv] = fresnel(tei,roi)
-	sih:  interface reflectivity at h pol
-	siv:  interface reflectivity at v pol
-	tei:  local incidence angle
-	epsi: real part of dielectric permittivity
+    """
+    fresnel reflection coefficients (assuming eps'' = 0)
+    (layer n+1 is the air above the snowpack)
 
-	Version history:
-	1.0    wi 15.7.97
-	 
-	Uses:
-	epsr
+    [sih,siv] = fresnel(tei,roi)
+    sih:  interface reflectivity at h pol
+    siv:  interface reflectivity at v pol
+    tei:  local incidence angle
+    epsi: real part of dielectric permittivity
 
-	Copyright (c) 1997 by the Institute of Applied Physics,
-	University of Bern, Switzerland
-	"""
-	
-	N = len(epsi)-1;
-	siv = np.zeros(len(epsi[0:N]))
-	sih = np.zeros(len(epsi[0:N]))
+    Version history:
+    1.0    wi 15.7.97
+
+    Uses:
+    epsr
+
+    Copyright (c) 1997 by the Institute of Applied Physics,
+    University of Bern, Switzerland
+    """
+
+    N = len(epsi)-1;
+    siv = np.zeros(len(epsi[0:N]))
+    sih = np.zeros(len(epsi[0:N]))
   
-	for n in range(N):
-		epso = epsi[n+1]
-		epsu = epsi[n]
-    	#tein = tei[n] #replaced n+1 by n by Clara # commented on 22.01.2018 because results are too different to previous ones
-    	tein = tei[n+1]
-    	# these coefficients are the square of the Fresnel coefficients
-    	sih[n] = ((np.sqrt(epso)*np.cos(tein) - np.sqrt(epsu - epso * np.sin(tein)**2))/(np.sqrt(epso)*np.cos(tein) + np.sqrt(epsu - epso * np.sin(tein)**2)))**2
-    	siv[n] = ((epsu*np.cos(tein) - np.sqrt(epso)*np.sqrt(epsu - epso*np.sin(tein)**2))/(epsu*np.cos(tein) + np.sqrt(epso)*np.sqrt(epsu - epso*np.sin(tein)**2)))**2
-  
-	return sih, siv
+    for n in range(N):
+        epso = epsi[n+1]
+        epsu = epsi[n]
+        # tein = tei[n] #replaced n+1 by n by Clara # commented on 22.01.2018 because results are too different to previous ones
+        tein = tei[n+1]
+        # these coefficients are the square of the Fresnel coefficients
+        sih[n] = ((np.sqrt(epso)*np.cos(tein) - np.sqrt(epsu - epso * np.sin(tein)**2))/(np.sqrt(epso)*np.cos(tein) + np.sqrt(epsu - epso * np.sin(tein)**2)))**2
+        siv[n] = ((epsu*np.cos(tein) - np.sqrt(epso)*np.sqrt(epsu - epso*np.sin(tein)**2))/(epsu*np.cos(tein) + np.sqrt(epso)*np.sqrt(epsu - epso*np.sin(tein)**2)))**2
+
+    return sih, siv
 
 def fresnelrc(tei,epsr):
-	"""
-	fresnel reflection coefficients (assuming eps'' = 0)
-	(layer n+1 is the air above the snowpack)
-	
-	[FH,FV] = fresnelrc(tei,epsr)
-	FH:   Fresnel reflection coefficient at h pol
-	FV:   Fresnel reflection coefficient at v pol
-	tei:  local incidence angle
-	epsr: (real part) dielectric permittivity
+    """
+    fresnel reflection coefficients (assuming eps'' = 0)
+    (layer n+1 is the air above the snowpack)
 
-	Version history:
-	1.0    wi 15.7.95
+    [FH,FV] = fresnelrc(tei,epsr)
+    FH:   Fresnel reflection coefficient at h pol
+    FV:   Fresnel reflection coefficient at v pol
+    tei:  local incidence angle
+    epsr: (real part) dielectric permittivity
 
-	Copyright (c) 1997 by the Institute of Applied Physics, 
-	University of Bern, Switzerland
-	"""
-	N = len(epsr)
+    Version history:
+    1.0    wi 15.7.95
+
+    Copyright (c) 1997 by the Institute of Applied Physics,
+    University of Bern, Switzerland
+    """
+    N = len(epsr)
   
-	FH = np.zeros(len(epsr[0:N-1]))
-	FV = np.zeros(len(epsr[0:N-1]))
+    FH = np.zeros(len(epsr[0:N-1]))
+    FV = np.zeros(len(epsr[0:N-1]))
   
-	#% epsi = [epsi;0];
+    #% epsi = [epsi;0];
   
-	for n in range(0,N-1):
-    	epsn = epsr[n]/epsr[n+1]
-    	#tein = tei[n] #replaced n+1 by n by Clara  # commented on 22.01.2018 because results are too different to previous ones
-    	tein = tei[n+1]
-    	sinq = np.sin(tein)**2
-    	qeps = sinq/epsn
-    	wurz = np.sqrt(1-qeps)
-    	wsub = epsn-sinq
-    	nd = np.sqrt(epsn)
+    for n in range(0,N-1):
+        epsn = epsr[n]/epsr[n+1]
+        #tein = tei[n] #replaced n+1 by n by Clara  # commented on 22.01.2018 because results are too different to previous ones
+        tein = tei[n+1]
+        sinq = np.sin(tein)**2
+        qeps = sinq/epsn
+        wurz = np.sqrt(1-qeps)
+        wsub = epsn-sinq
+        nd = np.sqrt(epsn)
+
+        FH[n] = ((nd*wurz-np.cos(tein))/(nd*wurz+np.cos(tein)))
+        FV[n] = ((wurz-nd*np.cos(tein))/(wurz+nd*np.cos(tein)))
     
-    	FH[n] = ((nd*wurz-np.cos(tein))/(nd*wurz+np.cos(tein)))
-    	FV[n] = ((wurz-nd*np.cos(tein))/(wurz+nd*np.cos(tein)))
-    
-	return FH,FV  
+    return FH,FV
   
 def slred(num,roi,epsi,epsii,tei,sih,siv,di,dei,Ti,pci,freq,Wi,gai,si,sal):
-	"""
-	locates and treats coherent layers in a snowpack
-	see Technote 11
-	with repo=1 the snow layer table is printed after substeps
-	
-	[num,roi,epsi,epsii,tei,sih,siv,di,dei,Ti,pci,Wi,gai,si,sal] = slred(num,roi,epsi,epsii,tei,sih,siv,di,dei,Ti,pci,freq,Wi,gai,si,sal)
-	num:  index of the layer in the original snowpack
-	roi:  density [g/cm^3]
-	epsi: dielectric permittivity (real part)
-	epsii: dielectric permittivity (imaginary part)
-	tei:  local incidence angle
-	sih:  layer reflectivity at h pol
-	siv:  layer reflectivity at v pol
-	di:   layer thickness
-	dei:  local path length [m]
-	Ti:   physical snow temperature [K]
-	pci:  correlation length [mm]
-	Wi:   wetness  
-	gai:  absorption coefficient
-	freq: frequency
-	si: sea ice layer (0/1)?
-	sal: salinity [ppt]
-	
-	1.0    wi 21.8.95
-	2.0    wi 13.8.98 completely rewritten
-	
-	Uses:
-		fresnelrc
+    """
+    locates and treats coherent layers in a snowpack
+    see Technote 11
+    with repo=1 the snow layer table is printed after substeps
 
-	Copyright (c) 1997 by the Institute of Applied Physics, 
-	University of Bern, Switzerland
-	"""
-	#%  constants
-	cc = 0.299793
-	FIC = 4 * np.pi * freq / cc
-	fc = 4.712
-	repo = 0
-	#   is there any layer -> checked in main
-	N = len(roi)
-	theta = tei[N]
-	ns = np.sqrt(epsi)
-	fi = FIC*di*ns*np.cos(tei[0:N])
+    [num,roi,epsi,epsii,tei,sih,siv,di,dei,Ti,pci,Wi,gai,si,sal] = slred(num,roi,epsi,epsii,tei,sih,siv,di,dei,Ti,pci,freq,Wi,gai,si,sal)
+    num:  index of the layer in the original snowpack
+    roi:  density [g/cm^3]
+    epsi: dielectric permittivity (real part)
+    epsii: dielectric permittivity (imaginary part)
+    tei:  local incidence angle
+    sih:  layer reflectivity at h pol
+    siv:  layer reflectivity at v pol
+    di:   layer thickness
+    dei:  local path length [m]
+    Ti:   physical snow temperature [K]
+    pci:  correlation length [mm]
+    Wi:   wetness
+    gai:  absorption coefficient
+    freq: frequency
+    si: sea ice layer (0/1)?
+    sal: salinity [ppt]
+
+    1.0    wi 21.8.95
+    2.0    wi 13.8.98 completely rewritten
+
+    Uses:
+        fresnelrc
+
+    Copyright (c) 1997 by the Institute of Applied Physics,
+    University of Bern, Switzerland
+    """
+    #%  constants
+    cc = 0.299793
+    FIC = 4 * np.pi * freq / cc
+    fc = 4.712
+    repo = 0
+    #   is there any layer -> checked in main
+    N = len(roi)
+    theta = tei[N]
+    ns = np.sqrt(epsi)
+    fi = FIC*di*ns*np.cos(tei[0:N])
     
-	if repo == 1:
-		print(num,di,roi,Ti,pci,ns,gai,si,sal,epsi,epsii,fi,tei[0:N]*180/np.pi)
+    if repo == 1:
+        print(num,di,roi,Ti,pci,ns,gai,si,sal,epsi,epsii,fi,tei[0:N]*180/np.pi)
 
-	# %   find thin layers 
-	#ilist = where(fi < fc)
-	i = np.where(fi < fc)
-	A = 0.* roi
-	#for i in ilist:
-	A[i] = A[i] + 1;
-	#%   bottom layer is assumed noncoherent
-	A[0] = 0
+    # %   find thin layers
+    #ilist = where(fi < fc)
+    i = np.where(fi < fc)
+    A = 0.* roi
+    #for i in ilist:
+    A[i] = A[i] + 1;
+    #%   bottom layer is assumed noncoherent
+    A[0] = 0
   
-	if len(i[0]) > 0:
+    if len(i[0]) > 0:
         # disp ([num2str(max(size(i))),' coherent layers of ',num2str(N),' detected: ',num2str(freq),'GHz']);
         # identify succeeding coherent layers and mark the packs from 2 ... scmax
-		pl = 0
+        pl = 0
         sc = 1
         scmax = 0
         ml = 0
         mlo = 0
         for m in range(1,N):
-          if A[m] == 1 and pl == 1:
-              if ml == 0:
-                sc = sc + 1
-                ml = 1
-                A[m-1] = sc
-                # A[m] = 1, pl = 1
-                A[m] = sc
-                scmax = sc
-          else: 
-            if pl == 1:
-              #% A(m) = 0, pl = 1 -> non coherent
-              pl = 0
-            else: 
-              if A[m] == 1:
-                  # A(m) = 1, pl = 0 -> first coherent
-                  pl = 1
-                  ml = 0
+            if A[m] == 1 and pl == 1:
+                if ml == 0:
+                    sc = sc + 1
+                    ml = 1
+                    A[m-1] = sc
+                    # A[m] = 1, pl = 1
+                    A[m] = sc
+                    scmax = sc
+            else:
+                if pl == 1:
+                    #% A(m) = 0, pl = 1 -> non coherent
+                    pl = 0
+                else:
+                    if A[m] == 1:
+                    	# A(m) = 1, pl = 0 -> first coherent
+                    	pl = 1
+                    	ml = 0
 
-    
         #%  combine succeeding coherent layers by weighting with the phase
         if scmax > 0:
-          for m in range(1,scmax):
-            B = np.where(A == m+1)
-            fitot = sum(fi[B])
-            fitv = fi[B] / fitot
-            tal = max(B[0])
-            di[tal] = sum(di[B])
-            dei[tal] = sum(dei[B])
-            roi[tal] = sum(roi[B]* fitv)
-            Ti[tal] = sum(Ti[B]* fitv)
-            Wi[tal] = sum(Wi[B]* fitv)
-            pci[tal] = sum(pci[B]* fitv)
-            ns[tal] = sum(ns[B]* fitv)
-            gai[tal] = sum(gai[B]* fitv)
-            si[tal] = sum(si[B]* fitv)
-            sal[tal] = sum(sal[B]* fitv)
-            epsi[tal] = sum(epsi[B]* fitv)
-            epsii[tal] = sum(epsii[B]* fitv)
-            tei[tal] = sum(tei[B]* fitv)
-            fi[tal] = fitot
-            A[tal] = 1
+            for m in range(1,scmax):
+                B = np.where(A == m+1)
+                fitot = sum(fi[B])
+                fitv = fi[B] / fitot
+                tal = max(B[0])
+                di[tal] = sum(di[B])
+                dei[tal] = sum(dei[B])
+                roi[tal] = sum(roi[B]* fitv)
+                Ti[tal] = sum(Ti[B]* fitv)
+                Wi[tal] = sum(Wi[B]* fitv)
+                pci[tal] = sum(pci[B]* fitv)
+                ns[tal] = sum(ns[B]* fitv)
+                gai[tal] = sum(gai[B]* fitv)
+                si[tal] = sum(si[B]* fitv)
+                sal[tal] = sum(sal[B]* fitv)
+                epsi[tal] = sum(epsi[B]* fitv)
+                epsii[tal] = sum(epsii[B]* fitv)
+                tei[tal] = sum(tei[B]* fitv)
+                fi[tal] = fitot
+                A[tal] = 1
         i = np.where(A < 2)
         if len(i[0]) > 0:
-          num=num[i]
-          roi=roi[i]
-          tei=np.append(tei[i],tei[N])
-          di=di[i]
-          Ti=Ti[i]
-          pci=pci[i]
-          Wi=Wi[i]
-          gai=gai[i]
-          si=si[i]
-          sal=sal[i]
-          ns=ns[i]
-          epsi=epsi[i]
-          epsii=epsii[i]
-          fi=fi[i]
-          dei=dei[i]
-          N = len(roi)
+            num=num[i]
+            roi=roi[i]
+            tei=np.append(tei[i],tei[N])
+            di=di[i]
+            Ti=Ti[i]
+            pci=pci[i]
+            Wi=Wi[i]
+            gai=gai[i]
+            si=si[i]
+            sal=sal[i]
+            ns=ns[i]
+            epsi=epsi[i]
+            epsii=epsii[i]
+            fi=fi[i]
+            dei=dei[i]
+            N = len(roi)
         if (repo == 1):
-          print([num,di,roi,Ti,pci,ns,gai,si,sal,epsi,epsii,fi,tei[0:N]*180/np.pi])
+            print([num,di,roi,Ti,pci,ns,gai,si,sal,epsi,epsii,fi,tei[0:N]*180/np.pi])
 
         
         i = np.where(fi < fc)
@@ -705,31 +704,30 @@ def slred(num,roi,epsi,epsii,tei,sih,siv,di,dei,Ti,pci,freq,Wi,gai,si,sal):
         sih = np.zeros(len(roi))
         siv = np.zeros(len(roi))
         X   = np.zeros(len(roi))
-        
+
         #%   calculate interface reflection coefficients
         [FH,FV] = fresnelrc(tei,np.append(epsi,1))
     
-        #%   reduction on layers of type 0 (coherent layer effects are 
+        #%   reduction on layers of type 0 (coherent layer effects are
         #%     taken into account in the layer reflectivities)
         #%     for layers of type 0 shi = FH^2
         i = np.where(A == 0)
         #s are square of Fresnel coefficients
         sih[i] = FH[i]**2
         siv[i] = FV[i]**2
-    
-    
+
         #%     for layers of type 1 shi-1 = ...
         ilist = np.where(A == 1)
         for i in ilist:
-          #Eq. 35 of the paper
-          X[i] =  2*FH[i]*FH[i-1]*np.cos(fi[i])
-          sih[i-1] = (FH[i]**2+FH[i-1]**2+X[i])/(1+FH[i]**2*FH[i-1]**2+X[i])
-          X[i] =  2*FV[i]*FV[i-1]*np.cos(fi[i])
-          siv[i-1] = (FV[i]**2+FV[i-1]**2+X[i])/(1+FV[i]**2*FV[i-1]**2+X[i])
-          N = len(di)
+            #Eq. 35 of the paper
+            X[i] =  2*FH[i]*FH[i-1]*np.cos(fi[i])
+            sih[i-1] = (FH[i]**2+FH[i-1]**2+X[i])/(1+FH[i]**2*FH[i-1]**2+X[i])
+            X[i] =  2*FV[i]*FV[i-1]*np.cos(fi[i])
+            siv[i-1] = (FV[i]**2+FV[i-1]**2+X[i])/(1+FV[i]**2*FV[i-1]**2+X[i])
+            N = len(di)
         
         if (repo == 1):
-          print(num,di,roi,Ti,pci,ns,gai,si,sal,epsi,epsii,fi,tei[0:N]*180/np.pi,FH,FV,sih,siv)
+            print(num,di,roi,Ti,pci,ns,gai,si,sal,epsi,epsii,fi,tei[0:N]*180/np.pi,FH,FV,sih,siv)
         
         #%     remove layers of type 1
         i = np.where(A == 0)
@@ -755,207 +753,207 @@ def slred(num,roi,epsi,epsii,tei,sih,siv,di,dei,Ti,pci,freq,Wi,gai,si,sal):
         N = len(di)
         tei = np.append(tei,theta)
         if (repo == 1):
-          print(num,di,roi,Ti,pci,ns,gai,si,sal,epsi[0:N],epsii,fi,tei[0:N]*180/np.pi,FH,FV,sih,siv)
+            print(num,di,roi,Ti,pci,ns,gai,si,sal,epsi[0:N],epsii,fi,tei[0:N]*180/np.pi,FH,FV,sih,siv)
      
-	else:
-        #%disp(['I am inside slred']) 
-        #%disp (['no coherent layers detected: ',num2str(freq),'GHz']);
+    else:
+        # %disp(['I am inside slred'])
+        # %disp (['no coherent layers detected: ',num2str(freq),'GHz']);
         if (repo == 1):
-          print([num,di,roi,Ti,pci,ns,gai,si,sal,epsi,epsii,fi,tei[0:N]*180/np.pi,sih,siv])
+            print([num,di,roi,Ti,pci,ns,gai,si,sal,epsi,epsii,fi,tei[0:N]*180/np.pi,sih,siv])
 
-	return  num,roi,epsi,epsii,tei,sih,siv,di,dei,Ti,pci,Wi,gai,si,sal
+    return  num,roi,epsi,epsii,tei,sih,siv,di,dei,Ti,pci,Wi,gai,si,sal
 
 def sccoeff(roi,Ti,pci,freq,Wi,gai,sccho):
-	"""
-	calculates the scattering coefficient from structural parameters
-	different algorithms can be chosen, by changing "sccho"
+    """
+    calculates the scattering coefficient from structural parameters
+    different algorithms can be chosen, by changing "sccho"
 
-	[gbih,gbiv,gs6,ga2i] = sccoeff(roi,Ti,pci,freq,Wi,gai,sccho)
-	gbih:  2-flux scattering coefficient at h pol
-	gbiv:  2-flux scattering coefficient at v pol
-	gs6:   6-flux scattering coefficient
-	ga2i:  2-flux absorption coefficient
-	roi:   density
-	Ti:    physical temperature
-	pci:   correlation length
-	freq:  frequency
-	Wi:    wetness
-	gai:   absorption coefficient
-	sccho: scattering coefficient algorithm chosen
-	
-	Version history:
-	1.0b    wi 15.7.95
-	1.0     wi 23.9.97 bug fixed
-	1.1     wi 26.9.97 latest fit on experimental data was added (option 7)
-	1.2     wi 13.10.97 option 8 added, adapted scattering of a shell/sphere to note 9/ver2 
-	1.3     wi  4.11.97 option 9, 10 and 11 added 
-	1.4     wi 27.05.98 born approximation added (borna.m)
-	            12.03.07 bug in iborn shperes fixed (rtt)
+    [gbih,gbiv,gs6,ga2i] = sccoeff(roi,Ti,pci,freq,Wi,gai,sccho)
+    gbih:  2-flux scattering coefficient at h pol
+    gbiv:  2-flux scattering coefficient at v pol
+    gs6:   6-flux scattering coefficient
+    ga2i:  2-flux absorption coefficient
+    roi:   density
+    Ti:    physical temperature
+    pci:   correlation length
+    freq:  frequency
+    Wi:    wetness
+    gai:   absorption coefficient
+    sccho: scattering coefficient algorithm chosen
 
-	Uses:
-	    borna, ro2epsd, mixmod
+    Version history:
+    1.0b    wi 15.7.95
+    1.0     wi 23.9.97 bug fixed
+    1.1     wi 26.9.97 latest fit on experimental data was added (option 7)
+    1.2     wi 13.10.97 option 8 added, adapted scattering of a shell/sphere to note 9/ver2
+    1.3     wi  4.11.97 option 9, 10 and 11 added
+    1.4     wi 27.05.98 born approximation added (borna.m)
+                12.03.07 bug in iborn shperes fixed (rtt)
 
-	Copyright (c) 1997 by the Institute of Applied Physics,
-	University of Bern, Switzerland
-	"""
+    Uses:
+        borna, ro2epsd, mixmod
 
-	#% constants
-	c = 2.99
-	roair = 0.001293
-	roice = 0.917
-	#% specular component of scattering coefficient
-	#% usually 0 can be important in new snow!
-	dgb0h = 0
-	dgb0v = 0
-	#% aus der Theorie scattering coefficient
-	k = freq*(2*np.pi/0.299793)
-	eice = 3.18
-	vfi = roi/roice
+    Copyright (c) 1997 by the Institute of Applied Physics,
+    University of Bern, Switzerland
+    """
+
+    #% constants
+    c = 2.99
+    roair = 0.001293
+    roice = 0.917
+    #% specular component of scattering coefficient
+    #% usually 0 can be important in new snow!
+    dgb0h = 0
+    dgb0v = 0
+    #% aus der Theorie scattering coefficient
+    k = freq*(2*np.pi/0.299793)
+    eice = 3.18
+    vfi = roi/roice
   
-	#% choose the scattering algorithm that should be used
-	wahl = sccho
-  
-  
-	[epsi,epsii] = ro2epsd(roi,Ti,freq)
-	[epsi,epsii] = mixmod(freq,Ti,Wi,epsi,epsii)
-  
-  
-	#% 6-flux scattering coefficient
-	if wahl == 1:
-		gs6 = ((130 * ((freq/50)**2.7)) * pci**3) / (roi**1.3 + 0.001)
+    #% choose the scattering algorithm that should be used
+    wahl = sccho
   
   
-	#%fit vom 26.8.97 auf alle Daten v-pol, > 11 GHz
-	if wahl == 2:
-		gs6 = 0.0704 * (pci**2.32)*(freq**1.68)*roi**(-0.63)
+    [epsi,epsii] = ro2epsd(roi,Ti,freq)
+    [epsi,epsii] = mixmod(freq,Ti,Wi,epsi,epsii)
+  
+  
+    #% 6-flux scattering coefficient
+    if wahl == 1:
+        gs6 = ((130 * ((freq/50)**2.7)) * pci**3) / (roi**1.3 + 0.001)
+  
+  
+    #%fit vom 26.8.97 auf alle Daten v-pol, > 11 GHz
+    if wahl == 2:
+        gs6 = 0.0704 * (pci**2.32)*(freq**1.68)*roi**(-0.63)
 
   
-	#% for spheres: Mätzler, J. Appl. Phys. 83(11) 6111-6117 eqs 27+32 iborn
-	epseff = (2.-eice+3.*vfi*(eice-1)+ np.sqrt((2.-eice+3.*vfi*(eice-1))**2+8.*eice))/4.
-	sphe = (3./32)*(0.001*pci)**3*k**4*vfi*(1-vfi)*abs((2.*epseff+1)*(eice-1)/(2.*epseff+eice))**2
-	if wahl == 4:
-		gs6 = sphe
+    #% for spheres: Mätzler, J. Appl. Phys. 83(11) 6111-6117 eqs 27+32 iborn
+    epseff = (2.-eice+3.*vfi*(eice-1)+ np.sqrt((2.-eice+3.*vfi*(eice-1))**2+8.*eice))/4.
+    sphe = (3./32)*(0.001*pci)**3*k**4*vfi*(1-vfi)*abs((2.*epseff+1)*(eice-1)/(2.*epseff+eice))**2
+    if wahl == 4:
+        gs6 = sphe
   
-	#% for shells(new and recrystalized snow): 
-	#% Mätzler, J. Appl. Phys. 83(11) 6111-6117 eq 39 iborn
-	epseff = 1.+(vfi*(eice-1)*(2.+1/eice))/(3.-vfi*(1-1./eice))
-	shel = abs(2./3 + 1./(3.*eice**2))*(0.001*pci)*k**2*vfi*(1-vfi)*(eice-1)**2./(16.*epseff)
-	if wahl == 5:
-		gs6 = shel
+    #% for shells(new and recrystalized snow):
+    #% Mätzler, J. Appl. Phys. 83(11) 6111-6117 eq 39 iborn
+    epseff = 1.+(vfi*(eice-1)*(2.+1/eice))/(3.-vfi*(1-1./eice))
+    shel = abs(2./3 + 1./(3.*eice**2))*(0.001*pci)*k**2*vfi*(1-vfi)*(eice-1)**2./(16.*epseff)
+    if wahl == 5:
+        gs6 = shel
   
-	#% as linearcombination
-	if wahl == 6:
-		a = 0.1664
-		b = 0.2545
-		gs6 = a*sphe+b*shel
+    #% as linearcombination
+    if wahl == 6:
+        a = 0.1664
+        b = 0.2545
+        gs6 = a*sphe+b*shel
   
-	#%fit vom 26.9.97
-	if wahl == 7:
-		gs6 = 73.21 * (pci**3)*((freq/50)**2.68)*roi**(-1)
+    #%fit vom 26.9.97
+    if wahl == 7:
+        gs6 = 73.21 * (pci**3)*((freq/50)**2.68)*roi**(-1)
 
-	#%fit vom 13.10.97
-	if wahl == 8:
-		gs6 = 136 * (pci**2.85) * ((freq/50)**2.5) / (roi + 0.001)
+    #%fit vom 13.10.97
+    if wahl == 8:
+        gs6 = 136 * (pci**2.85) * ((freq/50)**2.5) / (roi + 0.001)
   
-	#%fit vom 4.11.97 (without density)
-	if wahl == 9:
-		gs6 = 564 * (pci**3.0)* ((freq/50)**2.5)
+    #%fit vom 4.11.97 (without density)
+    if wahl == 9:
+        gs6 = 564 * (pci**3.0)* ((freq/50)**2.5)
   
-	#%fit vom 4.11.97 (without density, uses corr. length from exp. fit!)
-	if wahl == 10:
-		gs6 = (3.16 * pci + 295 * (pci**2.5))* ((freq/50)**2.5)
+    #%fit vom 4.11.97 (without density, uses corr. length from exp. fit!)
+    if wahl == 10:
+        gs6 = (3.16 * pci + 295 * (pci**2.5))* ((freq/50)**2.5)
   
-	#%fit vom 4.11.97 (with density, uses corr. length from exp. fit!)
-	if wahl == 11:
-		gs6 = (9.20 * pci - 1.23 * roi + 0.54)**2.5 * ((freq/50)**2.5)
+    #%fit vom 4.11.97 (with density, uses corr. length from exp. fit!)
+    if wahl == 11:
+        gs6 = (9.20 * pci - 1.23 * roi + 0.54)**2.5 * ((freq/50)**2.5)
   
-	omega = np.sqrt((epsi - 1.)/epsi)
+    omega = np.sqrt((epsi - 1.)/epsi)
   
   
-	#%Born Approximation
-	if wahl == 12:
-		print('Born approximation, missing the functions!')
-	#    kp = bornsnk(roi,0)
-	#    [gb6,gc6,gf6,gs6] = borna(k,vfi,pci,epsi,eice,epseff,kp)
-	else:
-		gb6 = 0.5 * gs6 * (1.-omega)
-		gc6 = 0.25 * gs6 * omega
+    #%Born Approximation
+    if wahl == 12:
+        print('Born approximation, missing the functions!')
+    #    kp = bornsnk(roi,0)
+    #    [gb6,gc6,gf6,gs6] = borna(k,vfi,pci,epsi,eice,epseff,kp)
+    else:
+        gb6 = 0.5 * gs6 * (1.-omega)
+        gc6 = 0.25 * gs6 * omega
   
-	gbiv = np.zeros(len(gs6))
-	gbih = np.zeros(len(gs6))
-	gtr = np.zeros(len(gs6))
-	ga2 = np.zeros(len(gai))
-	#%dgb2h = zeros(len(gs6))
-	#%dgb2h = dgb2h + 0.25;
-	#%dgb2v = zeros(size(gs6));
-	#%dgb2v = dgb2v + 0.1;
+    gbiv = np.zeros(len(gs6))
+    gbih = np.zeros(len(gs6))
+    gtr = np.zeros(len(gs6))
+    ga2 = np.zeros(len(gai))
+    #%dgb2h = zeros(len(gs6))
+    #%dgb2h = dgb2h + 0.25;
+    #%dgb2v = zeros(size(gs6));
+    #%dgb2v = dgb2v + 0.1;
   
-	#% -> 2 Flux
-	gtr = (4. * gc6) / (gai + 2. * gc6) #gc is coefficient for coupling between horiz and vert fluxes
-	ga2i = gai * (1. + gtr) #two-flux absorption coefficient
+    #% -> 2 Flux
+    gtr = (4. * gc6) / (gai + 2. * gc6) #gc is coefficient for coupling between horiz and vert fluxes
+    ga2i = gai * (1. + gtr) #two-flux absorption coefficient
   
-	gbih = (gb6 + dgb0h) + gtr * gc6
-	gbiv = (gb6 + dgb0v) + gtr * gc6
+    gbih = (gb6 + dgb0h) + gtr * gc6
+    gbiv = (gb6 + dgb0v) + gtr * gc6
     
-	return gbih,gbiv,gs6,ga2i
+    return gbih,gbiv,gs6,ga2i
 
 def iborn_s2p(e1,e2,eeff,v,k,pcc):
-	"""
-	improved born approximation by C. M�tzler (1998). J. Appl. Phys. 83(11),6111-7
-	scattering coefficient of a collection of spherical
-	particles with correlation length pcc using improved born approximation
-	
-	e1: dielectric constant medium 1
-	e2: dielectric constant medium 2
-	eeff: dielectric constant for the mix of medium 1 and medium 2
-	v: brine volume fraction
-	k: wavenumber?
-	pcc: correlation length
-	"""
-	ss=(3. *pcc**3 *k**4 /32.) *v *(1-v) *abs(((e2-e1)*(2. *eeff+e1)) /(2. *eeff+e2))**2
-	return ss
+    """
+    improved born approximation by C. M�tzler (1998). J. Appl. Phys. 83(11),6111-7
+    scattering coefficient of a collection of spherical
+    particles with correlation length pcc using improved born approximation
+
+    e1: dielectric constant medium 1
+    e2: dielectric constant medium 2
+    eeff: dielectric constant for the mix of medium 1 and medium 2
+    v: brine volume fraction
+    k: wavenumber?
+    pcc: correlation length
+    """
+    ss=(3. *pcc**3 *k**4 /32.) *v *(1-v) *abs(((e2-e1)*(2. *eeff+e1)) /(2. *eeff+e2))**2
+    return ss
   
 def scice(si,gbih,gbiv,gs6,ga2i,Ti,sal,freq,pci):
-	"""
-	calculates the scattering coefficient from structural parameters
-	
-	si: 0 or 1
-	gbih: 2-flux scattering coefficient at h pol
-	gbiv: 2-flux scattering coefficient at v pol
-	gs6: 6-flux scattering coefficient
-	ga2i: 2-flux absorption coefficient
-	Ti: temperature 
-	sal: salinity in g/kg
-	freq: frequency in GHz
-	pci: correlation length
-	"""
-	k=(2*3.14159) /(0.3 /freq)
-	eice=3.15+0.002*1j
-	T=Ti-273.15
+    """
+    calculates the scattering coefficient from structural parameters
+
+    si: 0 or 1
+    gbih: 2-flux scattering coefficient at h pol
+    gbiv: 2-flux scattering coefficient at v pol
+    gs6: 6-flux scattering coefficient
+    ga2i: 2-flux absorption coefficient
+    Ti: temperature
+    sal: salinity in g/kg
+    freq: frequency in GHz
+    pci: correlation length
+    """
+    k=(2*3.14159) /(0.3 /freq)
+    eice=3.15+0.002*1j
+    T=Ti-273.15
   
-	volb=Vb(T,sal)
-	[eb,ebi]=ebrine(T,freq)
-	ebri=eb-ebi*1j
-	#%emis=eice_rn2p(eice,eb+ebi*i,volb);
-	emis=eice_s2p(eice,eb+ebi*1j,volb)
-	ags6=iborn_s2p(eice,ebri,emis,volb,k,pci*0.001)
-	gs6=gs6-gs6*si+ags6*si
-	return gbih,gbiv,gs6,ga2i
+    volb=Vb(T,sal)
+    [eb,ebi]=ebrine(T,freq)
+    ebri=eb-ebi*1j
+    #%emis=eice_rn2p(eice,eb+ebi*i,volb);
+    emis=eice_s2p(eice,eb+ebi*1j,volb)
+    ags6=iborn_s2p(eice,ebri,emis,volb,k,pci*0.001)
+    gs6=gs6-gs6*si+ags6*si
+    return gbih,gbiv,gs6,ga2i
 
 def scice_my(si,gbih,gbiv,gs6,ga2i,Ti,dens,freq,pci,sal):
-	"""
-	calculates the scattering coefficient of MY ice from structural parameters
-	
-	si: 0 or 1
-	gbih: 2-flux scattering coefficient at h pol
-	gbiv: 2-flux scattering coefficient at v pol
-	gs6: 6-flux scattering coefficient
-	ga2i: 2-flux absorption coefficient
-	Ti: temperature 
-	dens: density in kg/m**3 * 0.001
-	freq: frequency in GHz
-	pci: correlation length
-	sal: salinity in g/kg	
+    """
+    calculates the scattering coefficient of MY ice from structural parameters
+
+    si: 0 or 1
+    gbih: 2-flux scattering coefficient at h pol
+    gbiv: 2-flux scattering coefficient at v pol
+    gs6: 6-flux scattering coefficient
+    ga2i: 2-flux absorption coefficient
+    Ti: temperature
+    dens: density in kg/m**3 * 0.001
+    freq: frequency in GHz
+    pci: correlation length
+    sal: salinity in g/kg
     """
 
     k=(2.*3.14159)/(0.3/freq)
@@ -979,92 +977,92 @@ def scice_my(si,gbih,gbiv,gs6,ga2i,Ti,dens,freq,pci,sal):
     return gbih,gbiv,gs6,ga2i
 
 def pfadc(teta,di,epsi,gs6):
-	"""
-	calculates the effective path length in a layer
+    """
+    calculates the effective path length in a layer
 
-	[dei,tei,tscat] = pfadc(teta,di,epsi,gs6)
-	dei:  effective path length [m]
-	tei:  local incidence angle
-	tscat: scattering 
-	teta: incidence angle at snow air interface
-	di:   thickness [m]
-	epsi: dielectric permittivity
-	gs6:  6-flux scattering coefficient
-	
-	Version history:
-	     1.0    wi 15.10.97
-	
-	
-	Uses: -
+    [dei,tei,tscat] = pfadc(teta,di,epsi,gs6)
+    dei:  effective path length [m]
+    tei:  local incidence angle
+    tscat: scattering
+    teta: incidence angle at snow air interface
+    di:   thickness [m]
+    epsi: dielectric permittivity
+    gs6:  6-flux scattering coefficient
 
-	Copyright (c) 1997 by the Institute of Applied Physics,
-	University of Bern, Switzerland
-	"""
-	
-	N = len(di)
-	ns = np.sqrt(epsi)
-	costetasn = np.sqrt(1-(np.sin(teta)/ns)**2)
-	cosc = np.sqrt(1-(1/ns)**2)
-	costetasc = 0.5 * (1 + cosc)
-	dei = di/costetasn
+    Version history:
+         1.0    wi 15.10.97
+
+
+    Uses: -
+
+    Copyright (c) 1997 by the Institute of Applied Physics,
+    University of Bern, Switzerland
+    """
+
+    N = len(di)
+    ns = np.sqrt(epsi)
+    costetasn = np.sqrt(1-(np.sin(teta)/ns)**2)
+    cosc = np.sqrt(1-(1/ns)**2)
+    costetasc = 0.5 * (1 + cosc)
+    dei = di/costetasn
   
-	#tauscat = zeros(len(epsi)+array([1,0]))
-	tauscat = np.zeros(len(epsi)+1)
-	tscat = np.zeros(len(epsi))
-	costeta = np.zeros(len(epsi))
+    #tauscat = zeros(len(epsi)+array([1,0]))
+    tauscat = np.zeros(len(epsi)+1)
+    tscat = np.zeros(len(epsi))
+    costeta = np.zeros(len(epsi))
   
-	for m in range(N-1,-1,-1):
-		tauscat[m] = tauscat[m+1] + dei[m] * gs6[m]/2
-		tscat[m] = np.exp(-1 * tauscat[m])
-		costeta[m] = tscat[m] * costetasn[m] + (1-tscat[m]) * costetasc[m]
+    for m in range(N-1,-1,-1):
+        tauscat[m] = tauscat[m+1] + dei[m] * gs6[m]/2
+        tscat[m] = np.exp(-1 * tauscat[m])
+        costeta[m] = tscat[m] * costetasn[m] + (1-tscat[m]) * costetasc[m]
   
-	tei = np.arccos(costeta)
-	tei*180/np.pi
+    tei = np.arccos(costeta)
+    tei*180/np.pi
  
-	return dei,tei,tscat
+    return dei,tei,tscat
 
 def polmix(tscat,sih,siv):
-	"""
-	calculates the polarization mixing of the interface reflectivities
-	of each layer (taking into account the first order scattering)
+    """
+    calculates the polarization mixing of the interface reflectivities
+    of each layer (taking into account the first order scattering)
 
-	[sih,siv] = polmix(tscat,sih,siv)
-	sih:   interface reflectivity at h-pol
-	siv:   interface reflectivity at v-pol
-	tscat: tau scat
+    [sih,siv] = polmix(tscat,sih,siv)
+    sih:   interface reflectivity at h-pol
+    siv:   interface reflectivity at v-pol
+    tscat: tau scat
 
-	Version history:
-	1.0    wi 14.10.97
-	1.1    wi  4.11.97  bug fix (layer numbering problem)
+    Version history:
+    1.0    wi 14.10.97
+    1.1    wi  4.11.97  bug fix (layer numbering problem)
 
 
-	Copyright (c) 1997 by the Institute of Applied Physics, 
-	University of Bern, Switzerland
-	"""
-	tscat = np.append(tscat,1)
+    Copyright (c) 1997 by the Institute of Applied Physics,
+    University of Bern, Switzerland
+    """
+    tscat = np.append(tscat,1)
   
-	smean = 0.5 * (sih + siv)
-	deltas = 0.5 * tscat * (sih - siv)
-	sih = smean + deltas
-	siv = smean - deltas
-	return sih,siv
+    smean = 0.5 * (sih + siv)
+    deltas = 0.5 * tscat * (sih - siv)
+    sih = smean + deltas
+    siv = smean - deltas
+    return sih,siv
 
 def rt(gai,gbi,dei):
-	"""
-	calculates the layer reflectivity and transmissivity
-	
-	[ri,ti] = rt(gai,gbi,dei)
-	ri:   layer reflectivity
-	ti:   layer transmissivity
-	gai:  absorption coefficient
-	gbi:  scattering coefficient
-	dei:  path length
+    """
+    calculates the layer reflectivity and transmissivity
 
-	Version history:
-	1.0    wi 15.7.95
-	 
-	Copyright (c) 1997 by the Institute of Applied Physics,
-	University of Bern, Switzerland
+    [ri,ti] = rt(gai,gbi,dei)
+    ri:   layer reflectivity
+    ti:   layer transmissivity
+    gai:  absorption coefficient
+    gbi:  scattering coefficient
+    dei:  path length
+
+    Version history:
+    1.0    wi 15.7.95
+
+    Copyright (c) 1997 by the Institute of Applied Physics,
+    University of Bern, Switzerland
     """
     
     gamma = np.sqrt(gai * (gai + 2 * gbi))
@@ -1079,26 +1077,26 @@ def rt(gai,gbi,dei):
     return ri, ti
 
 def layer(ri,s_i,ti,Ti,Tgnd,Tsky):
-	"""
-	calculates the upwelling brightness temperatures D (see Note 6)
+    """
+    calculates the upwelling brightness temperatures D (see Note 6)
 
-	D = layer(ri,s_i,ti,Ti,Tgnd,Tsky)
-	D:    upwelling brightness temperature
-	ri:   layer reflectivity
-	s_i:   interface reflectivity
-	ti:   layer transmissivity
-	Ti:   physical temperature [K]
-	Tgnd: brightness temperature of the soil below the snowpack
-	Tsky: brightness temperature of the sky
-	
-	Version history:
-	1.0    wi 15.7.95
-	1.1    wi 26.9.97  handles also the special case of a single layer now
-	1.2    wi 02.03.99 fixed error in 1 layer handling 
+    D = layer(ri,s_i,ti,Ti,Tgnd,Tsky)
+    D:    upwelling brightness temperature
+    ri:   layer reflectivity
+    s_i:   interface reflectivity
+    ti:   layer transmissivity
+    Ti:   physical temperature [K]
+    Tgnd: brightness temperature of the soil below the snowpack
+    Tsky: brightness temperature of the sky
 
-	Copyright (c) 1997 by the Institute of Applied Physics, 
-	University of Bern, Switzerland
-	"""
+    Version history:
+    1.0    wi 15.7.95
+    1.1    wi 26.9.97  handles also the special case of a single layer now
+    1.2    wi 02.03.99 fixed error in 1 layer handling
+
+    Copyright (c) 1997 by the Institute of Applied Physics,
+    University of Bern, Switzerland
+    """
 
     N = len(ri)
     ei = 1 - ri - ti
@@ -1154,7 +1152,7 @@ def layer(ri,s_i,ti,Ti,Tgnd,Tsky):
 
 
 def meteo_sc(rroi,rTi,rpci,freq,rWi,rgai,rmeteo,gbih,gbiv,gs6,ga2i):
-	"""
+    """
     the scattering coefficient of only partly recrystalized snow, linear combination of iborn, wahl==6
     
     rroi: density
@@ -1164,17 +1162,17 @@ def meteo_sc(rroi,rTi,rpci,freq,rWi,rgai,rmeteo,gbih,gbiv,gs6,ga2i):
     rWi: wetness
     rgai: absorption coefficient
     rmeteo: 0 or 1
-	gbih: 2-flux scattering coefficient at h pol
-	gbiv: 2-flux scattering coefficient at v pol
-	gs6: 6-flux scattering coefficient
-	ga2i: 2-flux absorption coefficient
+    gbih: 2-flux scattering coefficient at h pol
+    gbiv: 2-flux scattering coefficient at v pol
+    gs6: 6-flux scattering coefficient
+    ga2i: 2-flux absorption coefficient
     """
     [dumgbih,dumgbiv,ags6,dumga2i] = sccoeff(rroi,rTi,rpci,freq,rWi,rgai,6)
     gs6=gs6-gs6*rmeteo+ags6*rmeteo
     return gbih,gbiv,gs6,ga2i 
 
 def recry_sc(rroi,rTi,rpci,freq,rWi,rgai,rrecry,gbih,gbiv,gs6,ga2i):
-	"""
+    """
     the scattering coefficient of fully recrystalized snow, iborn, wahl==5
     
     rroi: density
@@ -1184,10 +1182,10 @@ def recry_sc(rroi,rTi,rpci,freq,rWi,rgai,rrecry,gbih,gbiv,gs6,ga2i):
     rWi: wetness
     rgai: absorption coefficient
     rrecry: 0 or 1
-	gbih: 2-flux scattering coefficient at h pol
-	gbiv: 2-flux scattering coefficient at v pol
-	gs6: 6-flux scattering coefficient
-	ga2i: 2-flux absorption coefficient
+    gbih: 2-flux scattering coefficient at h pol
+    gbiv: 2-flux scattering coefficient at v pol
+    gs6: 6-flux scattering coefficient
+    ga2i: 2-flux absorption coefficient
     """
 
     [dumgbih,dumgbiv,ags6,dumga2i] = sccoeff(rroi,rTi,rpci,freq,rWi,rgai,5)
@@ -1195,22 +1193,22 @@ def recry_sc(rroi,rTi,rpci,freq,rWi,rgai,rrecry,gbih,gbiv,gs6,ga2i):
     return gbih,gbiv,gs6,ga2i
 
 def absorp2f(gbih,gbiv,gs6,ga2i,epsi,epsii,roi,Ti,pci,freq,Wi,gai):
-	"""
-	calculates the scattering coefficient from structural parameters
+    """
+    calculates the scattering coefficient from structural parameters
 
-	[gbih,gbiv,gs6,ga2i] = absorp2f(gbih,gbiv,gs6,ga2i,roi,Ti,pci,freq,Wi,gai)
-	gbih:  2-flux scattering coefficient at h pol
-	gbiv:  2-flux scattering coefficient at v pol
-	gs6:   6-flux scattering coefficient
-	ga2i:  2-flux absorption coefficient
-	roi:   density
-	Ti:    physical temperature
-	pci:   correlation length
-	freq:  frequency
-	Wi:    wetness
- 	gai:   absorption coefficient
-	sccho: scattering coefficient algorithm chosen
-	
+    [gbih,gbiv,gs6,ga2i] = absorp2f(gbih,gbiv,gs6,ga2i,roi,Ti,pci,freq,Wi,gai)
+    gbih:  2-flux scattering coefficient at h pol
+    gbiv:  2-flux scattering coefficient at v pol
+    gs6:   6-flux scattering coefficient
+    ga2i:  2-flux absorption coefficient
+    roi:   density
+    Ti:    physical temperature
+    pci:   correlation length
+    freq:  frequency
+    Wi:    wetness
+    gai:   absorption coefficient
+    sccho: scattering coefficient algorithm chosen
+
     """
     if roi[0]>10:
       roi=roi/1000.0
@@ -1247,16 +1245,16 @@ def absorp2f(gbih,gbiv,gs6,ga2i,epsi,epsii,roi,Ti,pci,freq,Wi,gai):
     return gbih,gbiv,gs6,ga2i
 
 def penetration_depth(num,di,ke,theta,trans):
-	"""
-	try to compute penetration depth, not sure that it works 100%, not used in the study
-	L=exp(ke*d*sec(theta))
-	sec = 1/cos
-	num : layers
-	di : layer thickness
-	ke : gs6+ga2i (?) - extinction coefficient
-	theta : rtei (?) - propagation angle
-	trans : ti (?)
-	"""
+    """
+    try to compute penetration depth, not sure that it works 100%, not used in the study
+    L=exp(ke*d*sec(theta))
+    sec = 1/cos
+    num : layers
+    di : layer thickness
+    ke : gs6+ga2i (?) - extinction coefficient
+    theta : rtei (?) - propagation angle
+    trans : ti (?)
+    """
     nn = len(num)
     inten=np.ones(len(num))
     pene=np.zeros(len(num)) 
@@ -1296,21 +1294,21 @@ def penetration_depth(num,di,ke,theta,trans):
 
 
 def memls_mod(num,di,Ti,Wi,roi,pci,sal,sitype,si):
-	"""
-	This function computes the emissivities (eh, ev), brightness temperatures (yh, yv), tentative effective temperatures (Teffh, Teffv)
-	and tentative penetration depths (pend_h, pend_v) at a range x of frequencies
-	
-	freq : reflectivity
+    """
+    This function computes the emissivities (eh, ev), brightness temperatures (yh, yv), tentative effective temperatures (Teffh, Teffv)
+    and tentative penetration depths (pend_h, pend_v) at a range x of frequencies
+
+    freq : reflectivity
     di : ice thickness in m
     Ti : temperature in K
     Wi : wetness between 0 and 1
-	roi : density in kg/m3
-	pci : correlation length in mm
-	sal : salinity in g/kg
-	sitype : snow 1 /first year ice 3 /multiyear ice 4
-	si/ snow 0, ice 1
-		
-	"""
+    roi : density in kg/m3
+    pci : correlation length in mm
+    sal : salinity in g/kg
+    sitype : snow 1 /first year ice 3 /multiyear ice 4
+    si/ snow 0, ice 1
+
+    """
 
     #### CHANGE DEPENDING ON WHAT INPUT WE WANT
     teta=55

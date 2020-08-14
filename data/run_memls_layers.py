@@ -16,7 +16,7 @@ import numpy as np
 import pandas as pd
 import glob
 import xarray as xr
-import clalib.memls_functions as memls
+import memls_functions as memls
 
 
 ##########################################################################
