@@ -17,7 +17,7 @@ The reference sea-ice evolution was computed with the model SAMSIM, which can be
 The forcing data for SAMSIM was downloaded from the ERA-Interim dataset, with the script: :file:`data/download_ERA_forcing_data.py`.#
 
 For the analysis of the simplification of temperature and salinity (Section 4), the following were used:
-    * `run_simplifications.py </data/run_simplifications.py>`_run_simplifications.py` (different options can be given in the file), using functions from :file:`data/simplification_functions.py`: produces dat-files as input for MEMLS for each timestep
+    * `run_simplifications.py </data/run_simplifications.py>`_ run_simplifications.py` (different options can be given in the file), using functions from :file:`data/simplification_functions.py`: produces dat-files as input for MEMLS for each timestep
     * :file:`/data/write_input_netcdf.py`: transformes the single .dat-files into one netcdf-file.
     * :file:`data/run_memls.py`, using :file:`data/memls_functions.py`: simulates the brightness temperatures with MEMLS and stores the results in .dat-files
     * :file:`data/write_output_netcdf.py`: writes the MEMLS output to netcdf
