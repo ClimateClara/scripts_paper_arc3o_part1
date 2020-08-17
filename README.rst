@@ -37,5 +37,6 @@ The final processing and visualization was done using the following scripts:
     * Figure 2: `Figure2.ipynb </scripts_figures/Figure2.ipynb>`_
     * Figure 3, 5, 6: `Figure3_5_6.py </scripts_figures/Figure3_5_6.py.ipynb>`_
     * Figure 4: `Figure4.py </scripts_figures/Figure4.py>`_
+    * Values in Table 3: `Figure4.py </scripts_figures/Table_layers.py>`_
 
-Signed: Clara Burgard, 14.08.2020
+Signed: Clara Burgard, 17.08.2020
