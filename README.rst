@@ -35,8 +35,8 @@ Producing figures
 
 The final processing and visualization was done using the following scripts:
     * Figure 2: `Figure2.ipynb </scripts_figures/Figure2.ipynb>`_
-    * Figure 3, 5, 6: `Figure3_5_6.py </scripts_figures/Figure3_5_6.py.ipynb>`_
-    * Figure 4: `Figure4.py </scripts_figures/Figure4.py>`_
-    * Values in Table 3: `Table_layers.py </scripts_figures/Table_layers.py>`_
+    * Figure 3, 5, 6: `Figures_3_4_6_7.ipynb </scripts_figures/Figures_3_4_6_7.ipynb>`_
+    * Figure 4: `Figure5.py </scripts_figures/Figure5.py>`_
+    * Values in Table 3: `Table_layers.ipynb </scripts_figures/Table_layers.ipynb>`_
 
 Signed: Clara Burgard, 17.08.2020
