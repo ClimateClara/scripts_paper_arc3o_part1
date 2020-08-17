@@ -14,27 +14,28 @@ Computing data
 The reference sea-ice evolution was computed with the model SAMSIM, which can be downloaded on github
 `here <https://github.com/pgriewank/SAMSIM>`_. The version used for the analysis was downloaded on March 10th, 2017.
 
-The forcing data for SAMSIM was downloaded from the ERA-Interim dataset, with the script: `download_ERA_forcing_data.py </data/download_ERA_forcing_data.py>`_.
+The forcing data for SAMSIM was downloaded from the ERA-Interim dataset, with the script: `download_ERA_forcing_data.py </scripts_simulation/download_ERA_forcing_data.py>`_.
+This data was converted to the .txt-format necessary as input for SAMSIM, with the script: ``
 
 For the analysis of the simplification of temperature and salinity (Section 4), the following were used:
-    * `run_simplifications.py </data/run_simplifications.py>`_ (different options can be given in the file), using functions from `simplification_functions.py </data/simplification_functions.py>`_: produces dat-files as input for MEMLS for each timestep
-    * `write_input_netcdf.py </data/write_input_netcdf.py>`_: transformes the single .dat-files into one netcdf-file.
-    * `run_memls.py </data/run_memls.py>`_, using `memls_functions.py </data/memls_functions.py>`_: simulates the brightness temperatures with MEMLS and stores the results in .dat-files
-    * `write_output_netcdf.py </data/write_output_netcdf.py>`_: writes the MEMLS output to netcdf
+    * `run_simplifications.py </data/run_simplifications.py>`_ (different options can be given in the file), using functions from `simplification_functions.py </scripts_simulation/simplification_functions.py>`_: produces dat-files as input for MEMLS for each timestep
+    * `write_input_netcdf.py </scripts_simulation/write_input_netcdf.py>`_: transformes the single .dat-files into one netcdf-file.
+    * `run_memls.py </scripts_simulation/run_memls.py>`_, using `memls_functions.py </scripts_simulation/memls_functions.py>`_: simulates the brightness temperatures with MEMLS and stores the results in .dat-files
+    * `write_output_netcdf.py </scripts_simulation/write_output_netcdf.py>`_: writes the MEMLS output to netcdf
 
 For the sensitivity study looking at the influence of the number of layers (Section 5), the following were used:
-    * `run_simplifications_layers.py </data/run_simplifications_layers.py>`_ (can change the amount of layers as an option in the beginning), using functions from `simplification_functions.py </data/simplification_functions.py>`_: produces dat-files as input for MEMLS for each timestep and each interest in layering
-    * `write_input_netcdf_layers.py </data/write_input_netcdf_layers.py>`_: transformes the single .dat-files into one netcdf-file, additional sorting by layers
-    * `run_memls_layers.py </data/run_memls_layers.py>`_, using `memls_functions.py </data/memls_functions.py>`_: simulates the brightness temperatures with MEMLS qnd stores the results in .dat-files
-    * `write_output_netcdf_layers.py </data/write_output_netcdf_layers.py>`_: writes the MEMLS output to netcdf
+    * `run_simplifications_layers.py </scripts_simulation/run_simplifications_layers.py>`_ (can change the amount of layers as an option in the beginning), using functions from `simplification_functions.py </scripts_simulation/simplification_functions.py>`_: produces dat-files as input for MEMLS for each timestep and each interest in layering
+    * `write_input_netcdf_layers.py </scripts_simulation/write_input_netcdf_layers.py>`_: transformes the single .dat-files into one netcdf-file, additional sorting by layers
+    * `run_memls_layers.py </scripts_simulation/run_memls_layers.py>`_, using `memls_functions.py </scripts_simulation/memls_functions.py>`_: simulates the brightness temperatures with MEMLS qnd stores the results in .dat-files
+    * `write_output_netcdf_layers.py </scripts_simulation/write_output_netcdf_layers.py>`_: writes the MEMLS output to netcdf
 
 
 Producing figures
 -----------------
 
 The final processing and visualization was done using the following scripts:
-    * Figure 2: `Figure2.ipynb </figures/Figure2.ipynb>`_
-    * Figure 3, 5, 6: `Figure3_5_6.py </figures/Figure3_5_6.py.ipynb>`_
-    * Figure 4: `Figure4.py </figures/Figure4.py>`_
+    * Figure 2: `Figure2.ipynb </scripts_figures/Figure2.ipynb>`_
+    * Figure 3, 5, 6: `Figure3_5_6.py </scripts_figures/Figure3_5_6.py.ipynb>`_
+    * Figure 4: `Figure4.py </scripts_figures/Figure4.py>`_
 
 Signed: Clara Burgard, 14.08.2020
