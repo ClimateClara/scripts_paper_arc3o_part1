@@ -21,8 +21,7 @@ import seaborn as sns
 import pandas as pd
 
 import sys
-# insert at 1, 0 is the script path (or '' in REPL)
-sys.path.append('./data/')
+sys.path.append('../scripts_simulation/')
 
 import memls_functions as memls
 import simplification_functions as sf
