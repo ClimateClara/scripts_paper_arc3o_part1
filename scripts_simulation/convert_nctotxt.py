@@ -11,9 +11,7 @@ prepare input for SAMSIM from ERA data
 import numpy as np
 import matplotlib.pyplot as plt
 import glob
-from pandas import Series, DataFrame
 import pandas as pd
-from scipy import stats
 import scipy.io as sio
 import datetime
 

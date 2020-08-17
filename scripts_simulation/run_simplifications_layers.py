@@ -12,8 +12,6 @@ updated to python3 on 11.05.2018
 
 import numpy as np
 import pandas as pd
-import glob
-import xarray as xr
 import simplification_functions as sf
 import memls_functions as memls
 
@@ -31,12 +29,15 @@ ee='NorthPole-p4'
 
 ee2=ee.split("-")[0]
 
-home_path=#define your home path here
+home_path= #define your home path here
 
 #Output from SAMSIM
 inputpath = home_path+'/mistral_work/SatSim/SAMSIM/'
 #ERA-Interim input data
 inputpath3 = home_path+'/mistral_home/SatSim/SAMSIM/input/ERA-interim/Clara/'
+
+# change outputpath if you want to make several experiments, otherwise there is a danger of overwriting previous results
+
 #output path to put the resulting .dat-files
 outputpath = home_path+'/mistral_work/SatSim/MEMLS_exp/INPUT/original_files'
 

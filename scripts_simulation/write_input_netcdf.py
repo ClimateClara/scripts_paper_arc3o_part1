@@ -16,8 +16,6 @@ import pandas as pd
 import xarray as xr
 import os
 import datetime
-import glob
-import memls_functions as memls
 
 ##########################################################################
 
@@ -33,6 +31,7 @@ ee='75N00W-p4'
 #ee='74N170E-p4'
 ee2=ee.split("-")[0]
 
+# change inputpath and outputpath if you want to make several experiments, otherwise there is a danger of overwriting previous results
 inputpath = '/work/mh0033/m300411/SatSim/MEMLS_exp/INPUT/original_files/'
 outputpath = '/work/mh0033/m300411/SatSim/MEMLS_exp/INPUT/netcdf_files/'
 
