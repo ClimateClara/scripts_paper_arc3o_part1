@@ -1,0 +1,36 @@
+\hypertarget{mo__functions_8f90}{
+\section{mo\_\-functions.f90 File Reference}
+\label{mo__functions_8f90}\index{mo\_\-functions.f90@{mo\_\-functions.f90}}
+}
+\subsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+module \hyperlink{namespacemo__functions}{mo\_\-functions}
+
+
+\begin{DoxyCompactList}\small\item\em Module houses functions which have no home :(. \item\end{DoxyCompactList}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions/Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+REAL(wp) \hyperlink{namespacemo__functions_a1799a36a0ad153bc87957b7e87ad9b3c}{mo\_\-functions::func\_\-density} (T, S)
+\begin{DoxyCompactList}\small\item\em Calculates the physical density for given S and T. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__functions_a3f4e5c13d71b23efaa040a3d14e55f64}{mo\_\-functions::func\_\-freeboard} (N\_\-active, Nlayer, psi\_\-s, psi\_\-g, m, thick, m\_\-snow)
+\begin{DoxyCompactList}\small\item\em Calculates the freeboard of the 1d ice column. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__functions_ac51bdce087ab161f25d6ad11a28e655c}{mo\_\-functions::func\_\-albedo} (thick\_\-snow, T\_\-snow, psi\_\-l, thick\_\-min, albedo\_\-flag)
+\begin{DoxyCompactList}\small\item\em Calculates the albedo. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__functions_a2983289475e56c950511d8b6e37b1064}{mo\_\-functions::func\_\-sat\_\-O2} (T, S\_\-bu)
+\begin{DoxyCompactList}\small\item\em Calculates the oxygen saturation as a function of salinity and temperature. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__functions_a9413c611dfaf39e6cf8441a766b5df8b}{mo\_\-functions::func\_\-T\_\-freeze} (S\_\-bu, salt\_\-flag)
+\begin{DoxyCompactList}\small\item\em Calculates the freezing temperature. Salt\_\-flag determines if either ocean salt or NAcl is used. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__functions_a3c7420d9fae7442aeb1407179e971c35}{mo\_\-functions::sub\_\-notzflux} (time, fl\_\-sw, fl\_\-rest)
+\begin{DoxyCompactList}\small\item\em Calculates the incoming shortwave and other fluxes according to p. 193-\/194 PhD Notz. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__functions_afbb9a7012e709e4b2b6f402a9831159e}{mo\_\-functions::sub\_\-input} (length\_\-input, fl\_\-sw\_\-input, fl\_\-lw\_\-input, T2m\_\-input, precip\_\-input, time\_\-input)
+\begin{DoxyCompactList}\small\item\em Reads in data for atmoflux\_\-flag ==2. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__functions_aea674291e55cedde9a5ec71e45e92dc8}{mo\_\-functions::sub\_\-turb\_\-flux} (T\_\-bottom, S\_\-bu\_\-bottom, T, S\_\-abs, m, dt, N\_\-bgc, bgc\_\-bottom, bgc\_\-abs)
+\begin{DoxyCompactList}\small\item\em Calculates salt and tracer mixing between lowest layer and underlying water. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__functions_a463f28035b07b28bba73b8a1100b848a}{mo\_\-functions::sub\_\-melt\_\-thick} (psi\_\-l, psi\_\-s, psi\_\-g, T, T\_\-freeze, T\_\-top, fl\_\-Q, thick\_\-snow, dt, melt\_\-thick, thick, thick\_\-min)
+\begin{DoxyCompactList}\small\item\em Calculates the thickness of the meltwater film. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__functions_ad19818302426c2848ed285986cf1430d}{mo\_\-functions::sub\_\-melt\_\-snow} (melt\_\-thick, thick, thick\_\-snow, H\_\-abs, H\_\-abs\_\-snow, m, m\_\-snow, psi\_\-g\_\-snow)
+\begin{DoxyCompactList}\small\item\em Calculates how the meltwater film interacts with snow. \item\end{DoxyCompactList}\end{DoxyCompactItemize}

@@ -1,0 +1,396 @@
+\hypertarget{namespacemo__parameters}{
+\section{mo\_\-parameters Module Reference}
+\label{namespacemo__parameters}\index{mo\_\-parameters@{mo\_\-parameters}}
+}
+
+
+Module determines physical constants to be used by the SAMSIM Seaice model.  
+
+
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+INTEGER, parameter \hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp} = SELECTED\_\-REAL\_\-KIND(12, 307)
+\begin{DoxyCompactList}\small\item\em set working precision \_\-wp \item\end{DoxyCompactList}\item 
+REAL, parameter \hyperlink{namespacemo__parameters_ae2c1c26c67cd8e13b7693bbe2c5b717a}{pi} = 3.1415\_\-wp
+\item 
+REAL, parameter \hyperlink{namespacemo__parameters_adb294212d96151a282d82819bb97de4b}{grav} = 9.8061\_\-wp
+\begin{DoxyCompactList}\small\item\em gravitational constant \mbox{[}m/s$^\wedge$2\mbox{]} \item\end{DoxyCompactList}\item 
+REAL(\hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp}), parameter \hyperlink{namespacemo__parameters_ac0fbc3357bfcbb03857942aeefb16090}{k\_\-s} = 2.2\_\-wp
+\begin{DoxyCompactList}\small\item\em solid heat conductivity \mbox{[}J / m s K\mbox{]} 2.2 \item\end{DoxyCompactList}\item 
+REAL(\hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp}), parameter \hyperlink{namespacemo__parameters_aee1eca61b39f2038e51bfe41f1fbd574}{k\_\-l} = 0.523\_\-wp
+\begin{DoxyCompactList}\small\item\em liquid heat conductivity \mbox{[}J / m s K\mbox{]} 0.523 \item\end{DoxyCompactList}\item 
+REAL(\hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp}), parameter \hyperlink{namespacemo__parameters_ab81b5df9bf526e14b97f78bcf35019bf}{c\_\-s} = 2020.0\_\-wp
+\begin{DoxyCompactList}\small\item\em solid heat capacity \mbox{[}J/ kg K\mbox{]} \item\end{DoxyCompactList}\item 
+REAL(\hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp}), parameter \hyperlink{namespacemo__parameters_a9e6e68ac08c908458ac6e50a72e66ad9}{c\_\-s\_\-beta} = 7.6973\_\-wp
+\begin{DoxyCompactList}\small\item\em linear solid heat capacity approximation \mbox{[}J/ kg K$^\wedge$2\mbox{]} c\_\-s = c\_\-s+c\_\-s\_\-beta$\ast$T \item\end{DoxyCompactList}\item 
+REAL(\hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp}), parameter \hyperlink{namespacemo__parameters_a53f3c50306e6d9fb7928aacdd48d9776}{c\_\-l} = 3400.\_\-wp
+\begin{DoxyCompactList}\small\item\em liquid heat capacity \mbox{[}J/ kg K\mbox{]} \item\end{DoxyCompactList}\item 
+REAL(\hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp}), parameter \hyperlink{namespacemo__parameters_a7923c17c60cfcf6ce245f84e5c4aae3d}{rho\_\-s} = 920.\_\-wp
+\begin{DoxyCompactList}\small\item\em density of solid \mbox{[}kg / m$^\wedge$3\mbox{]} \item\end{DoxyCompactList}\item 
+REAL(\hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp}), parameter \hyperlink{namespacemo__parameters_a7c9d4f55d958561511f30542576af730}{rho\_\-l} = 1028.0\_\-wp
+\begin{DoxyCompactList}\small\item\em density of liquid \mbox{[}kg / m$^\wedge$3\mbox{]} \item\end{DoxyCompactList}\item 
+REAL(\hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp}), parameter \hyperlink{namespacemo__parameters_ad2928a0d789eeb0407ec6f3756075a18}{latent\_\-heat} = 333500.\_\-wp
+\begin{DoxyCompactList}\small\item\em latent heat release \mbox{[}J/kg\mbox{]} \item\end{DoxyCompactList}\item 
+REAL(\hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp}), parameter \hyperlink{namespacemo__parameters_a4469df80801aa14e38268a452ce774a2}{zeroK} = 273.15\_\-wp
+\begin{DoxyCompactList}\small\item\em Zero degrees Celsius in Kelvin \mbox{[}K\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(\hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp}), parameter \hyperlink{namespacemo__parameters_acde561d09dcbc152555d452514b4a71b}{bbeta} = 0.8\_\-wp$\ast$1e-\/3
+\begin{DoxyCompactList}\small\item\em concentration expansion coefficient \mbox{[}kg / (m$^\wedge$3 ppt)\mbox{]} \item\end{DoxyCompactList}\item 
+REAL(\hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp}), parameter \hyperlink{namespacemo__parameters_a64a337227f714967ae941ebe24b935ce}{mu} = 2.55\_\-wp$\ast$1e-\/3
+\begin{DoxyCompactList}\small\item\em dynamic viscosity \mbox{[}kg /m s\mbox{]} \item\end{DoxyCompactList}\item 
+REAL(\hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp}), parameter \hyperlink{namespacemo__parameters_a5355c60cba43613d845739fba4c9e0af}{kappa\_\-l} = \hyperlink{namespacemo__parameters_aee1eca61b39f2038e51bfe41f1fbd574}{k\_\-l}/\hyperlink{namespacemo__parameters_a7c9d4f55d958561511f30542576af730}{rho\_\-l}/\hyperlink{namespacemo__parameters_a53f3c50306e6d9fb7928aacdd48d9776}{c\_\-l}
+\begin{DoxyCompactList}\small\item\em heat diffusivity of water \item\end{DoxyCompactList}\item 
+REAL(\hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp}), parameter \hyperlink{namespacemo__parameters_a84bbd94990a472b5855a98d709d0a8af}{sigma} = 5.6704\_\-wp$\ast$1e-\/8
+\begin{DoxyCompactList}\small\item\em Stefan Boltzmann constant \mbox{[}W/(m$^\wedge$2$\ast$K$^\wedge$4)\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(\hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp}), parameter \hyperlink{namespacemo__parameters_a220395b5fd47214fbb07e7e55c635e4f}{psi\_\-s\_\-min} = 0.05\_\-wp
+\begin{DoxyCompactList}\small\item\em The amount of ice that the lowest layer can have before it counts as an ice layer. \item\end{DoxyCompactList}\item 
+REAL(\hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp}), parameter \hyperlink{namespacemo__parameters_ad1d58450590f138e7d1116327f563f30}{neg\_\-free} = -\/0.05\_\-wp
+\begin{DoxyCompactList}\small\item\em The distance the freeboard can be below 0 before water starts flooding through cracks. \item\end{DoxyCompactList}\item 
+REAL(\hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp}), parameter \hyperlink{namespacemo__parameters_a8dd2eb8edab23a209cecbca50873fb83}{x\_\-grav} = 0.000584\_\-wp
+\item 
+REAL(\hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp}), parameter \hyperlink{namespacemo__parameters_a5f8c574464740cb0fa35f52e8382500d}{ray\_\-crit} = 4.89\_\-wp
+\item 
+REAL(\hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp}), parameter \hyperlink{namespacemo__parameters_af4be8b247f00cf308e1974266c326fdd}{para\_\-flush\_\-horiz} = 1.00\_\-wp
+\begin{DoxyCompactList}\small\item\em determines relationship of horizontal flow distance in during flushing (guess 1) \item\end{DoxyCompactList}\item 
+REAL(\hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp}), parameter \hyperlink{namespacemo__parameters_a15fb04a55119c8da15569d72bc5cf370}{para\_\-flush\_\-gamma} = 0.9\_\-wp
+\begin{DoxyCompactList}\small\item\em Strength of desalination per timestep (guess). \item\end{DoxyCompactList}\item 
+REAL(\hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp}), parameter \hyperlink{namespacemo__parameters_aad3c0bd73579bfd1abca40b80ed51334}{psi\_\-s\_\-top\_\-min} = 0.40\_\-wp
+\begin{DoxyCompactList}\small\item\em if psi\_\-s is below this value meltwater forms (guess) 0.4 \item\end{DoxyCompactList}\item 
+REAL(\hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp}), parameter \hyperlink{namespacemo__parameters_a539e9e515a9154116d2c2f53f4153518}{ratio\_\-flood} = 1.50\_\-wp
+\begin{DoxyCompactList}\small\item\em Ratio of flooded to dissolve snow, plays an important role in subroutine flood. \item\end{DoxyCompactList}\item 
+REAL(\hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp}), parameter \hyperlink{namespacemo__parameters_a2ed9bfc96e43a2ccb5fc932c202bcee1}{ref\_\-salinity} = 34.\_\-wp
+\begin{DoxyCompactList}\small\item\em Reference salinity \mbox{[}g/kg\mbox{]} used to calculate freshwater column. \item\end{DoxyCompactList}\item 
+REAL(\hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp}), parameter \hyperlink{namespacemo__parameters_aca92cfe6ef280bfaccdfefb83e06f114}{rho\_\-snow} = 330\_\-wp
+\begin{DoxyCompactList}\small\item\em density of new snow \mbox{[}kg/m$\ast$$\ast$3\mbox{]} \item\end{DoxyCompactList}\item 
+REAL(\hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp}), parameter \hyperlink{namespacemo__parameters_a37ad2fc4cadab9eda79a630a8744079e}{gas\_\-snow\_\-ice} = 0.10\_\-wp
+\begin{DoxyCompactList}\small\item\em volume of gas percentage in new snow ice due to flooding, no longer used \item\end{DoxyCompactList}\item 
+REAL(\hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp}), parameter \hyperlink{namespacemo__parameters_ad2c04994a7c8e261cbdaa50e2790cd56}{gas\_\-snow\_\-ice2} = 0.20\_\-wp
+\begin{DoxyCompactList}\small\item\em volume of gas percentage in new snow ice due to snow melting (Eicken 95) \item\end{DoxyCompactList}\item 
+REAL(\hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp}), parameter \hyperlink{namespacemo__parameters_a7a1d89915a6383896c6ec8b1a13208e5}{emissivity\_\-ice} = 0.95\_\-wp
+\begin{DoxyCompactList}\small\item\em Emissivity of water and ice. \item\end{DoxyCompactList}\item 
+REAL(\hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp}), parameter \hyperlink{namespacemo__parameters_abc3aaec08d9a954bf5ddbe3a8ba692e5}{emissivity\_\-snow} = 1.00\_\-wp
+\begin{DoxyCompactList}\small\item\em Emissivity of Snow. \item\end{DoxyCompactList}\item 
+REAL(\hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp}), parameter \hyperlink{namespacemo__parameters_acf5feb0682a207698942d8764a0fc529}{penetr} = 0.30\_\-wp
+\begin{DoxyCompactList}\small\item\em Amount of penetrating sw radiation. \item\end{DoxyCompactList}\item 
+REAL(\hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp}), parameter \hyperlink{namespacemo__parameters_a15c1092bdb139242bbe5ca253a9cfc70}{extinc} = 2.00\_\-wp
+\begin{DoxyCompactList}\small\item\em Extinction coefficient of ice. \item\end{DoxyCompactList}\item 
+REAL(\hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp}), parameter \hyperlink{namespacemo__parameters_a42887cf935636d9eaf3fe6ad8cb3ee34}{Turb\_\-A} = 0.1\_\-wp$\ast$0.05\_\-wp$\ast$rho\_\-l/86400.\_\-wp
+\begin{DoxyCompactList}\small\item\em Standard turbulence \mbox{[}kg/s\mbox{]} WARNING no source, just set so that 5cm of water are overturned each day. \item\end{DoxyCompactList}\item 
+REAL(\hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp}), parameter \hyperlink{namespacemo__parameters_a9fcd0db13d2536e79d192a96ad2d0712}{Turb\_\-B} = 0.05\_\-wp
+\begin{DoxyCompactList}\small\item\em Exponential turbulence slope \mbox{[}m$\ast$$\ast$3/kg\mbox{]} WARNING no source, simple guess. \item\end{DoxyCompactList}\item 
+REAL(\hyperlink{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{wp}) \hyperlink{namespacemo__parameters_a5bebd9cb4b53f939987065f7ebf4c8b7}{max\_\-flux\_\-plate} = 50.0
+\begin{DoxyCompactList}\small\item\em Maximal heating rate of a heating plate. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Module determines physical constants to be used by the SAMSIM Seaice model. Many values are taken from Notz 2005, Table 5.2.
+
+\begin{DoxyParagraph}{Revision History}
+Started by Philipp Griewank 2010-\/07-\/08 
+\end{DoxyParagraph}
+
+
+\subsection{Variable Documentation}
+\hypertarget{namespacemo__parameters_acde561d09dcbc152555d452514b4a71b}{
+\index{mo\_\-parameters@{mo\_\-parameters}!bbeta@{bbeta}}
+\index{bbeta@{bbeta}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{bbeta}]{\setlength{\rightskip}{0pt plus 5cm}REAL({\bf wp}),parameter {\bf mo\_\-parameters::bbeta} = 0.8\_\-wp$\ast$1e-\/3}}
+\label{namespacemo__parameters_acde561d09dcbc152555d452514b4a71b}
+
+
+concentration expansion coefficient \mbox{[}kg / (m$^\wedge$3 ppt)\mbox{]} 
+
+\hypertarget{namespacemo__parameters_a53f3c50306e6d9fb7928aacdd48d9776}{
+\index{mo\_\-parameters@{mo\_\-parameters}!c\_\-l@{c\_\-l}}
+\index{c\_\-l@{c\_\-l}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{c\_\-l}]{\setlength{\rightskip}{0pt plus 5cm}REAL({\bf wp}),parameter {\bf mo\_\-parameters::c\_\-l} = 3400.\_\-wp}}
+\label{namespacemo__parameters_a53f3c50306e6d9fb7928aacdd48d9776}
+
+
+liquid heat capacity \mbox{[}J/ kg K\mbox{]} 
+
+\hypertarget{namespacemo__parameters_ab81b5df9bf526e14b97f78bcf35019bf}{
+\index{mo\_\-parameters@{mo\_\-parameters}!c\_\-s@{c\_\-s}}
+\index{c\_\-s@{c\_\-s}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{c\_\-s}]{\setlength{\rightskip}{0pt plus 5cm}REAL({\bf wp}),parameter {\bf mo\_\-parameters::c\_\-s} = 2020.0\_\-wp}}
+\label{namespacemo__parameters_ab81b5df9bf526e14b97f78bcf35019bf}
+
+
+solid heat capacity \mbox{[}J/ kg K\mbox{]} 
+
+\hypertarget{namespacemo__parameters_a9e6e68ac08c908458ac6e50a72e66ad9}{
+\index{mo\_\-parameters@{mo\_\-parameters}!c\_\-s\_\-beta@{c\_\-s\_\-beta}}
+\index{c\_\-s\_\-beta@{c\_\-s\_\-beta}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{c\_\-s\_\-beta}]{\setlength{\rightskip}{0pt plus 5cm}REAL({\bf wp}),parameter {\bf mo\_\-parameters::c\_\-s\_\-beta} = 7.6973\_\-wp}}
+\label{namespacemo__parameters_a9e6e68ac08c908458ac6e50a72e66ad9}
+
+
+linear solid heat capacity approximation \mbox{[}J/ kg K$^\wedge$2\mbox{]} c\_\-s = c\_\-s+c\_\-s\_\-beta$\ast$T 
+
+\hypertarget{namespacemo__parameters_a7a1d89915a6383896c6ec8b1a13208e5}{
+\index{mo\_\-parameters@{mo\_\-parameters}!emissivity\_\-ice@{emissivity\_\-ice}}
+\index{emissivity\_\-ice@{emissivity\_\-ice}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{emissivity\_\-ice}]{\setlength{\rightskip}{0pt plus 5cm}REAL({\bf wp}),parameter {\bf mo\_\-parameters::emissivity\_\-ice} = 0.95\_\-wp}}
+\label{namespacemo__parameters_a7a1d89915a6383896c6ec8b1a13208e5}
+
+
+Emissivity of water and ice. 
+
+\hypertarget{namespacemo__parameters_abc3aaec08d9a954bf5ddbe3a8ba692e5}{
+\index{mo\_\-parameters@{mo\_\-parameters}!emissivity\_\-snow@{emissivity\_\-snow}}
+\index{emissivity\_\-snow@{emissivity\_\-snow}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{emissivity\_\-snow}]{\setlength{\rightskip}{0pt plus 5cm}REAL({\bf wp}),parameter {\bf mo\_\-parameters::emissivity\_\-snow} = 1.00\_\-wp}}
+\label{namespacemo__parameters_abc3aaec08d9a954bf5ddbe3a8ba692e5}
+
+
+Emissivity of Snow. 
+
+\hypertarget{namespacemo__parameters_a15c1092bdb139242bbe5ca253a9cfc70}{
+\index{mo\_\-parameters@{mo\_\-parameters}!extinc@{extinc}}
+\index{extinc@{extinc}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{extinc}]{\setlength{\rightskip}{0pt plus 5cm}REAL({\bf wp}),parameter {\bf mo\_\-parameters::extinc} = 2.00\_\-wp}}
+\label{namespacemo__parameters_a15c1092bdb139242bbe5ca253a9cfc70}
+
+
+Extinction coefficient of ice. 
+
+\hypertarget{namespacemo__parameters_a37ad2fc4cadab9eda79a630a8744079e}{
+\index{mo\_\-parameters@{mo\_\-parameters}!gas\_\-snow\_\-ice@{gas\_\-snow\_\-ice}}
+\index{gas\_\-snow\_\-ice@{gas\_\-snow\_\-ice}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{gas\_\-snow\_\-ice}]{\setlength{\rightskip}{0pt plus 5cm}REAL({\bf wp}),parameter {\bf mo\_\-parameters::gas\_\-snow\_\-ice} = 0.10\_\-wp}}
+\label{namespacemo__parameters_a37ad2fc4cadab9eda79a630a8744079e}
+
+
+volume of gas percentage in new snow ice due to flooding, no longer used 
+
+\hypertarget{namespacemo__parameters_ad2c04994a7c8e261cbdaa50e2790cd56}{
+\index{mo\_\-parameters@{mo\_\-parameters}!gas\_\-snow\_\-ice2@{gas\_\-snow\_\-ice2}}
+\index{gas\_\-snow\_\-ice2@{gas\_\-snow\_\-ice2}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{gas\_\-snow\_\-ice2}]{\setlength{\rightskip}{0pt plus 5cm}REAL({\bf wp}),parameter {\bf mo\_\-parameters::gas\_\-snow\_\-ice2} = 0.20\_\-wp}}
+\label{namespacemo__parameters_ad2c04994a7c8e261cbdaa50e2790cd56}
+
+
+volume of gas percentage in new snow ice due to snow melting (Eicken 95) 
+
+\hypertarget{namespacemo__parameters_adb294212d96151a282d82819bb97de4b}{
+\index{mo\_\-parameters@{mo\_\-parameters}!grav@{grav}}
+\index{grav@{grav}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{grav}]{\setlength{\rightskip}{0pt plus 5cm}REAL,parameter {\bf mo\_\-parameters::grav} = 9.8061\_\-wp}}
+\label{namespacemo__parameters_adb294212d96151a282d82819bb97de4b}
+
+
+gravitational constant \mbox{[}m/s$^\wedge$2\mbox{]} 
+
+\hypertarget{namespacemo__parameters_aee1eca61b39f2038e51bfe41f1fbd574}{
+\index{mo\_\-parameters@{mo\_\-parameters}!k\_\-l@{k\_\-l}}
+\index{k\_\-l@{k\_\-l}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{k\_\-l}]{\setlength{\rightskip}{0pt plus 5cm}REAL({\bf wp}),parameter {\bf mo\_\-parameters::k\_\-l} = 0.523\_\-wp}}
+\label{namespacemo__parameters_aee1eca61b39f2038e51bfe41f1fbd574}
+
+
+liquid heat conductivity \mbox{[}J / m s K\mbox{]} 0.523 
+
+\hypertarget{namespacemo__parameters_ac0fbc3357bfcbb03857942aeefb16090}{
+\index{mo\_\-parameters@{mo\_\-parameters}!k\_\-s@{k\_\-s}}
+\index{k\_\-s@{k\_\-s}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{k\_\-s}]{\setlength{\rightskip}{0pt plus 5cm}REAL({\bf wp}),parameter {\bf mo\_\-parameters::k\_\-s} = 2.2\_\-wp}}
+\label{namespacemo__parameters_ac0fbc3357bfcbb03857942aeefb16090}
+
+
+solid heat conductivity \mbox{[}J / m s K\mbox{]} 2.2 
+
+\hypertarget{namespacemo__parameters_a5355c60cba43613d845739fba4c9e0af}{
+\index{mo\_\-parameters@{mo\_\-parameters}!kappa\_\-l@{kappa\_\-l}}
+\index{kappa\_\-l@{kappa\_\-l}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{kappa\_\-l}]{\setlength{\rightskip}{0pt plus 5cm}REAL({\bf wp}),parameter {\bf mo\_\-parameters::kappa\_\-l} = {\bf k\_\-l}/{\bf rho\_\-l}/{\bf c\_\-l}}}
+\label{namespacemo__parameters_a5355c60cba43613d845739fba4c9e0af}
+
+
+heat diffusivity of water 
+
+\hypertarget{namespacemo__parameters_ad2928a0d789eeb0407ec6f3756075a18}{
+\index{mo\_\-parameters@{mo\_\-parameters}!latent\_\-heat@{latent\_\-heat}}
+\index{latent\_\-heat@{latent\_\-heat}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{latent\_\-heat}]{\setlength{\rightskip}{0pt plus 5cm}REAL({\bf wp}),parameter {\bf mo\_\-parameters::latent\_\-heat} = 333500.\_\-wp}}
+\label{namespacemo__parameters_ad2928a0d789eeb0407ec6f3756075a18}
+
+
+latent heat release \mbox{[}J/kg\mbox{]} 
+
+\hypertarget{namespacemo__parameters_a5bebd9cb4b53f939987065f7ebf4c8b7}{
+\index{mo\_\-parameters@{mo\_\-parameters}!max\_\-flux\_\-plate@{max\_\-flux\_\-plate}}
+\index{max\_\-flux\_\-plate@{max\_\-flux\_\-plate}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{max\_\-flux\_\-plate}]{\setlength{\rightskip}{0pt plus 5cm}REAL({\bf wp}) {\bf mo\_\-parameters::max\_\-flux\_\-plate} = 50.0}}
+\label{namespacemo__parameters_a5bebd9cb4b53f939987065f7ebf4c8b7}
+
+
+Maximal heating rate of a heating plate. 
+
+\hypertarget{namespacemo__parameters_a64a337227f714967ae941ebe24b935ce}{
+\index{mo\_\-parameters@{mo\_\-parameters}!mu@{mu}}
+\index{mu@{mu}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{mu}]{\setlength{\rightskip}{0pt plus 5cm}REAL({\bf wp}),parameter {\bf mo\_\-parameters::mu} = 2.55\_\-wp$\ast$1e-\/3}}
+\label{namespacemo__parameters_a64a337227f714967ae941ebe24b935ce}
+
+
+dynamic viscosity \mbox{[}kg /m s\mbox{]} 
+
+\hypertarget{namespacemo__parameters_ad1d58450590f138e7d1116327f563f30}{
+\index{mo\_\-parameters@{mo\_\-parameters}!neg\_\-free@{neg\_\-free}}
+\index{neg\_\-free@{neg\_\-free}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{neg\_\-free}]{\setlength{\rightskip}{0pt plus 5cm}REAL({\bf wp}),parameter {\bf mo\_\-parameters::neg\_\-free} = -\/0.05\_\-wp}}
+\label{namespacemo__parameters_ad1d58450590f138e7d1116327f563f30}
+
+
+The distance the freeboard can be below 0 before water starts flooding through cracks. 
+
+\hypertarget{namespacemo__parameters_a15fb04a55119c8da15569d72bc5cf370}{
+\index{mo\_\-parameters@{mo\_\-parameters}!para\_\-flush\_\-gamma@{para\_\-flush\_\-gamma}}
+\index{para\_\-flush\_\-gamma@{para\_\-flush\_\-gamma}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{para\_\-flush\_\-gamma}]{\setlength{\rightskip}{0pt plus 5cm}REAL({\bf wp}),parameter {\bf mo\_\-parameters::para\_\-flush\_\-gamma} = 0.9\_\-wp}}
+\label{namespacemo__parameters_a15fb04a55119c8da15569d72bc5cf370}
+
+
+Strength of desalination per timestep (guess). 
+
+\hypertarget{namespacemo__parameters_af4be8b247f00cf308e1974266c326fdd}{
+\index{mo\_\-parameters@{mo\_\-parameters}!para\_\-flush\_\-horiz@{para\_\-flush\_\-horiz}}
+\index{para\_\-flush\_\-horiz@{para\_\-flush\_\-horiz}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{para\_\-flush\_\-horiz}]{\setlength{\rightskip}{0pt plus 5cm}REAL({\bf wp}),parameter {\bf mo\_\-parameters::para\_\-flush\_\-horiz} = 1.00\_\-wp}}
+\label{namespacemo__parameters_af4be8b247f00cf308e1974266c326fdd}
+
+
+determines relationship of horizontal flow distance in during flushing (guess 1) 
+
+\hypertarget{namespacemo__parameters_acf5feb0682a207698942d8764a0fc529}{
+\index{mo\_\-parameters@{mo\_\-parameters}!penetr@{penetr}}
+\index{penetr@{penetr}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{penetr}]{\setlength{\rightskip}{0pt plus 5cm}REAL({\bf wp}),parameter {\bf mo\_\-parameters::penetr} = 0.30\_\-wp}}
+\label{namespacemo__parameters_acf5feb0682a207698942d8764a0fc529}
+
+
+Amount of penetrating sw radiation. 
+
+\hypertarget{namespacemo__parameters_ae2c1c26c67cd8e13b7693bbe2c5b717a}{
+\index{mo\_\-parameters@{mo\_\-parameters}!pi@{pi}}
+\index{pi@{pi}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{pi}]{\setlength{\rightskip}{0pt plus 5cm}REAL,parameter {\bf mo\_\-parameters::pi} = 3.1415\_\-wp}}
+\label{namespacemo__parameters_ae2c1c26c67cd8e13b7693bbe2c5b717a}
+\hypertarget{namespacemo__parameters_a220395b5fd47214fbb07e7e55c635e4f}{
+\index{mo\_\-parameters@{mo\_\-parameters}!psi\_\-s\_\-min@{psi\_\-s\_\-min}}
+\index{psi\_\-s\_\-min@{psi\_\-s\_\-min}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{psi\_\-s\_\-min}]{\setlength{\rightskip}{0pt plus 5cm}REAL({\bf wp}),parameter {\bf mo\_\-parameters::psi\_\-s\_\-min} = 0.05\_\-wp}}
+\label{namespacemo__parameters_a220395b5fd47214fbb07e7e55c635e4f}
+
+
+The amount of ice that the lowest layer can have before it counts as an ice layer. 
+
+\hypertarget{namespacemo__parameters_aad3c0bd73579bfd1abca40b80ed51334}{
+\index{mo\_\-parameters@{mo\_\-parameters}!psi\_\-s\_\-top\_\-min@{psi\_\-s\_\-top\_\-min}}
+\index{psi\_\-s\_\-top\_\-min@{psi\_\-s\_\-top\_\-min}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{psi\_\-s\_\-top\_\-min}]{\setlength{\rightskip}{0pt plus 5cm}REAL({\bf wp}),parameter {\bf mo\_\-parameters::psi\_\-s\_\-top\_\-min} = 0.40\_\-wp}}
+\label{namespacemo__parameters_aad3c0bd73579bfd1abca40b80ed51334}
+
+
+if psi\_\-s is below this value meltwater forms (guess) 0.4 
+
+\hypertarget{namespacemo__parameters_a539e9e515a9154116d2c2f53f4153518}{
+\index{mo\_\-parameters@{mo\_\-parameters}!ratio\_\-flood@{ratio\_\-flood}}
+\index{ratio\_\-flood@{ratio\_\-flood}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{ratio\_\-flood}]{\setlength{\rightskip}{0pt plus 5cm}REAL({\bf wp}),parameter {\bf mo\_\-parameters::ratio\_\-flood} = 1.50\_\-wp}}
+\label{namespacemo__parameters_a539e9e515a9154116d2c2f53f4153518}
+
+
+Ratio of flooded to dissolve snow, plays an important role in subroutine flood. 
+
+\hypertarget{namespacemo__parameters_a5f8c574464740cb0fa35f52e8382500d}{
+\index{mo\_\-parameters@{mo\_\-parameters}!ray\_\-crit@{ray\_\-crit}}
+\index{ray\_\-crit@{ray\_\-crit}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{ray\_\-crit}]{\setlength{\rightskip}{0pt plus 5cm}REAL({\bf wp}),parameter {\bf mo\_\-parameters::ray\_\-crit} = 4.89\_\-wp}}
+\label{namespacemo__parameters_a5f8c574464740cb0fa35f52e8382500d}
+\hypertarget{namespacemo__parameters_a2ed9bfc96e43a2ccb5fc932c202bcee1}{
+\index{mo\_\-parameters@{mo\_\-parameters}!ref\_\-salinity@{ref\_\-salinity}}
+\index{ref\_\-salinity@{ref\_\-salinity}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{ref\_\-salinity}]{\setlength{\rightskip}{0pt plus 5cm}REAL({\bf wp}),parameter {\bf mo\_\-parameters::ref\_\-salinity} = 34.\_\-wp}}
+\label{namespacemo__parameters_a2ed9bfc96e43a2ccb5fc932c202bcee1}
+
+
+Reference salinity \mbox{[}g/kg\mbox{]} used to calculate freshwater column. 
+
+\hypertarget{namespacemo__parameters_a7c9d4f55d958561511f30542576af730}{
+\index{mo\_\-parameters@{mo\_\-parameters}!rho\_\-l@{rho\_\-l}}
+\index{rho\_\-l@{rho\_\-l}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{rho\_\-l}]{\setlength{\rightskip}{0pt plus 5cm}REAL({\bf wp}),parameter {\bf mo\_\-parameters::rho\_\-l} = 1028.0\_\-wp}}
+\label{namespacemo__parameters_a7c9d4f55d958561511f30542576af730}
+
+
+density of liquid \mbox{[}kg / m$^\wedge$3\mbox{]} 
+
+\hypertarget{namespacemo__parameters_a7923c17c60cfcf6ce245f84e5c4aae3d}{
+\index{mo\_\-parameters@{mo\_\-parameters}!rho\_\-s@{rho\_\-s}}
+\index{rho\_\-s@{rho\_\-s}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{rho\_\-s}]{\setlength{\rightskip}{0pt plus 5cm}REAL({\bf wp}),parameter {\bf mo\_\-parameters::rho\_\-s} = 920.\_\-wp}}
+\label{namespacemo__parameters_a7923c17c60cfcf6ce245f84e5c4aae3d}
+
+
+density of solid \mbox{[}kg / m$^\wedge$3\mbox{]} 
+
+\hypertarget{namespacemo__parameters_aca92cfe6ef280bfaccdfefb83e06f114}{
+\index{mo\_\-parameters@{mo\_\-parameters}!rho\_\-snow@{rho\_\-snow}}
+\index{rho\_\-snow@{rho\_\-snow}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{rho\_\-snow}]{\setlength{\rightskip}{0pt plus 5cm}REAL({\bf wp}),parameter {\bf mo\_\-parameters::rho\_\-snow} = 330\_\-wp}}
+\label{namespacemo__parameters_aca92cfe6ef280bfaccdfefb83e06f114}
+
+
+density of new snow \mbox{[}kg/m$\ast$$\ast$3\mbox{]} 
+
+\hypertarget{namespacemo__parameters_a84bbd94990a472b5855a98d709d0a8af}{
+\index{mo\_\-parameters@{mo\_\-parameters}!sigma@{sigma}}
+\index{sigma@{sigma}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{sigma}]{\setlength{\rightskip}{0pt plus 5cm}REAL({\bf wp}),parameter {\bf mo\_\-parameters::sigma} = 5.6704\_\-wp$\ast$1e-\/8}}
+\label{namespacemo__parameters_a84bbd94990a472b5855a98d709d0a8af}
+
+
+Stefan Boltzmann constant \mbox{[}W/(m$^\wedge$2$\ast$K$^\wedge$4)\mbox{]}. 
+
+\hypertarget{namespacemo__parameters_a42887cf935636d9eaf3fe6ad8cb3ee34}{
+\index{mo\_\-parameters@{mo\_\-parameters}!Turb\_\-A@{Turb\_\-A}}
+\index{Turb\_\-A@{Turb\_\-A}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{Turb\_\-A}]{\setlength{\rightskip}{0pt plus 5cm}REAL({\bf wp}),parameter {\bf mo\_\-parameters::Turb\_\-A} = 0.1\_\-wp$\ast$0.05\_\-wp$\ast$rho\_\-l/86400.\_\-wp}}
+\label{namespacemo__parameters_a42887cf935636d9eaf3fe6ad8cb3ee34}
+
+
+Standard turbulence \mbox{[}kg/s\mbox{]} WARNING no source, just set so that 5cm of water are overturned each day. 
+
+\hypertarget{namespacemo__parameters_a9fcd0db13d2536e79d192a96ad2d0712}{
+\index{mo\_\-parameters@{mo\_\-parameters}!Turb\_\-B@{Turb\_\-B}}
+\index{Turb\_\-B@{Turb\_\-B}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{Turb\_\-B}]{\setlength{\rightskip}{0pt plus 5cm}REAL({\bf wp}),parameter {\bf mo\_\-parameters::Turb\_\-B} = 0.05\_\-wp}}
+\label{namespacemo__parameters_a9fcd0db13d2536e79d192a96ad2d0712}
+
+
+Exponential turbulence slope \mbox{[}m$\ast$$\ast$3/kg\mbox{]} WARNING no source, simple guess. 
+
+\hypertarget{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}{
+\index{mo\_\-parameters@{mo\_\-parameters}!wp@{wp}}
+\index{wp@{wp}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{wp}]{\setlength{\rightskip}{0pt plus 5cm}INTEGER,parameter {\bf mo\_\-parameters::wp} = SELECTED\_\-REAL\_\-KIND(12, 307)}}
+\label{namespacemo__parameters_a41be20bed1dcec244405328deaaffe30}
+
+
+set working precision \_\-wp 
+
+\hypertarget{namespacemo__parameters_a8dd2eb8edab23a209cecbca50873fb83}{
+\index{mo\_\-parameters@{mo\_\-parameters}!x\_\-grav@{x\_\-grav}}
+\index{x\_\-grav@{x\_\-grav}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{x\_\-grav}]{\setlength{\rightskip}{0pt plus 5cm}REAL({\bf wp}),parameter {\bf mo\_\-parameters::x\_\-grav} = 0.000584\_\-wp}}
+\label{namespacemo__parameters_a8dd2eb8edab23a209cecbca50873fb83}
+\hypertarget{namespacemo__parameters_a4469df80801aa14e38268a452ce774a2}{
+\index{mo\_\-parameters@{mo\_\-parameters}!zeroK@{zeroK}}
+\index{zeroK@{zeroK}!mo_parameters@{mo\_\-parameters}}
+\subsubsection[{zeroK}]{\setlength{\rightskip}{0pt plus 5cm}REAL({\bf wp}),parameter {\bf mo\_\-parameters::zeroK} = 273.15\_\-wp}}
+\label{namespacemo__parameters_a4469df80801aa14e38268a452ce774a2}
+
+
+Zero degrees Celsius in Kelvin \mbox{[}K\mbox{]}. 
+

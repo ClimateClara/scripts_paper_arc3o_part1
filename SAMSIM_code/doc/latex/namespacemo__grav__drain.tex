@@ -1,0 +1,106 @@
+\hypertarget{namespacemo__grav__drain}{
+\section{mo\_\-grav\_\-drain Module Reference}
+\label{namespacemo__grav__drain}\index{mo\_\-grav\_\-drain@{mo\_\-grav\_\-drain}}
+}
+
+
+Computes the Salt fluxes caused by gravity drainage.  
+
+
+\subsection*{Functions/Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine \hyperlink{namespacemo__grav__drain_a13446b857aa40114998fffc35b90489d}{fl\_\-grav\_\-drain} (S\_\-br, S\_\-bu, psi\_\-l, psi\_\-s, psi\_\-g, thick, S\_\-abs, H\_\-abs, T, m, dt, Nlayer, N\_\-active, ray, T\_\-bottom, S\_\-bu\_\-bottom, grav\_\-drain, grav\_\-temp, grav\_\-salt, grav\_\-heat\_\-flag, harmonic\_\-flag, fl\_\-brine\_\-bgc)
+\begin{DoxyCompactList}\small\item\em Calculates fluxes caused by gravity drainage. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__grav__drain_acfbe9a1ea75d02f8e3e85a1f6aeb0ea3}{fl\_\-grav\_\-drain\_\-simple} (psi\_\-s, psi\_\-l, thick, S\_\-abs, S\_\-br, Nlayer, N\_\-active, ray, grav\_\-drain, harmonic\_\-flag)
+\begin{DoxyCompactList}\small\item\em Calculates salinity to imitate the effects gravity drainage. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Computes the Salt fluxes caused by gravity drainage. \begin{DoxyAuthor}{Author}
+$<$Philipp Griewank, IMPRS$>$
+\end{DoxyAuthor}
+\begin{DoxyParagraph}{Revision History}
+Injected with life by Philipp Griewank, IMPRS ($<$2010-\/08-\/27$>$) 
+\end{DoxyParagraph}
+
+
+\subsection{Function/Subroutine Documentation}
+\hypertarget{namespacemo__grav__drain_a13446b857aa40114998fffc35b90489d}{
+\index{mo\_\-grav\_\-drain@{mo\_\-grav\_\-drain}!fl\_\-grav\_\-drain@{fl\_\-grav\_\-drain}}
+\index{fl\_\-grav\_\-drain@{fl\_\-grav\_\-drain}!mo_grav_drain@{mo\_\-grav\_\-drain}}
+\subsubsection[{fl\_\-grav\_\-drain}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-grav\_\-drain::fl\_\-grav\_\-drain (
+\begin{DoxyParamCaption}
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ S\_\-br, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ S\_\-bu, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ psi\_\-l, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ psi\_\-s, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ psi\_\-g, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ thick, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ S\_\-abs, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ H\_\-abs, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ T, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ m, }
+\item[{REAL(wp),intent(in)}]{ dt, }
+\item[{INTEGER,intent(in)}]{ Nlayer, }
+\item[{INTEGER,dimension(n\_\-active),intent(in)}]{ N\_\-active, }
+\item[{REAL(wp),dimension(nlayer-\/1),intent(out)}]{ ray, }
+\item[{REAL(wp),intent(in)}]{ T\_\-bottom, }
+\item[{REAL(wp),intent(in)}]{ S\_\-bu\_\-bottom, }
+\item[{REAL(wp),intent(inout)}]{ grav\_\-drain, }
+\item[{REAL(wp),intent(inout)}]{ grav\_\-temp, }
+\item[{REAL(wp),intent(inout)}]{ grav\_\-salt, }
+\item[{INTEGER,intent(in)}]{ grav\_\-heat\_\-flag, }
+\item[{INTEGER,intent(in)}]{ harmonic\_\-flag, }
+\item[{REAL(wp),dimension(nlayer+1,nlayer+1),intent(inout),optional}]{ fl\_\-brine\_\-bgc}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__grav__drain_a13446b857aa40114998fffc35b90489d}
+
+
+Calculates fluxes caused by gravity drainage. 
+
+If the Rayleigh number of a layer is higher then the critical value, brine leaves the layer by a theoretical brine channel. The discharged brine flows downward through all layers directly into the underlying ocean. To preserve mass the same amount of water flows upwards through all lower layers. In contrast to the downward flux the upward flux is assumed to be in thermal equilibrium thus moving salt and heat to each layer. The upward flux is a standard upwind advection. The downward flux of a layer over the timestep is = x$\ast$(Ray-\/Ray\_\-crit)$\ast$dt$\ast$thick. \_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\- $|$ -\/$>$\_\-\_\-$|$\_\-\_\-$<$-\/ $|$\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-$|$ v $|$\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\- $|$ $^\wedge$ -\/$>$$|$ $|$$<$-\/ $^\wedge$ $|$\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-$|$ $|$\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\- $|$ $^\wedge$ $^\wedge$ -\/$>$$|$$|$$|$$|$$|$$<$-\/ $^\wedge$ $^\wedge$ $|$\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-$|$vvv$|$\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\-\_\- $^\wedge$ $^\wedge$ $^\wedge$ $^\wedge$ $^\wedge$ $^\wedge$ This superb ascii art is supposed to show how the assumed fluxes flow downward through a brine channel and upwards through the layer. x and r are passed on to enable easy optimization. The effect of the upward moving brine is calculated in mass\_\-transfer.
+
+IMPORTANT: The height assumptions are special. The bottom of the ice edge is assumed to be at psi\_\-s(N\_\-active)/psi\_\-s\_\-min $\ast$thick\_\-0
+
+The first approach assumed that brine drainage occurred between two layers but performed poorly.
+
+If grav\_\-heat\_\-flag is set to 2 the amount of heat transported out of the ice will be compensated in the lowest layer
+
+\begin{DoxyParagraph}{Revision History}
+created by Philipp Griewank, IMPRS (2010-\/08-\/27) Completely revised to assume brine channels by Philipp Griewank , IMPRS (2010-\/11-\/05) Mass\_\-transfer is used to advect H and S by Philipp Griewank, IMPRS (2010-\/11-\/05) Added condition S\_\-br(k)$>$S\_\-br(k+1) by Philipp Griewank. IMPRS (2011-\/04-\/29) Added harmonic mean for permeability by Philipp Griewank (2014-\/01-\/05) 
+\end{DoxyParagraph}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em ray}]Rayleigh number \end{DoxyParams}
+\hypertarget{namespacemo__grav__drain_acfbe9a1ea75d02f8e3e85a1f6aeb0ea3}{
+\index{mo\_\-grav\_\-drain@{mo\_\-grav\_\-drain}!fl\_\-grav\_\-drain\_\-simple@{fl\_\-grav\_\-drain\_\-simple}}
+\index{fl\_\-grav\_\-drain\_\-simple@{fl\_\-grav\_\-drain\_\-simple}!mo_grav_drain@{mo\_\-grav\_\-drain}}
+\subsubsection[{fl\_\-grav\_\-drain\_\-simple}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-grav\_\-drain::fl\_\-grav\_\-drain\_\-simple (
+\begin{DoxyParamCaption}
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ psi\_\-s, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ psi\_\-l, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ thick, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ S\_\-abs, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ S\_\-br, }
+\item[{INTEGER,intent(in)}]{ Nlayer, }
+\item[{INTEGER,intent(in)}]{ N\_\-active, }
+\item[{REAL(wp),dimension(nlayer-\/1),intent(out)}]{ ray, }
+\item[{REAL(wp),intent(inout)}]{ grav\_\-drain, }
+\item[{INTEGER,intent(in)}]{ harmonic\_\-flag}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__grav__drain_acfbe9a1ea75d02f8e3e85a1f6aeb0ea3}
+
+
+Calculates salinity to imitate the effects gravity drainage. 
+
+Based on the assumption that super critical Rayleigh numbers are quickly reduced below the critical Rayleigh number. Proposed as a very simplified parametrisation of gravity drainage. Includes no fluxes of any kind, instead bulk salinity is simply reduced when ever the Rayleigh number is above the critical values. The parametrization begins from the bottom layers and moves upward.
+
+\begin{DoxyParagraph}{Revision History}
+created by Philipp Griewank, IMPRS (2012-\/01-\/01) 
+\end{DoxyParagraph}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em ray}]Rayleigh number \end{DoxyParams}

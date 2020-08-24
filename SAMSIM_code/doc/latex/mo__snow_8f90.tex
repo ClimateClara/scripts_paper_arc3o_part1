@@ -1,0 +1,32 @@
+\hypertarget{mo__snow_8f90}{
+\section{mo\_\-snow.f90 File Reference}
+\label{mo__snow_8f90}\index{mo\_\-snow.f90@{mo\_\-snow.f90}}
+}
+\subsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+module \hyperlink{namespacemo__snow}{mo\_\-snow}
+
+
+\begin{DoxyCompactList}\small\item\em Module contains all things directly related to snow. \item\end{DoxyCompactList}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions/Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine \hyperlink{namespacemo__snow_a846b1d8e0ce528570ee66f641db97eef}{mo\_\-snow::snow\_\-coupling} (H\_\-abs\_\-snow, phi\_\-s, T\_\-snow, H\_\-abs, H, phi, T, m\_\-snow, S\_\-abs\_\-snow, m, S\_\-bu)
+\begin{DoxyCompactList}\small\item\em Subroutine to couple a thin snow layer to the upper ice layer. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__snow_a39b7e4b579b1dfddc8555bfcd57b5397}{mo\_\-snow::snow\_\-precip} (m\_\-snow, H\_\-abs\_\-snow, thick\_\-snow, psi\_\-s\_\-snow, dt, liquid\_\-precip\_\-in, T2m, solid\_\-precip\_\-in)
+\begin{DoxyCompactList}\small\item\em Subroutine for calculating precipitation on an existing snow cover. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__snow_a4c98864b01acc61ff6b6ef62c9c79fa6}{mo\_\-snow::snow\_\-precip\_\-0} (H\_\-abs, S\_\-abs, m, T, dt, liquid\_\-precip\_\-in, T2m, solid\_\-precip\_\-in)
+\begin{DoxyCompactList}\small\item\em Subroutine for calculating precipitation into the ocean. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__snow_a72eb7157143136ae8ccba8de71c74a04}{mo\_\-snow::snow\_\-thermo} (psi\_\-l\_\-snow, psi\_\-s\_\-snow, psi\_\-g\_\-snow, thick\_\-snow, S\_\-abs\_\-snow, H\_\-abs\_\-snow, m\_\-snow, T\_\-snow, m, thick, H\_\-abs)
+\begin{DoxyCompactList}\small\item\em Subroutine for calculating snow thermodynamics. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__snow_ab464267664e63624ed508606189bd9a5}{mo\_\-snow::sub\_\-fl\_\-Q\_\-0\_\-snow\_\-thin} (m\_\-snow, thick\_\-snow, T\_\-snow, psi\_\-s, psi\_\-l, psi\_\-g, thick, T\_\-bound, fl\_\-Q\_\-snow)
+\begin{DoxyCompactList}\small\item\em Determines conductive Heat flux for combined top ice and snow layer. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__snow_a8a1a43bdb1400602404c56efd1c33e51}{mo\_\-snow::sub\_\-fl\_\-Q\_\-snow} (m\_\-snow, thick\_\-snow, T\_\-snow, psi\_\-s\_\-2, psi\_\-l\_\-2, psi\_\-g\_\-2, thick\_\-2, T\_\-2, fl\_\-Q)
+\begin{DoxyCompactList}\small\item\em Determines conductive Heat flux between Snow and top ice layer. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__snow_ae998551477b1c51b6a7dfe7688da0c16}{mo\_\-snow::sub\_\-fl\_\-Q\_\-0\_\-snow} (m\_\-snow, thick\_\-snow, T\_\-snow, T\_\-bound, fl\_\-Q)
+\begin{DoxyCompactList}\small\item\em Determines conductive Heat between snow layer and upper boundary layer. A limiting factor is added to increase stability of layers thinner then thick\_\-min. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__snow_ae04b8ab00ed0ed7c4f89c56d3893bbfe}{mo\_\-snow::func\_\-k\_\-snow} (m\_\-snow, thick\_\-snow)
+\begin{DoxyCompactList}\small\item\em Calculates the thermal conductivity of the snow layer as a function of the density. \item\end{DoxyCompactList}\end{DoxyCompactItemize}

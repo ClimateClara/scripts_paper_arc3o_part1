@@ -1,0 +1,254 @@
+\hypertarget{mo__data_8f90}{
+\section{mo\_\-data.f90 File Reference}
+\label{mo__data_8f90}\index{mo\_\-data.f90@{mo\_\-data.f90}}
+}
+\subsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+module \hyperlink{namespacemo__data}{mo\_\-data}
+
+
+\begin{DoxyCompactList}\small\item\em Sets data and contains all flag descriptions. \item\end{DoxyCompactList}
+
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_ad27ff95f4bfe7ed6f5643d3953a9310e}{mo\_\-data::H}
+\begin{DoxyCompactList}\small\item\em Enthalpy \mbox{[}J\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_a763929f604ab797932f22f50a720a1a1}{mo\_\-data::H\_\-abs}
+\begin{DoxyCompactList}\small\item\em specific Enthalpy \mbox{[}J/kg\mbox{]} \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_aa221cb1abb5ab4f4d2e8ca7987aeed56}{mo\_\-data::Q}
+\begin{DoxyCompactList}\small\item\em Heat in layer \mbox{[}J\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_a594603db2866303fb0074ab34692fa4a}{mo\_\-data::fl\_\-Q}
+\begin{DoxyCompactList}\small\item\em Heat flux between layers \mbox{[}J/s\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_a0969de41af73c828aa2ff388011081ba}{mo\_\-data::T}
+\begin{DoxyCompactList}\small\item\em Temperature \mbox{[}C\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_a24861c159e2b136fb56a61bc9f2de7a7}{mo\_\-data::S\_\-bu}
+\begin{DoxyCompactList}\small\item\em Bulk Salinity \mbox{[}g/kg\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_a43d6e453737affa893b8a861be921f5d}{mo\_\-data::fl\_\-S}
+\begin{DoxyCompactList}\small\item\em Salinity flux \mbox{[}(g/s\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_a1bc8433ee56482cce780b7630ab22867}{mo\_\-data::S\_\-abs}
+\begin{DoxyCompactList}\small\item\em Absolute Salinity \mbox{[}g\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_aa70fa9ad64d25cd4c15584fbc834d820}{mo\_\-data::S\_\-br}
+\begin{DoxyCompactList}\small\item\em Brine salinity \mbox{[}g/kg\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_a1409d49184dc3835ab1186dde372d381}{mo\_\-data::thick}
+\begin{DoxyCompactList}\small\item\em Layer thickness \mbox{[}m\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_af1813881649730f758278713d7d72d18}{mo\_\-data::m}
+\begin{DoxyCompactList}\small\item\em Mass \mbox{[}kg\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_ac4fb31397da08679eac0e3089b60447a}{mo\_\-data::fl\_\-m}
+\begin{DoxyCompactList}\small\item\em Mass fluxes between layers \mbox{[}kg\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_a77750b1536deb5ddd2ebada202f1cf18}{mo\_\-data::V\_\-s}
+\begin{DoxyCompactList}\small\item\em Volume \mbox{[}m$^\wedge$3\mbox{]} of solid. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_ab24341b1a6dd799e63540fa8ed51d14c}{mo\_\-data::V\_\-l}
+\begin{DoxyCompactList}\small\item\em Volume \mbox{[}m$^\wedge$3\mbox{]} of liquid. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_a274fbc519dd799929a177fdeaec56e91}{mo\_\-data::V\_\-g}
+\begin{DoxyCompactList}\small\item\em Volume \mbox{[}m$^\wedge$3\mbox{]} of gas. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_abb13ad5e80b57e5d614b9888531a3201}{mo\_\-data::V\_\-ex}
+\begin{DoxyCompactList}\small\item\em Volume of brine due expelled due to freezing \mbox{[}m$^\wedge$3\mbox{]} of solid, gas \& liquid. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_ace165f21c4edcf77372b13a99161aec8}{mo\_\-data::phi}
+\begin{DoxyCompactList}\small\item\em Solid mass fraction. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_a655b6d5f770ca3b4a1d2e22b627844e9}{mo\_\-data::psi\_\-s}
+\begin{DoxyCompactList}\small\item\em Solid volume fraction. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_aac8ca74ef10b90da7bf9143bdc21ec3a}{mo\_\-data::psi\_\-l}
+\begin{DoxyCompactList}\small\item\em Liquid volume fraction. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_ab334544ada2f82dd312588426d1cfa64}{mo\_\-data::psi\_\-g}
+\begin{DoxyCompactList}\small\item\em Gas volume fraction. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_a3ffdac0536a998149773806217f42543}{mo\_\-data::ray}
+\begin{DoxyCompactList}\small\item\em Rayleigh number of each layer. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_ac629f6eccf4b77df3406ac2ad5ac8ea6}{mo\_\-data::perm}
+\begin{DoxyCompactList}\small\item\em Permeability \mbox{[}?\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a6dedf87b47bcdf4151797c04485f251e}{mo\_\-data::dt}
+\begin{DoxyCompactList}\small\item\em Timestep \mbox{[}s\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_ad96d7ce134bb7b86325830161046d367}{mo\_\-data::thick\_\-0}
+\begin{DoxyCompactList}\small\item\em Initial layer thickness \mbox{[}m\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a9a0ee3e136f3b09016bfdffed837615a}{mo\_\-data::time}
+\begin{DoxyCompactList}\small\item\em Time \mbox{[}s\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_aef61c6317d4baba778438cea10b64412}{mo\_\-data::freeboard}
+\begin{DoxyCompactList}\small\item\em Height of ice surface above (or below) waterlevel \mbox{[}m\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a75b714d38b619ba4c6608d8f833cf159}{mo\_\-data::T\_\-freeze}
+\begin{DoxyCompactList}\small\item\em Freezing temperature \mbox{[}C\mbox{]}. \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_ab0b091ff23970ff2939892c9d8f788f1}{mo\_\-data::Nlayer}
+\begin{DoxyCompactList}\small\item\em Number of layers. \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a9c89af560a3d2f1fe1027bf81125b16c}{mo\_\-data::N\_\-bottom}
+\begin{DoxyCompactList}\small\item\em Number of bottom layers. \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a1140e1d6804c776a152d059c6ecd8375}{mo\_\-data::N\_\-middle}
+\begin{DoxyCompactList}\small\item\em Number of middle layers. \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a4be9ef8c44dfc2c8fccc353a2fc5fc79}{mo\_\-data::N\_\-top}
+\begin{DoxyCompactList}\small\item\em Number of top layers. \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_adcca7f2476501b41d758129cc352af3b}{mo\_\-data::N\_\-active}
+\begin{DoxyCompactList}\small\item\em Number of Layers active in the present. \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_ad15359b125bff66cb0f739e0eb5b01d4}{mo\_\-data::i}
+\begin{DoxyCompactList}\small\item\em Index, normally used for time. \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_afe6f17e4b469a746c68d9233d35ad11f}{mo\_\-data::k}
+\begin{DoxyCompactList}\small\item\em Index, normally used for layer. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a98be98c2961c1d3ccfdf5a52682b78d1}{mo\_\-data::time\_\-out}
+\begin{DoxyCompactList}\small\item\em Time between outputs \mbox{[}s\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a6a4393d34e8f95d252b2bca2d30d5af3}{mo\_\-data::time\_\-total}
+\begin{DoxyCompactList}\small\item\em Time of simulation \mbox{[}s\mbox{]}. \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_abca60ca0614b7061c6ef58e6e6daa60f}{mo\_\-data::i\_\-time}
+\begin{DoxyCompactList}\small\item\em Number of timesteps. \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_aa28d05f6fec3b61de0fbd7b4aa67f6ae}{mo\_\-data::i\_\-time\_\-out}
+\begin{DoxyCompactList}\small\item\em Number of timesteps between each output. \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a39a97d63744c18a6e9f3524d2dcc4154}{mo\_\-data::n\_\-time\_\-out}
+\begin{DoxyCompactList}\small\item\em Counts number of timesteps between output. \item\end{DoxyCompactList}\item 
+CHARACTER $\ast$12000 \hyperlink{namespacemo__data_abe2cc97e4da609edede5040d2574b93f}{mo\_\-data::format\_\-T}
+\item 
+CHARACTER $\ast$12000 \hyperlink{namespacemo__data_a5a4d1d7b7cad308de5f2a051715e95d5}{mo\_\-data::format\_\-psi}
+\item 
+CHARACTER $\ast$12000 \hyperlink{namespacemo__data_acb2cd425e31735f68ad118da5eed1392}{mo\_\-data::format\_\-thick}
+\item 
+CHARACTER $\ast$12000 \hyperlink{namespacemo__data_ad94f3b5a63bb78de820fe5a8c6f5574c}{mo\_\-data::format\_\-snow}
+\item 
+CHARACTER $\ast$12000 \hyperlink{namespacemo__data_a6e3f24460d266c05576103895a7167be}{mo\_\-data::format\_\-integer}
+\item 
+CHARACTER $\ast$12000 \hyperlink{namespacemo__data_a15b8dd299b9b9a34d337f74ea3e8b676}{mo\_\-data::format\_\-T2m\_\-top}
+\item 
+CHARACTER $\ast$12000 \hyperlink{namespacemo__data_ac2bdb68249acc513c69fb2793f6f376c}{mo\_\-data::format\_\-bgc}
+\begin{DoxyCompactList}\small\item\em Format strings for output. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a2ac8e0a672ebfd49781702474bf4ba0e}{mo\_\-data::T\_\-bottom}
+\begin{DoxyCompactList}\small\item\em Temperature of water beneath the ice \mbox{[}C\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_abefbe1cf82237d7380ba0d7de788a07a}{mo\_\-data::T\_\-top}
+\begin{DoxyCompactList}\small\item\em Temperature at the surface \mbox{[}C\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_ad14bbccac75eb3a3d95f57d0ecb81816}{mo\_\-data::S\_\-bu\_\-bottom}
+\begin{DoxyCompactList}\small\item\em Salinity beneath the ice \mbox{[}g/kg\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a987a45ea7aa457299f91119864d0baff}{mo\_\-data::T2m}
+\begin{DoxyCompactList}\small\item\em Two meter Temperature \mbox{[}C\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_acd16d86818624a2eb95bfed83a2a1d76}{mo\_\-data::fl\_\-q\_\-bottom}
+\begin{DoxyCompactList}\small\item\em Bottom heat flux \mbox{[}J$\ast$s\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a05df5047190129b7388a1ad5804ef145}{mo\_\-data::psi\_\-s\_\-snow}
+\begin{DoxyCompactList}\small\item\em Solid volume fraction of snow layer. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a914d1e046ed2bfa66d84f8aecb2ed26f}{mo\_\-data::psi\_\-l\_\-snow}
+\begin{DoxyCompactList}\small\item\em Liquid volume fraction of snow layer. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a2ca2bd9402672a8327e4a68b3a14fd7f}{mo\_\-data::psi\_\-g\_\-snow}
+\begin{DoxyCompactList}\small\item\em Gas volume fraction of snow layer. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_aee41245a2d1d08be740021dfc14cf723}{mo\_\-data::phi\_\-s}
+\begin{DoxyCompactList}\small\item\em Solid mass fraction of snow layer. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_afacea50e8d2e4a7725adb27d613ca4c3}{mo\_\-data::S\_\-abs\_\-snow}
+\begin{DoxyCompactList}\small\item\em Absolute salinity of snow layer \mbox{[}g\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a01f72ce0ba7168d410a2a683c2579e2d}{mo\_\-data::H\_\-abs\_\-snow}
+\begin{DoxyCompactList}\small\item\em Absolute enthalpy of snow layer \mbox{[}J\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_abda43178412f35b4871bbfe89bc3eb12}{mo\_\-data::m\_\-snow}
+\begin{DoxyCompactList}\small\item\em Mass of snow layer \mbox{[}kg\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a6d032201ee2f7b716badb13643daf93e}{mo\_\-data::T\_\-snow}
+\begin{DoxyCompactList}\small\item\em Temperature of snow layer \mbox{[}C\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a21342bcdb92f398a57a8eef77c77191a}{mo\_\-data::thick\_\-snow}
+\begin{DoxyCompactList}\small\item\em Thickness of snow layer \mbox{[}m\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_ace52326d57ce881a5017a47fed1c5a17}{mo\_\-data::liquid\_\-precip}
+\begin{DoxyCompactList}\small\item\em Liquid precip, \mbox{[}meter of water/s\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a4dee26c05c4bcb3d685c7a24ba41bf63}{mo\_\-data::solid\_\-precip}
+\begin{DoxyCompactList}\small\item\em Solid precip, \mbox{[}meter of water /s\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_ab90ffe7683553449ecf8c78d478cb40e}{mo\_\-data::fl\_\-q\_\-snow}
+\begin{DoxyCompactList}\small\item\em flow of heat into the snow layer \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_aedd9ec4adc59bfcbf90402c4226f2f34}{mo\_\-data::energy\_\-stored}
+\begin{DoxyCompactList}\small\item\em Total amount of energy stored, control is freezing point temperature of S\_\-bu\_\-bottom \mbox{[}J\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a71a192f5750717bc71df8f87c2a8cf52}{mo\_\-data::total\_\-resist}
+\begin{DoxyCompactList}\small\item\em Thermal resistance of the whole column \mbox{[}\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a330cc0e4bc178ef722ccd333c69aa06d}{mo\_\-data::surface\_\-water}
+\begin{DoxyCompactList}\small\item\em Percentage of water fraction in the top 5cm \mbox{[}\%\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a4c81fc09918e52dc51dfa99efbbac90b}{mo\_\-data::freshwater}
+\begin{DoxyCompactList}\small\item\em Meters of freshwater stored in column \mbox{[}m\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_aab72953060065beb7d6f1d2b9fcafa5c}{mo\_\-data::thickness}
+\begin{DoxyCompactList}\small\item\em Meters of ice \mbox{[}m\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_aadde2b57a3e8c60b5cd6f8a5ee72623d}{mo\_\-data::bulk\_\-salin}
+\begin{DoxyCompactList}\small\item\em Salt/Mass \mbox{[}ppt\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a866fe962819eea1c688afb5b07109bdd}{mo\_\-data::thick\_\-min}
+\begin{DoxyCompactList}\small\item\em Parameter for snow, determines when snow is in thermal equilibrium with the ice and when it is totally neglected. \item\end{DoxyCompactList}\item 
+REAL(wp), save \hyperlink{namespacemo__data_a7b3b4a04c1efd94e6c3f21e9bfd5fdad}{mo\_\-data::T\_\-test}
+\begin{DoxyCompactList}\small\item\em First guess for getT subroutine. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a4e0875d21076b42177bdff28faf75a53}{mo\_\-data::albedo}
+\begin{DoxyCompactList}\small\item\em Amount of short wave radiation which is reflected at the top surface. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a848f22357479c2be98599195b61991f7}{mo\_\-data::fl\_\-sw}
+\begin{DoxyCompactList}\small\item\em Incoming shortwave radiation \mbox{[}W/m$\ast$$\ast$2\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a0224a603e8070ac503b13ae82c8e6b99}{mo\_\-data::fl\_\-lw}
+\begin{DoxyCompactList}\small\item\em Incoming longwave radiation \mbox{[}W/m$\ast$$\ast$2\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a46e3fef58a1955a30678d73ddc044c9a}{mo\_\-data::fl\_\-sen}
+\begin{DoxyCompactList}\small\item\em Sensitive heat flux \mbox{[}W/m$\ast$$\ast$2\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a63a4e3f74d04640c4f4522a9f22390e0}{mo\_\-data::fl\_\-lat}
+\begin{DoxyCompactList}\small\item\em Latent heat flux \mbox{[}W/m$\ast$$\ast$2\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_afedf60f1ea1272e55a3d6110e0911102}{mo\_\-data::fl\_\-rest}
+\begin{DoxyCompactList}\small\item\em Bundled longwave,sensitive and latent heat flux \mbox{[}W/m$\ast$$\ast$2\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_aac6756d0384948c5717bdbabb4e1b748}{mo\_\-data::fl\_\-rad}
+\begin{DoxyCompactList}\small\item\em Energy flux of absorbed sw radiation of each layer \mbox{[}J/s\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a7971f5dbfdde936f63647492b31dffe9}{mo\_\-data::grav\_\-drain}
+\begin{DoxyCompactList}\small\item\em brine flux of gravity drainage between two outputs \mbox{[}kg/s\mbox{]} \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a084bb9d2856cdd8a9253f7790ac09b66}{mo\_\-data::grav\_\-salt}
+\begin{DoxyCompactList}\small\item\em salt flux moved by gravity drainage between two outputs \mbox{[}kg$\ast$ppt/s\mbox{]} \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_afd51dbc5cf51bbdec73b0c543d963da8}{mo\_\-data::grav\_\-temp}
+\begin{DoxyCompactList}\small\item\em average temperature of gravity drainage brine between two outputs \mbox{[}T\mbox{]} \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_ae1057f6ef957e6cae0ac381add3f3b73}{mo\_\-data::melt\_\-thick}
+\begin{DoxyCompactList}\small\item\em thickness of fully liquid part of top layer \mbox{[}m\mbox{]} \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a14ac53f7afeb8965106ee70871b38006}{mo\_\-data::alpha\_\-flux\_\-instable}
+\begin{DoxyCompactList}\small\item\em Proportionality constant which determines energy flux by the temperature difference T\_\-top$>$T2m \mbox{[}W/C\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a5d103f2250083f57def04a08d89be231}{mo\_\-data::alpha\_\-flux\_\-stable}
+\begin{DoxyCompactList}\small\item\em Proportionality constant which determines energy flux by the temperature difference T\_\-top$<$T2m \mbox{[}W/C\mbox{]}. \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_ac3bc82dac4d101806cd2a77f3b23d92c}{mo\_\-data::atmoflux\_\-flag}
+\begin{DoxyCompactList}\small\item\em 1: Use mean climatology of Notz, 2: Use imported reanalysis data, 3: use fixed values defined in \hyperlink{namespacemo__init}{mo\_\-init} \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_ac9c9cead6d68b7413f41e70c9038e9c7}{mo\_\-data::grav\_\-flag}
+\begin{DoxyCompactList}\small\item\em 1: no gravity drainage, 2: Gravity drainage, 3: Simple Drainage \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_af60329c080a609cfb936b65d8a62e70c}{mo\_\-data::prescribe\_\-flag}
+\begin{DoxyCompactList}\small\item\em 1: nothing happens, 2: prescribed Salinity profile is prescribed at each timestep (does not disable brine dynamics, just overwrites the salinity!) \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_aab5e39e0b6060d7ef40979d070b89dca}{mo\_\-data::grav\_\-heat\_\-flag}
+\begin{DoxyCompactList}\small\item\em 1: nothing happens, 2: compensates heatfluxes in grav\_\-flag = 2 \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a2f88c08cc3cae9d46a6bdcd9232ddbfa}{mo\_\-data::flush\_\-heat\_\-flag}
+\begin{DoxyCompactList}\small\item\em 1: nothing happens, 2: compensates heatfluxes in flush\_\-flag = 5 \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a7cc5384bbfd0b56d61cfe78576ee886d}{mo\_\-data::turb\_\-flag}
+\begin{DoxyCompactList}\small\item\em 1: No bottom turbulence, 2: Bottom mixing \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a0fb41b8dc5463c7215d278a301f17509}{mo\_\-data::salt\_\-flag}
+\begin{DoxyCompactList}\small\item\em 1: Sea salt, 2: NaCL \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a6089c1127efc972f4488515f75ca8e80}{mo\_\-data::boundflux\_\-flag}
+\begin{DoxyCompactList}\small\item\em 1: top and bottom cooling plate, 2:top Notz fluxes, bottom cooling plate 3: top flux=a$\ast$(T-\/T\_\-s) \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_aa062c97301f949aea320e57c72926700}{mo\_\-data::flush\_\-flag}
+\begin{DoxyCompactList}\small\item\em 1: no flushing, 4:meltwater is removed artificially, 5:vert and horiz flushing, 6: simplified \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a7e6cb2f19ab88a5903aa5574e5ec6b19}{mo\_\-data::flood\_\-flag}
+\begin{DoxyCompactList}\small\item\em 1: no flooding, 2:normal flooding, 3:simple flooding \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_ab9e96b3fd1d356487e156f8634c09732}{mo\_\-data::bottom\_\-flag}
+\begin{DoxyCompactList}\small\item\em 1: nothing changes, 2: deactivates all bottom layer dynamics, useful for some debugging and idealized tests \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a014d834dc753f1d37c0575dc9037878a}{mo\_\-data::debug\_\-flag}
+\begin{DoxyCompactList}\small\item\em 1: no raw layer output, 2: each layer is output at every timestep (warning, file size can be very large) \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a466c2f829a8b266724dd9150cb99d42f}{mo\_\-data::precip\_\-flag}
+\begin{DoxyCompactList}\small\item\em 0: solid and liquid precipitation, 1:phase determined by T2m \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a95ab71baf4d9fbae790e31780317af06}{mo\_\-data::harmonic\_\-flag}
+\begin{DoxyCompactList}\small\item\em 1: minimal permeability is used to calculate Rayleigh number, 2:harmonic mean is used for Rayleigh number \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a20840603c089c697b8662ca2c45f23f3}{mo\_\-data::tank\_\-flag}
+\begin{DoxyCompactList}\small\item\em 1: nothing, 2: S\_\-bu\_\-bottom and bgc\_\-bottom are calculated as if the experiment is conducted in a tank \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a503f12cf2d0684ad5423b92e37c97fbe}{mo\_\-data::albedo\_\-flag}
+\begin{DoxyCompactList}\small\item\em 1: simple albedo, 2: normal albedo, see func\_\-albedo for details \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a9a0ff39379f1d347bcb323cd49cb222e}{mo\_\-data::Length\_\-Input}
+\begin{DoxyCompactList}\small\item\em Sets the input length for atmoflux\_\-flag==2, common value of 13169. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(8280) \hyperlink{namespacemo__data_a05dff3e3a302bd2f751263140d8f367b}{mo\_\-data::Tinput}
+\begin{DoxyCompactList}\small\item\em used to read in top temperature for field experiment tests, dimension needs to be set in the code \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_adbae909d2ce614966d3de6ae1eb558a0}{mo\_\-data::fl\_\-sw\_\-input}
+\begin{DoxyCompactList}\small\item\em Used to read in sw fluxes from ERA for atmoflux\_\-flag==2. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_a2d2ccb1188895b74eb3e2742c6a82b4c}{mo\_\-data::fl\_\-lw\_\-input}
+\begin{DoxyCompactList}\small\item\em Used to read in lw fluxes from ERA for atmoflux\_\-flag==2. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_a8795a47a232696bffa9fa64a1f06a420}{mo\_\-data::T2m\_\-input}
+\begin{DoxyCompactList}\small\item\em Used to read in 2Tm from ERA for atmoflux\_\-flag==2. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_ae066ba3be89578a239547e88eaa6c45e}{mo\_\-data::precip\_\-input}
+\begin{DoxyCompactList}\small\item\em Used to read in precipitation from ERA for atmoflux\_\-flag==2. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_af2146601cc78d09fe2b51e065684822b}{mo\_\-data::time\_\-input}
+\begin{DoxyCompactList}\small\item\em Used to read in time from ERA for atmoflux\_\-flag==2. \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_acabfab1b812c7dd4f73b2ec6b059cae1}{mo\_\-data::time\_\-counter}
+\begin{DoxyCompactList}\small\item\em Keeps track of input data. \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a962bc540d1c63b9ff3b571c91133070b}{mo\_\-data::bgc\_\-flag}
+\begin{DoxyCompactList}\small\item\em 1: no bgc, 2:bgc \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a25de952ac1cfddcf1328f99e9e490ed3}{mo\_\-data::N\_\-bgc}
+\begin{DoxyCompactList}\small\item\em Number of chemicals. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:,:), allocatable \hyperlink{namespacemo__data_a5fbc3eddb21dfefcbd20b3f95b2e9808}{mo\_\-data::fl\_\-brine\_\-bgc}
+\begin{DoxyCompactList}\small\item\em Brine fluxes in a matrix, \mbox{[}kg/s\mbox{]}, first index is the layer of origin, and the second index is the layer of arrival. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:,:), allocatable \hyperlink{namespacemo__data_a0f5cfd95b789313c0a78a9b7feae167a}{mo\_\-data::bgc\_\-abs}
+\begin{DoxyCompactList}\small\item\em Absolute amount of chemicals \mbox{[}kmol\mbox{]} for each tracer. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:,:), allocatable \hyperlink{namespacemo__data_a92107cbfdb8869916b149d942db53cad}{mo\_\-data::bgc\_\-bu}
+\begin{DoxyCompactList}\small\item\em Bulk amounts of chemicals \mbox{[}kmol/kg\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:,:), allocatable \hyperlink{namespacemo__data_a8c950715d79f982020fbc43ec03a02e8}{mo\_\-data::bgc\_\-br}
+\begin{DoxyCompactList}\small\item\em Brine concentrations of chems \mbox{[}kmol/kg\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_a7a31686a7563ca77bbe2aa8eaa14cfd2}{mo\_\-data::bgc\_\-bottom}
+\begin{DoxyCompactList}\small\item\em Bulk concentrations of chems below the ice \mbox{[}kmol/kg\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_a15d6538801561a4daac86ca856ff99c5}{mo\_\-data::bgc\_\-total}
+\begin{DoxyCompactList}\small\item\em Total of chems, for lab experiments with a fixed total amount. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a075b7537738c70f4bc97adf551be3b75}{mo\_\-data::m\_\-total}
+\begin{DoxyCompactList}\small\item\em Total initial water mass, for lab experiments with a fixed total amount. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a48908c6562a2cb9ef6b51897c4c27716}{mo\_\-data::S\_\-total}
+\begin{DoxyCompactList}\small\item\em Total initial salt mass, for lab experiments with a fixed total amount. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_aa2b42f87a9dc571898326286dfab4350}{mo\_\-data::tank\_\-depth}
+\begin{DoxyCompactList}\small\item\em water depth in meters, used to calculate concentrations below ice for tank experiments \item\end{DoxyCompactList}\end{DoxyCompactItemize}

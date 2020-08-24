@@ -1,0 +1,78 @@
+\hypertarget{namespacemo__heat__fluxes}{
+\section{mo\_\-heat\_\-fluxes Module Reference}
+\label{namespacemo__heat__fluxes}\index{mo\_\-heat\_\-fluxes@{mo\_\-heat\_\-fluxes}}
+}
+
+
+Computes all heat fluxes.  
+
+
+\subsection*{Functions/Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine \hyperlink{namespacemo__heat__fluxes_a2000a9e639d94c90afda339806cf6839}{sub\_\-heat\_\-fluxes} ()
+\begin{DoxyCompactList}\small\item\em Computes surface temperature and heatfluxes. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Computes all heat fluxes. Everything important happens in sub\_\-heat\_\-fluxes.
+
+\begin{DoxyAuthor}{Author}
+Philipp Griewank
+\end{DoxyAuthor}
+\begin{DoxyParagraph}{Revision History}
+Copy and pasted into existence by Philipp Griewank (2014-\/04-\/02) 
+\end{DoxyParagraph}
+
+
+\subsection{Function/Subroutine Documentation}
+\hypertarget{namespacemo__heat__fluxes_a2000a9e639d94c90afda339806cf6839}{
+\index{mo\_\-heat\_\-fluxes@{mo\_\-heat\_\-fluxes}!sub\_\-heat\_\-fluxes@{sub\_\-heat\_\-fluxes}}
+\index{sub\_\-heat\_\-fluxes@{sub\_\-heat\_\-fluxes}!mo_heat_fluxes@{mo\_\-heat\_\-fluxes}}
+\subsubsection[{sub\_\-heat\_\-fluxes}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-heat\_\-fluxes::sub\_\-heat\_\-fluxes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__heat__fluxes_a2000a9e639d94c90afda339806cf6839}
+
+
+Computes surface temperature and heatfluxes. 
+
+Major subroutine, calculates all atmospheric energy fluxes and applies both atmospheric and oceanic fluxes. Is one of the only subroutines to directly use \hyperlink{namespacemo__data}{mo\_\-data} because so many variables are needed.
+
+There are three different ways to calculate atmospheric heat fluxes implemented which are defined using boundflux\_\-flag.
+
+
+\begin{DoxyItemize}
+\item Boundflux\_\-flag: 1 imitates top cooling plate by setting a fixed surface temperature, heat flux is derived from the T gradient from the surface to the top layer
+\item Boundflux\_\-flag: 2 balances incoming and outgoing radiation to determine the surface temperature, heat flux is then calculated as in boundflux\_\-flag 1. Some of the ice penetrates into the ice as is absorbed according to Beer's law. Optical properties are defined by the parameters emissivity\_\-ice, emissivity\_\-snow, extinct, and penetr.
+\item Boundflux\_\-flag: 3 assumes the atmospheric heat flux is proportional to the difference between the top layer temperature and the air temperature.
+\end{DoxyItemize}
+
+For 1 and 2 the surface temperature in turn determines the atmospheric heat flux into the snow or ice. Atmoflux\_\-flag is important for boundflux\_\-flag 2, as it determines which atmospheric fluxes are used.
+\begin{DoxyItemize}
+\item Atmoflux\_\-flag: 1 Mean climatology fluxes of Notz are used (see sub\_\-notz)
+\item Atmoflux\_\-flag: 2 Imported values are used, see sub\_\-input for more info on reading in data.
+\item Atmoflux\_\-flag: 3 Prescribed values are used (e.g. testcase 5).
+\end{DoxyItemize}
+
+Melting occurs when the surface T is above the melting temperature of the top layer
+\begin{DoxyItemize}
+\item Boundflux\_\-flag: 1 atmospheric flux is limited by the parameter max\_\-flux\_\-plate which represents the maximum heating capacity of the plate
+\item Boundflux\_\-flag: 2 the atmospheric heat flux is given by the difference between incoming and outgoing radiation
+\item Boundflux\_\-flag: 3 works the same during melt and freezing, but a different proportionality parameter is used (alpha\_\-flux\_\-stable) because the air above the ice is assumed to be stably stratified.
+\end{DoxyItemize}
+
+Boundflux\_\-flag 1 and 3 are not made to work with snow. If you need snow you'll have to implement snow cover yourself. For a detailed look at what is happening see the source code.
+
+The snow layer is treated differently based on the snow thickness.
+\begin{DoxyItemize}
+\item If the snow layer is thinner than thick\_\-min/100 it is simply ignored.
+\item If the snow layer is thinner than thick\_\-min but thicker than thick\_\-min/100 the snow and top ice layer are assumed to have the same temperature and are coupled using snow\_\-coupling.
+\item If the snow layer is thicker than thick\_\-min it is treated totally separately.
+\end{DoxyItemize}
+
+\begin{DoxyParagraph}{Revision History}
+First version by Philipp Griewank (2014-\/04-\/02) 
+\end{DoxyParagraph}

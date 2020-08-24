@@ -1,0 +1,126 @@
+\hypertarget{namespacemo__testcase__specifics}{
+\section{mo\_\-testcase\_\-specifics Module Reference}
+\label{namespacemo__testcase__specifics}\index{mo\_\-testcase\_\-specifics@{mo\_\-testcase\_\-specifics}}
+}
+
+
+Module contains changes specific testcases require during the main timeloop.  
+
+
+\subsection*{Functions/Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine \hyperlink{namespacemo__testcase__specifics_a86b57477e64f1d4072cbf54a96a4af59}{sub\_\-test1} (time, T\_\-top)
+\begin{DoxyCompactList}\small\item\em Subroutine for changing T\_\-top for testcase 1. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__testcase__specifics_a304d7bfb9ab386dafb7499298d987ab4}{sub\_\-test2} (time, T2m)
+\begin{DoxyCompactList}\small\item\em Subroutine for changing T\_\-top for testcase 2. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__testcase__specifics_aac3a50dbd4296f51264034abca3890ef}{sub\_\-test3} (time, liquid\_\-precip, solid\_\-precip)
+\begin{DoxyCompactList}\small\item\em Subroutine for setting snow for testcase 3. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__testcase__specifics_aed1ec369607b5f1bc51a1d93f8106e29}{sub\_\-test4} (time, fl\_\-q\_\-bottom)
+\begin{DoxyCompactList}\small\item\em Subroutine for setting snow for testcase 4. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__testcase__specifics_a935370b45b47663d79fa1621dbec15b9}{sub\_\-test6} (time, T2m)
+\begin{DoxyCompactList}\small\item\em Subroutine for changing T\_\-top for testcase 6 which seeks to reproduce lab measurements of Roni Glud. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Module contains changes specific testcases require during the main timeloop. Most settings related to the testcases are defined in \hyperlink{namespacemo__init}{mo\_\-init}, but if changes to the code need to applied after the timestepping has begun they are located here. Changes were initially simply implemented in the main timeloop, but things got confusing.
+
+\begin{DoxyAuthor}{Author}
+$<$Philipp Griewank, IMPRS$>$
+\end{DoxyAuthor}
+\begin{DoxyParagraph}{Revision History}
+Removed from \hyperlink{namespacemo__grotz}{mo\_\-grotz} by Philipp Griewank, IMPRS (2014-\/04-\/16) 
+\end{DoxyParagraph}
+
+
+\subsection{Function/Subroutine Documentation}
+\hypertarget{namespacemo__testcase__specifics_a86b57477e64f1d4072cbf54a96a4af59}{
+\index{mo\_\-testcase\_\-specifics@{mo\_\-testcase\_\-specifics}!sub\_\-test1@{sub\_\-test1}}
+\index{sub\_\-test1@{sub\_\-test1}!mo_testcase_specifics@{mo\_\-testcase\_\-specifics}}
+\subsubsection[{sub\_\-test1}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-testcase\_\-specifics::sub\_\-test1 (
+\begin{DoxyParamCaption}
+\item[{REAL(wp),intent(in)}]{ time, }
+\item[{REAL(wp),intent(inout)}]{ T\_\-top}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__testcase__specifics_a86b57477e64f1d4072cbf54a96a4af59}
+
+
+Subroutine for changing T\_\-top for testcase 1. 
+
+\begin{DoxyParagraph}{Revision History}
+Formed by Philipp Griewank, IMPRS (2014-\/04-\/16) 
+\end{DoxyParagraph}
+\hypertarget{namespacemo__testcase__specifics_a304d7bfb9ab386dafb7499298d987ab4}{
+\index{mo\_\-testcase\_\-specifics@{mo\_\-testcase\_\-specifics}!sub\_\-test2@{sub\_\-test2}}
+\index{sub\_\-test2@{sub\_\-test2}!mo_testcase_specifics@{mo\_\-testcase\_\-specifics}}
+\subsubsection[{sub\_\-test2}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-testcase\_\-specifics::sub\_\-test2 (
+\begin{DoxyParamCaption}
+\item[{REAL(wp),intent(in)}]{ time, }
+\item[{REAL(wp),intent(inout)}]{ T2m}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__testcase__specifics_a304d7bfb9ab386dafb7499298d987ab4}
+
+
+Subroutine for changing T\_\-top for testcase 2. 
+
+T2m is adjusted over time.
+
+\begin{DoxyParagraph}{Revision History}
+Formed by Philipp Griewank, IMPRS (2014-\/04-\/17) 
+\end{DoxyParagraph}
+\hypertarget{namespacemo__testcase__specifics_aac3a50dbd4296f51264034abca3890ef}{
+\index{mo\_\-testcase\_\-specifics@{mo\_\-testcase\_\-specifics}!sub\_\-test3@{sub\_\-test3}}
+\index{sub\_\-test3@{sub\_\-test3}!mo_testcase_specifics@{mo\_\-testcase\_\-specifics}}
+\subsubsection[{sub\_\-test3}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-testcase\_\-specifics::sub\_\-test3 (
+\begin{DoxyParamCaption}
+\item[{REAL(wp),intent(in)}]{ time, }
+\item[{REAL(wp),intent(inout)}]{ liquid\_\-precip, }
+\item[{REAL(wp),intent(inout)}]{ solid\_\-precip}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__testcase__specifics_aac3a50dbd4296f51264034abca3890ef}
+
+
+Subroutine for setting snow for testcase 3. 
+
+Precipitation rates are set
+
+\begin{DoxyParagraph}{Revision History}
+Formed by Philipp Griewank, (2014-\/04-\/18) 
+\end{DoxyParagraph}
+\hypertarget{namespacemo__testcase__specifics_aed1ec369607b5f1bc51a1d93f8106e29}{
+\index{mo\_\-testcase\_\-specifics@{mo\_\-testcase\_\-specifics}!sub\_\-test4@{sub\_\-test4}}
+\index{sub\_\-test4@{sub\_\-test4}!mo_testcase_specifics@{mo\_\-testcase\_\-specifics}}
+\subsubsection[{sub\_\-test4}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-testcase\_\-specifics::sub\_\-test4 (
+\begin{DoxyParamCaption}
+\item[{REAL(wp),intent(in)}]{ time, }
+\item[{REAL(wp),intent(inout)}]{ fl\_\-q\_\-bottom}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__testcase__specifics_aed1ec369607b5f1bc51a1d93f8106e29}
+
+
+Subroutine for setting snow for testcase 4. 
+
+\begin{DoxyParagraph}{Revision History}
+Formed by Philipp Griewank, (2014-\/04-\/18) 
+\end{DoxyParagraph}
+\hypertarget{namespacemo__testcase__specifics_a935370b45b47663d79fa1621dbec15b9}{
+\index{mo\_\-testcase\_\-specifics@{mo\_\-testcase\_\-specifics}!sub\_\-test6@{sub\_\-test6}}
+\index{sub\_\-test6@{sub\_\-test6}!mo_testcase_specifics@{mo\_\-testcase\_\-specifics}}
+\subsubsection[{sub\_\-test6}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-testcase\_\-specifics::sub\_\-test6 (
+\begin{DoxyParamCaption}
+\item[{REAL(wp),intent(in)}]{ time, }
+\item[{REAL(wp),intent(inout)}]{ T2m}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__testcase__specifics_a935370b45b47663d79fa1621dbec15b9}
+
+
+Subroutine for changing T\_\-top for testcase 6 which seeks to reproduce lab measurements of Roni Glud. 
+
+\begin{DoxyParagraph}{Revision History}
+Formed by Philipp Griewank, IMPRS (2014-\/04-\/38) 
+\end{DoxyParagraph}

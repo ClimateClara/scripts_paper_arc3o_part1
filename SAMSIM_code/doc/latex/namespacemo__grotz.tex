@@ -1,0 +1,54 @@
+\hypertarget{namespacemo__grotz}{
+\section{mo\_\-grotz Module Reference}
+\label{namespacemo__grotz}\index{mo\_\-grotz@{mo\_\-grotz}}
+}
+
+
+SAMSIM Semi-\/Adaptive Multi-\/phase Sea-\/Ice Model.  
+
+
+\subsection*{Functions/Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine \hyperlink{namespacemo__grotz_a48ebd3aa83db1cb4087b1841142ec9bd}{grotz} (testcase, description)
+\begin{DoxyCompactList}\small\item\em Main subroutine of SAMSIM, a 1D thermodynamic seaice model. A semi-\/adaptive grid is used which is managed by \hyperlink{namespacemo__layer__dynamics}{mo\_\-layer\_\-dynamics}. To many things happen in this subroutine to describe in this description, you'll just have to go through it. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+SAMSIM Semi-\/Adaptive Multi-\/phase Sea-\/Ice Model. This model was developed from scratch by Philipp Griewank during and after his PhD at Max Planck Institute of Meteorology from 2010-\/2014. The code is intended to be understandable and is subroutines, modules, functions, parameters, and global variables all have doxygen compatible descriptions. In addition to the doxygen generated description a getting started document helps first time users get the model running, and some python plotscripts are available to plot model output.
+
+The module \hyperlink{namespacemo__grotz}{mo\_\-grotz} is the most important subroutine in which the timestepping occurs. (Named after GRiewank nOTZ) Mo\_\-grotz is called by \hyperlink{SAMSIM_8f90}{SAMSIM.f90}. \hyperlink{SAMSIM_8f90}{SAMSIM.f90}'s only purpose is to set the testcase number and description string.
+
+\begin{DoxyAuthor}{Author}
+Philipp Griewank (Max Planck Institute of Meteorology)
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2012-\/08-\/28 
+\end{DoxyDate}
+
+
+\subsection{Function/Subroutine Documentation}
+\hypertarget{namespacemo__grotz_a48ebd3aa83db1cb4087b1841142ec9bd}{
+\index{mo\_\-grotz@{mo\_\-grotz}!grotz@{grotz}}
+\index{grotz@{grotz}!mo_grotz@{mo\_\-grotz}}
+\subsubsection[{grotz}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-grotz::grotz (
+\begin{DoxyParamCaption}
+\item[{INTEGER,intent(in)}]{ testcase, }
+\item[{CHARACTER$\ast$12000,intent(in)}]{ description}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__grotz_a48ebd3aa83db1cb4087b1841142ec9bd}
+
+
+Main subroutine of SAMSIM, a 1D thermodynamic seaice model. A semi-\/adaptive grid is used which is managed by \hyperlink{namespacemo__layer__dynamics}{mo\_\-layer\_\-dynamics}. To many things happen in this subroutine to describe in this description, you'll just have to go through it. 
+
+IMPORTANT: To get the correct freshwater amount make sure the freshwater is calculated using a salinity value to compare against.
+
+Common errors leading to termination are: too small timestep, bad programming
+
+\begin{DoxyParagraph}{Revision History}
+Basic thermodynamics and layer\_\-dynamics for fixed boundaries seem stable, backup made. by griewank (2010-\/08-\/10) 
+\end{DoxyParagraph}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em description}]String to describes simulation which is output into dat\_\-settings \end{DoxyParams}

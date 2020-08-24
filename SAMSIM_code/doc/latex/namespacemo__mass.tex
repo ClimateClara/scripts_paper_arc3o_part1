@@ -1,0 +1,114 @@
+\hypertarget{namespacemo__mass}{
+\section{mo\_\-mass Module Reference}
+\label{namespacemo__mass}\index{mo\_\-mass@{mo\_\-mass}}
+}
+
+
+Regulates mass transfers and their results.  
+
+
+\subsection*{Functions/Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine \hyperlink{namespacemo__mass_a41bcbec215f56133154de8249421c5cf}{mass\_\-transfer} (Nlayer, N\_\-active, T, H\_\-abs, S\_\-abs, S\_\-bu, T\_\-bottom, S\_\-bu\_\-bottom, fl\_\-m)
+\begin{DoxyCompactList}\small\item\em Calculates the effects of mass transfers on H\_\-abs and S\_\-abs. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__mass_a6e8bfe7e768a83a31407eb4771b1fead}{expulsion\_\-flux} (thick, V\_\-ex, Nlayer, N\_\-active, psi\_\-g, fl\_\-m, m)
+\begin{DoxyCompactList}\small\item\em Generates the fluxes caused by expulsion. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__mass_aafe4d8270d3f10cd77b9622b40d6da8a}{bgc\_\-advection} (Nlayer, N\_\-active, N\_\-bgc, fl\_\-brine\_\-bgc, bgc\_\-abs, psi\_\-l, T, S\_\-abs, m, thick, bgc\_\-bottom)
+\begin{DoxyCompactList}\small\item\em Calculates how the brine fluxes stored in fl\_\-brine\_\-bgc advect bgc tracers. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Regulates mass transfers and their results. Ultimately all processes which involve a mass flux should be stored here.
+
+\begin{DoxyAuthor}{Author}
+Philipp Griewank, IMPRS
+\end{DoxyAuthor}
+\begin{DoxyParagraph}{Revision History}
+Begin implementing Expulsion by Philipp Griewank, IMPRS (2010-\/08-\/24) 
+\end{DoxyParagraph}
+
+
+\subsection{Function/Subroutine Documentation}
+\hypertarget{namespacemo__mass_aafe4d8270d3f10cd77b9622b40d6da8a}{
+\index{mo\_\-mass@{mo\_\-mass}!bgc\_\-advection@{bgc\_\-advection}}
+\index{bgc\_\-advection@{bgc\_\-advection}!mo_mass@{mo\_\-mass}}
+\subsubsection[{bgc\_\-advection}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-mass::bgc\_\-advection (
+\begin{DoxyParamCaption}
+\item[{INTEGER,intent(in)}]{ Nlayer, }
+\item[{INTEGER,intent(in)}]{ N\_\-active, }
+\item[{INTEGER,intent(in)}]{ N\_\-bgc, }
+\item[{REAL(wp),dimension(nlayer+1,nlayer+1),intent(in)}]{ fl\_\-brine\_\-bgc, }
+\item[{REAL(wp),dimension(nlayer,n\_\-bgc),intent(inout)}]{ bgc\_\-abs, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ psi\_\-l, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ T, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ S\_\-abs, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ m, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ thick, }
+\item[{REAL(wp),dimension(n\_\-bgc),intent(in)}]{ bgc\_\-bottom}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__mass_aafe4d8270d3f10cd77b9622b40d6da8a}
+
+
+Calculates how the brine fluxes stored in fl\_\-brine\_\-bgc advect bgc tracers. 
+
+A very simple upwind strategy is employed. To avoid negative tracer densities, the maximum amount of advection is restricted to the current tracer content in a layer divided by three. Three is chosen as a limit as currently each layer can have a maximum of three flows leaving the layer (to the layer above, the layer below, and the lowest layer). The advection scheme is likely overly diffusive, but given the limitations we are working with (e.g. changing brine volumes) nothing more sophisticated can be applied easily.
+
+For gases it might make sense to limit the brine density to saturation value in advecting brine, to take bubble formation into account. This needs to be specified in bgc\_\-advection, and is a first attempt (both scientifically and code wise) which should be used with caution!
+
+\begin{DoxyParagraph}{Revision History}
+Brought to life by Philipp Griewank, IMPRS (2014-\/02-\/10) 
+\end{DoxyParagraph}
+\hypertarget{namespacemo__mass_a6e8bfe7e768a83a31407eb4771b1fead}{
+\index{mo\_\-mass@{mo\_\-mass}!expulsion\_\-flux@{expulsion\_\-flux}}
+\index{expulsion\_\-flux@{expulsion\_\-flux}!mo_mass@{mo\_\-mass}}
+\subsubsection[{expulsion\_\-flux}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-mass::expulsion\_\-flux (
+\begin{DoxyParamCaption}
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ thick, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ V\_\-ex, }
+\item[{INTEGER,intent(in)}]{ Nlayer, }
+\item[{INTEGER,intent(in)}]{ N\_\-active, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ psi\_\-g, }
+\item[{REAL(wp),dimension(nlayer+1),intent(out)}]{ fl\_\-m, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ m}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__mass_a6e8bfe7e768a83a31407eb4771b1fead}
+
+
+Generates the fluxes caused by expulsion. 
+
+Brine displaced by expansion of a freezing mushy layer lead to a mass, enthalpy and salt flux. This subroutine calculates the amount of brine which moves between the layers caused by V\_\-ex and how the mass in the layers changes. Vary basic assumptions are made. Brine always moves downward (negative), no horizontal movement are allowed and gas pockets can be filled. The upper boundary layer is not permeable but the bottom one is. This subroutine was started as a quick and dirty way to simulate the bottom freezing experiment described in Notz 2005 p. 85
+
+\begin{DoxyParagraph}{Revision History}
+Brought to life by Philipp Griewank, IMPRS (2010-\/08-\/24) Simplified by Philipp Griewank, IMPRS (2010-\/11-\/27) 
+\end{DoxyParagraph}
+\hypertarget{namespacemo__mass_a41bcbec215f56133154de8249421c5cf}{
+\index{mo\_\-mass@{mo\_\-mass}!mass\_\-transfer@{mass\_\-transfer}}
+\index{mass\_\-transfer@{mass\_\-transfer}!mo_mass@{mo\_\-mass}}
+\subsubsection[{mass\_\-transfer}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-mass::mass\_\-transfer (
+\begin{DoxyParamCaption}
+\item[{INTEGER,intent(in)}]{ Nlayer, }
+\item[{INTEGER,intent(in)}]{ N\_\-active, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ T, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ H\_\-abs, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ S\_\-abs, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ S\_\-bu, }
+\item[{REAL(wp),intent(in)}]{ T\_\-bottom, }
+\item[{REAL(wp),intent(in)}]{ S\_\-bu\_\-bottom, }
+\item[{REAL(wp),dimension(nlayer+1),intent(in)}]{ fl\_\-m}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__mass_a41bcbec215f56133154de8249421c5cf}
+
+
+Calculates the effects of mass transfers on H\_\-abs and S\_\-abs. 
+
+The effects of brine displaced by expulsion, flushing or drainage expansion lead to changes in mass, salt ans enthalpy. This subroutine calculates the effects on S\_\-abs and H\_\-abs. A very simple upwind strategy is employed, Brine from below has T and S\_\-br of the lower layer, and brine from above T and S\_\-br of the upper layer. To avoid negative salinity, the maximum amount of advective salt is the total salt content of the layer. The amount of mass transfered is calculated in other subroutines.
+
+This subroutine was started as a quick and dirty way to simulate the bottom freezing experiment described in Notz 2005 p. 85 IMPORTANT: Before this subroutine expelled brine was removed from the system and its effects were determined in subroutine expulsion. S\_\-bu must be up to date!
+
+\begin{DoxyParagraph}{Revision History}
+Brought to life by Philipp Griewank, IMPRS (2010-\/08-\/24) Modified to work with all processes by Philipp Griewank, IMPRS (2010-\/11-\/27) 
+\end{DoxyParagraph}

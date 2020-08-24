@@ -1,0 +1,129 @@
+\hypertarget{namespacemo__layer__dynamics}{
+\section{mo\_\-layer\_\-dynamics Module Reference}
+\label{namespacemo__layer__dynamics}\index{mo\_\-layer\_\-dynamics@{mo\_\-layer\_\-dynamics}}
+}
+
+
+Mo\_\-layer\_\-dynamics contains all subroutines for the growth and shrinking of layer thickness.  
+
+
+\subsection*{Functions/Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine \hyperlink{namespacemo__layer__dynamics_a4b67e1200af1131f76796868c2552a57}{layer\_\-dynamics} (phi, N\_\-active, Nlayer, N\_\-bottom, N\_\-middle, N\_\-top, m, S\_\-abs, H\_\-abs, thick, thick\_\-0, T\_\-bottom, S\_\-bu\_\-bottom, bottom\_\-flag, debug\_\-flag, N\_\-bgc, bgc\_\-abs, bgc\_\-bottom)
+\begin{DoxyCompactList}\small\item\em Organizes the Semi-\/Adaptive grid SAMSIM uses. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__layer__dynamics_aadc5de505c96dad5c7fe5bdb233102a6}{top\_\-melt} (Nlayer, N\_\-active, N\_\-bottom, N\_\-middle, N\_\-top, thick\_\-0, m, S\_\-abs, H\_\-abs, thick, N\_\-bgc, bgc\_\-abs)
+\item 
+subroutine \hyperlink{namespacemo__layer__dynamics_ad2f5a196bac29bfdc04d442b0b722a24}{top\_\-grow} (Nlayer, N\_\-active, N\_\-bottom, N\_\-middle, N\_\-top, thick\_\-0, m, S\_\-abs, H\_\-abs, thick, N\_\-bgc, bgc\_\-abs)
+\begin{DoxyCompactList}\small\item\em Top grow subroutine. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Mo\_\-layer\_\-dynamics contains all subroutines for the growth and shrinking of layer thickness. The middle layers have flexible thickness in contrast to the lower and upper layers which have static thickness. The details are provided in the separate subroutines.
+
+\begin{DoxyAuthor}{Author}
+Philipp Griewank, IMPRS
+\end{DoxyAuthor}
+\begin{DoxyParagraph}{Revision History}
+Shrinking and growth at the bottom are started by Philipp Griewank, IMPRS (2010-\/07-\/28) 
+\end{DoxyParagraph}
+
+
+\subsection{Function/Subroutine Documentation}
+\hypertarget{namespacemo__layer__dynamics_a4b67e1200af1131f76796868c2552a57}{
+\index{mo\_\-layer\_\-dynamics@{mo\_\-layer\_\-dynamics}!layer\_\-dynamics@{layer\_\-dynamics}}
+\index{layer\_\-dynamics@{layer\_\-dynamics}!mo_layer_dynamics@{mo\_\-layer\_\-dynamics}}
+\subsubsection[{layer\_\-dynamics}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-layer\_\-dynamics::layer\_\-dynamics (
+\begin{DoxyParamCaption}
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ phi, }
+\item[{INTEGER,intent(inout)}]{ N\_\-active, }
+\item[{INTEGER,intent(in)}]{ Nlayer, }
+\item[{INTEGER,intent(in)}]{ N\_\-bottom, }
+\item[{INTEGER,intent(in)}]{ N\_\-middle, }
+\item[{INTEGER,intent(in)}]{ N\_\-top, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ m, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ S\_\-abs, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ H\_\-abs, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ thick, }
+\item[{REAL(wp),intent(in)}]{ thick\_\-0, }
+\item[{REAL(wp),intent(in)}]{ T\_\-bottom, }
+\item[{REAL(wp),intent(in)}]{ S\_\-bu\_\-bottom, }
+\item[{INTEGER,intent(in)}]{ bottom\_\-flag, }
+\item[{INTEGER,intent(in)}]{ debug\_\-flag, }
+\item[{INTEGER,intent(in)}]{ N\_\-bgc, }
+\item[{REAL(wp),dimension(nlayer,n\_\-bgc),intent(inout),optional}]{ bgc\_\-abs, }
+\item[{REAL(wp),dimension(n\_\-bgc),intent(in),optional}]{ bgc\_\-bottom}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__layer__dynamics_a4b67e1200af1131f76796868c2552a57}
+
+
+Organizes the Semi-\/Adaptive grid SAMSIM uses. 
+
+Modifies the grid and all core variables due to growth or melt. Calls the different subroutines according to current conditions. All subroutines can be called with or without biogeochemical tracers active, which is triggered by providing bgc\_\-abs when calling the subroutine. See Griewank PhD thesis for a full description of the grid.
+
+Conditions under which following layer dynamics subroutines are called:
+\begin{DoxyItemize}
+\item bottom\_\-melt: lowest layer is ice free, second lowest layer has a solid fraction smaller than phi\_\-s\_\-min/2, and all Nlayer layers are active.
+\item bottom\_\-melt\_\-simple: lowest layer is ice free, second lowest layer has a solid fraction smaller than phi\_\-s\_\-min/2, and not all Nlayer layers are active.
+\item bottom\_\-melt\_\-simple: lowest layer is ice free, second lowest layer has a solid fraction smaller than phi\_\-s\_\-min/2, all Nlayer layers are active, and the thickness of the middle layers equals thick\_\-0
+\item bottom\_\-growth\_\-simple: lowest layer has a solid fraction higher than psi\_\-s\_\-min, and not all Nlayer layers are active
+\item bottom\_\-growth: lowest layer has a solid fraction higher than psi\_\-s\_\-min, and all Nlayer layers are active
+\item top\_\-grow: top layer thicker than 3/2 $\ast$ thick\_\-0
+\item top\_\-melt: top layer thinner than 1/2 $\ast$ thick\_\-0
+\end{DoxyItemize}
+
+If debug\_\-flag is set to 2 the layer values will be written into the debug output (thermoXX.dat) before and after layer dynamics with a string to identify which subroutine was called
+
+\begin{DoxyParagraph}{Revision History}
+created by Philipp Griewank, IMPRS (2010-\/07-\/29) first complete and hopefully stable version by Philipp Griewank, IMPRS (2010-\/08-\/10) 
+\end{DoxyParagraph}
+\hypertarget{namespacemo__layer__dynamics_ad2f5a196bac29bfdc04d442b0b722a24}{
+\index{mo\_\-layer\_\-dynamics@{mo\_\-layer\_\-dynamics}!top\_\-grow@{top\_\-grow}}
+\index{top\_\-grow@{top\_\-grow}!mo_layer_dynamics@{mo\_\-layer\_\-dynamics}}
+\subsubsection[{top\_\-grow}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-layer\_\-dynamics::top\_\-grow (
+\begin{DoxyParamCaption}
+\item[{INTEGER,intent(in)}]{ Nlayer, }
+\item[{INTEGER,intent(inout)}]{ N\_\-active, }
+\item[{INTEGER,intent(in)}]{ N\_\-bottom, }
+\item[{INTEGER,intent(in)}]{ N\_\-middle, }
+\item[{INTEGER,intent(in)}]{ N\_\-top, }
+\item[{REAL(wp),intent(in)}]{ thick\_\-0, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ m, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ S\_\-abs, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ H\_\-abs, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ thick, }
+\item[{INTEGER,intent(in)}]{ N\_\-bgc, }
+\item[{REAL(wp),dimension(nlayer,n\_\-bgc),intent(inout),optional}]{ bgc\_\-abs}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__layer__dynamics_ad2f5a196bac29bfdc04d442b0b722a24}
+
+
+Top grow subroutine. 
+
+Should be called when the top layer is thicker then 1.5 $\ast$thick\_\-0. If N\_\-active=Nlayer middle layers are expanded by thick\_\-0/N\_\-middle and top layers are moved one down. IF N\_\-active$<$Nlayer then N\_\-active=N\_\-active+1 and all layers are shifted downwards.
+
+\begin{DoxyParagraph}{Revision History}
+Started by Philipp Griewank, IMPRS (2011-\/05-\/10$>$) 
+\end{DoxyParagraph}
+\hypertarget{namespacemo__layer__dynamics_aadc5de505c96dad5c7fe5bdb233102a6}{
+\index{mo\_\-layer\_\-dynamics@{mo\_\-layer\_\-dynamics}!top\_\-melt@{top\_\-melt}}
+\index{top\_\-melt@{top\_\-melt}!mo_layer_dynamics@{mo\_\-layer\_\-dynamics}}
+\subsubsection[{top\_\-melt}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-layer\_\-dynamics::top\_\-melt (
+\begin{DoxyParamCaption}
+\item[{INTEGER,intent(in)}]{ Nlayer, }
+\item[{INTEGER,intent(inout)}]{ N\_\-active, }
+\item[{INTEGER,intent(in)}]{ N\_\-bottom, }
+\item[{INTEGER,intent(in)}]{ N\_\-middle, }
+\item[{INTEGER,intent(in)}]{ N\_\-top, }
+\item[{REAL(wp),intent(in)}]{ thick\_\-0, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ m, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ S\_\-abs, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ H\_\-abs, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ thick, }
+\item[{INTEGER,intent(in)}]{ N\_\-bgc, }
+\item[{REAL(wp),dimension(nlayer,n\_\-bgc),intent(inout),optional}]{ bgc\_\-abs}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__layer__dynamics_aadc5de505c96dad5c7fe5bdb233102a6}

@@ -1,0 +1,271 @@
+\hypertarget{namespacemo__output}{
+\section{mo\_\-output Module Reference}
+\label{namespacemo__output}\index{mo\_\-output@{mo\_\-output}}
+}
+
+
+All things output.  
+
+
+\subsection*{Functions/Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine \hyperlink{namespacemo__output_a9d48b3b49e6dbe858e06c8fe1dc4bfbd}{output\_\-settings} (description, testcase, N\_\-top, N\_\-bottom, Nlayer, fl\_\-q\_\-bottom, T\_\-bottom, S\_\-bu\_\-bottom, thick\_\-0, time\_\-out, time\_\-total, dt, boundflux\_\-flag, atmoflux\_\-flag, albedo\_\-flag, grav\_\-flag, flush\_\-flag, flood\_\-flag, grav\_\-heat\_\-flag, flush\_\-heat\_\-flag, harmonic\_\-flag, prescribe\_\-flag, salt\_\-flag, turb\_\-flag, bottom\_\-flag, tank\_\-flag, precip\_\-flag, bgc\_\-flag, N\_\-bgc)
+\begin{DoxyCompactList}\small\item\em Settings output. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__output_a2f2d04e394ea77f4d4c0a61207edd0a6}{output} (Nlayer, T, psi\_\-s, psi\_\-l, thick, S\_\-bu, ray, format\_\-T, format\_\-psi, format\_\-thick, format\_\-snow, freeboard, thick\_\-snow, T\_\-snow, psi\_\-l\_\-snow, psi\_\-s\_\-snow, energy\_\-stored, freshwater, total\_\-resist, thickness, bulk\_\-salin, grav\_\-drain, grav\_\-salt, grav\_\-temp, T2m, T\_\-top)
+\begin{DoxyCompactList}\small\item\em Standard output. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__output_a0c4b84f221bda333c52a4aaa7e2a854d}{output\_\-bgc} (Nlayer, N\_\-active, bgc\_\-bottom, N\_\-bgc, bgc\_\-abs, psi\_\-l, thick, m, format\_\-bgc)
+\begin{DoxyCompactList}\small\item\em Standard bgc output. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__output_ab7532889e9a83e66ff86ec9fee17cb04}{output\_\-raw} (Nlayer, N\_\-active, time, T, thick, S\_\-bu, psi\_\-s, psi\_\-l, psi\_\-g)
+\begin{DoxyCompactList}\small\item\em Output for debugging purposes. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__output_a37683998f084e7c52ae0118b84287f89}{output\_\-raw\_\-snow} (time, T\_\-snow, thick\_\-snow, S\_\-abs\_\-snow, m\_\-snow, psi\_\-s\_\-snow, psi\_\-l\_\-snow, psi\_\-g\_\-snow)
+\begin{DoxyCompactList}\small\item\em Output for debugging purposes. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__output_a5da23754959960287613e8c86a436fff}{output\_\-raw\_\-lay} (Nlayer, N\_\-active, H\_\-abs, m, S\_\-abs, thick, string)
+\begin{DoxyCompactList}\small\item\em Output for debugging layer dynamics.. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__output_a2075c870541a3bedcb1478870b200b68}{output\_\-begin} (Nlayer, debug\_\-flag, format\_\-T, format\_\-psi, format\_\-thick, format\_\-snow, format\_\-T2m\_\-top)
+\begin{DoxyCompactList}\small\item\em Output files are opened and format strings are created. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__output_a6177b5354dfaf78271d92aadef24b94f}{output\_\-begin\_\-bgc} (Nlayer, N\_\-bgc, format\_\-bgc)
+\begin{DoxyCompactList}\small\item\em Output files for bgc are opened and format strings are created. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+All things output. Used to clean up root.f90 and make it easier to implement changes to the output.
+
+\begin{DoxyAuthor}{Author}
+$<$Philipp Griewank, IMPRS$>$
+\end{DoxyAuthor}
+\begin{DoxyParagraph}{Revision History}
+Brought from the womb by Philipp Griewank, IMPRS ($<$2010-\/10-\/11$>$) 
+\end{DoxyParagraph}
+
+
+\subsection{Function/Subroutine Documentation}
+\hypertarget{namespacemo__output_a2f2d04e394ea77f4d4c0a61207edd0a6}{
+\index{mo\_\-output@{mo\_\-output}!output@{output}}
+\index{output@{output}!mo_output@{mo\_\-output}}
+\subsubsection[{output}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-output::output (
+\begin{DoxyParamCaption}
+\item[{INTEGER,intent(in)}]{ Nlayer, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ T, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ psi\_\-s, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ psi\_\-l, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ thick, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ S\_\-bu, }
+\item[{REAL(wp),dimension(nlayer-\/1),intent(in)}]{ ray, }
+\item[{CHARACTER$\ast$12000,intent(in)}]{ format\_\-T, }
+\item[{CHARACTER$\ast$12000,intent(in)}]{ format\_\-psi, }
+\item[{CHARACTER$\ast$12000,intent(in)}]{ format\_\-thick, }
+\item[{CHARACTER$\ast$12000,intent(in)}]{ format\_\-snow, }
+\item[{REAL(wp),intent(in)}]{ freeboard, }
+\item[{REAL(wp),intent(in)}]{ thick\_\-snow, }
+\item[{REAL(wp),intent(in)}]{ T\_\-snow, }
+\item[{REAL(wp),intent(in)}]{ psi\_\-l\_\-snow, }
+\item[{REAL(wp),intent(in)}]{ psi\_\-s\_\-snow, }
+\item[{REAL(wp),intent(in)}]{ energy\_\-stored, }
+\item[{REAL(wp),intent(in)}]{ freshwater, }
+\item[{REAL(wp),intent(in)}]{ total\_\-resist, }
+\item[{REAL(wp),intent(in)}]{ thickness, }
+\item[{REAL(wp),intent(in)}]{ bulk\_\-salin, }
+\item[{REAL(wp),intent(in)}]{ grav\_\-drain, }
+\item[{REAL(wp),intent(in)}]{ grav\_\-salt, }
+\item[{REAL(wp),intent(in)}]{ grav\_\-temp, }
+\item[{REAL(wp),intent(in)}]{ T2m, }
+\item[{REAL(wp),intent(in)}]{ T\_\-top}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__output_a2f2d04e394ea77f4d4c0a61207edd0a6}
+
+
+Standard output. 
+
+For time=n$\ast$time\_\-out data is exported.
+
+\begin{DoxyParagraph}{Revision History}
+created by Philipp Griewank, IMPRS (2010-\/10-\/11) 
+\end{DoxyParagraph}
+\hypertarget{namespacemo__output_a2075c870541a3bedcb1478870b200b68}{
+\index{mo\_\-output@{mo\_\-output}!output\_\-begin@{output\_\-begin}}
+\index{output\_\-begin@{output\_\-begin}!mo_output@{mo\_\-output}}
+\subsubsection[{output\_\-begin}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-output::output\_\-begin (
+\begin{DoxyParamCaption}
+\item[{INTEGER,intent(in)}]{ Nlayer, }
+\item[{INTEGER,intent(in)}]{ debug\_\-flag, }
+\item[{CHARACTER$\ast$12000,intent(out)}]{ format\_\-T, }
+\item[{CHARACTER$\ast$12000,intent(out)}]{ format\_\-psi, }
+\item[{CHARACTER$\ast$12000,intent(out)}]{ format\_\-thick, }
+\item[{CHARACTER$\ast$12000,intent(out)}]{ format\_\-snow, }
+\item[{CHARACTER$\ast$12000,intent(out)}]{ format\_\-T2m\_\-top}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__output_a2075c870541a3bedcb1478870b200b68}
+
+
+Output files are opened and format strings are created. 
+
+Format strings are defined according to the number of layers used which define the output format. Files are opened.
+
+\begin{DoxyParagraph}{Revision History}
+created by Philipp Griewank, IMPRS (2010-\/10-\/11) moved by Philipp Griewank, IMPRS (2011-\/03-\/09) 
+\end{DoxyParagraph}
+\hypertarget{namespacemo__output_a6177b5354dfaf78271d92aadef24b94f}{
+\index{mo\_\-output@{mo\_\-output}!output\_\-begin\_\-bgc@{output\_\-begin\_\-bgc}}
+\index{output\_\-begin\_\-bgc@{output\_\-begin\_\-bgc}!mo_output@{mo\_\-output}}
+\subsubsection[{output\_\-begin\_\-bgc}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-output::output\_\-begin\_\-bgc (
+\begin{DoxyParamCaption}
+\item[{INTEGER,intent(in)}]{ Nlayer, }
+\item[{INTEGER,intent(in)}]{ N\_\-bgc, }
+\item[{CHARACTER$\ast$12000,intent(out)}]{ format\_\-bgc}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__output_a6177b5354dfaf78271d92aadef24b94f}
+
+
+Output files for bgc are opened and format strings are created. 
+
+Same thing as out\_\-begin but for bgc Each tracer is outputted in bulk and in brine concentration in a separate file.
+
+\begin{DoxyParagraph}{Revision History}
+created by Dr. Philipp Griewank, MPI (2014-\/02-\/07) 
+\end{DoxyParagraph}
+\hypertarget{namespacemo__output_a0c4b84f221bda333c52a4aaa7e2a854d}{
+\index{mo\_\-output@{mo\_\-output}!output\_\-bgc@{output\_\-bgc}}
+\index{output\_\-bgc@{output\_\-bgc}!mo_output@{mo\_\-output}}
+\subsubsection[{output\_\-bgc}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-output::output\_\-bgc (
+\begin{DoxyParamCaption}
+\item[{INTEGER,intent(in)}]{ Nlayer, }
+\item[{INTEGER,intent(in)}]{ N\_\-active, }
+\item[{REAL(wp),dimension(n\_\-bgc),intent(in)}]{ bgc\_\-bottom, }
+\item[{INTEGER,intent(in)}]{ N\_\-bgc, }
+\item[{REAL(wp),dimension(nlayer,n\_\-bgc),intent(in)}]{ bgc\_\-abs, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ psi\_\-l, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ thick, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ m, }
+\item[{CHARACTER$\ast$12000,intent(in)}]{ format\_\-bgc}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__output_a0c4b84f221bda333c52a4aaa7e2a854d}
+
+
+Standard bgc output. 
+
+For time=n$\ast$time\_\-out data is exported.
+
+\begin{DoxyParagraph}{Revision History}
+created by Philipp Griewank, IMPRS (2014-\/02-\/06) 
+\end{DoxyParagraph}
+\hypertarget{namespacemo__output_ab7532889e9a83e66ff86ec9fee17cb04}{
+\index{mo\_\-output@{mo\_\-output}!output\_\-raw@{output\_\-raw}}
+\index{output\_\-raw@{output\_\-raw}!mo_output@{mo\_\-output}}
+\subsubsection[{output\_\-raw}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-output::output\_\-raw (
+\begin{DoxyParamCaption}
+\item[{INTEGER,intent(in)}]{ Nlayer, }
+\item[{INTEGER,intent(in)}]{ N\_\-active, }
+\item[{REAL(wp),intent(in)}]{ time, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ T, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ thick, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ S\_\-bu, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ psi\_\-s, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ psi\_\-l, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ psi\_\-g}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__output_ab7532889e9a83e66ff86ec9fee17cb04}
+
+
+Output for debugging purposes. 
+
+Data for each layer is written out each time step to aid in finding errors or understanding model behavior.
+
+\begin{DoxyParagraph}{Revision History}
+created by Philipp Griewank, IMPRS (2010-\/10-\/11) 
+\end{DoxyParagraph}
+\hypertarget{namespacemo__output_a5da23754959960287613e8c86a436fff}{
+\index{mo\_\-output@{mo\_\-output}!output\_\-raw\_\-lay@{output\_\-raw\_\-lay}}
+\index{output\_\-raw\_\-lay@{output\_\-raw\_\-lay}!mo_output@{mo\_\-output}}
+\subsubsection[{output\_\-raw\_\-lay}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-output::output\_\-raw\_\-lay (
+\begin{DoxyParamCaption}
+\item[{INTEGER,intent(in)}]{ Nlayer, }
+\item[{INTEGER,intent(in)}]{ N\_\-active, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ H\_\-abs, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ m, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ S\_\-abs, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ thick, }
+\item[{CHARACTER$\ast$6,intent(in)}]{ string}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__output_a5da23754959960287613e8c86a436fff}
+
+
+Output for debugging layer dynamics.. 
+
+Is used when debug\_\-flag = 2 to track when which layer dynamics occur (see \hyperlink{namespacemo__layer__dynamics}{mo\_\-layer\_\-dynamics}). \hypertarget{namespacemo__output_a37683998f084e7c52ae0118b84287f89}{
+\index{mo\_\-output@{mo\_\-output}!output\_\-raw\_\-snow@{output\_\-raw\_\-snow}}
+\index{output\_\-raw\_\-snow@{output\_\-raw\_\-snow}!mo_output@{mo\_\-output}}
+\subsubsection[{output\_\-raw\_\-snow}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-output::output\_\-raw\_\-snow (
+\begin{DoxyParamCaption}
+\item[{REAL(wp),intent(in)}]{ time, }
+\item[{REAL(wp),intent(in)}]{ T\_\-snow, }
+\item[{REAL(wp),intent(in)}]{ thick\_\-snow, }
+\item[{REAL(wp),intent(in)}]{ S\_\-abs\_\-snow, }
+\item[{REAL(wp),intent(in)}]{ m\_\-snow, }
+\item[{REAL(wp),intent(in)}]{ psi\_\-s\_\-snow, }
+\item[{REAL(wp),intent(in)}]{ psi\_\-l\_\-snow, }
+\item[{REAL(wp),intent(in)}]{ psi\_\-g\_\-snow}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__output_a37683998f084e7c52ae0118b84287f89}
+
+
+Output for debugging purposes. 
+
+Data of snow layer is written out at each time step to aid in finding errors or understanding model behavior.
+
+\begin{DoxyParagraph}{Revision History}
+created by Philipp Griewank, IMPRS (2010-\/10-\/11) 
+\end{DoxyParagraph}
+\hypertarget{namespacemo__output_a9d48b3b49e6dbe858e06c8fe1dc4bfbd}{
+\index{mo\_\-output@{mo\_\-output}!output\_\-settings@{output\_\-settings}}
+\index{output\_\-settings@{output\_\-settings}!mo_output@{mo\_\-output}}
+\subsubsection[{output\_\-settings}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-output::output\_\-settings (
+\begin{DoxyParamCaption}
+\item[{CHARACTER$\ast$12000,intent(in)}]{ description, }
+\item[{INTEGER,intent(in)}]{ testcase, }
+\item[{INTEGER,intent(in)}]{ N\_\-top, }
+\item[{INTEGER,intent(in)}]{ N\_\-bottom, }
+\item[{INTEGER,intent(in)}]{ Nlayer, }
+\item[{REAL(wp),intent(in)}]{ fl\_\-q\_\-bottom, }
+\item[{REAL(wp),intent(in)}]{ T\_\-bottom, }
+\item[{REAL(wp),intent(in)}]{ S\_\-bu\_\-bottom, }
+\item[{REAL(wp),intent(in)}]{ thick\_\-0, }
+\item[{REAL(wp),intent(in)}]{ time\_\-out, }
+\item[{REAL(wp),intent(in)}]{ time\_\-total, }
+\item[{REAL(wp),intent(in)}]{ dt, }
+\item[{INTEGER,intent(in)}]{ boundflux\_\-flag, }
+\item[{INTEGER,intent(in)}]{ atmoflux\_\-flag, }
+\item[{INTEGER,intent(in)}]{ albedo\_\-flag, }
+\item[{INTEGER,intent(in)}]{ grav\_\-flag, }
+\item[{INTEGER,intent(in)}]{ flush\_\-flag, }
+\item[{INTEGER,intent(in)}]{ flood\_\-flag, }
+\item[{INTEGER,intent(in)}]{ grav\_\-heat\_\-flag, }
+\item[{INTEGER,intent(in)}]{ flush\_\-heat\_\-flag, }
+\item[{INTEGER,intent(in)}]{ harmonic\_\-flag, }
+\item[{INTEGER,intent(in)}]{ prescribe\_\-flag, }
+\item[{INTEGER,intent(in)}]{ salt\_\-flag, }
+\item[{INTEGER,intent(in)}]{ turb\_\-flag, }
+\item[{INTEGER,intent(in)}]{ bottom\_\-flag, }
+\item[{INTEGER,intent(in)}]{ tank\_\-flag, }
+\item[{INTEGER,intent(in)}]{ precip\_\-flag, }
+\item[{INTEGER,intent(in)}]{ bgc\_\-flag, }
+\item[{INTEGER,intent(in)}]{ N\_\-bgc}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__output_a9d48b3b49e6dbe858e06c8fe1dc4bfbd}
+
+
+Settings output. 
+
+Writes important values to latter identify run.
+
+\begin{DoxyParagraph}{Revision History}
+created by Philipp Griewank, IMPRS (2011-\/02-\/12) 
+\end{DoxyParagraph}

@@ -1,0 +1,128 @@
+\hypertarget{namespacemo__init}{
+\section{mo\_\-init Module Reference}
+\label{namespacemo__init}\index{mo\_\-init@{mo\_\-init}}
+}
+
+
+Allocates Arrays and sets initial data for a given testcase for SAMSIM.  
+
+
+\subsection*{Functions/Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine \hyperlink{namespacemo__init_a32008745ff66791f91f74cd2f381f35f}{init} (testcase)
+\begin{DoxyCompactList}\small\item\em Sets initial conditions according to which testcase is chosen. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__init_a15907af975b8c0b390a260fba411f17d}{sub\_\-allocate} (Nlayer)
+\begin{DoxyCompactList}\small\item\em Allocates Arrays. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__init_a15996dd79eec9299b5aa0cb64a1e05ad}{sub\_\-allocate\_\-bgc} (Nlayer, N\_\-bgc)
+\begin{DoxyCompactList}\small\item\em Allocates BGC Arrays. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__init_acd486abfb3ef8b3a6a773d0c9c4b5698}{sub\_\-deallocate}
+\begin{DoxyCompactList}\small\item\em Deallocates Arrays. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Allocates Arrays and sets initial data for a given testcase for SAMSIM. \begin{DoxyAuthor}{Author}
+Philipp Griewank, IMPRS-\/ESM
+\end{DoxyAuthor}
+\begin{DoxyParagraph}{Revision History}
+first version created to deal with first multi-\/layer tests. by Philipp Griewank, IMPRS (2010-\/07-\/22) 
+\end{DoxyParagraph}
+
+
+\subsection{Function/Subroutine Documentation}
+\hypertarget{namespacemo__init_a32008745ff66791f91f74cd2f381f35f}{
+\index{mo\_\-init@{mo\_\-init}!init@{init}}
+\index{init@{init}!mo_init@{mo\_\-init}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-init::init (
+\begin{DoxyParamCaption}
+\item[{INTEGER,intent(in)}]{ testcase}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__init_a32008745ff66791f91f74cd2f381f35f}
+
+
+Sets initial conditions according to which testcase is chosen. 
+
+For different initial conditions the Arrays are allocated and the initial values are set. Following must always be: 1. Nlayer = N\_\-top+N\_\-middle+N\_\-bottom 2. N\_\-active is set correctly, N\_\-active $<$= Nlayer 3. fl\_\-q\_\-bottom $>$= 0 4. T\_\-bottom $>$ freezing point of for S\_\-bu\_\-bottom 5. A too high dt for a too small thick\_\-0 leads to numerical thermodynamic instability. For a conservative guess dt \mbox{[}s\mbox{]} should be smaller than 250000 $\ast$ (dz \mbox{[}m\mbox{]})$\ast$$\ast$2
+
+Testcase 1
+\begin{DoxyItemize}
+\item Testcase 1 is a replication of lab experiments conducted in tanks cooled from above by a cooling plate using the boundflux\_\-flag 1.
+\item In this testcase the cooling plate Temperature T\_\-top changes every 12 hours to imitate the experiments Dirk Notz conducted in his PhD.
+\item This testcase was used to optimize the free parameters of the gravity drainage parametrization (see Griewank Notz 2013/14).
+\item Can also be run with bgc tracers.
+\end{DoxyItemize}
+
+Testcase 2
+\begin{DoxyItemize}
+\item Testcase is an example of how to simulate ice growth and melt in cooling chambers.
+\item Boundflux\_\-flag 3 is used, which uses T2m as the air temperature in the cooling chamber.
+\item The surface flux heat flux is proportional to the ice-\/air temperature difference (T\_\-top-\/T2m).
+\item When reproducing cooling chamber experiments the alpha flux parameters need to be tuned, and a module in \hyperlink{namespacemo__testcase__specifics}{mo\_\-testcase\_\-specifics} is needed to set/ T2m over time.
+\item The heat flux in the water from below (fl\_\-q\_\-bottom) for such experiments can be very hard to reproduce if the heat input is not carefully measured from all pumps or similar devices used.
+\end{DoxyItemize}
+
+Testcase 3
+\begin{DoxyItemize}
+\item Uses interpolated climate mean forcing from Notz and a constant oceanic heat flux (fl\_\-q\_\-bottom) to grow idealized arctic sea ice.
+\item Is generally intended as a numerically cheap testcase to check for effects of code changes.
+\item Is also useful when runs over many years are needed.
+\item The amount of liquid and solid precipitation is set in sub\_\-test3 of mo\_\-testcase specifics.
+\end{DoxyItemize}
+
+Testcase 4
+\begin{DoxyItemize}
+\item Uses three hourly reanalysis forcing over 4.5 years.
+\item Is set up to start in July.
+\item Prescribes annual cycle of oceanic heat flux.
+\item Requires the proper input data to be copied into the executable folder (see sub\_\-input).
+\item Is more computer intensive
+\item Was used a lot for Griewank \& Notz 2013/2014
+\end{DoxyItemize}
+
+\begin{DoxyParagraph}{Revision History}
+First set up by Philipp Griewank, IMPRS (2010-\/07-\/22$>$) 
+\end{DoxyParagraph}
+\hypertarget{namespacemo__init_a15907af975b8c0b390a260fba411f17d}{
+\index{mo\_\-init@{mo\_\-init}!sub\_\-allocate@{sub\_\-allocate}}
+\index{sub\_\-allocate@{sub\_\-allocate}!mo_init@{mo\_\-init}}
+\subsubsection[{sub\_\-allocate}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-init::sub\_\-allocate (
+\begin{DoxyParamCaption}
+\item[{INTEGER,intent(in)}]{ Nlayer}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__init_a15907af975b8c0b390a260fba411f17d}
+
+
+Allocates Arrays. 
+
+For a given number of layers Nlayers all arrays are allocated 
+\begin{DoxyParams}{Parameters}
+\item[{\em Nlayer}]number of layers \end{DoxyParams}
+\hypertarget{namespacemo__init_a15996dd79eec9299b5aa0cb64a1e05ad}{
+\index{mo\_\-init@{mo\_\-init}!sub\_\-allocate\_\-bgc@{sub\_\-allocate\_\-bgc}}
+\index{sub\_\-allocate\_\-bgc@{sub\_\-allocate\_\-bgc}!mo_init@{mo\_\-init}}
+\subsubsection[{sub\_\-allocate\_\-bgc}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-init::sub\_\-allocate\_\-bgc (
+\begin{DoxyParamCaption}
+\item[{INTEGER,intent(in)}]{ Nlayer, }
+\item[{INTEGER,intent(in)}]{ N\_\-bgc}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__init_a15996dd79eec9299b5aa0cb64a1e05ad}
+
+
+Allocates BGC Arrays. 
+
+\hypertarget{namespacemo__init_acd486abfb3ef8b3a6a773d0c9c4b5698}{
+\index{mo\_\-init@{mo\_\-init}!sub\_\-deallocate@{sub\_\-deallocate}}
+\index{sub\_\-deallocate@{sub\_\-deallocate}!mo_init@{mo\_\-init}}
+\subsubsection[{sub\_\-deallocate}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-init::sub\_\-deallocate (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__init_acd486abfb3ef8b3a6a773d0c9c4b5698}
+
+
+Deallocates Arrays. 
+

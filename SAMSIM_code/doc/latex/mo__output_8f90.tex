@@ -1,0 +1,32 @@
+\hypertarget{mo__output_8f90}{
+\section{mo\_\-output.f90 File Reference}
+\label{mo__output_8f90}\index{mo\_\-output.f90@{mo\_\-output.f90}}
+}
+\subsection*{Modules}
+\begin{DoxyCompactItemize}
+\item 
+module \hyperlink{namespacemo__output}{mo\_\-output}
+
+
+\begin{DoxyCompactList}\small\item\em All things output. \item\end{DoxyCompactList}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions/Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine \hyperlink{namespacemo__output_a9d48b3b49e6dbe858e06c8fe1dc4bfbd}{mo\_\-output::output\_\-settings} (description, testcase, N\_\-top, N\_\-bottom, Nlayer, fl\_\-q\_\-bottom, T\_\-bottom, S\_\-bu\_\-bottom, thick\_\-0, time\_\-out, time\_\-total, dt, boundflux\_\-flag, atmoflux\_\-flag, albedo\_\-flag, grav\_\-flag, flush\_\-flag, flood\_\-flag, grav\_\-heat\_\-flag, flush\_\-heat\_\-flag, harmonic\_\-flag, prescribe\_\-flag, salt\_\-flag, turb\_\-flag, bottom\_\-flag, tank\_\-flag, precip\_\-flag, bgc\_\-flag, N\_\-bgc)
+\begin{DoxyCompactList}\small\item\em Settings output. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__output_a2f2d04e394ea77f4d4c0a61207edd0a6}{mo\_\-output::output} (Nlayer, T, psi\_\-s, psi\_\-l, thick, S\_\-bu, ray, format\_\-T, format\_\-psi, format\_\-thick, format\_\-snow, freeboard, thick\_\-snow, T\_\-snow, psi\_\-l\_\-snow, psi\_\-s\_\-snow, energy\_\-stored, freshwater, total\_\-resist, thickness, bulk\_\-salin, grav\_\-drain, grav\_\-salt, grav\_\-temp, T2m, T\_\-top)
+\begin{DoxyCompactList}\small\item\em Standard output. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__output_a0c4b84f221bda333c52a4aaa7e2a854d}{mo\_\-output::output\_\-bgc} (Nlayer, N\_\-active, bgc\_\-bottom, N\_\-bgc, bgc\_\-abs, psi\_\-l, thick, m, format\_\-bgc)
+\begin{DoxyCompactList}\small\item\em Standard bgc output. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__output_ab7532889e9a83e66ff86ec9fee17cb04}{mo\_\-output::output\_\-raw} (Nlayer, N\_\-active, time, T, thick, S\_\-bu, psi\_\-s, psi\_\-l, psi\_\-g)
+\begin{DoxyCompactList}\small\item\em Output for debugging purposes. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__output_a37683998f084e7c52ae0118b84287f89}{mo\_\-output::output\_\-raw\_\-snow} (time, T\_\-snow, thick\_\-snow, S\_\-abs\_\-snow, m\_\-snow, psi\_\-s\_\-snow, psi\_\-l\_\-snow, psi\_\-g\_\-snow)
+\begin{DoxyCompactList}\small\item\em Output for debugging purposes. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__output_a5da23754959960287613e8c86a436fff}{mo\_\-output::output\_\-raw\_\-lay} (Nlayer, N\_\-active, H\_\-abs, m, S\_\-abs, thick, string)
+\begin{DoxyCompactList}\small\item\em Output for debugging layer dynamics.. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__output_a2075c870541a3bedcb1478870b200b68}{mo\_\-output::output\_\-begin} (Nlayer, debug\_\-flag, format\_\-T, format\_\-psi, format\_\-thick, format\_\-snow, format\_\-T2m\_\-top)
+\begin{DoxyCompactList}\small\item\em Output files are opened and format strings are created. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__output_a6177b5354dfaf78271d92aadef24b94f}{mo\_\-output::output\_\-begin\_\-bgc} (Nlayer, N\_\-bgc, format\_\-bgc)
+\begin{DoxyCompactList}\small\item\em Output files for bgc are opened and format strings are created. \item\end{DoxyCompactList}\end{DoxyCompactItemize}

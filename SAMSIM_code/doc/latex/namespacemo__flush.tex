@@ -1,0 +1,98 @@
+\hypertarget{namespacemo__flush}{
+\section{mo\_\-flush Module Reference}
+\label{namespacemo__flush}\index{mo\_\-flush@{mo\_\-flush}}
+}
+
+
+Contains various subroutines for flushing.  
+
+
+\subsection*{Functions/Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine \hyperlink{namespacemo__flush_a405b14313a6162816fc9f7cc30501b2e}{flush3} (freeboard, psi\_\-l, thick, thick\_\-0, S\_\-abs, H\_\-abs, m, T, dt, Nlayer, N\_\-active, T\_\-bottom, S\_\-bu\_\-bottom, melt\_\-thick, debug\_\-flag, flush\_\-heat\_\-flag, fl\_\-brine\_\-bgc)
+\begin{DoxyCompactList}\small\item\em Subroutine for complex flushing. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__flush_aa1fdebea288d239b56f2db40538991f3}{flush4} (psi\_\-l, thick, T, thick\_\-0, S\_\-abs, H\_\-abs, m, dt, Nlayer, N\_\-active, N\_\-top, N\_\-middle, N\_\-bottom, melt\_\-thick, debug\_\-flag)
+\begin{DoxyCompactList}\small\item\em An alternative subroutine for calculating flushing. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains various subroutines for flushing. Which subroutine is called is determined by flush\_\-flag.
+
+\begin{DoxyAuthor}{Author}
+$<$Philipp Griewank, IMPRS$>$
+\end{DoxyAuthor}
+\begin{DoxyParagraph}{Revision History}
+Sang into existence for very 1D column by Philipp Griewank, IMPRS (2010-\/10-\/20) First stable release by Philipp Griewank, IMPRS (2010-\/11-\/27) Freeboard calculation outsourced to \hyperlink{namespacemo__functions}{mo\_\-functions} by Philipp Griewank, IMPRS (2010-\/11-\/27) Drainage through cracks is added by Philipp Griewank, IMPRS (2011-\/02-\/24) 
+\end{DoxyParagraph}
+
+
+\subsection{Function/Subroutine Documentation}
+\hypertarget{namespacemo__flush_a405b14313a6162816fc9f7cc30501b2e}{
+\index{mo\_\-flush@{mo\_\-flush}!flush3@{flush3}}
+\index{flush3@{flush3}!mo_flush@{mo\_\-flush}}
+\subsubsection[{flush3}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-flush::flush3 (
+\begin{DoxyParamCaption}
+\item[{REAL(wp),intent(in)}]{ freeboard, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ psi\_\-l, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ thick, }
+\item[{REAL(wp),intent(in)}]{ thick\_\-0, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ S\_\-abs, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ H\_\-abs, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ m, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ T, }
+\item[{REAL(wp),intent(in)}]{ dt, }
+\item[{INTEGER,intent(in)}]{ Nlayer, }
+\item[{INTEGER,intent(inout)}]{ N\_\-active, }
+\item[{REAL(wp),intent(in)}]{ T\_\-bottom, }
+\item[{REAL(wp),intent(in)}]{ S\_\-bu\_\-bottom, }
+\item[{REAL(wp),intent(inout)}]{ melt\_\-thick, }
+\item[{INTEGER,intent(in)}]{ debug\_\-flag, }
+\item[{INTEGER,intent(in)}]{ flush\_\-heat\_\-flag, }
+\item[{REAL(wp),dimension(nlayer+1,nlayer+1),intent(inout),optional}]{ fl\_\-brine\_\-bgc}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__flush_a405b14313a6162816fc9f7cc30501b2e}
+
+
+Subroutine for complex flushing. 
+
+Each layer splits the flushing brine into a fraction that moves downward, and a fraction that leaves the ice. A fraction of the top layer is considered melt water. This approach uses hydraulic resistivity R = mu$\ast$thick/perm . The hydraulic head is assumed to be the freeboard. The vertical resistance R\_\-v of each layer is a determined by its viscosity $\ast$ thickness divided by it's permeability. Additionally, each layer is given horizontal resistivity R\_\-h. It is assumed that there is an average length horizontally which brine needs to flow to reach a drainage feature in the ice. We assume this length is a linear function of the ice thickness. The only tuning parameter is para\_\-flush\_\-horiz. The total resistance of layer i to the bottom is R.
+
+For flush\_\-heat\_\-flag==2 the amount of heat which leaves by dynamics from the lowest layer is added to the lowest layer to keep results comparable to the other approaches. See PhD Griewank for details
+
+\begin{DoxyParagraph}{Revision History}
+Invented by Philipp Griewank, IMPRS (2012-\/06-\/15) Trying to add brine fluxes by Philipp Griewank, IMPRS (2014-\/02-\/01) 
+\end{DoxyParagraph}
+\hypertarget{namespacemo__flush_aa1fdebea288d239b56f2db40538991f3}{
+\index{mo\_\-flush@{mo\_\-flush}!flush4@{flush4}}
+\index{flush4@{flush4}!mo_flush@{mo\_\-flush}}
+\subsubsection[{flush4}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-flush::flush4 (
+\begin{DoxyParamCaption}
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ psi\_\-l, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ thick, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ T, }
+\item[{REAL(wp),intent(in)}]{ thick\_\-0, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ S\_\-abs, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ H\_\-abs, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ m, }
+\item[{REAL(wp),intent(in)}]{ dt, }
+\item[{INTEGER,intent(in)}]{ Nlayer, }
+\item[{INTEGER,intent(in)}]{ N\_\-active, }
+\item[{INTEGER,intent(in)}]{ N\_\-top, }
+\item[{INTEGER,intent(in)}]{ N\_\-middle, }
+\item[{INTEGER,intent(in)}]{ N\_\-bottom, }
+\item[{REAL(wp),intent(inout)}]{ melt\_\-thick, }
+\item[{INTEGER,intent(in)}]{ debug\_\-flag}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__flush_aa1fdebea288d239b56f2db40538991f3}
+
+
+An alternative subroutine for calculating flushing. 
+
+Simplified approach. Melt\_\-thick of top layer is simply removed with brine salinity. Salinity of a layer is reduced if the solid fraction is lower than that of the layer above it. Flushing stops as soon as a layer has a higher solid fraction than the layer below it.
+
+\begin{DoxyParagraph}{Revision History}
+Invented by Philipp Griewank, IMPRS (2012-\/07-\/9) 
+\end{DoxyParagraph}

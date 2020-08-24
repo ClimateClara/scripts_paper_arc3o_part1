@@ -1,0 +1,240 @@
+\hypertarget{namespacemo__snow}{
+\section{mo\_\-snow Module Reference}
+\label{namespacemo__snow}\index{mo\_\-snow@{mo\_\-snow}}
+}
+
+
+Module contains all things directly related to snow.  
+
+
+\subsection*{Functions/Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine \hyperlink{namespacemo__snow_a846b1d8e0ce528570ee66f641db97eef}{snow\_\-coupling} (H\_\-abs\_\-snow, phi\_\-s, T\_\-snow, H\_\-abs, H, phi, T, m\_\-snow, S\_\-abs\_\-snow, m, S\_\-bu)
+\begin{DoxyCompactList}\small\item\em Subroutine to couple a thin snow layer to the upper ice layer. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__snow_a39b7e4b579b1dfddc8555bfcd57b5397}{snow\_\-precip} (m\_\-snow, H\_\-abs\_\-snow, thick\_\-snow, psi\_\-s\_\-snow, dt, liquid\_\-precip\_\-in, T2m, solid\_\-precip\_\-in)
+\begin{DoxyCompactList}\small\item\em Subroutine for calculating precipitation on an existing snow cover. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__snow_a4c98864b01acc61ff6b6ef62c9c79fa6}{snow\_\-precip\_\-0} (H\_\-abs, S\_\-abs, m, T, dt, liquid\_\-precip\_\-in, T2m, solid\_\-precip\_\-in)
+\begin{DoxyCompactList}\small\item\em Subroutine for calculating precipitation into the ocean. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__snow_a72eb7157143136ae8ccba8de71c74a04}{snow\_\-thermo} (psi\_\-l\_\-snow, psi\_\-s\_\-snow, psi\_\-g\_\-snow, thick\_\-snow, S\_\-abs\_\-snow, H\_\-abs\_\-snow, m\_\-snow, T\_\-snow, m, thick, H\_\-abs)
+\begin{DoxyCompactList}\small\item\em Subroutine for calculating snow thermodynamics. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__snow_ab464267664e63624ed508606189bd9a5}{sub\_\-fl\_\-Q\_\-0\_\-snow\_\-thin} (m\_\-snow, thick\_\-snow, T\_\-snow, psi\_\-s, psi\_\-l, psi\_\-g, thick, T\_\-bound, fl\_\-Q\_\-snow)
+\begin{DoxyCompactList}\small\item\em Determines conductive Heat flux for combined top ice and snow layer. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__snow_a8a1a43bdb1400602404c56efd1c33e51}{sub\_\-fl\_\-Q\_\-snow} (m\_\-snow, thick\_\-snow, T\_\-snow, psi\_\-s\_\-2, psi\_\-l\_\-2, psi\_\-g\_\-2, thick\_\-2, T\_\-2, fl\_\-Q)
+\begin{DoxyCompactList}\small\item\em Determines conductive Heat flux between Snow and top ice layer. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__snow_ae998551477b1c51b6a7dfe7688da0c16}{sub\_\-fl\_\-Q\_\-0\_\-snow} (m\_\-snow, thick\_\-snow, T\_\-snow, T\_\-bound, fl\_\-Q)
+\begin{DoxyCompactList}\small\item\em Determines conductive Heat between snow layer and upper boundary layer. A limiting factor is added to increase stability of layers thinner then thick\_\-min. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__snow_ae04b8ab00ed0ed7c4f89c56d3893bbfe}{func\_\-k\_\-snow} (m\_\-snow, thick\_\-snow)
+\begin{DoxyCompactList}\small\item\em Calculates the thermal conductivity of the snow layer as a function of the density. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Module contains all things directly related to snow. \begin{DoxyParagraph}{Revision History}
+Provided for by Philipp Griewank 2010-\/12-\/13 
+\end{DoxyParagraph}
+
+
+\subsection{Function/Subroutine Documentation}
+\hypertarget{namespacemo__snow_ae04b8ab00ed0ed7c4f89c56d3893bbfe}{
+\index{mo\_\-snow@{mo\_\-snow}!func\_\-k\_\-snow@{func\_\-k\_\-snow}}
+\index{func\_\-k\_\-snow@{func\_\-k\_\-snow}!mo_snow@{mo\_\-snow}}
+\subsubsection[{func\_\-k\_\-snow}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) mo\_\-snow::func\_\-k\_\-snow (
+\begin{DoxyParamCaption}
+\item[{REAL(wp),intent(in)}]{ m\_\-snow, }
+\item[{REAL(wp),intent(in)}]{ thick\_\-snow}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__snow_ae04b8ab00ed0ed7c4f89c56d3893bbfe}
+
+
+Calculates the thermal conductivity of the snow layer as a function of the density. 
+
+Based on the Sturm et al 1997 data fit for densities greater then 0.156 g/cm$\ast$$\ast$3. Warning, Sturm et al use g/cm$\ast$$\ast$3, I use kg/m$\ast$$\ast$3 Snow density probability functions can be included lated to raise the effective conductivity. Warning!: added 0.15 to the thermal conductivity.
+
+\begin{DoxyParagraph}{Revision History}
+Forged by Philipp Griewank (2010-\/12-\/13) 
+\end{DoxyParagraph}
+\hypertarget{namespacemo__snow_a846b1d8e0ce528570ee66f641db97eef}{
+\index{mo\_\-snow@{mo\_\-snow}!snow\_\-coupling@{snow\_\-coupling}}
+\index{snow\_\-coupling@{snow\_\-coupling}!mo_snow@{mo\_\-snow}}
+\subsubsection[{snow\_\-coupling}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-snow::snow\_\-coupling (
+\begin{DoxyParamCaption}
+\item[{REAL(wp),intent(inout)}]{ H\_\-abs\_\-snow, }
+\item[{REAL(wp),intent(inout)}]{ phi\_\-s, }
+\item[{REAL(wp),intent(inout)}]{ T\_\-snow, }
+\item[{REAL(wp),intent(inout)}]{ H\_\-abs, }
+\item[{REAL(wp),intent(inout)}]{ H, }
+\item[{REAL(wp),intent(inout)}]{ phi, }
+\item[{REAL(wp),intent(inout)}]{ T, }
+\item[{REAL(wp),intent(in)}]{ m\_\-snow, }
+\item[{REAL(wp),intent(in)}]{ S\_\-abs\_\-snow, }
+\item[{REAL(wp),intent(in)}]{ m, }
+\item[{REAL(wp),intent(in)}]{ S\_\-bu}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__snow_a846b1d8e0ce528570ee66f641db97eef}
+
+
+Subroutine to couple a thin snow layer to the upper ice layer. 
+
+Subroutine is activated when thick\_\-snow$<$thick\_\-min. The enthalpies of the two layers are adjusted until both layers have the same temperatures. The following approach is used. 1. The enthalpies are adjusted so T\_\-snow=0, and phi\_\-s=1. 2. The temperatures are calculated. 3. If the ice temperature is greater 0 the balanced enthalpies are calculated directly. ELSE they are calculated iteratively.
+
+\begin{DoxyParagraph}{Revision History}
+Written by Philipp Griewank, IMPRS (2011-\/01-\/20) 
+\end{DoxyParagraph}
+\hypertarget{namespacemo__snow_a39b7e4b579b1dfddc8555bfcd57b5397}{
+\index{mo\_\-snow@{mo\_\-snow}!snow\_\-precip@{snow\_\-precip}}
+\index{snow\_\-precip@{snow\_\-precip}!mo_snow@{mo\_\-snow}}
+\subsubsection[{snow\_\-precip}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-snow::snow\_\-precip (
+\begin{DoxyParamCaption}
+\item[{REAL(wp),intent(inout)}]{ m\_\-snow, }
+\item[{REAL(wp),intent(inout)}]{ H\_\-abs\_\-snow, }
+\item[{REAL(wp),intent(inout)}]{ thick\_\-snow, }
+\item[{REAL(wp),intent(inout)}]{ psi\_\-s\_\-snow, }
+\item[{REAL(wp),intent(in)}]{ dt, }
+\item[{REAL(wp),intent(in)}]{ liquid\_\-precip\_\-in, }
+\item[{REAL(wp),intent(in)}]{ T2m, }
+\item[{REAL(wp),intent(in),optional}]{ solid\_\-precip\_\-in}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__snow_a39b7e4b579b1dfddc8555bfcd57b5397}
+
+
+Subroutine for calculating precipitation on an existing snow cover. 
+
+Can optionally deal with separate solid and liquid precipitation or a single liquid input. The 2 meter temperature determines the temperature of the precipitation. In case of single input the 2 meter temperature determines if snow or rain falls. Snow makes the thickness grow according to the density of new snow(rho\_\-snow), while rain falls into the snow without increasing snow depth. It is necessary to calculate the new psi\_\-s\_\-snow to ensure proper melting in snow\_\-thermo.
+
+\begin{DoxyParagraph}{Revision History}
+Sired by Philipp Griewank, IMPRS (2010-\/12-\/14) 
+\end{DoxyParagraph}
+\hypertarget{namespacemo__snow_a4c98864b01acc61ff6b6ef62c9c79fa6}{
+\index{mo\_\-snow@{mo\_\-snow}!snow\_\-precip\_\-0@{snow\_\-precip\_\-0}}
+\index{snow\_\-precip\_\-0@{snow\_\-precip\_\-0}!mo_snow@{mo\_\-snow}}
+\subsubsection[{snow\_\-precip\_\-0}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-snow::snow\_\-precip\_\-0 (
+\begin{DoxyParamCaption}
+\item[{REAL(wp),intent(inout)}]{ H\_\-abs, }
+\item[{REAL(wp),intent(inout)}]{ S\_\-abs, }
+\item[{REAL(wp),intent(in)}]{ m, }
+\item[{REAL(wp),intent(in)}]{ T, }
+\item[{REAL(wp),intent(in)}]{ dt, }
+\item[{REAL(wp),intent(in)}]{ liquid\_\-precip\_\-in, }
+\item[{REAL(wp),intent(in)}]{ T2m, }
+\item[{REAL(wp),intent(in),optional}]{ solid\_\-precip\_\-in}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__snow_a4c98864b01acc61ff6b6ef62c9c79fa6}
+
+
+Subroutine for calculating precipitation into the ocean. 
+
+Can optionally deal with separate solid and liquid precipitation or a single liquid input. The 2 meter temperature determines the temperature of the precipitation. In case of single input the 2 meter temperature determines if snow or rain falls. It is important, that the mass, energy and salt leaving the upper layer must be outputted. This is not the case. Temp!
+
+\begin{DoxyParagraph}{Revision History}
+Copy and Pasted by Philipp Griewank, IMPRS (2011-\/01-\/10) 
+\end{DoxyParagraph}
+\hypertarget{namespacemo__snow_a72eb7157143136ae8ccba8de71c74a04}{
+\index{mo\_\-snow@{mo\_\-snow}!snow\_\-thermo@{snow\_\-thermo}}
+\index{snow\_\-thermo@{snow\_\-thermo}!mo_snow@{mo\_\-snow}}
+\subsubsection[{snow\_\-thermo}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-snow::snow\_\-thermo (
+\begin{DoxyParamCaption}
+\item[{REAL(wp),intent(inout)}]{ psi\_\-l\_\-snow, }
+\item[{REAL(wp),intent(inout)}]{ psi\_\-s\_\-snow, }
+\item[{REAL(wp),intent(inout)}]{ psi\_\-g\_\-snow, }
+\item[{REAL(wp),intent(inout)}]{ thick\_\-snow, }
+\item[{REAL(wp),intent(inout)}]{ S\_\-abs\_\-snow, }
+\item[{REAL(wp),intent(inout)}]{ H\_\-abs\_\-snow, }
+\item[{REAL(wp),intent(inout)}]{ m\_\-snow, }
+\item[{REAL(wp),intent(inout)}]{ T\_\-snow, }
+\item[{REAL(wp),intent(inout)}]{ m, }
+\item[{REAL(wp),intent(inout)}]{ thick, }
+\item[{REAL(wp),intent(inout)}]{ H\_\-abs}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__snow_a72eb7157143136ae8ccba8de71c74a04}
+
+
+Subroutine for calculating snow thermodynamics. 
+
+Behaves similar to mushy layer sea ice. Important differences are: 1. no expulsion, thick\_\-snow is raised if the volume expands. 2. The liquid fraction is limited. 3. When the liquid fraction exceeds it's limit the thickness of the snow layer is reduced. This is done as follows: Only applies if the fluid fraction is above the irreducible water content as defined in Coleuo-\/Lasaffre 98. thick\_\-snow=thick\_\-snow$\ast$(1.\_\-wp-\/(psi\_\-s\_\-old-\/psi\_\-s\_\-snow)/psi\_\-s\_\-old) Warning: the formula for liquid water content in Coleuo-\/Lasaffre contains 2 typos When the water exceeds the limit water runs down to the bottom of the snow layer. The saturated lower layer is added to the top ice layer.
+
+\begin{DoxyParagraph}{Revision History}
+Fabricated by Philipp Griewank, IMPRS (2010-\/12-\/14) Major redo, water saturated bottom snow added to top ice layer by Philipp Griewank (2010-\/12-\/14) 
+\end{DoxyParagraph}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em H\_\-abs}]Top ice layer variables \end{DoxyParams}
+\hypertarget{namespacemo__snow_ae998551477b1c51b6a7dfe7688da0c16}{
+\index{mo\_\-snow@{mo\_\-snow}!sub\_\-fl\_\-Q\_\-0\_\-snow@{sub\_\-fl\_\-Q\_\-0\_\-snow}}
+\index{sub\_\-fl\_\-Q\_\-0\_\-snow@{sub\_\-fl\_\-Q\_\-0\_\-snow}!mo_snow@{mo\_\-snow}}
+\subsubsection[{sub\_\-fl\_\-Q\_\-0\_\-snow}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-snow::sub\_\-fl\_\-Q\_\-0\_\-snow (
+\begin{DoxyParamCaption}
+\item[{REAL(wp),intent(in)}]{ m\_\-snow, }
+\item[{REAL(wp),intent(in)}]{ thick\_\-snow, }
+\item[{REAL(wp),intent(in)}]{ T\_\-snow, }
+\item[{REAL(wp),intent(in)}]{ T\_\-bound, }
+\item[{REAL(wp),intent(out)}]{ fl\_\-Q}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__snow_ae998551477b1c51b6a7dfe7688da0c16}
+
+
+Determines conductive Heat between snow layer and upper boundary layer. A limiting factor is added to increase stability of layers thinner then thick\_\-min. 
+
+\begin{DoxyParagraph}{Revision History}
+first version by Philipp Griewank (2010-\/12-\/15) Artificial limitation introduced by Philipp Griewank (2011-\/01-\/17) 
+\end{DoxyParagraph}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em T\_\-bound}]T\_\-bound temperature of boundary layer \end{DoxyParams}
+\hypertarget{namespacemo__snow_ab464267664e63624ed508606189bd9a5}{
+\index{mo\_\-snow@{mo\_\-snow}!sub\_\-fl\_\-Q\_\-0\_\-snow\_\-thin@{sub\_\-fl\_\-Q\_\-0\_\-snow\_\-thin}}
+\index{sub\_\-fl\_\-Q\_\-0\_\-snow\_\-thin@{sub\_\-fl\_\-Q\_\-0\_\-snow\_\-thin}!mo_snow@{mo\_\-snow}}
+\subsubsection[{sub\_\-fl\_\-Q\_\-0\_\-snow\_\-thin}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-snow::sub\_\-fl\_\-Q\_\-0\_\-snow\_\-thin (
+\begin{DoxyParamCaption}
+\item[{REAL(wp),intent(in)}]{ m\_\-snow, }
+\item[{REAL(wp),intent(in)}]{ thick\_\-snow, }
+\item[{REAL(wp),intent(in)}]{ T\_\-snow, }
+\item[{REAL(wp),intent(in)}]{ psi\_\-s, }
+\item[{REAL(wp),intent(in)}]{ psi\_\-l, }
+\item[{REAL(wp),intent(in)}]{ psi\_\-g, }
+\item[{REAL(wp),intent(in)}]{ thick, }
+\item[{REAL(wp),intent(in)}]{ T\_\-bound, }
+\item[{REAL(wp),intent(out)}]{ fl\_\-Q\_\-snow}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__snow_ab464267664e63624ed508606189bd9a5}
+
+
+Determines conductive Heat flux for combined top ice and snow layer. 
+
+When thick\_\-snow$<$thick\_\-min.
+
+\begin{DoxyParagraph}{Revision History}
+first version by Philipp Griewank (2011-\/01-\/19) 
+\end{DoxyParagraph}
+\hypertarget{namespacemo__snow_a8a1a43bdb1400602404c56efd1c33e51}{
+\index{mo\_\-snow@{mo\_\-snow}!sub\_\-fl\_\-Q\_\-snow@{sub\_\-fl\_\-Q\_\-snow}}
+\index{sub\_\-fl\_\-Q\_\-snow@{sub\_\-fl\_\-Q\_\-snow}!mo_snow@{mo\_\-snow}}
+\subsubsection[{sub\_\-fl\_\-Q\_\-snow}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-snow::sub\_\-fl\_\-Q\_\-snow (
+\begin{DoxyParamCaption}
+\item[{REAL(wp),intent(in)}]{ m\_\-snow, }
+\item[{REAL(wp),intent(in)}]{ thick\_\-snow, }
+\item[{REAL(wp),intent(in)}]{ T\_\-snow, }
+\item[{REAL(wp),intent(in)}]{ psi\_\-s\_\-2, }
+\item[{REAL(wp),intent(in)}]{ psi\_\-l\_\-2, }
+\item[{REAL(wp),intent(in)}]{ psi\_\-g\_\-2, }
+\item[{REAL(wp),intent(in)}]{ thick\_\-2, }
+\item[{REAL(wp),intent(in)}]{ T\_\-2, }
+\item[{REAL(wp),intent(out)}]{ fl\_\-Q}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__snow_a8a1a43bdb1400602404c56efd1c33e51}
+
+
+Determines conductive Heat flux between Snow and top ice layer. 
+
+Standard approach.
+
+\begin{DoxyParagraph}{Revision History}
+first version by Philipp Griewank (2010-\/12-\/15) 
+\end{DoxyParagraph}

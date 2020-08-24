@@ -1,0 +1,494 @@
+\hypertarget{minpack_8f90}{
+\section{minpack.f90 File Reference}
+\label{minpack_8f90}\index{minpack.f90@{minpack.f90}}
+}
+\subsection*{Functions/Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine \hyperlink{minpack_8f90_a0850d60ecd544bc0acd3fc391ff375ac}{chkder} (m, n, x, fvec, fjac, ldfjac, xp, fvecp, mode, err)
+\item 
+subroutine \hyperlink{minpack_8f90_ab5a1319962e4855e0a2b7a7431085275}{dogleg} (n, r, lr, diag, qtb, delta, x)
+\item 
+real(kind=8) \hyperlink{minpack_8f90_ad0e97506d6d14388bdef9f2f8cc6aceb}{enorm} (n, x)
+\item 
+real(kind=8) \hyperlink{minpack_8f90_a31f0bacf77d7a302e52b8abd3750c970}{enorm2} (n, x)
+\item 
+subroutine \hyperlink{minpack_8f90_a327303574ddecf90e74bf7aaa64b5509}{fdjac1} (fcn, n, x, fvec, fjac, ldfjac, iflag, ml, mu, epsfcn)
+\item 
+subroutine \hyperlink{minpack_8f90_a93f854f4490882e08d928f8a84ac43f7}{fdjac2} (fcn, m, n, x, fvec, fjac, ldfjac, iflag, epsfcn)
+\item 
+subroutine \hyperlink{minpack_8f90_a1e525d0d69e43bfda5f82e3bc4745b2f}{hybrd} (fcn, n, x, fvec, xtol, maxfev, ml, mu, epsfcn, diag, mode, factor, nprint, info, nfev, fjac, ldfjac, r, lr, qtf)
+\item 
+subroutine \hyperlink{minpack_8f90_a314aebdd90b16a874c0879d291a2190d}{hybrd1} (fcn, n, x, fvec, tol, info)
+\item 
+subroutine \hyperlink{minpack_8f90_a53ab26dfa98e1e91ba7a8c3e5f83ad13}{hybrj} (fcn, n, x, fvec, fjac, ldfjac, xtol, maxfev, diag, mode, factor, nprint, info, nfev, njev, r, lr, qtf)
+\item 
+subroutine \hyperlink{minpack_8f90_afefee19843910dca7f59c228bf69749d}{hybrj1} (fcn, n, x, fvec, fjac, ldfjac, tol, info)
+\item 
+subroutine \hyperlink{minpack_8f90_a29cf549303bc0ced9cb2e1ef2da0234b}{lmder} (fcn, m, n, x, fvec, fjac, ldfjac, ftol, xtol, gtol, maxfev, diag, mode, factor, nprint, info, nfev, njev, ipvt, qtf)
+\item 
+subroutine \hyperlink{minpack_8f90_ab4dbf9a20a957dfb72d70219dd6ad6d4}{lmder1} (fcn, m, n, x, fvec, fjac, ldfjac, tol, info)
+\item 
+subroutine \hyperlink{minpack_8f90_a9c1edc586c3518092e9531b199d646f3}{lmdif} (fcn, m, n, x, fvec, ftol, xtol, gtol, maxfev, epsfcn, diag, mode, factor, nprint, info, nfev, fjac, ldfjac, ipvt, qtf)
+\item 
+subroutine \hyperlink{minpack_8f90_a1b531c7b6b594b0eeaa71ca9fe779b0c}{lmdif1} (fcn, m, n, x, fvec, tol, info)
+\item 
+subroutine \hyperlink{minpack_8f90_a1dc1e9adda30350383f28f6cc6361365}{lmpar} (n, r, ldr, ipvt, diag, qtb, delta, par, x, sdiag)
+\item 
+subroutine \hyperlink{minpack_8f90_a178ff688f77b7192504790b6741ecd4d}{lmstr} (fcn, m, n, x, fvec, fjac, ldfjac, ftol, xtol, gtol, maxfev, diag, mode, factor, nprint, info, nfev, njev, ipvt, qtf)
+\item 
+subroutine \hyperlink{minpack_8f90_acee42ee803b3870261fa529dc123a892}{lmstr1} (fcn, m, n, x, fvec, fjac, ldfjac, tol, info)
+\item 
+subroutine \hyperlink{minpack_8f90_a12e8db1e181463d5c3af21f2b1b6b5a7}{qform} (m, n, q, ldq)
+\item 
+subroutine \hyperlink{minpack_8f90_a64d35f73f2a85378c24dd7b99ddb0c0f}{qrfac} (m, n, a, lda, pivot, ipvt, lipvt, rdiag, acnorm)
+\item 
+subroutine \hyperlink{minpack_8f90_a0dd208e826a2526722a40eab1724ac83}{qrsolv} (n, r, ldr, ipvt, diag, qtb, x, sdiag)
+\item 
+subroutine \hyperlink{minpack_8f90_ab7f6e61d92cfd9ea516435ad523b989b}{r1mpyq} (m, n, a, lda, v, w)
+\item 
+subroutine \hyperlink{minpack_8f90_a8ff726029b3ff9037b390910744ee58b}{r1updt} (m, n, s, ls, u, v, w, sing)
+\item 
+subroutine \hyperlink{minpack_8f90_adc196cc5030b2eb1660c061fd85bfe0a}{r8vec\_\-print} (n, a, title)
+\item 
+subroutine \hyperlink{minpack_8f90_adbcfef20d552d8c5e7dc5925c975eb23}{rwupdt} (n, r, ldr, w, b, alpha, c, s)
+\item 
+subroutine \hyperlink{minpack_8f90_a44fdaa08281ed3009542bc9257fa965d}{timestamp} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{minpack_8f90_a0850d60ecd544bc0acd3fc391ff375ac}{
+\index{minpack.f90@{minpack.f90}!chkder@{chkder}}
+\index{chkder@{chkder}!minpack.f90@{minpack.f90}}
+\subsubsection[{chkder}]{\setlength{\rightskip}{0pt plus 5cm}subroutine chkder (
+\begin{DoxyParamCaption}
+\item[{integer ( kind = 4 )}]{ m, }
+\item[{integer ( kind = 4 )}]{ n, }
+\item[{real ( kind = 8 ),dimension(n)}]{ x, }
+\item[{real ( kind = 8 ),dimension(m)}]{ fvec, }
+\item[{real ( kind = 8 ),dimension(ldfjac,n)}]{ fjac, }
+\item[{integer ( kind = 4 )}]{ ldfjac, }
+\item[{real ( kind = 8 ),dimension(n)}]{ xp, }
+\item[{real ( kind = 8 ),dimension(m)}]{ fvecp, }
+\item[{integer ( kind = 4 )}]{ mode, }
+\item[{real ( kind = 8 ),dimension(m)}]{ err}
+\end{DoxyParamCaption}
+)}}
+\label{minpack_8f90_a0850d60ecd544bc0acd3fc391ff375ac}
+\hypertarget{minpack_8f90_ab5a1319962e4855e0a2b7a7431085275}{
+\index{minpack.f90@{minpack.f90}!dogleg@{dogleg}}
+\index{dogleg@{dogleg}!minpack.f90@{minpack.f90}}
+\subsubsection[{dogleg}]{\setlength{\rightskip}{0pt plus 5cm}subroutine dogleg (
+\begin{DoxyParamCaption}
+\item[{integer ( kind = 4 )}]{ n, }
+\item[{real ( kind = 8 ),dimension(lr)}]{ r, }
+\item[{integer ( kind = 4 )}]{ lr, }
+\item[{real ( kind = 8 ),dimension(n)}]{ diag, }
+\item[{real ( kind = 8 ),dimension(n)}]{ qtb, }
+\item[{real ( kind = 8 )}]{ delta, }
+\item[{real ( kind = 8 ),dimension(n)}]{ x}
+\end{DoxyParamCaption}
+)}}
+\label{minpack_8f90_ab5a1319962e4855e0a2b7a7431085275}
+\hypertarget{minpack_8f90_ad0e97506d6d14388bdef9f2f8cc6aceb}{
+\index{minpack.f90@{minpack.f90}!enorm@{enorm}}
+\index{enorm@{enorm}!minpack.f90@{minpack.f90}}
+\subsubsection[{enorm}]{\setlength{\rightskip}{0pt plus 5cm}real ( kind = 8 ) enorm (
+\begin{DoxyParamCaption}
+\item[{integer ( kind = 4 )}]{ n, }
+\item[{real ( kind = 8 ),dimension(n)}]{ x}
+\end{DoxyParamCaption}
+)}}
+\label{minpack_8f90_ad0e97506d6d14388bdef9f2f8cc6aceb}
+\hypertarget{minpack_8f90_a31f0bacf77d7a302e52b8abd3750c970}{
+\index{minpack.f90@{minpack.f90}!enorm2@{enorm2}}
+\index{enorm2@{enorm2}!minpack.f90@{minpack.f90}}
+\subsubsection[{enorm2}]{\setlength{\rightskip}{0pt plus 5cm}real ( kind = 8 ) enorm2 (
+\begin{DoxyParamCaption}
+\item[{integer ( kind = 4 )}]{ n, }
+\item[{real ( kind = 8 ),dimension(n)}]{ x}
+\end{DoxyParamCaption}
+)}}
+\label{minpack_8f90_a31f0bacf77d7a302e52b8abd3750c970}
+\hypertarget{minpack_8f90_a327303574ddecf90e74bf7aaa64b5509}{
+\index{minpack.f90@{minpack.f90}!fdjac1@{fdjac1}}
+\index{fdjac1@{fdjac1}!minpack.f90@{minpack.f90}}
+\subsubsection[{fdjac1}]{\setlength{\rightskip}{0pt plus 5cm}subroutine fdjac1 (
+\begin{DoxyParamCaption}
+\item[{fcn}]{, }
+\item[{integer ( kind = 4 )}]{ n, }
+\item[{real ( kind = 8 ),dimension(n)}]{ x, }
+\item[{real ( kind = 8 ),dimension(n)}]{ fvec, }
+\item[{real ( kind = 8 ),dimension(ldfjac,n)}]{ fjac, }
+\item[{integer ( kind = 4 )}]{ ldfjac, }
+\item[{integer ( kind = 4 )}]{ iflag, }
+\item[{integer ( kind = 4 )}]{ ml, }
+\item[{integer ( kind = 4 )}]{ mu, }
+\item[{real ( kind = 8 )}]{ epsfcn}
+\end{DoxyParamCaption}
+)}}
+\label{minpack_8f90_a327303574ddecf90e74bf7aaa64b5509}
+\hypertarget{minpack_8f90_a93f854f4490882e08d928f8a84ac43f7}{
+\index{minpack.f90@{minpack.f90}!fdjac2@{fdjac2}}
+\index{fdjac2@{fdjac2}!minpack.f90@{minpack.f90}}
+\subsubsection[{fdjac2}]{\setlength{\rightskip}{0pt plus 5cm}subroutine fdjac2 (
+\begin{DoxyParamCaption}
+\item[{fcn}]{, }
+\item[{integer ( kind = 4 )}]{ m, }
+\item[{integer ( kind = 4 )}]{ n, }
+\item[{real ( kind = 8 ),dimension(n)}]{ x, }
+\item[{real ( kind = 8 ),dimension(m)}]{ fvec, }
+\item[{real ( kind = 8 ),dimension(ldfjac,n)}]{ fjac, }
+\item[{integer ( kind = 4 )}]{ ldfjac, }
+\item[{integer ( kind = 4 )}]{ iflag, }
+\item[{real ( kind = 8 )}]{ epsfcn}
+\end{DoxyParamCaption}
+)}}
+\label{minpack_8f90_a93f854f4490882e08d928f8a84ac43f7}
+\hypertarget{minpack_8f90_a1e525d0d69e43bfda5f82e3bc4745b2f}{
+\index{minpack.f90@{minpack.f90}!hybrd@{hybrd}}
+\index{hybrd@{hybrd}!minpack.f90@{minpack.f90}}
+\subsubsection[{hybrd}]{\setlength{\rightskip}{0pt plus 5cm}subroutine hybrd (
+\begin{DoxyParamCaption}
+\item[{fcn}]{, }
+\item[{integer ( kind = 4 )}]{ n, }
+\item[{real ( kind = 8 ),dimension(n)}]{ x, }
+\item[{real ( kind = 8 ),dimension(n)}]{ fvec, }
+\item[{real ( kind = 8 )}]{ xtol, }
+\item[{integer ( kind = 4 )}]{ maxfev, }
+\item[{integer ( kind = 4 )}]{ ml, }
+\item[{integer ( kind = 4 )}]{ mu, }
+\item[{real ( kind = 8 )}]{ epsfcn, }
+\item[{real ( kind = 8 ),dimension(n)}]{ diag, }
+\item[{integer ( kind = 4 )}]{ mode, }
+\item[{real ( kind = 8 )}]{ factor, }
+\item[{integer ( kind = 4 )}]{ nprint, }
+\item[{integer ( kind = 4 )}]{ info, }
+\item[{integer ( kind = 4 )}]{ nfev, }
+\item[{real ( kind = 8 ),dimension(ldfjac,n)}]{ fjac, }
+\item[{integer ( kind = 4 )}]{ ldfjac, }
+\item[{real ( kind = 8 ),dimension(lr)}]{ r, }
+\item[{integer ( kind = 4 )}]{ lr, }
+\item[{real ( kind = 8 ),dimension(n)}]{ qtf}
+\end{DoxyParamCaption}
+)}}
+\label{minpack_8f90_a1e525d0d69e43bfda5f82e3bc4745b2f}
+\hypertarget{minpack_8f90_a314aebdd90b16a874c0879d291a2190d}{
+\index{minpack.f90@{minpack.f90}!hybrd1@{hybrd1}}
+\index{hybrd1@{hybrd1}!minpack.f90@{minpack.f90}}
+\subsubsection[{hybrd1}]{\setlength{\rightskip}{0pt plus 5cm}subroutine hybrd1 (
+\begin{DoxyParamCaption}
+\item[{fcn}]{, }
+\item[{integer ( kind = 4 )}]{ n, }
+\item[{real ( kind = 8 ),dimension(n)}]{ x, }
+\item[{real ( kind = 8 ),dimension(n)}]{ fvec, }
+\item[{real ( kind = 8 )}]{ tol, }
+\item[{integer ( kind = 4 )}]{ info}
+\end{DoxyParamCaption}
+)}}
+\label{minpack_8f90_a314aebdd90b16a874c0879d291a2190d}
+\hypertarget{minpack_8f90_a53ab26dfa98e1e91ba7a8c3e5f83ad13}{
+\index{minpack.f90@{minpack.f90}!hybrj@{hybrj}}
+\index{hybrj@{hybrj}!minpack.f90@{minpack.f90}}
+\subsubsection[{hybrj}]{\setlength{\rightskip}{0pt plus 5cm}subroutine hybrj (
+\begin{DoxyParamCaption}
+\item[{fcn}]{, }
+\item[{integer ( kind = 4 )}]{ n, }
+\item[{real ( kind = 8 ),dimension(n)}]{ x, }
+\item[{real ( kind = 8 ),dimension(n)}]{ fvec, }
+\item[{real ( kind = 8 ),dimension(ldfjac,n)}]{ fjac, }
+\item[{integer ( kind = 4 )}]{ ldfjac, }
+\item[{real ( kind = 8 )}]{ xtol, }
+\item[{integer ( kind = 4 )}]{ maxfev, }
+\item[{real ( kind = 8 ),dimension(n)}]{ diag, }
+\item[{integer ( kind = 4 )}]{ mode, }
+\item[{real ( kind = 8 )}]{ factor, }
+\item[{integer ( kind = 4 )}]{ nprint, }
+\item[{integer ( kind = 4 )}]{ info, }
+\item[{integer ( kind = 4 )}]{ nfev, }
+\item[{integer ( kind = 4 )}]{ njev, }
+\item[{real ( kind = 8 ),dimension(lr)}]{ r, }
+\item[{integer ( kind = 4 )}]{ lr, }
+\item[{real ( kind = 8 ),dimension(n)}]{ qtf}
+\end{DoxyParamCaption}
+)}}
+\label{minpack_8f90_a53ab26dfa98e1e91ba7a8c3e5f83ad13}
+\hypertarget{minpack_8f90_afefee19843910dca7f59c228bf69749d}{
+\index{minpack.f90@{minpack.f90}!hybrj1@{hybrj1}}
+\index{hybrj1@{hybrj1}!minpack.f90@{minpack.f90}}
+\subsubsection[{hybrj1}]{\setlength{\rightskip}{0pt plus 5cm}subroutine hybrj1 (
+\begin{DoxyParamCaption}
+\item[{fcn}]{, }
+\item[{integer ( kind = 4 )}]{ n, }
+\item[{real ( kind = 8 ),dimension(n)}]{ x, }
+\item[{real ( kind = 8 ),dimension(n)}]{ fvec, }
+\item[{real ( kind = 8 ),dimension(ldfjac,n)}]{ fjac, }
+\item[{integer ( kind = 4 )}]{ ldfjac, }
+\item[{real ( kind = 8 )}]{ tol, }
+\item[{integer ( kind = 4 )}]{ info}
+\end{DoxyParamCaption}
+)}}
+\label{minpack_8f90_afefee19843910dca7f59c228bf69749d}
+\hypertarget{minpack_8f90_a29cf549303bc0ced9cb2e1ef2da0234b}{
+\index{minpack.f90@{minpack.f90}!lmder@{lmder}}
+\index{lmder@{lmder}!minpack.f90@{minpack.f90}}
+\subsubsection[{lmder}]{\setlength{\rightskip}{0pt plus 5cm}subroutine lmder (
+\begin{DoxyParamCaption}
+\item[{fcn}]{, }
+\item[{integer ( kind = 4 )}]{ m, }
+\item[{integer ( kind = 4 )}]{ n, }
+\item[{real ( kind = 8 ),dimension(n)}]{ x, }
+\item[{real ( kind = 8 ),dimension(m)}]{ fvec, }
+\item[{real ( kind = 8 ),dimension(ldfjac,n)}]{ fjac, }
+\item[{integer ( kind = 4 )}]{ ldfjac, }
+\item[{real ( kind = 8 )}]{ ftol, }
+\item[{real ( kind = 8 )}]{ xtol, }
+\item[{real ( kind = 8 )}]{ gtol, }
+\item[{integer ( kind = 4 )}]{ maxfev, }
+\item[{real ( kind = 8 ),dimension(n)}]{ diag, }
+\item[{integer ( kind = 4 )}]{ mode, }
+\item[{real ( kind = 8 )}]{ factor, }
+\item[{integer ( kind = 4 )}]{ nprint, }
+\item[{integer ( kind = 4 )}]{ info, }
+\item[{integer ( kind = 4 )}]{ nfev, }
+\item[{integer ( kind = 4 )}]{ njev, }
+\item[{integer ( kind = 4 ),dimension(n)}]{ ipvt, }
+\item[{real ( kind = 8 ),dimension(n)}]{ qtf}
+\end{DoxyParamCaption}
+)}}
+\label{minpack_8f90_a29cf549303bc0ced9cb2e1ef2da0234b}
+\hypertarget{minpack_8f90_ab4dbf9a20a957dfb72d70219dd6ad6d4}{
+\index{minpack.f90@{minpack.f90}!lmder1@{lmder1}}
+\index{lmder1@{lmder1}!minpack.f90@{minpack.f90}}
+\subsubsection[{lmder1}]{\setlength{\rightskip}{0pt plus 5cm}subroutine lmder1 (
+\begin{DoxyParamCaption}
+\item[{fcn}]{, }
+\item[{integer ( kind = 4 )}]{ m, }
+\item[{integer ( kind = 4 )}]{ n, }
+\item[{real ( kind = 8 ),dimension(n)}]{ x, }
+\item[{real ( kind = 8 ),dimension(m)}]{ fvec, }
+\item[{real ( kind = 8 ),dimension(ldfjac,n)}]{ fjac, }
+\item[{integer ( kind = 4 )}]{ ldfjac, }
+\item[{real ( kind = 8 )}]{ tol, }
+\item[{integer ( kind = 4 )}]{ info}
+\end{DoxyParamCaption}
+)}}
+\label{minpack_8f90_ab4dbf9a20a957dfb72d70219dd6ad6d4}
+\hypertarget{minpack_8f90_a9c1edc586c3518092e9531b199d646f3}{
+\index{minpack.f90@{minpack.f90}!lmdif@{lmdif}}
+\index{lmdif@{lmdif}!minpack.f90@{minpack.f90}}
+\subsubsection[{lmdif}]{\setlength{\rightskip}{0pt plus 5cm}subroutine lmdif (
+\begin{DoxyParamCaption}
+\item[{fcn}]{, }
+\item[{integer ( kind = 4 )}]{ m, }
+\item[{integer ( kind = 4 )}]{ n, }
+\item[{real ( kind = 8 ),dimension(n)}]{ x, }
+\item[{real ( kind = 8 ),dimension(m)}]{ fvec, }
+\item[{real ( kind = 8 )}]{ ftol, }
+\item[{real ( kind = 8 )}]{ xtol, }
+\item[{real ( kind = 8 )}]{ gtol, }
+\item[{integer ( kind = 4 )}]{ maxfev, }
+\item[{real ( kind = 8 )}]{ epsfcn, }
+\item[{real ( kind = 8 ),dimension(n)}]{ diag, }
+\item[{integer ( kind = 4 )}]{ mode, }
+\item[{real ( kind = 8 )}]{ factor, }
+\item[{integer ( kind = 4 )}]{ nprint, }
+\item[{integer ( kind = 4 )}]{ info, }
+\item[{integer ( kind = 4 )}]{ nfev, }
+\item[{real ( kind = 8 ),dimension(ldfjac,n)}]{ fjac, }
+\item[{integer ( kind = 4 )}]{ ldfjac, }
+\item[{integer ( kind = 4 ),dimension(n)}]{ ipvt, }
+\item[{real ( kind = 8 ),dimension(n)}]{ qtf}
+\end{DoxyParamCaption}
+)}}
+\label{minpack_8f90_a9c1edc586c3518092e9531b199d646f3}
+\hypertarget{minpack_8f90_a1b531c7b6b594b0eeaa71ca9fe779b0c}{
+\index{minpack.f90@{minpack.f90}!lmdif1@{lmdif1}}
+\index{lmdif1@{lmdif1}!minpack.f90@{minpack.f90}}
+\subsubsection[{lmdif1}]{\setlength{\rightskip}{0pt plus 5cm}subroutine lmdif1 (
+\begin{DoxyParamCaption}
+\item[{fcn}]{, }
+\item[{integer ( kind = 4 )}]{ m, }
+\item[{integer ( kind = 4 )}]{ n, }
+\item[{real ( kind = 8 ),dimension(n)}]{ x, }
+\item[{real ( kind = 8 ),dimension(m)}]{ fvec, }
+\item[{real ( kind = 8 )}]{ tol, }
+\item[{integer ( kind = 4 )}]{ info}
+\end{DoxyParamCaption}
+)}}
+\label{minpack_8f90_a1b531c7b6b594b0eeaa71ca9fe779b0c}
+\hypertarget{minpack_8f90_a1dc1e9adda30350383f28f6cc6361365}{
+\index{minpack.f90@{minpack.f90}!lmpar@{lmpar}}
+\index{lmpar@{lmpar}!minpack.f90@{minpack.f90}}
+\subsubsection[{lmpar}]{\setlength{\rightskip}{0pt plus 5cm}subroutine lmpar (
+\begin{DoxyParamCaption}
+\item[{integer ( kind = 4 )}]{ n, }
+\item[{real ( kind = 8 ),dimension(ldr,n)}]{ r, }
+\item[{integer ( kind = 4 )}]{ ldr, }
+\item[{integer ( kind = 4 ),dimension(n)}]{ ipvt, }
+\item[{real ( kind = 8 ),dimension(n)}]{ diag, }
+\item[{real ( kind = 8 ),dimension(n)}]{ qtb, }
+\item[{real ( kind = 8 )}]{ delta, }
+\item[{real ( kind = 8 )}]{ par, }
+\item[{real ( kind = 8 ),dimension(n)}]{ x, }
+\item[{real ( kind = 8 ),dimension(n)}]{ sdiag}
+\end{DoxyParamCaption}
+)}}
+\label{minpack_8f90_a1dc1e9adda30350383f28f6cc6361365}
+\hypertarget{minpack_8f90_a178ff688f77b7192504790b6741ecd4d}{
+\index{minpack.f90@{minpack.f90}!lmstr@{lmstr}}
+\index{lmstr@{lmstr}!minpack.f90@{minpack.f90}}
+\subsubsection[{lmstr}]{\setlength{\rightskip}{0pt plus 5cm}subroutine lmstr (
+\begin{DoxyParamCaption}
+\item[{fcn}]{, }
+\item[{integer ( kind = 4 )}]{ m, }
+\item[{integer ( kind = 4 )}]{ n, }
+\item[{real ( kind = 8 ),dimension(n)}]{ x, }
+\item[{real ( kind = 8 ),dimension(m)}]{ fvec, }
+\item[{real ( kind = 8 ),dimension(ldfjac,n)}]{ fjac, }
+\item[{integer ( kind = 4 )}]{ ldfjac, }
+\item[{real ( kind = 8 )}]{ ftol, }
+\item[{real ( kind = 8 )}]{ xtol, }
+\item[{real ( kind = 8 )}]{ gtol, }
+\item[{integer ( kind = 4 )}]{ maxfev, }
+\item[{real ( kind = 8 ),dimension(n)}]{ diag, }
+\item[{integer ( kind = 4 )}]{ mode, }
+\item[{real ( kind = 8 )}]{ factor, }
+\item[{integer ( kind = 4 )}]{ nprint, }
+\item[{integer ( kind = 4 )}]{ info, }
+\item[{integer ( kind = 4 )}]{ nfev, }
+\item[{integer ( kind = 4 )}]{ njev, }
+\item[{integer ( kind = 4 ),dimension(n)}]{ ipvt, }
+\item[{real ( kind = 8 ),dimension(n)}]{ qtf}
+\end{DoxyParamCaption}
+)}}
+\label{minpack_8f90_a178ff688f77b7192504790b6741ecd4d}
+\hypertarget{minpack_8f90_acee42ee803b3870261fa529dc123a892}{
+\index{minpack.f90@{minpack.f90}!lmstr1@{lmstr1}}
+\index{lmstr1@{lmstr1}!minpack.f90@{minpack.f90}}
+\subsubsection[{lmstr1}]{\setlength{\rightskip}{0pt plus 5cm}subroutine lmstr1 (
+\begin{DoxyParamCaption}
+\item[{fcn}]{, }
+\item[{integer ( kind = 4 )}]{ m, }
+\item[{integer ( kind = 4 )}]{ n, }
+\item[{real ( kind = 8 ),dimension(n)}]{ x, }
+\item[{real ( kind = 8 ),dimension(m)}]{ fvec, }
+\item[{real ( kind = 8 ),dimension(ldfjac,n)}]{ fjac, }
+\item[{integer ( kind = 4 )}]{ ldfjac, }
+\item[{real ( kind = 8 )}]{ tol, }
+\item[{integer ( kind = 4 )}]{ info}
+\end{DoxyParamCaption}
+)}}
+\label{minpack_8f90_acee42ee803b3870261fa529dc123a892}
+\hypertarget{minpack_8f90_a12e8db1e181463d5c3af21f2b1b6b5a7}{
+\index{minpack.f90@{minpack.f90}!qform@{qform}}
+\index{qform@{qform}!minpack.f90@{minpack.f90}}
+\subsubsection[{qform}]{\setlength{\rightskip}{0pt plus 5cm}subroutine qform (
+\begin{DoxyParamCaption}
+\item[{integer ( kind = 4 )}]{ m, }
+\item[{integer ( kind = 4 )}]{ n, }
+\item[{real ( kind = 8 ),dimension(ldq,m)}]{ q, }
+\item[{integer ( kind = 4 )}]{ ldq}
+\end{DoxyParamCaption}
+)}}
+\label{minpack_8f90_a12e8db1e181463d5c3af21f2b1b6b5a7}
+\hypertarget{minpack_8f90_a64d35f73f2a85378c24dd7b99ddb0c0f}{
+\index{minpack.f90@{minpack.f90}!qrfac@{qrfac}}
+\index{qrfac@{qrfac}!minpack.f90@{minpack.f90}}
+\subsubsection[{qrfac}]{\setlength{\rightskip}{0pt plus 5cm}subroutine qrfac (
+\begin{DoxyParamCaption}
+\item[{integer ( kind = 4 )}]{ m, }
+\item[{integer ( kind = 4 )}]{ n, }
+\item[{real ( kind = 8 ),dimension(lda,n)}]{ a, }
+\item[{integer ( kind = 4 )}]{ lda, }
+\item[{logical}]{ pivot, }
+\item[{integer ( kind = 4 ),dimension(lipvt)}]{ ipvt, }
+\item[{integer ( kind = 4 )}]{ lipvt, }
+\item[{real ( kind = 8 ),dimension(n)}]{ rdiag, }
+\item[{real ( kind = 8 ),dimension(n)}]{ acnorm}
+\end{DoxyParamCaption}
+)}}
+\label{minpack_8f90_a64d35f73f2a85378c24dd7b99ddb0c0f}
+\hypertarget{minpack_8f90_a0dd208e826a2526722a40eab1724ac83}{
+\index{minpack.f90@{minpack.f90}!qrsolv@{qrsolv}}
+\index{qrsolv@{qrsolv}!minpack.f90@{minpack.f90}}
+\subsubsection[{qrsolv}]{\setlength{\rightskip}{0pt plus 5cm}subroutine qrsolv (
+\begin{DoxyParamCaption}
+\item[{integer ( kind = 4 )}]{ n, }
+\item[{real ( kind = 8 ),dimension(ldr,n)}]{ r, }
+\item[{integer ( kind = 4 )}]{ ldr, }
+\item[{integer ( kind = 4 ),dimension(n)}]{ ipvt, }
+\item[{real ( kind = 8 ),dimension(n)}]{ diag, }
+\item[{real ( kind = 8 ),dimension(n)}]{ qtb, }
+\item[{real ( kind = 8 ),dimension(n)}]{ x, }
+\item[{real ( kind = 8 ),dimension(n)}]{ sdiag}
+\end{DoxyParamCaption}
+)}}
+\label{minpack_8f90_a0dd208e826a2526722a40eab1724ac83}
+\hypertarget{minpack_8f90_ab7f6e61d92cfd9ea516435ad523b989b}{
+\index{minpack.f90@{minpack.f90}!r1mpyq@{r1mpyq}}
+\index{r1mpyq@{r1mpyq}!minpack.f90@{minpack.f90}}
+\subsubsection[{r1mpyq}]{\setlength{\rightskip}{0pt plus 5cm}subroutine r1mpyq (
+\begin{DoxyParamCaption}
+\item[{integer ( kind = 4 )}]{ m, }
+\item[{integer ( kind = 4 )}]{ n, }
+\item[{real ( kind = 8 ),dimension(lda,n)}]{ a, }
+\item[{integer ( kind = 4 )}]{ lda, }
+\item[{real ( kind = 8 ),dimension(n)}]{ v, }
+\item[{real ( kind = 8 ),dimension(n)}]{ w}
+\end{DoxyParamCaption}
+)}}
+\label{minpack_8f90_ab7f6e61d92cfd9ea516435ad523b989b}
+\hypertarget{minpack_8f90_a8ff726029b3ff9037b390910744ee58b}{
+\index{minpack.f90@{minpack.f90}!r1updt@{r1updt}}
+\index{r1updt@{r1updt}!minpack.f90@{minpack.f90}}
+\subsubsection[{r1updt}]{\setlength{\rightskip}{0pt plus 5cm}subroutine r1updt (
+\begin{DoxyParamCaption}
+\item[{integer ( kind = 4 )}]{ m, }
+\item[{integer ( kind = 4 )}]{ n, }
+\item[{real ( kind = 8 ),dimension(ls)}]{ s, }
+\item[{integer ( kind = 4 )}]{ ls, }
+\item[{real ( kind = 8 ),dimension(m)}]{ u, }
+\item[{real ( kind = 8 ),dimension(n)}]{ v, }
+\item[{real ( kind = 8 ),dimension(m)}]{ w, }
+\item[{logical}]{ sing}
+\end{DoxyParamCaption}
+)}}
+\label{minpack_8f90_a8ff726029b3ff9037b390910744ee58b}
+\hypertarget{minpack_8f90_adc196cc5030b2eb1660c061fd85bfe0a}{
+\index{minpack.f90@{minpack.f90}!r8vec\_\-print@{r8vec\_\-print}}
+\index{r8vec\_\-print@{r8vec\_\-print}!minpack.f90@{minpack.f90}}
+\subsubsection[{r8vec\_\-print}]{\setlength{\rightskip}{0pt plus 5cm}subroutine r8vec\_\-print (
+\begin{DoxyParamCaption}
+\item[{integer ( kind = 4 )}]{ n, }
+\item[{real ( kind = 8 ),dimension(n)}]{ a, }
+\item[{character ( len = $\ast$ )}]{ title}
+\end{DoxyParamCaption}
+)}}
+\label{minpack_8f90_adc196cc5030b2eb1660c061fd85bfe0a}
+\hypertarget{minpack_8f90_adbcfef20d552d8c5e7dc5925c975eb23}{
+\index{minpack.f90@{minpack.f90}!rwupdt@{rwupdt}}
+\index{rwupdt@{rwupdt}!minpack.f90@{minpack.f90}}
+\subsubsection[{rwupdt}]{\setlength{\rightskip}{0pt plus 5cm}subroutine rwupdt (
+\begin{DoxyParamCaption}
+\item[{integer ( kind = 4 )}]{ n, }
+\item[{real ( kind = 8 ),dimension(ldr,n)}]{ r, }
+\item[{integer ( kind = 4 )}]{ ldr, }
+\item[{real ( kind = 8 ),dimension(n)}]{ w, }
+\item[{real ( kind = 8 ),dimension(n)}]{ b, }
+\item[{real ( kind = 8 )}]{ alpha, }
+\item[{real ( kind = 8 ),dimension(n)}]{ c, }
+\item[{real ( kind = 8 ),dimension(n)}]{ s}
+\end{DoxyParamCaption}
+)}}
+\label{minpack_8f90_adbcfef20d552d8c5e7dc5925c975eb23}
+\hypertarget{minpack_8f90_a44fdaa08281ed3009542bc9257fa965d}{
+\index{minpack.f90@{minpack.f90}!timestamp@{timestamp}}
+\index{timestamp@{timestamp}!minpack.f90@{minpack.f90}}
+\subsubsection[{timestamp}]{\setlength{\rightskip}{0pt plus 5cm}subroutine timestamp (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{minpack_8f90_a44fdaa08281ed3009542bc9257fa965d}

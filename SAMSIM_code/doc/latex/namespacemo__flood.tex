@@ -1,0 +1,97 @@
+\hypertarget{namespacemo__flood}{
+\section{mo\_\-flood Module Reference}
+\label{namespacemo__flood}\index{mo\_\-flood@{mo\_\-flood}}
+}
+
+
+Computes the fluxes caused by liquid flooding the snow layer.  
+
+
+\subsection*{Functions/Subroutines}
+\begin{DoxyCompactItemize}
+\item 
+subroutine \hyperlink{namespacemo__flood_afd760054790f70911ffe84a82e402840}{flood} (freeboard, psi\_\-s, psi\_\-l, S\_\-abs, H\_\-abs, m, T, thick, dt, Nlayer, N\_\-active, T\_\-bottom, S\_\-bu\_\-bottom, H\_\-abs\_\-snow, m\_\-snow, thick\_\-snow, psi\_\-g\_\-snow, debug\_\-flag, fl\_\-brine\_\-bgc)
+\begin{DoxyCompactList}\small\item\em Subroutine for calculating flooding. \item\end{DoxyCompactList}\item 
+subroutine \hyperlink{namespacemo__flood_ac2e89f500f5c985c74a9521783ca4bce}{flood\_\-simple} (freeboard, S\_\-abs, H\_\-abs, m, thick, T\_\-bottom, S\_\-bu\_\-bottom, H\_\-abs\_\-snow, m\_\-snow, thick\_\-snow, psi\_\-g\_\-snow, Nlayer, N\_\-active, debug\_\-flag)
+\begin{DoxyCompactList}\small\item\em Subroutine for calculating flooding. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Computes the fluxes caused by liquid flooding the snow layer. Water floods the snow layer instantly transforming it to ice which is added to the top layer. As long as the negative freeboard is smaller then a certain parameter (neg\_\-free) the flood strength is limited by the harmonic mean permeability of the whole ice layer driven by the freeboard. When this parameter is exceed, instant flooding is assumed. Based on Ted Maksyms work, brine is moved from the ocean to the snow without interacting with the ice in between. Very little of the process is well understood, so this parametrisation is ID mostly speculation. Ratio\_\-flood is a very important parameter, as it regulates how much wicking into the snow layer occurs during melting which dilutes the flooded snow. Ratio of two should lead to the snow pack being reduced twice as much as the top layer grows.
+
+\begin{DoxyAuthor}{Author}
+$<$Philipp griewank$>$=\char`\"{}\char`\"{}$>$
+\end{DoxyAuthor}
+\begin{DoxyParagraph}{Revision History}
+Copy and pasted into existence by Philipp Griewank, IMPRS (2011-\/01-\/21) 
+\end{DoxyParagraph}
+
+
+\subsection{Function/Subroutine Documentation}
+\hypertarget{namespacemo__flood_afd760054790f70911ffe84a82e402840}{
+\index{mo\_\-flood@{mo\_\-flood}!flood@{flood}}
+\index{flood@{flood}!mo_flood@{mo\_\-flood}}
+\subsubsection[{flood}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-flood::flood (
+\begin{DoxyParamCaption}
+\item[{REAL(wp),intent(in)}]{ freeboard, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ psi\_\-s, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ psi\_\-l, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ S\_\-abs, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ H\_\-abs, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ m, }
+\item[{REAL(wp),dimension(nlayer),intent(in)}]{ T, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ thick, }
+\item[{REAL(wp),intent(in)}]{ dt, }
+\item[{INTEGER,intent(in)}]{ Nlayer, }
+\item[{INTEGER,intent(in)}]{ N\_\-active, }
+\item[{REAL(wp),intent(in)}]{ T\_\-bottom, }
+\item[{REAL(wp),intent(in)}]{ S\_\-bu\_\-bottom, }
+\item[{REAL(wp),intent(inout)}]{ H\_\-abs\_\-snow, }
+\item[{REAL(wp),intent(inout)}]{ m\_\-snow, }
+\item[{REAL(wp),intent(inout)}]{ thick\_\-snow, }
+\item[{REAL(wp),intent(in)}]{ psi\_\-g\_\-snow, }
+\item[{INTEGER,intent(in)}]{ debug\_\-flag, }
+\item[{REAL(wp),dimension(nlayer+1,nlayer+1),intent(inout),optional}]{ fl\_\-brine\_\-bgc}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__flood_afd760054790f70911ffe84a82e402840}
+
+
+Subroutine for calculating flooding. 
+
+Details explained in module description.
+
+\begin{DoxyParagraph}{Revision History}
+Formed by Philipp Griewank, IMPRS (2011-\/01-\/21) Cleaned and commented by Philipp Griewank, (2014-\/04-\/19) 
+\end{DoxyParagraph}
+\hypertarget{namespacemo__flood_ac2e89f500f5c985c74a9521783ca4bce}{
+\index{mo\_\-flood@{mo\_\-flood}!flood\_\-simple@{flood\_\-simple}}
+\index{flood\_\-simple@{flood\_\-simple}!mo_flood@{mo\_\-flood}}
+\subsubsection[{flood\_\-simple}]{\setlength{\rightskip}{0pt plus 5cm}subroutine mo\_\-flood::flood\_\-simple (
+\begin{DoxyParamCaption}
+\item[{REAL(wp),intent(in)}]{ freeboard, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ S\_\-abs, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ H\_\-abs, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ m, }
+\item[{REAL(wp),dimension(nlayer),intent(inout)}]{ thick, }
+\item[{REAL(wp),intent(in)}]{ T\_\-bottom, }
+\item[{REAL(wp),intent(in)}]{ S\_\-bu\_\-bottom, }
+\item[{REAL(wp),intent(inout)}]{ H\_\-abs\_\-snow, }
+\item[{REAL(wp),intent(inout)}]{ m\_\-snow, }
+\item[{REAL(wp),intent(inout)}]{ thick\_\-snow, }
+\item[{REAL(wp),intent(in)}]{ psi\_\-g\_\-snow, }
+\item[{INTEGER,intent(in)}]{ Nlayer, }
+\item[{INTEGER,intent(in)}]{ N\_\-active, }
+\item[{INTEGER,intent(in)}]{ debug\_\-flag}
+\end{DoxyParamCaption}
+)}}
+\label{namespacemo__flood_ac2e89f500f5c985c74a9521783ca4bce}
+
+
+Subroutine for calculating flooding. 
+
+Simplified version of flood. Flooding occurs instantly to fill the negative freeboard until it reaches neg\_\-free with underlying ocean water.
+
+\begin{DoxyParagraph}{Revision History}
+Formed by Philipp Griewank, IMPRS (2012-\/07-\/16) Added neg\_\-free limitation. 
+\end{DoxyParagraph}

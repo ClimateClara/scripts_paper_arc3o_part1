@@ -1,0 +1,1311 @@
+\hypertarget{namespacemo__data}{
+\section{mo\_\-data Module Reference}
+\label{namespacemo__data}\index{mo\_\-data@{mo\_\-data}}
+}
+
+
+Sets data and contains all flag descriptions.  
+
+
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_ad27ff95f4bfe7ed6f5643d3953a9310e}{H}
+\begin{DoxyCompactList}\small\item\em Enthalpy \mbox{[}J\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_a763929f604ab797932f22f50a720a1a1}{H\_\-abs}
+\begin{DoxyCompactList}\small\item\em specific Enthalpy \mbox{[}J/kg\mbox{]} \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_aa221cb1abb5ab4f4d2e8ca7987aeed56}{Q}
+\begin{DoxyCompactList}\small\item\em Heat in layer \mbox{[}J\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_a594603db2866303fb0074ab34692fa4a}{fl\_\-Q}
+\begin{DoxyCompactList}\small\item\em Heat flux between layers \mbox{[}J/s\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_a0969de41af73c828aa2ff388011081ba}{T}
+\begin{DoxyCompactList}\small\item\em Temperature \mbox{[}C\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_a24861c159e2b136fb56a61bc9f2de7a7}{S\_\-bu}
+\begin{DoxyCompactList}\small\item\em Bulk Salinity \mbox{[}g/kg\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_a43d6e453737affa893b8a861be921f5d}{fl\_\-S}
+\begin{DoxyCompactList}\small\item\em Salinity flux \mbox{[}(g/s\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_a1bc8433ee56482cce780b7630ab22867}{S\_\-abs}
+\begin{DoxyCompactList}\small\item\em Absolute Salinity \mbox{[}g\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_aa70fa9ad64d25cd4c15584fbc834d820}{S\_\-br}
+\begin{DoxyCompactList}\small\item\em Brine salinity \mbox{[}g/kg\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_a1409d49184dc3835ab1186dde372d381}{thick}
+\begin{DoxyCompactList}\small\item\em Layer thickness \mbox{[}m\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_af1813881649730f758278713d7d72d18}{m}
+\begin{DoxyCompactList}\small\item\em Mass \mbox{[}kg\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_ac4fb31397da08679eac0e3089b60447a}{fl\_\-m}
+\begin{DoxyCompactList}\small\item\em Mass fluxes between layers \mbox{[}kg\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_a77750b1536deb5ddd2ebada202f1cf18}{V\_\-s}
+\begin{DoxyCompactList}\small\item\em Volume \mbox{[}m$^\wedge$3\mbox{]} of solid. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_ab24341b1a6dd799e63540fa8ed51d14c}{V\_\-l}
+\begin{DoxyCompactList}\small\item\em Volume \mbox{[}m$^\wedge$3\mbox{]} of liquid. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_a274fbc519dd799929a177fdeaec56e91}{V\_\-g}
+\begin{DoxyCompactList}\small\item\em Volume \mbox{[}m$^\wedge$3\mbox{]} of gas. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_abb13ad5e80b57e5d614b9888531a3201}{V\_\-ex}
+\begin{DoxyCompactList}\small\item\em Volume of brine due expelled due to freezing \mbox{[}m$^\wedge$3\mbox{]} of solid, gas \& liquid. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_ace165f21c4edcf77372b13a99161aec8}{phi}
+\begin{DoxyCompactList}\small\item\em Solid mass fraction. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_a655b6d5f770ca3b4a1d2e22b627844e9}{psi\_\-s}
+\begin{DoxyCompactList}\small\item\em Solid volume fraction. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_aac8ca74ef10b90da7bf9143bdc21ec3a}{psi\_\-l}
+\begin{DoxyCompactList}\small\item\em Liquid volume fraction. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_ab334544ada2f82dd312588426d1cfa64}{psi\_\-g}
+\begin{DoxyCompactList}\small\item\em Gas volume fraction. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_a3ffdac0536a998149773806217f42543}{ray}
+\begin{DoxyCompactList}\small\item\em Rayleigh number of each layer. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_ac629f6eccf4b77df3406ac2ad5ac8ea6}{perm}
+\begin{DoxyCompactList}\small\item\em Permeability \mbox{[}?\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a6dedf87b47bcdf4151797c04485f251e}{dt}
+\begin{DoxyCompactList}\small\item\em Timestep \mbox{[}s\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_ad96d7ce134bb7b86325830161046d367}{thick\_\-0}
+\begin{DoxyCompactList}\small\item\em Initial layer thickness \mbox{[}m\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a9a0ee3e136f3b09016bfdffed837615a}{time}
+\begin{DoxyCompactList}\small\item\em Time \mbox{[}s\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_aef61c6317d4baba778438cea10b64412}{freeboard}
+\begin{DoxyCompactList}\small\item\em Height of ice surface above (or below) waterlevel \mbox{[}m\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a75b714d38b619ba4c6608d8f833cf159}{T\_\-freeze}
+\begin{DoxyCompactList}\small\item\em Freezing temperature \mbox{[}C\mbox{]}. \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_ab0b091ff23970ff2939892c9d8f788f1}{Nlayer}
+\begin{DoxyCompactList}\small\item\em Number of layers. \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a9c89af560a3d2f1fe1027bf81125b16c}{N\_\-bottom}
+\begin{DoxyCompactList}\small\item\em Number of bottom layers. \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a1140e1d6804c776a152d059c6ecd8375}{N\_\-middle}
+\begin{DoxyCompactList}\small\item\em Number of middle layers. \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a4be9ef8c44dfc2c8fccc353a2fc5fc79}{N\_\-top}
+\begin{DoxyCompactList}\small\item\em Number of top layers. \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_adcca7f2476501b41d758129cc352af3b}{N\_\-active}
+\begin{DoxyCompactList}\small\item\em Number of Layers active in the present. \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_ad15359b125bff66cb0f739e0eb5b01d4}{i}
+\begin{DoxyCompactList}\small\item\em Index, normally used for time. \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_afe6f17e4b469a746c68d9233d35ad11f}{k}
+\begin{DoxyCompactList}\small\item\em Index, normally used for layer. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a98be98c2961c1d3ccfdf5a52682b78d1}{time\_\-out}
+\begin{DoxyCompactList}\small\item\em Time between outputs \mbox{[}s\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a6a4393d34e8f95d252b2bca2d30d5af3}{time\_\-total}
+\begin{DoxyCompactList}\small\item\em Time of simulation \mbox{[}s\mbox{]}. \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_abca60ca0614b7061c6ef58e6e6daa60f}{i\_\-time}
+\begin{DoxyCompactList}\small\item\em Number of timesteps. \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_aa28d05f6fec3b61de0fbd7b4aa67f6ae}{i\_\-time\_\-out}
+\begin{DoxyCompactList}\small\item\em Number of timesteps between each output. \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a39a97d63744c18a6e9f3524d2dcc4154}{n\_\-time\_\-out}
+\begin{DoxyCompactList}\small\item\em Counts number of timesteps between output. \item\end{DoxyCompactList}\item 
+CHARACTER $\ast$12000 \hyperlink{namespacemo__data_abe2cc97e4da609edede5040d2574b93f}{format\_\-T}
+\item 
+CHARACTER $\ast$12000 \hyperlink{namespacemo__data_a5a4d1d7b7cad308de5f2a051715e95d5}{format\_\-psi}
+\item 
+CHARACTER $\ast$12000 \hyperlink{namespacemo__data_acb2cd425e31735f68ad118da5eed1392}{format\_\-thick}
+\item 
+CHARACTER $\ast$12000 \hyperlink{namespacemo__data_ad94f3b5a63bb78de820fe5a8c6f5574c}{format\_\-snow}
+\item 
+CHARACTER $\ast$12000 \hyperlink{namespacemo__data_a6e3f24460d266c05576103895a7167be}{format\_\-integer}
+\item 
+CHARACTER $\ast$12000 \hyperlink{namespacemo__data_a15b8dd299b9b9a34d337f74ea3e8b676}{format\_\-T2m\_\-top}
+\item 
+CHARACTER $\ast$12000 \hyperlink{namespacemo__data_ac2bdb68249acc513c69fb2793f6f376c}{format\_\-bgc}
+\begin{DoxyCompactList}\small\item\em Format strings for output. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a2ac8e0a672ebfd49781702474bf4ba0e}{T\_\-bottom}
+\begin{DoxyCompactList}\small\item\em Temperature of water beneath the ice \mbox{[}C\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_abefbe1cf82237d7380ba0d7de788a07a}{T\_\-top}
+\begin{DoxyCompactList}\small\item\em Temperature at the surface \mbox{[}C\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_ad14bbccac75eb3a3d95f57d0ecb81816}{S\_\-bu\_\-bottom}
+\begin{DoxyCompactList}\small\item\em Salinity beneath the ice \mbox{[}g/kg\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a987a45ea7aa457299f91119864d0baff}{T2m}
+\begin{DoxyCompactList}\small\item\em Two meter Temperature \mbox{[}C\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_acd16d86818624a2eb95bfed83a2a1d76}{fl\_\-q\_\-bottom}
+\begin{DoxyCompactList}\small\item\em Bottom heat flux \mbox{[}J$\ast$s\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a05df5047190129b7388a1ad5804ef145}{psi\_\-s\_\-snow}
+\begin{DoxyCompactList}\small\item\em Solid volume fraction of snow layer. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a914d1e046ed2bfa66d84f8aecb2ed26f}{psi\_\-l\_\-snow}
+\begin{DoxyCompactList}\small\item\em Liquid volume fraction of snow layer. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a2ca2bd9402672a8327e4a68b3a14fd7f}{psi\_\-g\_\-snow}
+\begin{DoxyCompactList}\small\item\em Gas volume fraction of snow layer. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_aee41245a2d1d08be740021dfc14cf723}{phi\_\-s}
+\begin{DoxyCompactList}\small\item\em Solid mass fraction of snow layer. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_afacea50e8d2e4a7725adb27d613ca4c3}{S\_\-abs\_\-snow}
+\begin{DoxyCompactList}\small\item\em Absolute salinity of snow layer \mbox{[}g\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a01f72ce0ba7168d410a2a683c2579e2d}{H\_\-abs\_\-snow}
+\begin{DoxyCompactList}\small\item\em Absolute enthalpy of snow layer \mbox{[}J\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_abda43178412f35b4871bbfe89bc3eb12}{m\_\-snow}
+\begin{DoxyCompactList}\small\item\em Mass of snow layer \mbox{[}kg\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a6d032201ee2f7b716badb13643daf93e}{T\_\-snow}
+\begin{DoxyCompactList}\small\item\em Temperature of snow layer \mbox{[}C\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a21342bcdb92f398a57a8eef77c77191a}{thick\_\-snow}
+\begin{DoxyCompactList}\small\item\em Thickness of snow layer \mbox{[}m\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_ace52326d57ce881a5017a47fed1c5a17}{liquid\_\-precip}
+\begin{DoxyCompactList}\small\item\em Liquid precip, \mbox{[}meter of water/s\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a4dee26c05c4bcb3d685c7a24ba41bf63}{solid\_\-precip}
+\begin{DoxyCompactList}\small\item\em Solid precip, \mbox{[}meter of water /s\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_ab90ffe7683553449ecf8c78d478cb40e}{fl\_\-q\_\-snow}
+\begin{DoxyCompactList}\small\item\em flow of heat into the snow layer \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_aedd9ec4adc59bfcbf90402c4226f2f34}{energy\_\-stored}
+\begin{DoxyCompactList}\small\item\em Total amount of energy stored, control is freezing point temperature of S\_\-bu\_\-bottom \mbox{[}J\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a71a192f5750717bc71df8f87c2a8cf52}{total\_\-resist}
+\begin{DoxyCompactList}\small\item\em Thermal resistance of the whole column \mbox{[}\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a330cc0e4bc178ef722ccd333c69aa06d}{surface\_\-water}
+\begin{DoxyCompactList}\small\item\em Percentage of water fraction in the top 5cm \mbox{[}\%\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a4c81fc09918e52dc51dfa99efbbac90b}{freshwater}
+\begin{DoxyCompactList}\small\item\em Meters of freshwater stored in column \mbox{[}m\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_aab72953060065beb7d6f1d2b9fcafa5c}{thickness}
+\begin{DoxyCompactList}\small\item\em Meters of ice \mbox{[}m\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_aadde2b57a3e8c60b5cd6f8a5ee72623d}{bulk\_\-salin}
+\begin{DoxyCompactList}\small\item\em Salt/Mass \mbox{[}ppt\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a866fe962819eea1c688afb5b07109bdd}{thick\_\-min}
+\begin{DoxyCompactList}\small\item\em Parameter for snow, determines when snow is in thermal equilibrium with the ice and when it is totally neglected. \item\end{DoxyCompactList}\item 
+REAL(wp), save \hyperlink{namespacemo__data_a7b3b4a04c1efd94e6c3f21e9bfd5fdad}{T\_\-test}
+\begin{DoxyCompactList}\small\item\em First guess for getT subroutine. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a4e0875d21076b42177bdff28faf75a53}{albedo}
+\begin{DoxyCompactList}\small\item\em Amount of short wave radiation which is reflected at the top surface. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a848f22357479c2be98599195b61991f7}{fl\_\-sw}
+\begin{DoxyCompactList}\small\item\em Incoming shortwave radiation \mbox{[}W/m$\ast$$\ast$2\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a0224a603e8070ac503b13ae82c8e6b99}{fl\_\-lw}
+\begin{DoxyCompactList}\small\item\em Incoming longwave radiation \mbox{[}W/m$\ast$$\ast$2\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a46e3fef58a1955a30678d73ddc044c9a}{fl\_\-sen}
+\begin{DoxyCompactList}\small\item\em Sensitive heat flux \mbox{[}W/m$\ast$$\ast$2\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a63a4e3f74d04640c4f4522a9f22390e0}{fl\_\-lat}
+\begin{DoxyCompactList}\small\item\em Latent heat flux \mbox{[}W/m$\ast$$\ast$2\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_afedf60f1ea1272e55a3d6110e0911102}{fl\_\-rest}
+\begin{DoxyCompactList}\small\item\em Bundled longwave,sensitive and latent heat flux \mbox{[}W/m$\ast$$\ast$2\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_aac6756d0384948c5717bdbabb4e1b748}{fl\_\-rad}
+\begin{DoxyCompactList}\small\item\em Energy flux of absorbed sw radiation of each layer \mbox{[}J/s\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a7971f5dbfdde936f63647492b31dffe9}{grav\_\-drain}
+\begin{DoxyCompactList}\small\item\em brine flux of gravity drainage between two outputs \mbox{[}kg/s\mbox{]} \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a084bb9d2856cdd8a9253f7790ac09b66}{grav\_\-salt}
+\begin{DoxyCompactList}\small\item\em salt flux moved by gravity drainage between two outputs \mbox{[}kg$\ast$ppt/s\mbox{]} \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_afd51dbc5cf51bbdec73b0c543d963da8}{grav\_\-temp}
+\begin{DoxyCompactList}\small\item\em average temperature of gravity drainage brine between two outputs \mbox{[}T\mbox{]} \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_ae1057f6ef957e6cae0ac381add3f3b73}{melt\_\-thick}
+\begin{DoxyCompactList}\small\item\em thickness of fully liquid part of top layer \mbox{[}m\mbox{]} \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a14ac53f7afeb8965106ee70871b38006}{alpha\_\-flux\_\-instable}
+\begin{DoxyCompactList}\small\item\em Proportionality constant which determines energy flux by the temperature difference T\_\-top$>$T2m \mbox{[}W/C\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a5d103f2250083f57def04a08d89be231}{alpha\_\-flux\_\-stable}
+\begin{DoxyCompactList}\small\item\em Proportionality constant which determines energy flux by the temperature difference T\_\-top$<$T2m \mbox{[}W/C\mbox{]}. \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_ac3bc82dac4d101806cd2a77f3b23d92c}{atmoflux\_\-flag}
+\begin{DoxyCompactList}\small\item\em 1: Use mean climatology of Notz, 2: Use imported reanalysis data, 3: use fixed values defined in \hyperlink{namespacemo__init}{mo\_\-init} \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_ac9c9cead6d68b7413f41e70c9038e9c7}{grav\_\-flag}
+\begin{DoxyCompactList}\small\item\em 1: no gravity drainage, 2: Gravity drainage, 3: Simple Drainage \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_af60329c080a609cfb936b65d8a62e70c}{prescribe\_\-flag}
+\begin{DoxyCompactList}\small\item\em 1: nothing happens, 2: prescribed Salinity profile is prescribed at each timestep (does not disable brine dynamics, just overwrites the salinity!) \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_aab5e39e0b6060d7ef40979d070b89dca}{grav\_\-heat\_\-flag}
+\begin{DoxyCompactList}\small\item\em 1: nothing happens, 2: compensates heatfluxes in grav\_\-flag = 2 \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a2f88c08cc3cae9d46a6bdcd9232ddbfa}{flush\_\-heat\_\-flag}
+\begin{DoxyCompactList}\small\item\em 1: nothing happens, 2: compensates heatfluxes in flush\_\-flag = 5 \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a7cc5384bbfd0b56d61cfe78576ee886d}{turb\_\-flag}
+\begin{DoxyCompactList}\small\item\em 1: No bottom turbulence, 2: Bottom mixing \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a0fb41b8dc5463c7215d278a301f17509}{salt\_\-flag}
+\begin{DoxyCompactList}\small\item\em 1: Sea salt, 2: NaCL \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a6089c1127efc972f4488515f75ca8e80}{boundflux\_\-flag}
+\begin{DoxyCompactList}\small\item\em 1: top and bottom cooling plate, 2:top Notz fluxes, bottom cooling plate 3: top flux=a$\ast$(T-\/T\_\-s) \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_aa062c97301f949aea320e57c72926700}{flush\_\-flag}
+\begin{DoxyCompactList}\small\item\em 1: no flushing, 4:meltwater is removed artificially, 5:vert and horiz flushing, 6: simplified \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a7e6cb2f19ab88a5903aa5574e5ec6b19}{flood\_\-flag}
+\begin{DoxyCompactList}\small\item\em 1: no flooding, 2:normal flooding, 3:simple flooding \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_ab9e96b3fd1d356487e156f8634c09732}{bottom\_\-flag}
+\begin{DoxyCompactList}\small\item\em 1: nothing changes, 2: deactivates all bottom layer dynamics, useful for some debugging and idealized tests \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a014d834dc753f1d37c0575dc9037878a}{debug\_\-flag}
+\begin{DoxyCompactList}\small\item\em 1: no raw layer output, 2: each layer is output at every timestep (warning, file size can be very large) \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a466c2f829a8b266724dd9150cb99d42f}{precip\_\-flag}
+\begin{DoxyCompactList}\small\item\em 0: solid and liquid precipitation, 1:phase determined by T2m \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a95ab71baf4d9fbae790e31780317af06}{harmonic\_\-flag}
+\begin{DoxyCompactList}\small\item\em 1: minimal permeability is used to calculate Rayleigh number, 2:harmonic mean is used for Rayleigh number \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a20840603c089c697b8662ca2c45f23f3}{tank\_\-flag}
+\begin{DoxyCompactList}\small\item\em 1: nothing, 2: S\_\-bu\_\-bottom and bgc\_\-bottom are calculated as if the experiment is conducted in a tank \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a503f12cf2d0684ad5423b92e37c97fbe}{albedo\_\-flag}
+\begin{DoxyCompactList}\small\item\em 1: simple albedo, 2: normal albedo, see func\_\-albedo for details \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a9a0ff39379f1d347bcb323cd49cb222e}{Length\_\-Input}
+\begin{DoxyCompactList}\small\item\em Sets the input length for atmoflux\_\-flag==2, common value of 13169. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(8280) \hyperlink{namespacemo__data_a05dff3e3a302bd2f751263140d8f367b}{Tinput}
+\begin{DoxyCompactList}\small\item\em used to read in top temperature for field experiment tests, dimension needs to be set in the code \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_adbae909d2ce614966d3de6ae1eb558a0}{fl\_\-sw\_\-input}
+\begin{DoxyCompactList}\small\item\em Used to read in sw fluxes from ERA for atmoflux\_\-flag==2. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_a2d2ccb1188895b74eb3e2742c6a82b4c}{fl\_\-lw\_\-input}
+\begin{DoxyCompactList}\small\item\em Used to read in lw fluxes from ERA for atmoflux\_\-flag==2. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_a8795a47a232696bffa9fa64a1f06a420}{T2m\_\-input}
+\begin{DoxyCompactList}\small\item\em Used to read in 2Tm from ERA for atmoflux\_\-flag==2. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_ae066ba3be89578a239547e88eaa6c45e}{precip\_\-input}
+\begin{DoxyCompactList}\small\item\em Used to read in precipitation from ERA for atmoflux\_\-flag==2. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_af2146601cc78d09fe2b51e065684822b}{time\_\-input}
+\begin{DoxyCompactList}\small\item\em Used to read in time from ERA for atmoflux\_\-flag==2. \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_acabfab1b812c7dd4f73b2ec6b059cae1}{time\_\-counter}
+\begin{DoxyCompactList}\small\item\em Keeps track of input data. \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a962bc540d1c63b9ff3b571c91133070b}{bgc\_\-flag}
+\begin{DoxyCompactList}\small\item\em 1: no bgc, 2:bgc \item\end{DoxyCompactList}\item 
+INTEGER \hyperlink{namespacemo__data_a25de952ac1cfddcf1328f99e9e490ed3}{N\_\-bgc}
+\begin{DoxyCompactList}\small\item\em Number of chemicals. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:,:), allocatable \hyperlink{namespacemo__data_a5fbc3eddb21dfefcbd20b3f95b2e9808}{fl\_\-brine\_\-bgc}
+\begin{DoxyCompactList}\small\item\em Brine fluxes in a matrix, \mbox{[}kg/s\mbox{]}, first index is the layer of origin, and the second index is the layer of arrival. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:,:), allocatable \hyperlink{namespacemo__data_a0f5cfd95b789313c0a78a9b7feae167a}{bgc\_\-abs}
+\begin{DoxyCompactList}\small\item\em Absolute amount of chemicals \mbox{[}kmol\mbox{]} for each tracer. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:,:), allocatable \hyperlink{namespacemo__data_a92107cbfdb8869916b149d942db53cad}{bgc\_\-bu}
+\begin{DoxyCompactList}\small\item\em Bulk amounts of chemicals \mbox{[}kmol/kg\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:,:), allocatable \hyperlink{namespacemo__data_a8c950715d79f982020fbc43ec03a02e8}{bgc\_\-br}
+\begin{DoxyCompactList}\small\item\em Brine concentrations of chems \mbox{[}kmol/kg\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_a7a31686a7563ca77bbe2aa8eaa14cfd2}{bgc\_\-bottom}
+\begin{DoxyCompactList}\small\item\em Bulk concentrations of chems below the ice \mbox{[}kmol/kg\mbox{]}. \item\end{DoxyCompactList}\item 
+REAL(wp), dimension(:), allocatable \hyperlink{namespacemo__data_a15d6538801561a4daac86ca856ff99c5}{bgc\_\-total}
+\begin{DoxyCompactList}\small\item\em Total of chems, for lab experiments with a fixed total amount. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a075b7537738c70f4bc97adf551be3b75}{m\_\-total}
+\begin{DoxyCompactList}\small\item\em Total initial water mass, for lab experiments with a fixed total amount. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_a48908c6562a2cb9ef6b51897c4c27716}{S\_\-total}
+\begin{DoxyCompactList}\small\item\em Total initial salt mass, for lab experiments with a fixed total amount. \item\end{DoxyCompactList}\item 
+REAL(wp) \hyperlink{namespacemo__data_aa2b42f87a9dc571898326286dfab4350}{tank\_\-depth}
+\begin{DoxyCompactList}\small\item\em water depth in meters, used to calculate concentrations below ice for tank experiments \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Sets data and contains all flag descriptions. All data needed by \hyperlink{namespacemo__grotz}{mo\_\-grotz} are set in this module. Most arrays are allocated after the needed dimension is specified for each testcase in \hyperlink{mo__init_8f90}{mo\_\-init.f90}.
+
+\begin{DoxyAuthor}{Author}
+Philipp Griewank
+\end{DoxyAuthor}
+\begin{DoxyParagraph}{Revision History}
+Initialized by Philipp Griewank, IMPRS (2010-\/07-\/14) 
+\end{DoxyParagraph}
+
+
+\subsection{Variable Documentation}
+\hypertarget{namespacemo__data_a4e0875d21076b42177bdff28faf75a53}{
+\index{mo\_\-data@{mo\_\-data}!albedo@{albedo}}
+\index{albedo@{albedo}!mo_data@{mo\_\-data}}
+\subsubsection[{albedo}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::albedo}}}
+\label{namespacemo__data_a4e0875d21076b42177bdff28faf75a53}
+
+
+Amount of short wave radiation which is reflected at the top surface. 
+
+\hypertarget{namespacemo__data_a503f12cf2d0684ad5423b92e37c97fbe}{
+\index{mo\_\-data@{mo\_\-data}!albedo\_\-flag@{albedo\_\-flag}}
+\index{albedo\_\-flag@{albedo\_\-flag}!mo_data@{mo\_\-data}}
+\subsubsection[{albedo\_\-flag}]{\setlength{\rightskip}{0pt plus 5cm}INTEGER {\bf mo\_\-data::albedo\_\-flag}}}
+\label{namespacemo__data_a503f12cf2d0684ad5423b92e37c97fbe}
+
+
+1: simple albedo, 2: normal albedo, see func\_\-albedo for details 
+
+\hypertarget{namespacemo__data_a14ac53f7afeb8965106ee70871b38006}{
+\index{mo\_\-data@{mo\_\-data}!alpha\_\-flux\_\-instable@{alpha\_\-flux\_\-instable}}
+\index{alpha\_\-flux\_\-instable@{alpha\_\-flux\_\-instable}!mo_data@{mo\_\-data}}
+\subsubsection[{alpha\_\-flux\_\-instable}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::alpha\_\-flux\_\-instable}}}
+\label{namespacemo__data_a14ac53f7afeb8965106ee70871b38006}
+
+
+Proportionality constant which determines energy flux by the temperature difference T\_\-top$>$T2m \mbox{[}W/C\mbox{]}. 
+
+\hypertarget{namespacemo__data_a5d103f2250083f57def04a08d89be231}{
+\index{mo\_\-data@{mo\_\-data}!alpha\_\-flux\_\-stable@{alpha\_\-flux\_\-stable}}
+\index{alpha\_\-flux\_\-stable@{alpha\_\-flux\_\-stable}!mo_data@{mo\_\-data}}
+\subsubsection[{alpha\_\-flux\_\-stable}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::alpha\_\-flux\_\-stable}}}
+\label{namespacemo__data_a5d103f2250083f57def04a08d89be231}
+
+
+Proportionality constant which determines energy flux by the temperature difference T\_\-top$<$T2m \mbox{[}W/C\mbox{]}. 
+
+\hypertarget{namespacemo__data_ac3bc82dac4d101806cd2a77f3b23d92c}{
+\index{mo\_\-data@{mo\_\-data}!atmoflux\_\-flag@{atmoflux\_\-flag}}
+\index{atmoflux\_\-flag@{atmoflux\_\-flag}!mo_data@{mo\_\-data}}
+\subsubsection[{atmoflux\_\-flag}]{\setlength{\rightskip}{0pt plus 5cm}INTEGER {\bf mo\_\-data::atmoflux\_\-flag}}}
+\label{namespacemo__data_ac3bc82dac4d101806cd2a77f3b23d92c}
+
+
+1: Use mean climatology of Notz, 2: Use imported reanalysis data, 3: use fixed values defined in \hyperlink{namespacemo__init}{mo\_\-init} 
+
+\hypertarget{namespacemo__data_a0f5cfd95b789313c0a78a9b7feae167a}{
+\index{mo\_\-data@{mo\_\-data}!bgc\_\-abs@{bgc\_\-abs}}
+\index{bgc\_\-abs@{bgc\_\-abs}!mo_data@{mo\_\-data}}
+\subsubsection[{bgc\_\-abs}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:,:),allocatable {\bf mo\_\-data::bgc\_\-abs}}}
+\label{namespacemo__data_a0f5cfd95b789313c0a78a9b7feae167a}
+
+
+Absolute amount of chemicals \mbox{[}kmol\mbox{]} for each tracer. 
+
+\hypertarget{namespacemo__data_a7a31686a7563ca77bbe2aa8eaa14cfd2}{
+\index{mo\_\-data@{mo\_\-data}!bgc\_\-bottom@{bgc\_\-bottom}}
+\index{bgc\_\-bottom@{bgc\_\-bottom}!mo_data@{mo\_\-data}}
+\subsubsection[{bgc\_\-bottom}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:),allocatable {\bf mo\_\-data::bgc\_\-bottom}}}
+\label{namespacemo__data_a7a31686a7563ca77bbe2aa8eaa14cfd2}
+
+
+Bulk concentrations of chems below the ice \mbox{[}kmol/kg\mbox{]}. 
+
+\hypertarget{namespacemo__data_a8c950715d79f982020fbc43ec03a02e8}{
+\index{mo\_\-data@{mo\_\-data}!bgc\_\-br@{bgc\_\-br}}
+\index{bgc\_\-br@{bgc\_\-br}!mo_data@{mo\_\-data}}
+\subsubsection[{bgc\_\-br}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:,:),allocatable {\bf mo\_\-data::bgc\_\-br}}}
+\label{namespacemo__data_a8c950715d79f982020fbc43ec03a02e8}
+
+
+Brine concentrations of chems \mbox{[}kmol/kg\mbox{]}. 
+
+\hypertarget{namespacemo__data_a92107cbfdb8869916b149d942db53cad}{
+\index{mo\_\-data@{mo\_\-data}!bgc\_\-bu@{bgc\_\-bu}}
+\index{bgc\_\-bu@{bgc\_\-bu}!mo_data@{mo\_\-data}}
+\subsubsection[{bgc\_\-bu}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:,:),allocatable {\bf mo\_\-data::bgc\_\-bu}}}
+\label{namespacemo__data_a92107cbfdb8869916b149d942db53cad}
+
+
+Bulk amounts of chemicals \mbox{[}kmol/kg\mbox{]}. 
+
+\hypertarget{namespacemo__data_a962bc540d1c63b9ff3b571c91133070b}{
+\index{mo\_\-data@{mo\_\-data}!bgc\_\-flag@{bgc\_\-flag}}
+\index{bgc\_\-flag@{bgc\_\-flag}!mo_data@{mo\_\-data}}
+\subsubsection[{bgc\_\-flag}]{\setlength{\rightskip}{0pt plus 5cm}INTEGER {\bf mo\_\-data::bgc\_\-flag}}}
+\label{namespacemo__data_a962bc540d1c63b9ff3b571c91133070b}
+
+
+1: no bgc, 2:bgc 
+
+\hypertarget{namespacemo__data_a15d6538801561a4daac86ca856ff99c5}{
+\index{mo\_\-data@{mo\_\-data}!bgc\_\-total@{bgc\_\-total}}
+\index{bgc\_\-total@{bgc\_\-total}!mo_data@{mo\_\-data}}
+\subsubsection[{bgc\_\-total}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:),allocatable {\bf mo\_\-data::bgc\_\-total}}}
+\label{namespacemo__data_a15d6538801561a4daac86ca856ff99c5}
+
+
+Total of chems, for lab experiments with a fixed total amount. 
+
+\hypertarget{namespacemo__data_ab9e96b3fd1d356487e156f8634c09732}{
+\index{mo\_\-data@{mo\_\-data}!bottom\_\-flag@{bottom\_\-flag}}
+\index{bottom\_\-flag@{bottom\_\-flag}!mo_data@{mo\_\-data}}
+\subsubsection[{bottom\_\-flag}]{\setlength{\rightskip}{0pt plus 5cm}INTEGER {\bf mo\_\-data::bottom\_\-flag}}}
+\label{namespacemo__data_ab9e96b3fd1d356487e156f8634c09732}
+
+
+1: nothing changes, 2: deactivates all bottom layer dynamics, useful for some debugging and idealized tests 
+
+\hypertarget{namespacemo__data_a6089c1127efc972f4488515f75ca8e80}{
+\index{mo\_\-data@{mo\_\-data}!boundflux\_\-flag@{boundflux\_\-flag}}
+\index{boundflux\_\-flag@{boundflux\_\-flag}!mo_data@{mo\_\-data}}
+\subsubsection[{boundflux\_\-flag}]{\setlength{\rightskip}{0pt plus 5cm}INTEGER {\bf mo\_\-data::boundflux\_\-flag}}}
+\label{namespacemo__data_a6089c1127efc972f4488515f75ca8e80}
+
+
+1: top and bottom cooling plate, 2:top Notz fluxes, bottom cooling plate 3: top flux=a$\ast$(T-\/T\_\-s) 
+
+\hypertarget{namespacemo__data_aadde2b57a3e8c60b5cd6f8a5ee72623d}{
+\index{mo\_\-data@{mo\_\-data}!bulk\_\-salin@{bulk\_\-salin}}
+\index{bulk\_\-salin@{bulk\_\-salin}!mo_data@{mo\_\-data}}
+\subsubsection[{bulk\_\-salin}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::bulk\_\-salin}}}
+\label{namespacemo__data_aadde2b57a3e8c60b5cd6f8a5ee72623d}
+
+
+Salt/Mass \mbox{[}ppt\mbox{]}. 
+
+\hypertarget{namespacemo__data_a014d834dc753f1d37c0575dc9037878a}{
+\index{mo\_\-data@{mo\_\-data}!debug\_\-flag@{debug\_\-flag}}
+\index{debug\_\-flag@{debug\_\-flag}!mo_data@{mo\_\-data}}
+\subsubsection[{debug\_\-flag}]{\setlength{\rightskip}{0pt plus 5cm}INTEGER {\bf mo\_\-data::debug\_\-flag}}}
+\label{namespacemo__data_a014d834dc753f1d37c0575dc9037878a}
+
+
+1: no raw layer output, 2: each layer is output at every timestep (warning, file size can be very large) 
+
+\hypertarget{namespacemo__data_a6dedf87b47bcdf4151797c04485f251e}{
+\index{mo\_\-data@{mo\_\-data}!dt@{dt}}
+\index{dt@{dt}!mo_data@{mo\_\-data}}
+\subsubsection[{dt}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::dt}}}
+\label{namespacemo__data_a6dedf87b47bcdf4151797c04485f251e}
+
+
+Timestep \mbox{[}s\mbox{]}. 
+
+\hypertarget{namespacemo__data_aedd9ec4adc59bfcbf90402c4226f2f34}{
+\index{mo\_\-data@{mo\_\-data}!energy\_\-stored@{energy\_\-stored}}
+\index{energy\_\-stored@{energy\_\-stored}!mo_data@{mo\_\-data}}
+\subsubsection[{energy\_\-stored}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::energy\_\-stored}}}
+\label{namespacemo__data_aedd9ec4adc59bfcbf90402c4226f2f34}
+
+
+Total amount of energy stored, control is freezing point temperature of S\_\-bu\_\-bottom \mbox{[}J\mbox{]}. 
+
+\hypertarget{namespacemo__data_a5fbc3eddb21dfefcbd20b3f95b2e9808}{
+\index{mo\_\-data@{mo\_\-data}!fl\_\-brine\_\-bgc@{fl\_\-brine\_\-bgc}}
+\index{fl\_\-brine\_\-bgc@{fl\_\-brine\_\-bgc}!mo_data@{mo\_\-data}}
+\subsubsection[{fl\_\-brine\_\-bgc}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:,:),allocatable {\bf mo\_\-data::fl\_\-brine\_\-bgc}}}
+\label{namespacemo__data_a5fbc3eddb21dfefcbd20b3f95b2e9808}
+
+
+Brine fluxes in a matrix, \mbox{[}kg/s\mbox{]}, first index is the layer of origin, and the second index is the layer of arrival. 
+
+\hypertarget{namespacemo__data_a63a4e3f74d04640c4f4522a9f22390e0}{
+\index{mo\_\-data@{mo\_\-data}!fl\_\-lat@{fl\_\-lat}}
+\index{fl\_\-lat@{fl\_\-lat}!mo_data@{mo\_\-data}}
+\subsubsection[{fl\_\-lat}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::fl\_\-lat}}}
+\label{namespacemo__data_a63a4e3f74d04640c4f4522a9f22390e0}
+
+
+Latent heat flux \mbox{[}W/m$\ast$$\ast$2\mbox{]}. 
+
+\hypertarget{namespacemo__data_a0224a603e8070ac503b13ae82c8e6b99}{
+\index{mo\_\-data@{mo\_\-data}!fl\_\-lw@{fl\_\-lw}}
+\index{fl\_\-lw@{fl\_\-lw}!mo_data@{mo\_\-data}}
+\subsubsection[{fl\_\-lw}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::fl\_\-lw}}}
+\label{namespacemo__data_a0224a603e8070ac503b13ae82c8e6b99}
+
+
+Incoming longwave radiation \mbox{[}W/m$\ast$$\ast$2\mbox{]}. 
+
+\hypertarget{namespacemo__data_a2d2ccb1188895b74eb3e2742c6a82b4c}{
+\index{mo\_\-data@{mo\_\-data}!fl\_\-lw\_\-input@{fl\_\-lw\_\-input}}
+\index{fl\_\-lw\_\-input@{fl\_\-lw\_\-input}!mo_data@{mo\_\-data}}
+\subsubsection[{fl\_\-lw\_\-input}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:),allocatable {\bf mo\_\-data::fl\_\-lw\_\-input}}}
+\label{namespacemo__data_a2d2ccb1188895b74eb3e2742c6a82b4c}
+
+
+Used to read in lw fluxes from ERA for atmoflux\_\-flag==2. 
+
+\hypertarget{namespacemo__data_ac4fb31397da08679eac0e3089b60447a}{
+\index{mo\_\-data@{mo\_\-data}!fl\_\-m@{fl\_\-m}}
+\index{fl\_\-m@{fl\_\-m}!mo_data@{mo\_\-data}}
+\subsubsection[{fl\_\-m}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:),allocatable {\bf mo\_\-data::fl\_\-m}}}
+\label{namespacemo__data_ac4fb31397da08679eac0e3089b60447a}
+
+
+Mass fluxes between layers \mbox{[}kg\mbox{]}. 
+
+\hypertarget{namespacemo__data_a594603db2866303fb0074ab34692fa4a}{
+\index{mo\_\-data@{mo\_\-data}!fl\_\-Q@{fl\_\-Q}}
+\index{fl\_\-Q@{fl\_\-Q}!mo_data@{mo\_\-data}}
+\subsubsection[{fl\_\-Q}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:),allocatable {\bf mo\_\-data::fl\_\-Q}}}
+\label{namespacemo__data_a594603db2866303fb0074ab34692fa4a}
+
+
+Heat flux between layers \mbox{[}J/s\mbox{]}. 
+
+\hypertarget{namespacemo__data_acd16d86818624a2eb95bfed83a2a1d76}{
+\index{mo\_\-data@{mo\_\-data}!fl\_\-q\_\-bottom@{fl\_\-q\_\-bottom}}
+\index{fl\_\-q\_\-bottom@{fl\_\-q\_\-bottom}!mo_data@{mo\_\-data}}
+\subsubsection[{fl\_\-q\_\-bottom}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::fl\_\-q\_\-bottom}}}
+\label{namespacemo__data_acd16d86818624a2eb95bfed83a2a1d76}
+
+
+Bottom heat flux \mbox{[}J$\ast$s\mbox{]}. 
+
+\hypertarget{namespacemo__data_ab90ffe7683553449ecf8c78d478cb40e}{
+\index{mo\_\-data@{mo\_\-data}!fl\_\-q\_\-snow@{fl\_\-q\_\-snow}}
+\index{fl\_\-q\_\-snow@{fl\_\-q\_\-snow}!mo_data@{mo\_\-data}}
+\subsubsection[{fl\_\-q\_\-snow}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::fl\_\-q\_\-snow}}}
+\label{namespacemo__data_ab90ffe7683553449ecf8c78d478cb40e}
+
+
+flow of heat into the snow layer 
+
+\hypertarget{namespacemo__data_aac6756d0384948c5717bdbabb4e1b748}{
+\index{mo\_\-data@{mo\_\-data}!fl\_\-rad@{fl\_\-rad}}
+\index{fl\_\-rad@{fl\_\-rad}!mo_data@{mo\_\-data}}
+\subsubsection[{fl\_\-rad}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:),allocatable {\bf mo\_\-data::fl\_\-rad}}}
+\label{namespacemo__data_aac6756d0384948c5717bdbabb4e1b748}
+
+
+Energy flux of absorbed sw radiation of each layer \mbox{[}J/s\mbox{]}. 
+
+\hypertarget{namespacemo__data_afedf60f1ea1272e55a3d6110e0911102}{
+\index{mo\_\-data@{mo\_\-data}!fl\_\-rest@{fl\_\-rest}}
+\index{fl\_\-rest@{fl\_\-rest}!mo_data@{mo\_\-data}}
+\subsubsection[{fl\_\-rest}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::fl\_\-rest}}}
+\label{namespacemo__data_afedf60f1ea1272e55a3d6110e0911102}
+
+
+Bundled longwave,sensitive and latent heat flux \mbox{[}W/m$\ast$$\ast$2\mbox{]}. 
+
+\hypertarget{namespacemo__data_a43d6e453737affa893b8a861be921f5d}{
+\index{mo\_\-data@{mo\_\-data}!fl\_\-S@{fl\_\-S}}
+\index{fl\_\-S@{fl\_\-S}!mo_data@{mo\_\-data}}
+\subsubsection[{fl\_\-S}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:),allocatable {\bf mo\_\-data::fl\_\-S}}}
+\label{namespacemo__data_a43d6e453737affa893b8a861be921f5d}
+
+
+Salinity flux \mbox{[}(g/s\mbox{]}. 
+
+\hypertarget{namespacemo__data_a46e3fef58a1955a30678d73ddc044c9a}{
+\index{mo\_\-data@{mo\_\-data}!fl\_\-sen@{fl\_\-sen}}
+\index{fl\_\-sen@{fl\_\-sen}!mo_data@{mo\_\-data}}
+\subsubsection[{fl\_\-sen}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::fl\_\-sen}}}
+\label{namespacemo__data_a46e3fef58a1955a30678d73ddc044c9a}
+
+
+Sensitive heat flux \mbox{[}W/m$\ast$$\ast$2\mbox{]}. 
+
+\hypertarget{namespacemo__data_a848f22357479c2be98599195b61991f7}{
+\index{mo\_\-data@{mo\_\-data}!fl\_\-sw@{fl\_\-sw}}
+\index{fl\_\-sw@{fl\_\-sw}!mo_data@{mo\_\-data}}
+\subsubsection[{fl\_\-sw}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::fl\_\-sw}}}
+\label{namespacemo__data_a848f22357479c2be98599195b61991f7}
+
+
+Incoming shortwave radiation \mbox{[}W/m$\ast$$\ast$2\mbox{]}. 
+
+\hypertarget{namespacemo__data_adbae909d2ce614966d3de6ae1eb558a0}{
+\index{mo\_\-data@{mo\_\-data}!fl\_\-sw\_\-input@{fl\_\-sw\_\-input}}
+\index{fl\_\-sw\_\-input@{fl\_\-sw\_\-input}!mo_data@{mo\_\-data}}
+\subsubsection[{fl\_\-sw\_\-input}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:),allocatable {\bf mo\_\-data::fl\_\-sw\_\-input}}}
+\label{namespacemo__data_adbae909d2ce614966d3de6ae1eb558a0}
+
+
+Used to read in sw fluxes from ERA for atmoflux\_\-flag==2. 
+
+\hypertarget{namespacemo__data_a7e6cb2f19ab88a5903aa5574e5ec6b19}{
+\index{mo\_\-data@{mo\_\-data}!flood\_\-flag@{flood\_\-flag}}
+\index{flood\_\-flag@{flood\_\-flag}!mo_data@{mo\_\-data}}
+\subsubsection[{flood\_\-flag}]{\setlength{\rightskip}{0pt plus 5cm}INTEGER {\bf mo\_\-data::flood\_\-flag}}}
+\label{namespacemo__data_a7e6cb2f19ab88a5903aa5574e5ec6b19}
+
+
+1: no flooding, 2:normal flooding, 3:simple flooding 
+
+\hypertarget{namespacemo__data_aa062c97301f949aea320e57c72926700}{
+\index{mo\_\-data@{mo\_\-data}!flush\_\-flag@{flush\_\-flag}}
+\index{flush\_\-flag@{flush\_\-flag}!mo_data@{mo\_\-data}}
+\subsubsection[{flush\_\-flag}]{\setlength{\rightskip}{0pt plus 5cm}INTEGER {\bf mo\_\-data::flush\_\-flag}}}
+\label{namespacemo__data_aa062c97301f949aea320e57c72926700}
+
+
+1: no flushing, 4:meltwater is removed artificially, 5:vert and horiz flushing, 6: simplified 
+
+\hypertarget{namespacemo__data_a2f88c08cc3cae9d46a6bdcd9232ddbfa}{
+\index{mo\_\-data@{mo\_\-data}!flush\_\-heat\_\-flag@{flush\_\-heat\_\-flag}}
+\index{flush\_\-heat\_\-flag@{flush\_\-heat\_\-flag}!mo_data@{mo\_\-data}}
+\subsubsection[{flush\_\-heat\_\-flag}]{\setlength{\rightskip}{0pt plus 5cm}INTEGER {\bf mo\_\-data::flush\_\-heat\_\-flag}}}
+\label{namespacemo__data_a2f88c08cc3cae9d46a6bdcd9232ddbfa}
+
+
+1: nothing happens, 2: compensates heatfluxes in flush\_\-flag = 5 
+
+\hypertarget{namespacemo__data_ac2bdb68249acc513c69fb2793f6f376c}{
+\index{mo\_\-data@{mo\_\-data}!format\_\-bgc@{format\_\-bgc}}
+\index{format\_\-bgc@{format\_\-bgc}!mo_data@{mo\_\-data}}
+\subsubsection[{format\_\-bgc}]{\setlength{\rightskip}{0pt plus 5cm}CHARACTER$\ast$12000 {\bf mo\_\-data::format\_\-bgc}}}
+\label{namespacemo__data_ac2bdb68249acc513c69fb2793f6f376c}
+
+
+Format strings for output. 
+
+\hypertarget{namespacemo__data_a6e3f24460d266c05576103895a7167be}{
+\index{mo\_\-data@{mo\_\-data}!format\_\-integer@{format\_\-integer}}
+\index{format\_\-integer@{format\_\-integer}!mo_data@{mo\_\-data}}
+\subsubsection[{format\_\-integer}]{\setlength{\rightskip}{0pt plus 5cm}CHARACTER$\ast$12000 {\bf mo\_\-data::format\_\-integer}}}
+\label{namespacemo__data_a6e3f24460d266c05576103895a7167be}
+\hypertarget{namespacemo__data_a5a4d1d7b7cad308de5f2a051715e95d5}{
+\index{mo\_\-data@{mo\_\-data}!format\_\-psi@{format\_\-psi}}
+\index{format\_\-psi@{format\_\-psi}!mo_data@{mo\_\-data}}
+\subsubsection[{format\_\-psi}]{\setlength{\rightskip}{0pt plus 5cm}CHARACTER$\ast$12000 {\bf mo\_\-data::format\_\-psi}}}
+\label{namespacemo__data_a5a4d1d7b7cad308de5f2a051715e95d5}
+\hypertarget{namespacemo__data_ad94f3b5a63bb78de820fe5a8c6f5574c}{
+\index{mo\_\-data@{mo\_\-data}!format\_\-snow@{format\_\-snow}}
+\index{format\_\-snow@{format\_\-snow}!mo_data@{mo\_\-data}}
+\subsubsection[{format\_\-snow}]{\setlength{\rightskip}{0pt plus 5cm}CHARACTER$\ast$12000 {\bf mo\_\-data::format\_\-snow}}}
+\label{namespacemo__data_ad94f3b5a63bb78de820fe5a8c6f5574c}
+\hypertarget{namespacemo__data_abe2cc97e4da609edede5040d2574b93f}{
+\index{mo\_\-data@{mo\_\-data}!format\_\-T@{format\_\-T}}
+\index{format\_\-T@{format\_\-T}!mo_data@{mo\_\-data}}
+\subsubsection[{format\_\-T}]{\setlength{\rightskip}{0pt plus 5cm}CHARACTER$\ast$12000 {\bf mo\_\-data::format\_\-T}}}
+\label{namespacemo__data_abe2cc97e4da609edede5040d2574b93f}
+\hypertarget{namespacemo__data_a15b8dd299b9b9a34d337f74ea3e8b676}{
+\index{mo\_\-data@{mo\_\-data}!format\_\-T2m\_\-top@{format\_\-T2m\_\-top}}
+\index{format\_\-T2m\_\-top@{format\_\-T2m\_\-top}!mo_data@{mo\_\-data}}
+\subsubsection[{format\_\-T2m\_\-top}]{\setlength{\rightskip}{0pt plus 5cm}CHARACTER$\ast$12000 {\bf mo\_\-data::format\_\-T2m\_\-top}}}
+\label{namespacemo__data_a15b8dd299b9b9a34d337f74ea3e8b676}
+\hypertarget{namespacemo__data_acb2cd425e31735f68ad118da5eed1392}{
+\index{mo\_\-data@{mo\_\-data}!format\_\-thick@{format\_\-thick}}
+\index{format\_\-thick@{format\_\-thick}!mo_data@{mo\_\-data}}
+\subsubsection[{format\_\-thick}]{\setlength{\rightskip}{0pt plus 5cm}CHARACTER$\ast$12000 {\bf mo\_\-data::format\_\-thick}}}
+\label{namespacemo__data_acb2cd425e31735f68ad118da5eed1392}
+\hypertarget{namespacemo__data_aef61c6317d4baba778438cea10b64412}{
+\index{mo\_\-data@{mo\_\-data}!freeboard@{freeboard}}
+\index{freeboard@{freeboard}!mo_data@{mo\_\-data}}
+\subsubsection[{freeboard}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::freeboard}}}
+\label{namespacemo__data_aef61c6317d4baba778438cea10b64412}
+
+
+Height of ice surface above (or below) waterlevel \mbox{[}m\mbox{]}. 
+
+\hypertarget{namespacemo__data_a4c81fc09918e52dc51dfa99efbbac90b}{
+\index{mo\_\-data@{mo\_\-data}!freshwater@{freshwater}}
+\index{freshwater@{freshwater}!mo_data@{mo\_\-data}}
+\subsubsection[{freshwater}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::freshwater}}}
+\label{namespacemo__data_a4c81fc09918e52dc51dfa99efbbac90b}
+
+
+Meters of freshwater stored in column \mbox{[}m\mbox{]}. 
+
+\hypertarget{namespacemo__data_a7971f5dbfdde936f63647492b31dffe9}{
+\index{mo\_\-data@{mo\_\-data}!grav\_\-drain@{grav\_\-drain}}
+\index{grav\_\-drain@{grav\_\-drain}!mo_data@{mo\_\-data}}
+\subsubsection[{grav\_\-drain}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::grav\_\-drain}}}
+\label{namespacemo__data_a7971f5dbfdde936f63647492b31dffe9}
+
+
+brine flux of gravity drainage between two outputs \mbox{[}kg/s\mbox{]} 
+
+\hypertarget{namespacemo__data_ac9c9cead6d68b7413f41e70c9038e9c7}{
+\index{mo\_\-data@{mo\_\-data}!grav\_\-flag@{grav\_\-flag}}
+\index{grav\_\-flag@{grav\_\-flag}!mo_data@{mo\_\-data}}
+\subsubsection[{grav\_\-flag}]{\setlength{\rightskip}{0pt plus 5cm}INTEGER {\bf mo\_\-data::grav\_\-flag}}}
+\label{namespacemo__data_ac9c9cead6d68b7413f41e70c9038e9c7}
+
+
+1: no gravity drainage, 2: Gravity drainage, 3: Simple Drainage 
+
+\hypertarget{namespacemo__data_aab5e39e0b6060d7ef40979d070b89dca}{
+\index{mo\_\-data@{mo\_\-data}!grav\_\-heat\_\-flag@{grav\_\-heat\_\-flag}}
+\index{grav\_\-heat\_\-flag@{grav\_\-heat\_\-flag}!mo_data@{mo\_\-data}}
+\subsubsection[{grav\_\-heat\_\-flag}]{\setlength{\rightskip}{0pt plus 5cm}INTEGER {\bf mo\_\-data::grav\_\-heat\_\-flag}}}
+\label{namespacemo__data_aab5e39e0b6060d7ef40979d070b89dca}
+
+
+1: nothing happens, 2: compensates heatfluxes in grav\_\-flag = 2 
+
+\hypertarget{namespacemo__data_a084bb9d2856cdd8a9253f7790ac09b66}{
+\index{mo\_\-data@{mo\_\-data}!grav\_\-salt@{grav\_\-salt}}
+\index{grav\_\-salt@{grav\_\-salt}!mo_data@{mo\_\-data}}
+\subsubsection[{grav\_\-salt}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::grav\_\-salt}}}
+\label{namespacemo__data_a084bb9d2856cdd8a9253f7790ac09b66}
+
+
+salt flux moved by gravity drainage between two outputs \mbox{[}kg$\ast$ppt/s\mbox{]} 
+
+\hypertarget{namespacemo__data_afd51dbc5cf51bbdec73b0c543d963da8}{
+\index{mo\_\-data@{mo\_\-data}!grav\_\-temp@{grav\_\-temp}}
+\index{grav\_\-temp@{grav\_\-temp}!mo_data@{mo\_\-data}}
+\subsubsection[{grav\_\-temp}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::grav\_\-temp}}}
+\label{namespacemo__data_afd51dbc5cf51bbdec73b0c543d963da8}
+
+
+average temperature of gravity drainage brine between two outputs \mbox{[}T\mbox{]} 
+
+\hypertarget{namespacemo__data_ad27ff95f4bfe7ed6f5643d3953a9310e}{
+\index{mo\_\-data@{mo\_\-data}!H@{H}}
+\index{H@{H}!mo_data@{mo\_\-data}}
+\subsubsection[{H}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:),allocatable {\bf mo\_\-data::H}}}
+\label{namespacemo__data_ad27ff95f4bfe7ed6f5643d3953a9310e}
+
+
+Enthalpy \mbox{[}J\mbox{]}. 
+
+\hypertarget{namespacemo__data_a763929f604ab797932f22f50a720a1a1}{
+\index{mo\_\-data@{mo\_\-data}!H\_\-abs@{H\_\-abs}}
+\index{H\_\-abs@{H\_\-abs}!mo_data@{mo\_\-data}}
+\subsubsection[{H\_\-abs}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:),allocatable {\bf mo\_\-data::H\_\-abs}}}
+\label{namespacemo__data_a763929f604ab797932f22f50a720a1a1}
+
+
+specific Enthalpy \mbox{[}J/kg\mbox{]} 
+
+\hypertarget{namespacemo__data_a01f72ce0ba7168d410a2a683c2579e2d}{
+\index{mo\_\-data@{mo\_\-data}!H\_\-abs\_\-snow@{H\_\-abs\_\-snow}}
+\index{H\_\-abs\_\-snow@{H\_\-abs\_\-snow}!mo_data@{mo\_\-data}}
+\subsubsection[{H\_\-abs\_\-snow}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::H\_\-abs\_\-snow}}}
+\label{namespacemo__data_a01f72ce0ba7168d410a2a683c2579e2d}
+
+
+Absolute enthalpy of snow layer \mbox{[}J\mbox{]}. 
+
+\hypertarget{namespacemo__data_a95ab71baf4d9fbae790e31780317af06}{
+\index{mo\_\-data@{mo\_\-data}!harmonic\_\-flag@{harmonic\_\-flag}}
+\index{harmonic\_\-flag@{harmonic\_\-flag}!mo_data@{mo\_\-data}}
+\subsubsection[{harmonic\_\-flag}]{\setlength{\rightskip}{0pt plus 5cm}INTEGER {\bf mo\_\-data::harmonic\_\-flag}}}
+\label{namespacemo__data_a95ab71baf4d9fbae790e31780317af06}
+
+
+1: minimal permeability is used to calculate Rayleigh number, 2:harmonic mean is used for Rayleigh number 
+
+\hypertarget{namespacemo__data_ad15359b125bff66cb0f739e0eb5b01d4}{
+\index{mo\_\-data@{mo\_\-data}!i@{i}}
+\index{i@{i}!mo_data@{mo\_\-data}}
+\subsubsection[{i}]{\setlength{\rightskip}{0pt plus 5cm}INTEGER {\bf mo\_\-data::i}}}
+\label{namespacemo__data_ad15359b125bff66cb0f739e0eb5b01d4}
+
+
+Index, normally used for time. 
+
+\hypertarget{namespacemo__data_abca60ca0614b7061c6ef58e6e6daa60f}{
+\index{mo\_\-data@{mo\_\-data}!i\_\-time@{i\_\-time}}
+\index{i\_\-time@{i\_\-time}!mo_data@{mo\_\-data}}
+\subsubsection[{i\_\-time}]{\setlength{\rightskip}{0pt plus 5cm}INTEGER {\bf mo\_\-data::i\_\-time}}}
+\label{namespacemo__data_abca60ca0614b7061c6ef58e6e6daa60f}
+
+
+Number of timesteps. 
+
+\hypertarget{namespacemo__data_aa28d05f6fec3b61de0fbd7b4aa67f6ae}{
+\index{mo\_\-data@{mo\_\-data}!i\_\-time\_\-out@{i\_\-time\_\-out}}
+\index{i\_\-time\_\-out@{i\_\-time\_\-out}!mo_data@{mo\_\-data}}
+\subsubsection[{i\_\-time\_\-out}]{\setlength{\rightskip}{0pt plus 5cm}INTEGER {\bf mo\_\-data::i\_\-time\_\-out}}}
+\label{namespacemo__data_aa28d05f6fec3b61de0fbd7b4aa67f6ae}
+
+
+Number of timesteps between each output. 
+
+\hypertarget{namespacemo__data_afe6f17e4b469a746c68d9233d35ad11f}{
+\index{mo\_\-data@{mo\_\-data}!k@{k}}
+\index{k@{k}!mo_data@{mo\_\-data}}
+\subsubsection[{k}]{\setlength{\rightskip}{0pt plus 5cm}INTEGER {\bf mo\_\-data::k}}}
+\label{namespacemo__data_afe6f17e4b469a746c68d9233d35ad11f}
+
+
+Index, normally used for layer. 
+
+\hypertarget{namespacemo__data_a9a0ff39379f1d347bcb323cd49cb222e}{
+\index{mo\_\-data@{mo\_\-data}!Length\_\-Input@{Length\_\-Input}}
+\index{Length\_\-Input@{Length\_\-Input}!mo_data@{mo\_\-data}}
+\subsubsection[{Length\_\-Input}]{\setlength{\rightskip}{0pt plus 5cm}INTEGER {\bf mo\_\-data::Length\_\-Input}}}
+\label{namespacemo__data_a9a0ff39379f1d347bcb323cd49cb222e}
+
+
+Sets the input length for atmoflux\_\-flag==2, common value of 13169. 
+
+\hypertarget{namespacemo__data_ace52326d57ce881a5017a47fed1c5a17}{
+\index{mo\_\-data@{mo\_\-data}!liquid\_\-precip@{liquid\_\-precip}}
+\index{liquid\_\-precip@{liquid\_\-precip}!mo_data@{mo\_\-data}}
+\subsubsection[{liquid\_\-precip}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::liquid\_\-precip}}}
+\label{namespacemo__data_ace52326d57ce881a5017a47fed1c5a17}
+
+
+Liquid precip, \mbox{[}meter of water/s\mbox{]}. 
+
+\hypertarget{namespacemo__data_af1813881649730f758278713d7d72d18}{
+\index{mo\_\-data@{mo\_\-data}!m@{m}}
+\index{m@{m}!mo_data@{mo\_\-data}}
+\subsubsection[{m}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:),allocatable {\bf mo\_\-data::m}}}
+\label{namespacemo__data_af1813881649730f758278713d7d72d18}
+
+
+Mass \mbox{[}kg\mbox{]}. 
+
+\hypertarget{namespacemo__data_abda43178412f35b4871bbfe89bc3eb12}{
+\index{mo\_\-data@{mo\_\-data}!m\_\-snow@{m\_\-snow}}
+\index{m\_\-snow@{m\_\-snow}!mo_data@{mo\_\-data}}
+\subsubsection[{m\_\-snow}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::m\_\-snow}}}
+\label{namespacemo__data_abda43178412f35b4871bbfe89bc3eb12}
+
+
+Mass of snow layer \mbox{[}kg\mbox{]}. 
+
+\hypertarget{namespacemo__data_a075b7537738c70f4bc97adf551be3b75}{
+\index{mo\_\-data@{mo\_\-data}!m\_\-total@{m\_\-total}}
+\index{m\_\-total@{m\_\-total}!mo_data@{mo\_\-data}}
+\subsubsection[{m\_\-total}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::m\_\-total}}}
+\label{namespacemo__data_a075b7537738c70f4bc97adf551be3b75}
+
+
+Total initial water mass, for lab experiments with a fixed total amount. 
+
+\hypertarget{namespacemo__data_ae1057f6ef957e6cae0ac381add3f3b73}{
+\index{mo\_\-data@{mo\_\-data}!melt\_\-thick@{melt\_\-thick}}
+\index{melt\_\-thick@{melt\_\-thick}!mo_data@{mo\_\-data}}
+\subsubsection[{melt\_\-thick}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::melt\_\-thick}}}
+\label{namespacemo__data_ae1057f6ef957e6cae0ac381add3f3b73}
+
+
+thickness of fully liquid part of top layer \mbox{[}m\mbox{]} 
+
+\hypertarget{namespacemo__data_adcca7f2476501b41d758129cc352af3b}{
+\index{mo\_\-data@{mo\_\-data}!N\_\-active@{N\_\-active}}
+\index{N\_\-active@{N\_\-active}!mo_data@{mo\_\-data}}
+\subsubsection[{N\_\-active}]{\setlength{\rightskip}{0pt plus 5cm}INTEGER {\bf mo\_\-data::N\_\-active}}}
+\label{namespacemo__data_adcca7f2476501b41d758129cc352af3b}
+
+
+Number of Layers active in the present. 
+
+\hypertarget{namespacemo__data_a25de952ac1cfddcf1328f99e9e490ed3}{
+\index{mo\_\-data@{mo\_\-data}!N\_\-bgc@{N\_\-bgc}}
+\index{N\_\-bgc@{N\_\-bgc}!mo_data@{mo\_\-data}}
+\subsubsection[{N\_\-bgc}]{\setlength{\rightskip}{0pt plus 5cm}INTEGER {\bf mo\_\-data::N\_\-bgc}}}
+\label{namespacemo__data_a25de952ac1cfddcf1328f99e9e490ed3}
+
+
+Number of chemicals. 
+
+\hypertarget{namespacemo__data_a9c89af560a3d2f1fe1027bf81125b16c}{
+\index{mo\_\-data@{mo\_\-data}!N\_\-bottom@{N\_\-bottom}}
+\index{N\_\-bottom@{N\_\-bottom}!mo_data@{mo\_\-data}}
+\subsubsection[{N\_\-bottom}]{\setlength{\rightskip}{0pt plus 5cm}INTEGER {\bf mo\_\-data::N\_\-bottom}}}
+\label{namespacemo__data_a9c89af560a3d2f1fe1027bf81125b16c}
+
+
+Number of bottom layers. 
+
+\hypertarget{namespacemo__data_a1140e1d6804c776a152d059c6ecd8375}{
+\index{mo\_\-data@{mo\_\-data}!N\_\-middle@{N\_\-middle}}
+\index{N\_\-middle@{N\_\-middle}!mo_data@{mo\_\-data}}
+\subsubsection[{N\_\-middle}]{\setlength{\rightskip}{0pt plus 5cm}INTEGER {\bf mo\_\-data::N\_\-middle}}}
+\label{namespacemo__data_a1140e1d6804c776a152d059c6ecd8375}
+
+
+Number of middle layers. 
+
+\hypertarget{namespacemo__data_a39a97d63744c18a6e9f3524d2dcc4154}{
+\index{mo\_\-data@{mo\_\-data}!n\_\-time\_\-out@{n\_\-time\_\-out}}
+\index{n\_\-time\_\-out@{n\_\-time\_\-out}!mo_data@{mo\_\-data}}
+\subsubsection[{n\_\-time\_\-out}]{\setlength{\rightskip}{0pt plus 5cm}INTEGER {\bf mo\_\-data::n\_\-time\_\-out}}}
+\label{namespacemo__data_a39a97d63744c18a6e9f3524d2dcc4154}
+
+
+Counts number of timesteps between output. 
+
+\hypertarget{namespacemo__data_a4be9ef8c44dfc2c8fccc353a2fc5fc79}{
+\index{mo\_\-data@{mo\_\-data}!N\_\-top@{N\_\-top}}
+\index{N\_\-top@{N\_\-top}!mo_data@{mo\_\-data}}
+\subsubsection[{N\_\-top}]{\setlength{\rightskip}{0pt plus 5cm}INTEGER {\bf mo\_\-data::N\_\-top}}}
+\label{namespacemo__data_a4be9ef8c44dfc2c8fccc353a2fc5fc79}
+
+
+Number of top layers. 
+
+\hypertarget{namespacemo__data_ab0b091ff23970ff2939892c9d8f788f1}{
+\index{mo\_\-data@{mo\_\-data}!Nlayer@{Nlayer}}
+\index{Nlayer@{Nlayer}!mo_data@{mo\_\-data}}
+\subsubsection[{Nlayer}]{\setlength{\rightskip}{0pt plus 5cm}INTEGER {\bf mo\_\-data::Nlayer}}}
+\label{namespacemo__data_ab0b091ff23970ff2939892c9d8f788f1}
+
+
+Number of layers. 
+
+\hypertarget{namespacemo__data_ac629f6eccf4b77df3406ac2ad5ac8ea6}{
+\index{mo\_\-data@{mo\_\-data}!perm@{perm}}
+\index{perm@{perm}!mo_data@{mo\_\-data}}
+\subsubsection[{perm}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:),allocatable {\bf mo\_\-data::perm}}}
+\label{namespacemo__data_ac629f6eccf4b77df3406ac2ad5ac8ea6}
+
+
+Permeability \mbox{[}?\mbox{]}. 
+
+\hypertarget{namespacemo__data_ace165f21c4edcf77372b13a99161aec8}{
+\index{mo\_\-data@{mo\_\-data}!phi@{phi}}
+\index{phi@{phi}!mo_data@{mo\_\-data}}
+\subsubsection[{phi}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:),allocatable {\bf mo\_\-data::phi}}}
+\label{namespacemo__data_ace165f21c4edcf77372b13a99161aec8}
+
+
+Solid mass fraction. 
+
+\hypertarget{namespacemo__data_aee41245a2d1d08be740021dfc14cf723}{
+\index{mo\_\-data@{mo\_\-data}!phi\_\-s@{phi\_\-s}}
+\index{phi\_\-s@{phi\_\-s}!mo_data@{mo\_\-data}}
+\subsubsection[{phi\_\-s}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::phi\_\-s}}}
+\label{namespacemo__data_aee41245a2d1d08be740021dfc14cf723}
+
+
+Solid mass fraction of snow layer. 
+
+\hypertarget{namespacemo__data_a466c2f829a8b266724dd9150cb99d42f}{
+\index{mo\_\-data@{mo\_\-data}!precip\_\-flag@{precip\_\-flag}}
+\index{precip\_\-flag@{precip\_\-flag}!mo_data@{mo\_\-data}}
+\subsubsection[{precip\_\-flag}]{\setlength{\rightskip}{0pt plus 5cm}INTEGER {\bf mo\_\-data::precip\_\-flag}}}
+\label{namespacemo__data_a466c2f829a8b266724dd9150cb99d42f}
+
+
+0: solid and liquid precipitation, 1:phase determined by T2m 
+
+\hypertarget{namespacemo__data_ae066ba3be89578a239547e88eaa6c45e}{
+\index{mo\_\-data@{mo\_\-data}!precip\_\-input@{precip\_\-input}}
+\index{precip\_\-input@{precip\_\-input}!mo_data@{mo\_\-data}}
+\subsubsection[{precip\_\-input}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:),allocatable {\bf mo\_\-data::precip\_\-input}}}
+\label{namespacemo__data_ae066ba3be89578a239547e88eaa6c45e}
+
+
+Used to read in precipitation from ERA for atmoflux\_\-flag==2. 
+
+\hypertarget{namespacemo__data_af60329c080a609cfb936b65d8a62e70c}{
+\index{mo\_\-data@{mo\_\-data}!prescribe\_\-flag@{prescribe\_\-flag}}
+\index{prescribe\_\-flag@{prescribe\_\-flag}!mo_data@{mo\_\-data}}
+\subsubsection[{prescribe\_\-flag}]{\setlength{\rightskip}{0pt plus 5cm}INTEGER {\bf mo\_\-data::prescribe\_\-flag}}}
+\label{namespacemo__data_af60329c080a609cfb936b65d8a62e70c}
+
+
+1: nothing happens, 2: prescribed Salinity profile is prescribed at each timestep (does not disable brine dynamics, just overwrites the salinity!) 
+
+\hypertarget{namespacemo__data_ab334544ada2f82dd312588426d1cfa64}{
+\index{mo\_\-data@{mo\_\-data}!psi\_\-g@{psi\_\-g}}
+\index{psi\_\-g@{psi\_\-g}!mo_data@{mo\_\-data}}
+\subsubsection[{psi\_\-g}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:),allocatable {\bf mo\_\-data::psi\_\-g}}}
+\label{namespacemo__data_ab334544ada2f82dd312588426d1cfa64}
+
+
+Gas volume fraction. 
+
+\hypertarget{namespacemo__data_a2ca2bd9402672a8327e4a68b3a14fd7f}{
+\index{mo\_\-data@{mo\_\-data}!psi\_\-g\_\-snow@{psi\_\-g\_\-snow}}
+\index{psi\_\-g\_\-snow@{psi\_\-g\_\-snow}!mo_data@{mo\_\-data}}
+\subsubsection[{psi\_\-g\_\-snow}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::psi\_\-g\_\-snow}}}
+\label{namespacemo__data_a2ca2bd9402672a8327e4a68b3a14fd7f}
+
+
+Gas volume fraction of snow layer. 
+
+\hypertarget{namespacemo__data_aac8ca74ef10b90da7bf9143bdc21ec3a}{
+\index{mo\_\-data@{mo\_\-data}!psi\_\-l@{psi\_\-l}}
+\index{psi\_\-l@{psi\_\-l}!mo_data@{mo\_\-data}}
+\subsubsection[{psi\_\-l}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:),allocatable {\bf mo\_\-data::psi\_\-l}}}
+\label{namespacemo__data_aac8ca74ef10b90da7bf9143bdc21ec3a}
+
+
+Liquid volume fraction. 
+
+\hypertarget{namespacemo__data_a914d1e046ed2bfa66d84f8aecb2ed26f}{
+\index{mo\_\-data@{mo\_\-data}!psi\_\-l\_\-snow@{psi\_\-l\_\-snow}}
+\index{psi\_\-l\_\-snow@{psi\_\-l\_\-snow}!mo_data@{mo\_\-data}}
+\subsubsection[{psi\_\-l\_\-snow}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::psi\_\-l\_\-snow}}}
+\label{namespacemo__data_a914d1e046ed2bfa66d84f8aecb2ed26f}
+
+
+Liquid volume fraction of snow layer. 
+
+\hypertarget{namespacemo__data_a655b6d5f770ca3b4a1d2e22b627844e9}{
+\index{mo\_\-data@{mo\_\-data}!psi\_\-s@{psi\_\-s}}
+\index{psi\_\-s@{psi\_\-s}!mo_data@{mo\_\-data}}
+\subsubsection[{psi\_\-s}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:),allocatable {\bf mo\_\-data::psi\_\-s}}}
+\label{namespacemo__data_a655b6d5f770ca3b4a1d2e22b627844e9}
+
+
+Solid volume fraction. 
+
+\hypertarget{namespacemo__data_a05df5047190129b7388a1ad5804ef145}{
+\index{mo\_\-data@{mo\_\-data}!psi\_\-s\_\-snow@{psi\_\-s\_\-snow}}
+\index{psi\_\-s\_\-snow@{psi\_\-s\_\-snow}!mo_data@{mo\_\-data}}
+\subsubsection[{psi\_\-s\_\-snow}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::psi\_\-s\_\-snow}}}
+\label{namespacemo__data_a05df5047190129b7388a1ad5804ef145}
+
+
+Solid volume fraction of snow layer. 
+
+\hypertarget{namespacemo__data_aa221cb1abb5ab4f4d2e8ca7987aeed56}{
+\index{mo\_\-data@{mo\_\-data}!Q@{Q}}
+\index{Q@{Q}!mo_data@{mo\_\-data}}
+\subsubsection[{Q}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:),allocatable {\bf mo\_\-data::Q}}}
+\label{namespacemo__data_aa221cb1abb5ab4f4d2e8ca7987aeed56}
+
+
+Heat in layer \mbox{[}J\mbox{]}. 
+
+\hypertarget{namespacemo__data_a3ffdac0536a998149773806217f42543}{
+\index{mo\_\-data@{mo\_\-data}!ray@{ray}}
+\index{ray@{ray}!mo_data@{mo\_\-data}}
+\subsubsection[{ray}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:),allocatable {\bf mo\_\-data::ray}}}
+\label{namespacemo__data_a3ffdac0536a998149773806217f42543}
+
+
+Rayleigh number of each layer. 
+
+\hypertarget{namespacemo__data_a1bc8433ee56482cce780b7630ab22867}{
+\index{mo\_\-data@{mo\_\-data}!S\_\-abs@{S\_\-abs}}
+\index{S\_\-abs@{S\_\-abs}!mo_data@{mo\_\-data}}
+\subsubsection[{S\_\-abs}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:),allocatable {\bf mo\_\-data::S\_\-abs}}}
+\label{namespacemo__data_a1bc8433ee56482cce780b7630ab22867}
+
+
+Absolute Salinity \mbox{[}g\mbox{]}. 
+
+\hypertarget{namespacemo__data_afacea50e8d2e4a7725adb27d613ca4c3}{
+\index{mo\_\-data@{mo\_\-data}!S\_\-abs\_\-snow@{S\_\-abs\_\-snow}}
+\index{S\_\-abs\_\-snow@{S\_\-abs\_\-snow}!mo_data@{mo\_\-data}}
+\subsubsection[{S\_\-abs\_\-snow}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::S\_\-abs\_\-snow}}}
+\label{namespacemo__data_afacea50e8d2e4a7725adb27d613ca4c3}
+
+
+Absolute salinity of snow layer \mbox{[}g\mbox{]}. 
+
+\hypertarget{namespacemo__data_aa70fa9ad64d25cd4c15584fbc834d820}{
+\index{mo\_\-data@{mo\_\-data}!S\_\-br@{S\_\-br}}
+\index{S\_\-br@{S\_\-br}!mo_data@{mo\_\-data}}
+\subsubsection[{S\_\-br}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:),allocatable {\bf mo\_\-data::S\_\-br}}}
+\label{namespacemo__data_aa70fa9ad64d25cd4c15584fbc834d820}
+
+
+Brine salinity \mbox{[}g/kg\mbox{]}. 
+
+\hypertarget{namespacemo__data_a24861c159e2b136fb56a61bc9f2de7a7}{
+\index{mo\_\-data@{mo\_\-data}!S\_\-bu@{S\_\-bu}}
+\index{S\_\-bu@{S\_\-bu}!mo_data@{mo\_\-data}}
+\subsubsection[{S\_\-bu}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:),allocatable {\bf mo\_\-data::S\_\-bu}}}
+\label{namespacemo__data_a24861c159e2b136fb56a61bc9f2de7a7}
+
+
+Bulk Salinity \mbox{[}g/kg\mbox{]}. 
+
+\hypertarget{namespacemo__data_ad14bbccac75eb3a3d95f57d0ecb81816}{
+\index{mo\_\-data@{mo\_\-data}!S\_\-bu\_\-bottom@{S\_\-bu\_\-bottom}}
+\index{S\_\-bu\_\-bottom@{S\_\-bu\_\-bottom}!mo_data@{mo\_\-data}}
+\subsubsection[{S\_\-bu\_\-bottom}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::S\_\-bu\_\-bottom}}}
+\label{namespacemo__data_ad14bbccac75eb3a3d95f57d0ecb81816}
+
+
+Salinity beneath the ice \mbox{[}g/kg\mbox{]}. 
+
+\hypertarget{namespacemo__data_a48908c6562a2cb9ef6b51897c4c27716}{
+\index{mo\_\-data@{mo\_\-data}!S\_\-total@{S\_\-total}}
+\index{S\_\-total@{S\_\-total}!mo_data@{mo\_\-data}}
+\subsubsection[{S\_\-total}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::S\_\-total}}}
+\label{namespacemo__data_a48908c6562a2cb9ef6b51897c4c27716}
+
+
+Total initial salt mass, for lab experiments with a fixed total amount. 
+
+\hypertarget{namespacemo__data_a0fb41b8dc5463c7215d278a301f17509}{
+\index{mo\_\-data@{mo\_\-data}!salt\_\-flag@{salt\_\-flag}}
+\index{salt\_\-flag@{salt\_\-flag}!mo_data@{mo\_\-data}}
+\subsubsection[{salt\_\-flag}]{\setlength{\rightskip}{0pt plus 5cm}INTEGER {\bf mo\_\-data::salt\_\-flag}}}
+\label{namespacemo__data_a0fb41b8dc5463c7215d278a301f17509}
+
+
+1: Sea salt, 2: NaCL 
+
+\hypertarget{namespacemo__data_a4dee26c05c4bcb3d685c7a24ba41bf63}{
+\index{mo\_\-data@{mo\_\-data}!solid\_\-precip@{solid\_\-precip}}
+\index{solid\_\-precip@{solid\_\-precip}!mo_data@{mo\_\-data}}
+\subsubsection[{solid\_\-precip}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::solid\_\-precip}}}
+\label{namespacemo__data_a4dee26c05c4bcb3d685c7a24ba41bf63}
+
+
+Solid precip, \mbox{[}meter of water /s\mbox{]}. 
+
+\hypertarget{namespacemo__data_a330cc0e4bc178ef722ccd333c69aa06d}{
+\index{mo\_\-data@{mo\_\-data}!surface\_\-water@{surface\_\-water}}
+\index{surface\_\-water@{surface\_\-water}!mo_data@{mo\_\-data}}
+\subsubsection[{surface\_\-water}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::surface\_\-water}}}
+\label{namespacemo__data_a330cc0e4bc178ef722ccd333c69aa06d}
+
+
+Percentage of water fraction in the top 5cm \mbox{[}\%\mbox{]}. 
+
+\hypertarget{namespacemo__data_a0969de41af73c828aa2ff388011081ba}{
+\index{mo\_\-data@{mo\_\-data}!T@{T}}
+\index{T@{T}!mo_data@{mo\_\-data}}
+\subsubsection[{T}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:),allocatable {\bf mo\_\-data::T}}}
+\label{namespacemo__data_a0969de41af73c828aa2ff388011081ba}
+
+
+Temperature \mbox{[}C\mbox{]}. 
+
+\hypertarget{namespacemo__data_a987a45ea7aa457299f91119864d0baff}{
+\index{mo\_\-data@{mo\_\-data}!T2m@{T2m}}
+\index{T2m@{T2m}!mo_data@{mo\_\-data}}
+\subsubsection[{T2m}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::T2m}}}
+\label{namespacemo__data_a987a45ea7aa457299f91119864d0baff}
+
+
+Two meter Temperature \mbox{[}C\mbox{]}. 
+
+\hypertarget{namespacemo__data_a8795a47a232696bffa9fa64a1f06a420}{
+\index{mo\_\-data@{mo\_\-data}!T2m\_\-input@{T2m\_\-input}}
+\index{T2m\_\-input@{T2m\_\-input}!mo_data@{mo\_\-data}}
+\subsubsection[{T2m\_\-input}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:),allocatable {\bf mo\_\-data::T2m\_\-input}}}
+\label{namespacemo__data_a8795a47a232696bffa9fa64a1f06a420}
+
+
+Used to read in 2Tm from ERA for atmoflux\_\-flag==2. 
+
+\hypertarget{namespacemo__data_a2ac8e0a672ebfd49781702474bf4ba0e}{
+\index{mo\_\-data@{mo\_\-data}!T\_\-bottom@{T\_\-bottom}}
+\index{T\_\-bottom@{T\_\-bottom}!mo_data@{mo\_\-data}}
+\subsubsection[{T\_\-bottom}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::T\_\-bottom}}}
+\label{namespacemo__data_a2ac8e0a672ebfd49781702474bf4ba0e}
+
+
+Temperature of water beneath the ice \mbox{[}C\mbox{]}. 
+
+\hypertarget{namespacemo__data_a75b714d38b619ba4c6608d8f833cf159}{
+\index{mo\_\-data@{mo\_\-data}!T\_\-freeze@{T\_\-freeze}}
+\index{T\_\-freeze@{T\_\-freeze}!mo_data@{mo\_\-data}}
+\subsubsection[{T\_\-freeze}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::T\_\-freeze}}}
+\label{namespacemo__data_a75b714d38b619ba4c6608d8f833cf159}
+
+
+Freezing temperature \mbox{[}C\mbox{]}. 
+
+\hypertarget{namespacemo__data_a6d032201ee2f7b716badb13643daf93e}{
+\index{mo\_\-data@{mo\_\-data}!T\_\-snow@{T\_\-snow}}
+\index{T\_\-snow@{T\_\-snow}!mo_data@{mo\_\-data}}
+\subsubsection[{T\_\-snow}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::T\_\-snow}}}
+\label{namespacemo__data_a6d032201ee2f7b716badb13643daf93e}
+
+
+Temperature of snow layer \mbox{[}C\mbox{]}. 
+
+\hypertarget{namespacemo__data_a7b3b4a04c1efd94e6c3f21e9bfd5fdad}{
+\index{mo\_\-data@{mo\_\-data}!T\_\-test@{T\_\-test}}
+\index{T\_\-test@{T\_\-test}!mo_data@{mo\_\-data}}
+\subsubsection[{T\_\-test}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),save {\bf mo\_\-data::T\_\-test}}}
+\label{namespacemo__data_a7b3b4a04c1efd94e6c3f21e9bfd5fdad}
+
+
+First guess for getT subroutine. 
+
+\hypertarget{namespacemo__data_abefbe1cf82237d7380ba0d7de788a07a}{
+\index{mo\_\-data@{mo\_\-data}!T\_\-top@{T\_\-top}}
+\index{T\_\-top@{T\_\-top}!mo_data@{mo\_\-data}}
+\subsubsection[{T\_\-top}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::T\_\-top}}}
+\label{namespacemo__data_abefbe1cf82237d7380ba0d7de788a07a}
+
+
+Temperature at the surface \mbox{[}C\mbox{]}. 
+
+\hypertarget{namespacemo__data_aa2b42f87a9dc571898326286dfab4350}{
+\index{mo\_\-data@{mo\_\-data}!tank\_\-depth@{tank\_\-depth}}
+\index{tank\_\-depth@{tank\_\-depth}!mo_data@{mo\_\-data}}
+\subsubsection[{tank\_\-depth}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::tank\_\-depth}}}
+\label{namespacemo__data_aa2b42f87a9dc571898326286dfab4350}
+
+
+water depth in meters, used to calculate concentrations below ice for tank experiments 
+
+\hypertarget{namespacemo__data_a20840603c089c697b8662ca2c45f23f3}{
+\index{mo\_\-data@{mo\_\-data}!tank\_\-flag@{tank\_\-flag}}
+\index{tank\_\-flag@{tank\_\-flag}!mo_data@{mo\_\-data}}
+\subsubsection[{tank\_\-flag}]{\setlength{\rightskip}{0pt plus 5cm}INTEGER {\bf mo\_\-data::tank\_\-flag}}}
+\label{namespacemo__data_a20840603c089c697b8662ca2c45f23f3}
+
+
+1: nothing, 2: S\_\-bu\_\-bottom and bgc\_\-bottom are calculated as if the experiment is conducted in a tank 
+
+\hypertarget{namespacemo__data_a1409d49184dc3835ab1186dde372d381}{
+\index{mo\_\-data@{mo\_\-data}!thick@{thick}}
+\index{thick@{thick}!mo_data@{mo\_\-data}}
+\subsubsection[{thick}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:),allocatable {\bf mo\_\-data::thick}}}
+\label{namespacemo__data_a1409d49184dc3835ab1186dde372d381}
+
+
+Layer thickness \mbox{[}m\mbox{]}. 
+
+\hypertarget{namespacemo__data_ad96d7ce134bb7b86325830161046d367}{
+\index{mo\_\-data@{mo\_\-data}!thick\_\-0@{thick\_\-0}}
+\index{thick\_\-0@{thick\_\-0}!mo_data@{mo\_\-data}}
+\subsubsection[{thick\_\-0}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::thick\_\-0}}}
+\label{namespacemo__data_ad96d7ce134bb7b86325830161046d367}
+
+
+Initial layer thickness \mbox{[}m\mbox{]}. 
+
+\hypertarget{namespacemo__data_a866fe962819eea1c688afb5b07109bdd}{
+\index{mo\_\-data@{mo\_\-data}!thick\_\-min@{thick\_\-min}}
+\index{thick\_\-min@{thick\_\-min}!mo_data@{mo\_\-data}}
+\subsubsection[{thick\_\-min}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::thick\_\-min}}}
+\label{namespacemo__data_a866fe962819eea1c688afb5b07109bdd}
+
+
+Parameter for snow, determines when snow is in thermal equilibrium with the ice and when it is totally neglected. 
+
+\hypertarget{namespacemo__data_a21342bcdb92f398a57a8eef77c77191a}{
+\index{mo\_\-data@{mo\_\-data}!thick\_\-snow@{thick\_\-snow}}
+\index{thick\_\-snow@{thick\_\-snow}!mo_data@{mo\_\-data}}
+\subsubsection[{thick\_\-snow}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::thick\_\-snow}}}
+\label{namespacemo__data_a21342bcdb92f398a57a8eef77c77191a}
+
+
+Thickness of snow layer \mbox{[}m\mbox{]}. 
+
+\hypertarget{namespacemo__data_aab72953060065beb7d6f1d2b9fcafa5c}{
+\index{mo\_\-data@{mo\_\-data}!thickness@{thickness}}
+\index{thickness@{thickness}!mo_data@{mo\_\-data}}
+\subsubsection[{thickness}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::thickness}}}
+\label{namespacemo__data_aab72953060065beb7d6f1d2b9fcafa5c}
+
+
+Meters of ice \mbox{[}m\mbox{]}. 
+
+\hypertarget{namespacemo__data_a9a0ee3e136f3b09016bfdffed837615a}{
+\index{mo\_\-data@{mo\_\-data}!time@{time}}
+\index{time@{time}!mo_data@{mo\_\-data}}
+\subsubsection[{time}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::time}}}
+\label{namespacemo__data_a9a0ee3e136f3b09016bfdffed837615a}
+
+
+Time \mbox{[}s\mbox{]}. 
+
+\hypertarget{namespacemo__data_acabfab1b812c7dd4f73b2ec6b059cae1}{
+\index{mo\_\-data@{mo\_\-data}!time\_\-counter@{time\_\-counter}}
+\index{time\_\-counter@{time\_\-counter}!mo_data@{mo\_\-data}}
+\subsubsection[{time\_\-counter}]{\setlength{\rightskip}{0pt plus 5cm}INTEGER {\bf mo\_\-data::time\_\-counter}}}
+\label{namespacemo__data_acabfab1b812c7dd4f73b2ec6b059cae1}
+
+
+Keeps track of input data. 
+
+\hypertarget{namespacemo__data_af2146601cc78d09fe2b51e065684822b}{
+\index{mo\_\-data@{mo\_\-data}!time\_\-input@{time\_\-input}}
+\index{time\_\-input@{time\_\-input}!mo_data@{mo\_\-data}}
+\subsubsection[{time\_\-input}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:),allocatable {\bf mo\_\-data::time\_\-input}}}
+\label{namespacemo__data_af2146601cc78d09fe2b51e065684822b}
+
+
+Used to read in time from ERA for atmoflux\_\-flag==2. 
+
+\hypertarget{namespacemo__data_a98be98c2961c1d3ccfdf5a52682b78d1}{
+\index{mo\_\-data@{mo\_\-data}!time\_\-out@{time\_\-out}}
+\index{time\_\-out@{time\_\-out}!mo_data@{mo\_\-data}}
+\subsubsection[{time\_\-out}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::time\_\-out}}}
+\label{namespacemo__data_a98be98c2961c1d3ccfdf5a52682b78d1}
+
+
+Time between outputs \mbox{[}s\mbox{]}. 
+
+\hypertarget{namespacemo__data_a6a4393d34e8f95d252b2bca2d30d5af3}{
+\index{mo\_\-data@{mo\_\-data}!time\_\-total@{time\_\-total}}
+\index{time\_\-total@{time\_\-total}!mo_data@{mo\_\-data}}
+\subsubsection[{time\_\-total}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::time\_\-total}}}
+\label{namespacemo__data_a6a4393d34e8f95d252b2bca2d30d5af3}
+
+
+Time of simulation \mbox{[}s\mbox{]}. 
+
+\hypertarget{namespacemo__data_a05dff3e3a302bd2f751263140d8f367b}{
+\index{mo\_\-data@{mo\_\-data}!Tinput@{Tinput}}
+\index{Tinput@{Tinput}!mo_data@{mo\_\-data}}
+\subsubsection[{Tinput}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(8280) {\bf mo\_\-data::Tinput}}}
+\label{namespacemo__data_a05dff3e3a302bd2f751263140d8f367b}
+
+
+used to read in top temperature for field experiment tests, dimension needs to be set in the code 
+
+\hypertarget{namespacemo__data_a71a192f5750717bc71df8f87c2a8cf52}{
+\index{mo\_\-data@{mo\_\-data}!total\_\-resist@{total\_\-resist}}
+\index{total\_\-resist@{total\_\-resist}!mo_data@{mo\_\-data}}
+\subsubsection[{total\_\-resist}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp) {\bf mo\_\-data::total\_\-resist}}}
+\label{namespacemo__data_a71a192f5750717bc71df8f87c2a8cf52}
+
+
+Thermal resistance of the whole column \mbox{[}\mbox{]}. 
+
+\hypertarget{namespacemo__data_a7cc5384bbfd0b56d61cfe78576ee886d}{
+\index{mo\_\-data@{mo\_\-data}!turb\_\-flag@{turb\_\-flag}}
+\index{turb\_\-flag@{turb\_\-flag}!mo_data@{mo\_\-data}}
+\subsubsection[{turb\_\-flag}]{\setlength{\rightskip}{0pt plus 5cm}INTEGER {\bf mo\_\-data::turb\_\-flag}}}
+\label{namespacemo__data_a7cc5384bbfd0b56d61cfe78576ee886d}
+
+
+1: No bottom turbulence, 2: Bottom mixing 
+
+\hypertarget{namespacemo__data_abb13ad5e80b57e5d614b9888531a3201}{
+\index{mo\_\-data@{mo\_\-data}!V\_\-ex@{V\_\-ex}}
+\index{V\_\-ex@{V\_\-ex}!mo_data@{mo\_\-data}}
+\subsubsection[{V\_\-ex}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:),allocatable {\bf mo\_\-data::V\_\-ex}}}
+\label{namespacemo__data_abb13ad5e80b57e5d614b9888531a3201}
+
+
+Volume of brine due expelled due to freezing \mbox{[}m$^\wedge$3\mbox{]} of solid, gas \& liquid. 
+
+\hypertarget{namespacemo__data_a274fbc519dd799929a177fdeaec56e91}{
+\index{mo\_\-data@{mo\_\-data}!V\_\-g@{V\_\-g}}
+\index{V\_\-g@{V\_\-g}!mo_data@{mo\_\-data}}
+\subsubsection[{V\_\-g}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:),allocatable {\bf mo\_\-data::V\_\-g}}}
+\label{namespacemo__data_a274fbc519dd799929a177fdeaec56e91}
+
+
+Volume \mbox{[}m$^\wedge$3\mbox{]} of gas. 
+
+\hypertarget{namespacemo__data_ab24341b1a6dd799e63540fa8ed51d14c}{
+\index{mo\_\-data@{mo\_\-data}!V\_\-l@{V\_\-l}}
+\index{V\_\-l@{V\_\-l}!mo_data@{mo\_\-data}}
+\subsubsection[{V\_\-l}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:),allocatable {\bf mo\_\-data::V\_\-l}}}
+\label{namespacemo__data_ab24341b1a6dd799e63540fa8ed51d14c}
+
+
+Volume \mbox{[}m$^\wedge$3\mbox{]} of liquid. 
+
+\hypertarget{namespacemo__data_a77750b1536deb5ddd2ebada202f1cf18}{
+\index{mo\_\-data@{mo\_\-data}!V\_\-s@{V\_\-s}}
+\index{V\_\-s@{V\_\-s}!mo_data@{mo\_\-data}}
+\subsubsection[{V\_\-s}]{\setlength{\rightskip}{0pt plus 5cm}REAL(wp),dimension(:),allocatable {\bf mo\_\-data::V\_\-s}}}
+\label{namespacemo__data_a77750b1536deb5ddd2ebada202f1cf18}
+
+
+Volume \mbox{[}m$^\wedge$3\mbox{]} of solid. 
+
