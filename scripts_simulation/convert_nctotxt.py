@@ -15,22 +15,16 @@ import pandas as pd
 import scipy.io as sio
 import datetime
 
-#inputpath = "/home/mpim/m300411/SatSim/SAMSIM/input/ERA-interim/"
-inputpath = "/Users/claraburgard/mistral_home/SatSim/SAMSIM/input/ERA-interim/"
-outputpath = "/Users/claraburgard/mistral_home/SatSim/SAMSIM/input/ERA-interim/"
+inputpath = "/work/mh0033/m300411/SatSim/data_repo_part1/SAMSIM_input_output/SAMSIM_INPUT/ERA-Interim/"
+outputpath = "/work/mh0033/m300411/SatSim/data_repo_part1/SAMSIM_input_output/SAMSIM_INPUT/ERA-Interim/"
 
 
 d = {}
 
-both = 'True'
-# both = False
+for ee in ['75N00W','NorthPole']:
+# for ee in ['74N170E','77N39E','80N160W','82N120W','85N50W']:
 
-# for ee in ['75N00W','75N180E','80N90E','NorthPole','82N50E','74N170E','80N160W','85N50W','82N120W']:
-for ee in ['77N39E']:
-  if both == 'True':
-    file0 = glob.glob(inputpath + 'ERA_interim_' + ee + '_forecast_2005-2009.nc')
-  else:
-    file0 = glob.glob(inputpath + 'ERA-' + ee + '.nc')
+  file0 = glob.glob(inputpath + 'ERA_interim_' + ee + '_forecast_2005-2009.nc')
   fid0 = sio.netcdf_file(file0[0])
 
   precip = fid0.variables['tp']
@@ -48,16 +42,16 @@ for ee in ['77N39E']:
     d['swdown_' + ee][j + 2] = d['swdown0_' + ee][j + 2] / (9 * 3600.)
     d['swdown_' + ee][j + 3] = d['swdown0_' + ee][j + 3] / (12 * 3600.)
 
-  if both == 'True':
-    swnet = fid0.variables['ssr']
-    d['swnet0_' + ee] = (swnet[:, 0, 0] * swnet.scale_factor + swnet.add_offset)  # /(3*3600.)
-    d['swnet_' + ee] = np.zeros(len(d['swnet0_' + ee]))
-    for n, j in enumerate(range(0, len(d['swnet0_' + ee]), 4)):
+
+  swnet = fid0.variables['ssr']
+  d['swnet0_' + ee] = (swnet[:, 0, 0] * swnet.scale_factor + swnet.add_offset)  # /(3*3600.)
+  d['swnet_' + ee] = np.zeros(len(d['swnet0_' + ee]))
+  for n, j in enumerate(range(0, len(d['swnet0_' + ee]), 4)):
       d['swnet_' + ee][j + 0] = d['swnet0_' + ee][j + 0] / (3 * 3600.)
       d['swnet_' + ee][j + 1] = d['swnet0_' + ee][j + 1] / (6 * 3600.)
       d['swnet_' + ee][j + 2] = d['swnet0_' + ee][j + 2] / (9 * 3600.)
       d['swnet_' + ee][j + 3] = d['swnet0_' + ee][j + 3] / (12 * 3600.)
-    d['swup_' + ee] = d['swdown_' + ee] - d['swnet_' + ee]
+  d['swup_' + ee] = d['swdown_' + ee] - d['swnet_' + ee]
 
   lwdown = fid0.variables['strd']
   d['lwdown0_' + ee] = (lwdown[:, 0, 0] * lwdown.scale_factor + lwdown.add_offset)  # /(3*3600.)
@@ -68,16 +62,16 @@ for ee in ['77N39E']:
     d['lwdown_' + ee][j + 2] = d['lwdown0_' + ee][j + 2] / (9 * 3600.)
     d['lwdown_' + ee][j + 3] = d['lwdown0_' + ee][j + 3] / (12 * 3600.)
 
-  if both == 'True':
-    lwnet = fid0.variables['str']
-    d['lwnet0_' + ee] = (lwnet[:, 0, 0] * lwnet.scale_factor + lwnet.add_offset)  # /(3*3600.)
-    d['lwnet_' + ee] = np.zeros(len(d['lwnet0_' + ee]))
-    for n, j in enumerate(range(0, len(d['lwnet0_' + ee]), 4)):
+
+  lwnet = fid0.variables['str']
+  d['lwnet0_' + ee] = (lwnet[:, 0, 0] * lwnet.scale_factor + lwnet.add_offset)  # /(3*3600.)
+  d['lwnet_' + ee] = np.zeros(len(d['lwnet0_' + ee]))
+  for n, j in enumerate(range(0, len(d['lwnet0_' + ee]), 4)):
       d['lwnet_' + ee][j + 0] = d['lwnet0_' + ee][j + 0] / (3 * 3600.)
       d['lwnet_' + ee][j + 1] = d['lwnet0_' + ee][j + 1] / (6 * 3600.)
       d['lwnet_' + ee][j + 2] = d['lwnet0_' + ee][j + 2] / (9 * 3600.)
       d['lwnet_' + ee][j + 3] = d['lwnet0_' + ee][j + 3] / (12 * 3600.)
-    d['lwup_' + ee] = d['lwdown_' + ee] - d['lwnet_' + ee]
+  d['lwup_' + ee] = d['lwdown_' + ee] - d['lwnet_' + ee]
 
   precip = fid0.variables['tp']
   d['precip0_' + ee] = (precip[:, 0, 0] * precip.scale_factor + precip.add_offset)  # /(3*3600.)
@@ -204,16 +198,16 @@ for ee in ['77N39E']:
   fileinput['v-wind'] = d['v10_' + ee + '_sorted']
   ####
 
-  ff = outputpath + '/Clara/' + ee + '/flux_lw.txt.input'
+  ff = outputpath + '/' + ee + '/flux_lw.txt.input'
   np.savetxt(ff, fileinput['Longwave radiation'].values, fmt='%f')
 
-  ff = outputpath + '/Clara/' + ee + '/flux_sw.txt.input'
+  ff = outputpath + '/' + ee + '/flux_sw.txt.input'
   np.savetxt(ff, fileinput['Shortwave radiation'].values, fmt='%f')
 
-  ff = outputpath + '/Clara/' + ee + '/precip.txt.input'
+  ff = outputpath + '/' + ee + '/precip.txt.input'
   np.savetxt(ff, fileinput['Precipitation'].values, fmt='%10.6e')
 
-  ff = outputpath+'/Clara/'+ ee+'/T2m.txt.input'
+  ff = outputpath+'/'+ ee+'/T2m.txt.input'
   np.savetxt(ff, fileinput['2m Temperature'].values, fmt='%f')
 ##################################
 

@@ -3,7 +3,7 @@
 """
 Created on Thu Oct 19 11:18:47 2017
 
-write MEMLS output into netcdf tqking into account that the input was on different amount
+write MEMLS output into netcdf taking into account that the input was on different amount
 of layers
 
 @author: Clara Burgad
@@ -17,17 +17,19 @@ import datetime
 
 ##########################################################################
 
-#went once through all experiments
-ee='75N00W-p4'
-#ee='NorthPole-p4'
-ee2=ee.split("-")[0]
+ee2='75N00W'
+#ee2='NorthPole'
 
-# change inputpath and outputpath if you want to make several experiments, otherwise there is a danger of overwriting previous results
-inputpath = '/work/mh0033/m300411/SatSim/MEMLS_exp/INPUT/original_files/'
-outputpath = '/work/mh0033/m300411/SatSim/MEMLS_exp/INPUT/netcdf_files/'
-inputpath2 = '/work/mh0033/m300411/SatSim/MEMLS_exp/OUTPUT/original_files/'
-outputpath2 = '/work/mh0033/m300411/SatSim/MEMLS_exp/OUTPUT/netcdf_files/'
+if ee2 == '75N00W':
+    folder = 'exp053_75N00W_20191106'
+elif ee2 == 'NorthPole':
+    folder = 'exp054_NorthPole_20191106'
 
+
+inputpath = '/work/mh0033/m300411/SatSim/data_repo_part1/MEMLS_input_output/'+folder+'/INPUT/original_files/'
+outputpath = '/work/mh0033/m300411/SatSim/data_repo_part1/MEMLS_input_output/'+folder+'/INPUT/netcdf_files/'
+inputpath2 = '/work/mh0033/m300411/SatSim/data_repo_part1/MEMLS_input_output/'+folder+'/OUTPUT/original_files/'
+outputpath2 = '/work/mh0033/m300411/SatSim/data_repo_part1/MEMLS_input_output/'+folder+'/OUTPUT/netcdf_files/'
 
 #################################################################
 
@@ -54,9 +56,8 @@ for jj in range(1643):
     idate.append(date_list1[jj])
 
 for ll in layers:
-    #read in the brightness temperatures
-    #ds_output = None
-    if icepack == 'no':
+        #read in the brightness temperatures
+        #ds_output = None
         for sens in sens_exp:
             print(sens,ll)
             ds2=None

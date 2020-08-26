@@ -13,7 +13,7 @@ from ecmwfapi import ECMWFDataServer
     
 server = ECMWFDataServer()
 
-outputpath = "/home/mpim/m300411/SatSim/SAMSIM/input/ERA-interim/Clara/"
+outputpath = "/work/mh0033/m300411/SatSim/data_repo_part1/SAMSIM_input_output/SAMSIM_INPUT/ERA-Interim/"
     
 lat_of_int = 75
 lon_of_int = 00
@@ -39,3 +39,6 @@ server.retrieve({
     
 })
 
+# For info: The same experiments as for the two points above were conducted for 
+# 74N170E, 77N39E, 80N160W, 82N120W and 85N50W but the original netcdf-file for these
+# files were not kept in the archive.

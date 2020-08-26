@@ -3,7 +3,7 @@
 """
 Created on Thu Mar 15 14:48:16 2018
 
-plot with salinity profiles
+plot the salinity profiles functions
 
 @author: claraburgard
 """
@@ -26,10 +26,7 @@ sns.set_context('paper')
 #          'ytick.labelsize':'xx-large'}
 # mpl.rcParams.update(params)
 
-home_path='/Users/claraburgard'
-
-#outputpath = home_path+'/mistral_work/SatSim/Paper_plots/'
-outputpath = '/work/mh0033/m300411/SatSim/Paper_plots/'
+outputpath = '/your/path/to/PLOTS'
 
 depth = np.arange(1.1,0,-0.01)
 

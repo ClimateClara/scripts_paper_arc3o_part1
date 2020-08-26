@@ -16,18 +16,21 @@ import pandas as pd
 import xarray as xr
 import os
 import datetime
-import memls_functions as memls
 
 ##########################################################################
 
-#went once through all experiments
-#ee='75N00W-p4'
-ee='NorthPole-p4'
-ee2=ee.split("-")[0]
 
-# change inputpath and outputpath if you want to make several experiments, otherwise there is a danger of overwriting previous results
-inputpath = '/work/mh0033/m300411/SatSim/MEMLS_exp/INPUT/original_files/'
-outputpath = '/work/mh0033/m300411/SatSim/MEMLS_exp/INPUT/netcdf_files/'
+ee2='75N00W'
+#ee='NorthPole-p4'
+
+if ee2 == '75N00W':
+    folder = 'exp053_75N00W_20191106'
+elif ee2 == 'NorthPole':
+    folder = 'exp054_NorthPole_20191106'
+
+
+inputpath = '/work/mh0033/m300411/SatSim/data_repo_part1/MEMLS_input_output/'+folder+'/INPUT/original_files/'
+outputpath = '/work/mh0033/m300411/SatSim/data_repo_part1/MEMLS_input_output/'+folder+'/INPUT/netcdf_files/'
 
 #################################################################
 
@@ -155,7 +158,7 @@ for ll in layers:
           variables = ['temperature','wetness','density','correlation_length','exp_correlation_length','thickness','salinity','type','snow_ice']
           for vv in variables:
             new_var[vv] = np.interp(new_var['depth'],temp_data['depth'],temp_data[vv]) 
-          new_var['liquid_water_fraction'] = memls.Vb(new_var['temperature'].values,new_var['salinity'].values)  
+          #new_var['liquid_water_fraction'] = memls.Vb(new_var['temperature'].values,new_var['salinity'].values)  
           temp_ds = xr.Dataset.from_dataframe(new_var)
           temp_ds = temp_ds.expand_dims('time')
           temp_ds['time'] = np.array((idate[tt], ))

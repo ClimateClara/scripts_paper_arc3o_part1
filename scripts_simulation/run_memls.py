@@ -19,14 +19,39 @@ import memls_functions as memls
 
 ##########################################################################
 
-#went once through all experiments
-ee='75N00W-p4'
-#ee='NorthPole-p4'
-ee2=ee.split("-")[0]
+ee2='75N00W'
+#ee2='NorthPole'
+#######
+## additional experiments
+#ee2='85N50W'
+#ee2='82N120W'
+#ee2='80N160W'
+#ee2='77N39E'
+#ee2='74N170E'
+#######
 
-# change inputpath and outputpath if you want to make several experiments, otherwise there is a danger of overwriting previous results
-inputpath = '/work/mh0033/m300411/SatSim/MEMLS_exp/INPUT/netcdf_files/'
-outputpath = '/work/mh0033/m300411/SatSim/MEMLS_exp/OUTPUT/original_files'
+if ee2 == '75N00W':
+    folder = 'exp049_75N00W_20191009'
+elif ee2 == 'NorthPole':
+    folder = 'exp050_NorthPole_20191011'
+#######
+## additional experiments
+elif ee2 == '85N50W':
+    folder = 'exp045_85N50W_20190715'
+elif ee2 == '82N120W':
+    folder = 'exp046_82N120W_20190716'
+elif ee2 == '80N160W':
+    folder = 'exp047_80N160W_20190716'
+elif ee2 == '77N39E':
+    folder = 'exp051_77N39E_20191030'
+elif ee2 == '74N170E':
+    folder = 'exp052_74N170E_20191106'
+#######
+
+inputpath = '/work/mh0033/m300411/SatSim/data_repo_part1/MEMLS_input_output/'+folder+'/INPUT/netcdf_files/'
+outputpath = '/work/mh0033/m300411/SatSim/data_repo_part1/MEMLS_input_output/'+folder+'/OUTPUT/original_files'
+
+
 
 
 ####################################################
@@ -37,7 +62,7 @@ for sens in sens_exp:
   print(sens+' started')
   netcdf_input = xr.open_dataset(inputpath+'inputMEMLS_'+sens+'_'+ee2+'.nc') #open the input netcdf
   for tt,timet in enumerate(netcdf_input['time']):
-    print(str(tt)+' '+sens+' '+ee)
+    print(str(tt)+' '+sens+' '+ee2)
     
     for snow_prop in ['snowyes','snowno']: #run two times: once with snow and once without
         if snow_prop == 'snowyes':
@@ -102,4 +127,4 @@ for sens in sens_exp:
 
     
   print(sens+' finished')
-print(ee)
+print(ee2)

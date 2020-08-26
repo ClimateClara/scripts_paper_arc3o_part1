@@ -18,30 +18,41 @@ import memls_functions as memls
 
 ##########################################################################
 
+ee2='75N00W'
+#ee2='NorthPole'
+#######
+## additional experiments
+#ee2='85N50W'
+#ee2='82N120W'
+#ee2='80N160W'
+#ee2='77N39E'
+#ee2='74N170E'
+#######
 
-#went once through all experiments
-ee='75N00W-p4'
-#ee='NorthPole-p4'
-#ee='82N50E-p4'
-#ee='85N50W-p4'
-#ee='82N120W-p4'
-#ee='80N160W-p4'
-#ee='77N39E-p4'
-#ee='74N170E-p4'
-
-ee2=ee.split("-")[0]
-
-home_path='your/home/path' #define your home path here''
+if ee2 == '75N00W':
+    folder = 'exp049_75N00W_20191009'
+elif ee2 == 'NorthPole':
+    folder = 'exp050_NorthPole_20191011'
+#######
+## additional experiments
+elif ee2 == '85N50W':
+    folder = 'exp045_85N50W_20190715'
+elif ee2 == '82N120W':
+    folder = 'exp046_82N120W_20190716'
+elif ee2 == '80N160W':
+    folder = 'exp047_80N160W_20190716'
+elif ee2 == '77N39E':
+    folder = 'exp051_77N39E_20191030'
+elif ee2 == '74N170E':
+    folder = 'exp052_74N170E_20191106'
+#######
 
 #Output from SAMSIM
-inputpath = home_path+'/mistral_work/SatSim/SAMSIM/'
+inputpath = '/work/mh0033/m300411/SatSim/data_repo_part1/SAMSIM_input_output/SAMSIM_OUTPUT/'+ee2
 #ERA-Interim input data
-inputpath3 = home_path+'/mistral_home/SatSim/SAMSIM/input/ERA-interim/Clara/'
-
-# change outputpath if you want to make several experiments, otherwise there is a danger of overwriting previous results
-
+inputpath3 = '/work/mh0033/m300411/SatSim/data_repo_part1/SAMSIM_input_output/SAMSIM_INPUT/ERA-Interim/'
 #output path to put the resulting .dat-files
-outputpath = home_path+'/mistral_work/SatSim/MEMLS_exp/INPUT/original_files'
+outputpath = '/work/mh0033/m300411/SatSim/data_repo_part1/MEMLS_input_output/'+folder+'/INPUT/original_files/'
 
 ###################################
 ## choose your salinity scheme
@@ -83,23 +94,23 @@ free_flag    = 0
 
 var1name     = 'Bulk salinity'
 var1unit     = '[g/kg]'
-var1         = np.loadtxt(inputpath+ee+"/dat_S_bu.dat")
+var1         = np.loadtxt(inputpath+ee2+"/dat_S_bu.dat")
 
 var2name     = 'Temperature'
 var2unit     = '[C]'
-var2         = np.loadtxt(inputpath+ee+"/dat_T.dat")
+var2         = np.loadtxt(inputpath+ee2+"/dat_T.dat")
 
 var3name     = 'Liquid fraction'
 var3unit     = '[fraction]'
-var3         = np.loadtxt(inputpath+ee+"/dat_psi_l.dat")
+var3         = np.loadtxt(inputpath+ee2+"/dat_psi_l.dat")
 
-thick      = np.loadtxt(inputpath+ee+"/dat_thick.dat")
-freeboard  = np.loadtxt(inputpath+ee+"/dat_freeboard.dat")
+thick      = np.loadtxt(inputpath+ee2+"/dat_thick.dat")
+freeboard  = np.loadtxt(inputpath+ee2+"/dat_freeboard.dat")
 
-thick_sn_file = np.loadtxt(inputpath+ee+'/dat_snow.dat') #thick_snow,T_snow,psi_l_snow,psi_s_snow
+thick_sn_file = np.loadtxt(inputpath+ee2+'/dat_snow.dat') #thick_snow,T_snow,psi_l_snow,psi_s_snow
 thick_sn = thick_sn_file[:,0]
 T_sn = thick_sn_file[:,1]
-T2m_file = np.loadtxt(inputpath+ee+'/dat_T2m_T_top.dat') #T2m, Ttop
+T2m_file = np.loadtxt(inputpath+ee2+'/dat_T2m_T_top.dat') #T2m, Ttop
 T2m = T2m_file[:,0]
 Ttop = T2m_file[:,1]+273.15
 airtemp = np.loadtxt(inputpath3+ee2+'/T2m.txt.input')
@@ -515,52 +526,25 @@ for tt in range(timesteps):
 
 # the melting and freezing seasons were investigated by examining the time series of ice thickness for each location.
 
-if ee=='70N00W-p2':
-  meltseasons = np.array([i for j in (range(0,91),range(577,825),range(1256,1577),range(2036,2293),range(2718,2977)) for i in j])
-  freezeseasons = np.array([i for j in (range(91,577),range(825,1256),range(1577,2036),range(2293,2718),range(2977,3285)) for i in j])
-elif ee=='75N00W-p2' or ee=='75N00W-p4':
+if ee2=='75N00W':
   meltseasons = np.array([i for j in (range(0,57),range(558,867),range(1331,1578),range(2048,2329),range(2771,2998)) for i in j])
   freezeseasons = np.array([i for j in (range(57,558),range(867,1331),range(1578,2048),range(2329,2771),range(2998,3285)) for i in j])
-elif ee=='75N180E-p2':
-  meltseasons = np.array([i for j in (range(0,92),range(621,941),range(1299,1634),range(2055,2402),range(2792,3145)) for i in j])
-  freezeseasons = np.array([i for j in (range(92,621),range(941,1299),range(1634,2055),range(2402,2792),range(3145,3285)) for i in j])
-elif ee=='80N00E-p2':
-  meltseasons = np.array([i for j in (range(0,79),range(568,878),range(1340,1637),range(2071,2381),range(2816,3144)) for i in j])
-  freezeseasons = np.array([i for j in (range(79,568),range(878,1340),range(1637,2071),range(2381,2816),range(3144,3285)) for i in j])
-elif ee=='80N90E-p2':
-  meltseasons = np.array([i for j in (range(0,92),range(624,856),range(1300,1679),range(2059,2384),range(2823,3161)) for i in j])
-  freezeseasons = np.array([i for j in (range(92,624),range(856,1300),range(1679,2059),range(2384,2823),range(3161,3285)) for i in j])
-elif ee=='85N180E-p2':
-  meltseasons = np.array([i for j in (range(0,98),range(621,870),range(1311,1674),range(2076,2407),range(2806,3144)) for i in j])
-  freezeseasons = np.array([i for j in (range(98,621),range(870,1311),range(1674,2076),range(2407,2806),range(3144,3285)) for i in j])
-elif ee=='barrow-p2':
-  meltseasons = np.array([i for j in (range(0,94),range(609,920),range(1288,1618),range(2031,2362),range(2785,2807)) for i in j])
-  freezeseasons = np.array([i for j in (range(94,609),range(920,1288),range(1618,2031),range(2362,2785),range(2807,3285)) for i in j])
-elif ee=='NorthPole-p2':
-  meltseasons = np.array([i for j in (range(0,105),range(579,893),range(1328,1680),range(2078,2396),range(2807,3158)) for i in j])
-  freezeseasons = np.array([i for j in (range(105,579),range(893,1328),range(1680,2078),range(2396,2807),range(3158,3285)) for i in j])
-elif ee=='sheba-p2':
-  meltseasons = np.array([i for j in (range(0,112),range(615,902),range(1362,1625),range(2090,2373),range(2820,3141)) for i in j])
-  freezeseasons = np.array([i for j in (range(112,615),range(902,1362),range(1625,2090),range(2373,2820),range(3141,3285)) for i in j])
-elif ee=='NorthPole-p4':
+elif ee2=='NorthPole':
   meltseasons = np.array([i for j in (range(0,105),range(579,840),range(1328,1600),range(2078,2330),range(2807,3070)) for i in j])
   freezeseasons = np.array([i for j in (range(105,579),range(840,1328),range(1600,2078),range(2330,2807),range(3070,3285)) for i in j])
-elif ee=='82N50E-p4':
-  meltseasons = np.array([i for j in (range(0,131),range(693,820),range(1425,1599),range(2153,2361),range(2885,3060)) for i in j])
-  freezeseasons = np.array([i for j in (range(131,693),range(820,1425),range(1599,2153),range(2361,2885),range(3060,3285)) for i in j])
-elif ee=='85N50W-p4':
+elif ee2=='85N50W':
   meltseasons = np.array([i for j in (range(0,121),range(714,875),range(1432,1666),range(2167,2349),range(2887,3118)) for i in j])
   freezeseasons = np.array([i for j in (range(121,714),range(875,1432),range(1666,2167),range(2349,2887),range(3118,3285)) for i in j])
-elif ee=='82N120W-p4':
+elif ee2=='82N120W':
   meltseasons = np.array([i for j in (range(0,132),range(666,852),range(1418,1612),range(2132,2379),range(2868,3143)) for i in j])
   freezeseasons = np.array([i for j in (range(132,666),range(852,1418),range(1612,2132),range(2379,2868),range(3143,3285)) for i in j])
-elif ee=='80N160W-p4':
+elif ee2=='80N160W':
   meltseasons = np.array([i for j in (range(0,126),range(661,847),range(1401,1613),range(2128,2389),range(2866,3147)) for i in j])
   freezeseasons = np.array([i for j in (range(126,661),range(847,1401),range(1613,2128),range(2389,2866),range(3147,3285)) for i in j])
-elif ee=='74N170E-p4':
+elif ee2=='74N170E':
   meltseasons = np.array([i for j in (range(0,128),range(660,857),range(1385,1628),range(2128,2349),range(2868,3036)) for i in j])
   freezeseasons = np.array([i for j in (range(128,660),range(857,1385),range(1628,2128),range(2349,2868),range(3036,3285)) for i in j])
-elif ee=='77N39E-p4':
+elif ee2=='77N39E':
     meltseasons = np.array([i for j in (range(0,141),range(685,889),range(1443,1588),range(2154,2349),range(2887,3089)) for i in j])
     freezeseasons = np.array([i for j in (range(141,685),range(889,1443),range(1588,2154),range(2349,2887),range(3089,3285)) for i in j])
 
@@ -627,7 +611,6 @@ if saltype == 'func':
               [nn, sal_i5] = sf.samelayers_fytomy(d_i,sal_i,tmf)
               rho_i5 = sf.icerho(T_i,sal_i5)
           elif layertype == 'diff':
-              #[nn, sal_i5] = sf.difflayers1_fytomy(d_i,sal_i,tmf)
               [nn, sal_i5] = sf.difflayers_fytomy(ll,d_i,sal_i,tmf)
               rho_i5 = sf.icerho(T_i,sal_i5)
             
@@ -676,7 +659,6 @@ if saltype == 'func':
 
           if layertype == 'same':
               [nn, sal_i6] = sf.samelayers_fytomy(d_i2,sal_i2,tmf)
-              #rho_i6 = icerho2(T_i2,sal_i6,psi_l2)
               rho_i6 = sf.icerho(T_i2,sal_i6)
               fileinput = pd.DataFrame()
               fileinput['Layer number'] = data['Layer number']
@@ -698,7 +680,6 @@ if saltype == 'func':
               fileinput['Liquid_water_frac'] = memls.Vb(fileinput['Layer temperature'],fileinput['Layer salinity'])
 
           elif layertype == 'diff':
-              #[nn, sal_i6] = sf.difflayers1_fytomy(d_i,sal_i2,tmf)
               [nn, sal_i6] = sf.difflayers_fytomy(ll,d_i,sal_i2,tmf)
               T_diff = np.interp(np.cumsum(d_i),np.cumsum(d_i2),T_i2)
               rho_i6 = sf.icerho(T_diff,sal_i6)
