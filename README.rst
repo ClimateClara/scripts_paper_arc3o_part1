@@ -29,6 +29,7 @@ For the sensitivity study looking at the influence of the number of layers (Sect
     * `run_memls_layers.py </scripts_simulation/run_memls_layers.py>`_, using `memls_functions.py </scripts_simulation/memls_functions.py>`_: simulates the brightness temperatures with MEMLS qnd stores the results in .dat-files
     * `write_output_netcdf_layers.py </scripts_simulation/write_output_netcdf_layers.py>`_: writes the MEMLS output to netcdf
 
+The data and its documentation can be found on the DKRZ long term archive `here <https://cera-www.dkrz.de/WDCC/ui/cerasearch/entry?acronym=DKRZ_LTA_033_ds00005>`_.
 
 Producing figures
 -----------------
@@ -39,4 +40,4 @@ The final processing and visualization was done using the following scripts:
     * Figure 4: `Figure5.py </scripts_figures/Figure5.py>`_
     * Values in Table 3: `Table_layers.ipynb </scripts_figures/Table_layers.ipynb>`_
 
-Signed: Clara Burgard, 17.08.2020
+Signed: Clara Burgard, 02.09.2020
